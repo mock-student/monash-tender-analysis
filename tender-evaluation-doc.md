@@ -1,4 +1,4 @@
-# Monash Tender Go/No-Go Evaluation
+# Monash Tender Go/No-Go Evaluation (Cursor AI)
 ## NTU CSM (our product) vs Monash Part D2 (client requirements)
 
 **Date:** 14 Jul 2026  
