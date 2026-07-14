@@ -1,0 +1,769 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>SGCC</title><meta name="data-notion-page-icon" content="📋"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%93%8B%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="33494e81-8539-80b4-8b3b-d371e1f7935b" class="page sans" data-notion-page-icon="📋"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="📋"></span></div><h1 class="page-title" dir="auto">SGCC</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-last_edited_by"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/user-circle_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited by</th><td><span class="user"><img src="https://lh3.googleusercontent.com/a/ACg8ocKvzGHEpJauKI2uoiprUb1a8p_Ghl3XXKOO6UP2DWZirF9XLHc=s100" class="icon user-icon"/>Joji Mendoza-Chan</span></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/clock_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited time</th><td><time datetime="2026-06-13T09:08">June 13, 2026 9:08 AM</time></td></tr></tbody></table></header><div class="page-body"><blockquote id="33494e81-8539-806b-8724-e7e30645d492" class="" dir="auto"><strong>Sources:</strong> SGCC Feedback (Nov 2025), SGCC Questions &amp; Answers (Mar 2026), SGCC Student Booking Logic (Mar 2026), SGCC Flows diagram, Phase 2 CSM Workshop Findings, CSM Milestones Epics Stories Requirements</blockquote><hr id="33494e81-8539-80c9-bfe0-f768b6da6767" dir="auto"/><h1 id="33494e81-8539-8099-8071-cd09798ff511" class="" dir="auto">Table of Contents</h1><nav id="33494e81-8539-80b4-9723-d7bcdbaf7f4f" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-8099-8071-cd09798ff511">Table of Contents</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-80b3-a30f-fb4af2952b39">1. Overview</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-800e-9d6d-f134e5fb43f5">2. Session Lifecycle &amp; Statuses</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-80cb-b1a8-e1c5265fc55a">2.1 Session Status Model</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8083-a847-d50288abfd7f">2.2 Bulk Status Updates</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-80a8-a960-faea3c76bc0c">3. Admin View</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-80f2-9cfc-f9982c6b1d55">3.1 Session Creation</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#33494e81-8539-8094-bba6-e587270b5ae6">3.1.1 Manual Creation</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#33494e81-8539-8004-b555-e645a70fbdea">3.1.2 CSV Bulk Upload</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#33494e81-8539-80af-9820-ff78e9bb30e3">3.1.3 Ad Hoc Session Creation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-80ca-b098-e295e395baf1">3.2 Session Editing (Bundled Sessions)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ee283598-d90b-4292-8cb6-beeb2ff59d93">Editable Fields</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7e3d78f3-a602-486a-a41a-0d8ea895d1e6">Editing Rules by Session Status</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b41a8d30-3766-455b-a822-f080b0e90d8a">Editing Bundled Sessions</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#cf6e1c40-d3ea-4df9-a4ea-62ff7357dccb">Conflict Validation on Edit</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c3e5c5d5-1a60-4995-8082-7de59dafb28d">Student Notification on Edit</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a52b089e-8c46-4986-a0d5-86add5605507">RBAC — Who Can Edit Sessions</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d5af051b-74a1-4eb0-805d-1ea12b024886">Session Edit History &amp; Audit Trail</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#33694e81-8539-80d4-947c-d382b5c0cf58">Editing vs. Unbundling</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#28823c88-69fc-46d5-b06d-2aa1dd538b22">3.3 Unbundled Sessions</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a9c16fbc-6aaa-46f7-a73f-66a12c6bd7dd">How to Unlink a Bundle</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#acaf2b57-a96e-4942-8925-a94dd0244480">Admin View After Unlinking</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6ffd6859-604f-44be-897e-12d3ca7c1765">Independence Rules After Unlinking</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#398d7491-8f45-4a6a-abfd-a31770ef825b">3.4 Student Visibility &amp; Eligibility</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8005-bf18-fbb2c0bfd5b8">3.3 Admin Dashboard</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8089-b6fd-f4fd735f031e">3.4 Student Management Within Sessions</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8091-b3f2-ecc6ab50ab4a">3.5 Resume Submission Management</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-802e-b1cd-e02b9ebe324a">3.6 SIS Integration (Student List Sync)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8030-982e-c440c5d50953">3.7 Venue Management</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-800c-9d3a-da4ac3fd8c03">3.9 Student Detail View &amp; Activity Log</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8040-8144-ced7f1ef4b59">3.8 CSV Re-upload for Published Sessions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-80b7-8304-f88b2cbb51e2">4. Student View</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-80cd-b696-d269ccad3ebd">4.1 Session Browsing &amp; Booking (Happy Path)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8002-9fa1-fc2e67d19fb8">4.2 Reschedule Rules</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8051-b347-e72ea8e128dc">4.3 Resume Upload &amp; VMock Integration</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-806b-84b3-e55b60233046">4.4 Attendance Confirmation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-809d-b090-f619eba586ba">4.5 Absence Flow — Session 1 (Resume Critique)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8031-9195-d8d087b70cf5">4.6 Absence Flow — Session 2 (Mock Interview)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8012-bc9c-d8afc77b0f1a">4.7 Cancellation Rules</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8027-a20f-e4fee9fc7234">4.8 Unbundled Session Booking</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#98d7c7c1-e024-45b1-a245-ef8816606406">Student View After Admin Unlinking</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#500b92fc-f35b-47f6-b888-668d850aa635">Case 1 — Missed Mock Interview After Attending Resume Critique</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a77eeb71-5b96-48d2-a563-b3c1f81d2ca0">Quick Reference — Unbundled Booking Scenarios</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#466de86f-d5b9-45ae-b299-d8f378d654e5">4.9 Student Email Support</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-8080-9a9f-c047b5e43b39">5. Coach View</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-80fe-a198-f71dd5eea554">5.1 Session View</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-80c4-859a-c26299dced17">5.2 Attendance &amp; Grading</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8052-99b6-e43dbfc5f468">5.3 Coach Assignment</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-8099-9212-c22c4df19f7d">5.4 Session Format</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#38da48db-5c48-44c7-868d-70f531c3a858">5.5 Unbundled Sessions</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-8097-a6ce-cc81a5e4766e">6. Automated Emails &amp; Notifications</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-804a-bc92-f0b79f8ae535">7. Feedback Forms</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-8082-83dc-f76fc36ba526">8. Settings &amp; Configuration</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-806b-80df-ef4db4d28b16">9. Reporting &amp; Analytics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0cc3aa1e-3f20-40f1-b61e-d006ad362f55">Analytics — CP3 Enhancements</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-8063-bad6-c4e1d747d16c">10. Conflicts Flagged</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-8002-979c-f8c26a6ab801">11. Open Items</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-8026-9ab0-c132645decfd">12. Backend Implementation Notes</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-80f8-9a5b-de377412676b">12.1 Database Tables</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-80da-9f60-d846e991d44c">12.2 API Endpoints</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#33494e81-8539-80bc-bb4d-c4f81a45485f">Session List &amp; Semesters</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#33494e81-8539-80a0-968c-eacd41fc2350">Session Details, Attendance &amp; Remarks</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#33494e81-8539-8042-a3fb-c93c872b6ca6">Session Restore</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#33494e81-8539-803c-b9f8-cbd0fe13305c">Session CRUD &amp; Reference Data</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#33494e81-8539-809e-a71d-c7a79f3450aa">12.3 Key Behaviours Confirmed by Dev</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c36e0dbe-5892-46c9-b96e-e02bc20768a3">Role Changes — Staff to Manager</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#33494e81-8539-808a-b476-f035dae9d848">13. Requirements Traceability</a></div></nav><h1 id="33494e81-8539-80b3-a30f-fb4af2952b39" class="" dir="auto">1. Overview</h1><p id="33494e81-8539-80d5-b915-dd92d4c7a8b2" class="" dir="auto">The SGCC (Small Group Coaching Clinics) module is a standalone module within the CSM platform. It manages the full lifecycle of group career coaching clinics — from session creation and student booking to coach attendance marking and post-session reporting.</p><p id="33594e81-8539-8087-ba55-fc9193714baf" class="" dir="auto">The SGCC (Small Group Coaching Clinics) module is a standalone module within the CSM platform. It manages the full lifecycle of group career coaching clinics — from session creation and student booking to coach attendance marking and post-session reporting.</p><p id="33494e81-8539-800e-b76f-dbc54f46bcad" class="" dir="auto">Each SGCC programme cycle consists of two session types that are linked together as a <strong>bundle</strong>:</p><ul id="33494e81-8539-8032-9324-d0d123066409" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Session 1 — Resume Critique:</strong> Student submits a resume; a coach reviews and critiques it in session.</li></ul><ul id="33494e81-8539-806d-a05f-c3ca7a4a2c6b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Session 2 — Mock Interview:</strong> Coach conducts a mock interview with the student.</li></ul><p id="33494e81-8539-8093-bd97-cf57a7a194f2" class="" dir="auto">By default, students must book both sessions together as a bundle. Unbundled (individual session) booking is only permitted in specific edge cases defined in Section 4.</p><p id="33494e81-8539-804d-8fd5-e8c7c3735217" class="" dir="auto"><strong>Roles:</strong></p><table id="33494e81-8539-8094-a41b-d01b5e5d2029" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-8199-ad76-d15d04552846" dir="ltr"><th id="G}rp" class="simple-table-header-color simple-table-header">Role</th><th id="cEdR" class="simple-table-header-color simple-table-header">Access Level</th><th id="&gt;XQ{" class="simple-table-header-color simple-table-header">SGCC Responsibilities</th></tr></thead><tbody><tr id="33494e81-8539-8158-b127-e640b5b45388" dir="ltr"><td id="G}rp" class=""><strong>Admin</strong></td><td id="cEdR" class="">L4 — Administer</td><td id="&gt;XQ{" class="">Creates and manages all SGCC sessions, configures settings, manages student groups, handles absences and escalations, overrides capacity, assigns coaches</td></tr><tr id="33494e81-8539-8132-9a7b-c9630bdfbc16" dir="ltr"><td id="G}rp" class=""><strong>Manager</strong></td><td id="cEdR" class="">L3 — Manage</td><td id="&gt;XQ{" class="">Approves absent student reschedule requests, publishes and manages SGCC sessions</td></tr><tr id="33494e81-8539-814c-b919-edc1f880f50b" dir="ltr"><td id="G}rp" class=""><strong>Staff</strong></td><td id="cEdR" class="">L2 — Contribute</td><td id="&gt;XQ{" class="">Views assigned sessions, marks attendance, grades students (5/0), downloads resumes. <strong>Staff accounts are used for coaches in SGCC.</strong></td></tr><tr id="33494e81-8539-81ad-9cd2-d058e0ceb643" dir="ltr"><td id="G}rp" class=""><strong>Student</strong></td><td id="cEdR" class="">L1/L2 — Read/Contribute</td><td id="&gt;XQ{" class="">Books sessions, uploads resumes, submits absentee forms, reschedules</td></tr><tr id="33494e81-8539-8130-a635-e41e001b9e6f" dir="ltr"><td id="G}rp" class=""><strong>CSM System</strong></td><td id="cEdR" class="">—</td><td id="&gt;XQ{" class="">Sends automated emails, enforces business rules, tracks session and booking state</td></tr></tbody></table><blockquote id="33494e81-8539-805e-8e09-d57adfa53008" class="" dir="auto"><em>Note: Employer Admin, Employer, and Mentor roles exist in the CSM platform but are not used in SGCC.</em></blockquote><hr id="33494e81-8539-80b4-b552-e1dad7bb338f" dir="auto"/><h1 id="33494e81-8539-800e-9d6d-f134e5fb43f5" class="" dir="auto">2. Session Lifecycle &amp; Statuses</h1><h2 id="33494e81-8539-80cb-b1a8-e1c5265fc55a" class="" dir="auto">2.1 Session Status Model</h2><p id="33494e81-8539-800b-b7e9-f03d423c3e74" class="" dir="auto">Every individual SGCC session moves through the following statuses:</p><table id="33494e81-8539-8049-b15f-d90e38429ffd" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-8118-b0f6-cb414196258b" dir="ltr"><th id="xv^=" class="simple-table-header-color simple-table-header">Status</th><th id="{w[U" class="simple-table-header-color simple-table-header" style="width:546px">Description</th></tr></thead><tbody><tr id="33494e81-8539-8177-b8da-d97406cae229" dir="ltr"><td id="xv^=" class=""><strong>Draft</strong></td><td id="{w[U" class="" style="width:546px">Created but not visible to students. Admin can freely edit all fields.</td></tr><tr id="33494e81-8539-814c-99a3-e6b4a792e200" dir="ltr"><td id="xv^=" class=""><strong>Published</strong></td><td id="{w[U" class="" style="width:546px">Visible to eligible students for booking. Sub-statuses: Scheduled, Ongoing, Completed.</td></tr><tr id="33494e81-8539-81cc-baa9-ccd33724af5b" dir="ltr"><td id="xv^=" class=""><strong>Withdrawn</strong></td><td id="{w[U" class="" style="width:546px">Temporarily hidden from students. Students&#x27; existing bookings are <strong>retained</strong>. Admin can make edits, then re-publish. A withdrawn session can also be cancelled.</td></tr><tr id="33494e81-8539-81da-94dd-ff03ee574f8e" dir="ltr"><td id="xv^=" class=""><strong>Cancelled</strong></td><td id="{w[U" class="" style="width:546px">Session is soft deleted. Students with bookings are <strong>released</strong> from the slot and notified. A cancelled session can be <strong>restored</strong> (via the Restore action in the Sessions table or detail view). Upon restoration, the session will have no active registrations — students must rebook once the session is re-published.</td></tr></tbody></table><p id="33494e81-8539-8089-bacd-ffdaa0ff7dfe" class="" dir="auto"><strong>Withdrawal vs Cancellation:</strong></p><ul id="33494e81-8539-806a-a77c-eb39ce847322" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Withdrawal</strong> is a temporary pause. Students keep their bookings. It exists so admins can make edits (date, time, venue, etc.) without students being able to book during the edit window. Minor changes can be made; students can optionally be notified.</li></ul><ul id="33494e81-8539-80b9-84e5-e81c7a52d588" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cancellation</strong> is equivalent to deleting the session. It releases all student bookings. Students who had signed up are notified and must rebook (if eligible).</li></ul><ul id="33494e81-8539-80d8-b820-e56d0cdfed73" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Students who are booked into a <strong>withdrawn</strong> session <strong>cannot cancel or reschedule</strong> until the session is re-published or cancelled.</li></ul><h2 id="33494e81-8539-8083-a847-d50288abfd7f" class="" dir="auto">2.2 Bulk Status Updates</h2><ul id="33494e81-8539-807a-87cb-cf3dc610a8c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Admins can bulk-publish all draft sessions at once.</li></ul><ul id="33494e81-8539-804a-98d0-dcd69a53932d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Bulk capacity changes are supported. When bulk-editing sessions, the system must show admins a <strong>delta view</strong> (what is changing across affected sessions) before confirming.</li></ul><p id="33694e81-8539-8053-9afa-dc32c564365a" class="" dir="auto">
+</p><hr id="33494e81-8539-8030-a96e-d4e6b27d5f0d" dir="auto"/><h1 id="33494e81-8539-80a8-a960-faea3c76bc0c" class="" dir="auto">3. Admin View</h1><h2 id="33494e81-8539-80f2-9cfc-f9982c6b1d55" class="" dir="auto">3.1 Session Creation</h2><h3 id="33494e81-8539-8094-bba6-e587270b5ae6" class="" dir="auto">3.1.1 Manual Creation</h3><p id="33494e81-8539-80a0-a31c-d87e7f0a421f" class="" dir="auto">Admins can create individual sessions manually with the following configurable fields:</p><ul id="33494e81-8539-8024-aac9-e0abeb82703f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Session type (Resume Critique or Mock Interview)</li></ul><ul id="33494e81-8539-808e-8952-fcb795de6a6f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Date, time, venue/location (online or face-to-face)</li></ul><ul id="33494e81-8539-8050-a329-e5910d593e68" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Coach assignment (a session can have more than one coach assigned)</li></ul><ul id="33494e81-8539-80a5-a823-f8d397000254" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Minimum and maximum student capacity</li></ul><ul id="33494e81-8539-8093-82d6-cc8ce45924d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Publish date (controls when the session becomes visible to students)</li></ul><ul id="33494e81-8539-800c-83f8-ecbce34640df" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Visibility / student group eligibility (see Section 3.2)</li></ul><ul id="33494e81-8539-8066-85d7-feb1787a9e73" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Whether the session is listed or unlisted (private)</li></ul><h3 id="33494e81-8539-8004-b555-e645a70fbdea" class="" dir="auto">3.1.2 CSV Bulk Upload</h3><p id="33494e81-8539-80c8-a295-e19c21fa9795" class="" dir="auto">The primary creation method for bulk sessions is CSV upload, reflecting the current workflow of ~1,200 sessions per semester.</p><p id="33494e81-8539-8085-b1b1-d7bd78a98e5b" class="" dir="auto"><strong>CSV template rules:</strong></p><ul id="33494e81-8539-80eb-9d35-e04c0a110231" class="bulleted-list" dir="auto"><li style="list-style-type:disc">One unified template for both initial creation and updates.</li></ul><ul id="33494e81-8539-807b-940a-c19c41bf1007" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Session IDs are included in the downloaded session list export. To <strong>update</strong> an existing session, include its ID and edit the row. To <strong>create</strong> a new session, leave the ID blank. Rows without an ID are always treated as new sessions — uploading without IDs on existing sessions will cause duplicates and enrolment data loss.</li></ul><ul id="33494e81-8539-807e-86bd-cadbfaf40ad1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The <strong>publish date</strong> must be specified in the CSV for each session.</li></ul><ul id="33494e81-8539-80a5-b869-dd70d9e1224a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Visibility/eligibility conditions can be included directly in the CSV, or configured separately via the session editing UI (both methods are supported).</li></ul><ul id="33494e81-8539-805d-b609-e81e387560c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The CSV must include a column to indicate if a session is <strong>unlisted</strong> (private/not publicly listed to all eligible students).</li></ul><h3 id="33494e81-8539-80af-9820-ff78e9bb30e3" class="" dir="auto">3.1.3 Ad Hoc Session Creation</h3><p id="33494e81-8539-80b2-b730-c576b88ce3fc" class="" dir="auto">Admins can create sessions ad hoc at any time during the semester — for example, to add makeup sessions or accommodate special cases. There is no dedicated &quot;Week 13 makeup&quot; feature; ad hoc creation covers this need.</p><h2 id="33494e81-8539-80ca-b098-e295e395baf1" class="" dir="auto">3.2 Session Editing (Bundled Sessions)</h2><h3 id="ee283598-d90b-4292-8cb6-beeb2ff59d93" class="" dir="auto">Editable Fields</h3><p id="589ef7ec-da1a-47ea-a771-81a13543427e" class="" dir="auto">Admins can edit the following fields on any session:</p><table id="2ff08971-267e-4787-bd12-0b9c3b38b255" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="41ece32c-f948-4d33-a59c-cb797dc70194" dir="ltr"><th id=";`PA" class="simple-table-header-color simple-table-header">Field</th><th id="p:Qg" class="simple-table-header-color simple-table-header" style="width:479px">Notes</th></tr></thead><tbody><tr id="465e45ab-8e17-4a67-889f-d976d0f37a85" dir="ltr"><td id=";`PA" class="">Date</td><td id="p:Qg" class="" style="width:479px">Subject to the same scheduling constraints as creation — no weekends, public holidays, or NTU university holidays. Must remain within the semester period.</td></tr><tr id="e2768bd7-70ac-47b6-a946-418365efa6ac" dir="ltr"><td id=";`PA" class="">Time</td><td id="p:Qg" class="" style="width:479px">Selected from a dropdown of 3 predefined time slots. Admins can also enter a custom time if none of the preset slots apply.</td></tr><tr id="25513a79-384b-4e5d-9ead-f0a1a7a44818" dir="ltr"><td id=";`PA" class="">Venue</td><td id="p:Qg" class="" style="width:479px">For face-to-face sessions — must be a venue from the NTU Maps list. For online sessions — URL can be updated.</td></tr><tr id="78ad715c-4f38-4404-99ff-660bae9db3ba" dir="ltr"><td id=";`PA" class="">Coach</td><td id="p:Qg" class="" style="width:479px">Must be an active Staff-role user. Coach availability is checked against existing sessions.</td></tr><tr id="0f3d270a-026a-415c-8072-3777bea2650d" dir="ltr"><td id=";`PA" class="">Visibility / eligibility conditions</td><td id="p:Qg" class="" style="width:479px">Programme codes, year of study, expected graduation year.</td></tr><tr id="4074c5ca-27f9-47ff-910b-409eacb006ee" dir="ltr"><td id=";`PA" class="">Private status</td><td id="p:Qg" class="" style="width:479px">Can be toggled on or off.</td></tr><tr id="d4203a49-5c7f-4ce2-8b94-4e641224e1f9" dir="ltr"><td id=";`PA" class="">Publish date</td><td id="p:Qg" class="" style="width:479px">Can be changed at any time, including backdating to a date that has already passed or changing it after the session is already live. Backdating requires a confirmation modal.</td></tr></tbody></table><blockquote id="aa7b8c79-7afd-4289-9e1a-760590440f0c" class="" dir="auto">⚠️ <strong>Capacity settings</strong> are configured globally in the Settings tab and apply to all sessions. They cannot be edited on an individual session basis.</blockquote><h3 id="7e3d78f3-a602-486a-a41a-0d8ea895d1e6" class="" dir="auto">Editing Rules by Session Status</h3><table id="56010c13-632e-47c9-ab70-df48f6275624" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="ac855590-e31d-4db2-bb6a-b2633213212a" dir="ltr"><th id="YB;]" class="simple-table-header-color simple-table-header">Status</th><th id="qXoT" class="simple-table-header-color simple-table-header" style="width:531px">Edit method available</th></tr></thead><tbody><tr id="10617472-8e45-4012-81bf-86cb9ce18852" dir="ltr"><td id="YB;]" class=""><strong>Draft</strong></td><td id="qXoT" class="" style="width:531px">All fields editable directly with no restrictions.</td></tr><tr id="52044a4b-9234-4fe0-8009-76d1d4fb4d1c" dir="ltr"><td id="YB;]" class=""><strong>Published</strong></td><td id="qXoT" class="" style="width:531px">Admins can edit date, time, venue, and coach directly without withdrawing first. Students with existing bookings can optionally be notified by email.</td></tr><tr id="928464c3-4f3a-47f0-bc90-d4ee155bb646" dir="ltr"><td id="YB;]" class=""><strong>Withdrawn</strong></td><td id="qXoT" class="" style="width:531px">All fields editable directly. Session is not visible to students during this window.</td></tr><tr id="5416664b-93a0-4814-b259-b0b45038ed27" dir="ltr"><td id="YB;]" class=""><strong>Cancelled</strong></td><td id="qXoT" class="" style="width:531px">Not editable. Must be restored first (see Section 2.1).</td></tr></tbody></table><h3 id="b41a8d30-3766-455b-a822-f080b0e90d8a" class="" dir="auto">Editing Bundled Sessions</h3><p id="3bc7dc6e-9e17-4133-9c91-a179ec142d25" class="" dir="auto">An admin can edit date, time, venue, or coach on <strong>one session within a bundle</strong> without affecting the paired session. Both sessions remain linked as a bundle after the edit. Each session&#x27;s fields are managed independently — there is no auto-sync.</p><p id="656f6918-f42e-447b-8d34-ebf2590632fa" class="" dir="auto">Two methods are available:</p><ul id="bfed4bbd-f126-4dea-99fb-306f5208c36e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Direct edit</strong> — admin edits the session while it remains Published. Students are notified of the change (optional).</li></ul><ul id="7f8405fb-267d-4504-a3a0-e5e135616984" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Withdraw then edit</strong> — admin withdraws the individual session, makes the edit, then re-publishes. The paired session is not withdrawn and continues as normal.</li></ul><h3 id="cf6e1c40-d3ea-4df9-a4ea-62ff7357dccb" class="" dir="auto">Conflict Validation on Edit</h3><p id="f2c9a254-9b63-410d-8734-1789e3d4d7d5" class="" dir="auto">When saving an edited session, the system runs the same conflict checks as at creation:</p><ul id="1189c189-55fe-43e9-8c48-11270bc1d7f6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Coach must not have another session at the same date and time (cancelled sessions excluded).</li></ul><ul id="bfef4229-1c10-46d2-812c-f0616ec89c35" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Venue must not have another session at the same date and time (cancelled sessions excluded).</li></ul><ul id="0909048f-036c-4f9b-b6f0-3ef86adffde8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Date must not fall on a weekend, Singapore public holiday, or NTU university holiday.</li></ul><ul id="3239d212-4913-46d4-8ca2-0ac73e9b8896" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Date must fall within the semester period.</li></ul><p id="b30fc2a9-6f5d-4608-8dfa-c1b879a54bee" class="" dir="auto">If any conflict is found, the edit is rejected and the specific conflict is displayed to the admin.</p><h3 id="c3e5c5d5-1a60-4995-8082-7de59dafb28d" class="" dir="auto">Student Notification on Edit</h3><p id="e54366f3-0a7e-4472-99ce-bc2bdba05e68" class="" dir="auto">When an edit is made to a Published session (both for direct edits and the withdrawal-to-publish flow), the system gives the admin the option to notify enrolled students by email. The notification includes the updated session details and a refreshed .ics calendar file.</p><h3 id="a52b089e-8c46-4986-a0d5-86add5605507" class="" dir="auto">RBAC — Who Can Edit Sessions</h3><p id="83977621-fb5c-49da-bc38-dab100e6dc4b" class="" dir="auto"><strong>Admins (L4) and Managers (L3)</strong> can make edits to sessions. <strong>Staff (L2) cannot edit session fields.</strong></p><table id="2e9f5f1a-506a-440a-a993-c6987e02a1dc" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="c9b357ee-6afd-41e8-8f44-576cc097750b" dir="ltr"><th id="EZXE" class="simple-table-header-color simple-table-header">Action</th><th id="OQm:" class="simple-table-header-color simple-table-header">Admin (L4)</th><th id="nCgD" class="simple-table-header-color simple-table-header">Manager (L3)</th><th id="{sQh" class="simple-table-header-color simple-table-header">Staff (L2)</th></tr></thead><tbody><tr id="8488ed38-3149-48ce-8569-c55a19493a7e" dir="ltr"><td id="EZXE" class="">Edit session fields (date, time, venue, coach, etc.)</td><td id="OQm:" class="">✅ Anytime</td><td id="nCgD" class="">✅ Up to the exact session start time</td><td id="{sQh" class="">❌ Not permitted</td></tr><tr id="a1b6c586-d116-4a48-866a-1255255daf67" dir="ltr"><td id="EZXE" class="">Edit within 3 working days of session start</td><td id="OQm:" class="">✅ With confirmation modal</td><td id="nCgD" class="">✅ With confirmation modal</td><td id="{sQh" class="">❌ Not permitted</td></tr><tr id="bd9d6e69-4f28-4f60-bb45-61840687f62c" dir="ltr"><td id="EZXE" class="">Backdate a session</td><td id="OQm:" class="">✅ With confirmation modal</td><td id="nCgD" class="">❌ Not permitted</td><td id="{sQh" class="">❌ Not permitted</td></tr><tr id="461c006f-dee5-4b3c-8e1d-dfa281df36f3" dir="ltr"><td id="EZXE" class="">Edit once session has started (exact start minute)</td><td id="OQm:" class="">✅</td><td id="nCgD" class="">❌ Blocked — clear reason displayed</td><td id="{sQh" class="">❌ Not permitted</td></tr></tbody></table><p id="683a6d30-5d06-45c2-ac9f-019cb462affd" class="" dir="auto"><strong>Rules in detail:</strong></p><ul id="b3604d3b-def0-4e1a-b0a7-afde37b3d75e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Editing within 3 working days of session start:</strong> Both admins and managers can still make edits during this window, but a <strong>confirmation modal</strong> is shown before saving to confirm the action is intentional.</li></ul><ul id="4b178148-2d9a-40fa-b19a-4d50b0ed647b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Backdating:</strong> Only admins can set a publish date in the past. This requires a <strong>confirmation modal</strong>. Managers are blocked from backdating entirely.</li></ul><ul id="5efe6012-488b-407c-a7ea-5357ddedda49" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Once the session has started:</strong> The block is triggered at the <strong>exact minute of the session&#x27;s scheduled start time</strong>. From that moment, managers cannot make any edits. The system must display a clear reason explaining why editing is unavailable (e.g. <em>&quot;This session has already started and can no longer be edited.&quot;</em>). Admins retain edit access.</li></ul><h3 id="d5af051b-74a1-4eb0-805d-1ea12b024886" class="" dir="auto">Session Edit History &amp; Audit Trail</h3><p id="66ae2e45-c231-46e8-a798-6be3f78bd9b2" class="" dir="auto">All session edits are tracked and stored as a history log, accessible from the <strong>session detail page</strong> by Admins, Managers, and Staff.</p><ul id="a52cd5fa-aa46-46cb-988e-1b570de9ec24" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The log records: what was changed, the previous value, the new value, who made the change, and the timestamp.</li></ul><ul id="43fb87b2-c647-4202-b500-e657f392aa49" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Admins can use this for audit purposes to review the full edit history of any session.</li></ul><ul id="2e097bfe-05ac-4b19-8dab-f90c5f92360b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The log is read-only and cannot be modified or deleted by any role.</li></ul><h3 id="33694e81-8539-80d4-947c-d382b5c0cf58" class="" dir="auto">Editing vs. Unbundling</h3><p id="33694e81-8539-8053-8c73-c437bb235293" class="" dir="auto">Editing a bundled session (changing its date, time, venue, or coach) is <strong>not the same as unlinking</strong>. The bundle relationship is preserved after an edit. Unlinking separates the two sessions into independent sessions — see Section 3.3.</p><h2 id="28823c88-69fc-46d5-b06d-2aa1dd538b22" class="" dir="auto">3.3 Unbundled Sessions</h2><p id="b01baadd-a008-473a-9baa-12a86f5d95ed" class="" dir="auto">By default, all SGCC sessions are created and booked as bundles (Resume Critique + Mock Interview). Admins can unlink a bundle to make one or both sessions available individually.</p><h3 id="a9c16fbc-6aaa-46f7-a73f-66a12c6bd7dd" class="" dir="auto">How to Unlink a Bundle</h3><p id="8587916b-c5a4-439d-b79b-a5fff1d8ac48" class="" dir="auto">The unlink action is available from the session detail view of either session in the bundle. Unlinking requires the session to be <strong>withdrawn first</strong>:</p><ol type="1" id="22831733-7832-42a4-a835-8be1a7065d41" class="numbered-list" start="1" dir="auto"><li>Admin withdraws the session to be unlinked. The paired session is not affected and remains Published.</li></ol><ol type="1" id="b31cf1ec-c8ce-49d5-8ea9-a2ff3355cc1e" class="numbered-list" start="2" dir="auto"><li>Admin selects the <strong>Unlink</strong> action from the session detail view.</li></ol><ol type="1" id="ffff057c-bf11-4416-932b-75c509fd0495" class="numbered-list" start="3" dir="auto"><li>The two sessions are separated — they are no longer associated as a bundle.</li></ol><ol type="1" id="efbf867a-b4f9-495e-901a-c8acbae2bee5" class="numbered-list" start="4" dir="auto"><li>Admin makes any necessary edits to the unlinked session.</li></ol><ol type="1" id="5dda2823-665b-4657-88b6-1b717c78d0f4" class="numbered-list" start="5" dir="auto"><li>Admin re-publishes the session.</li></ol><blockquote id="74891f0d-80ba-4fee-afd4-908ef90b4d64" class="" dir="auto">⚠️ Unlinking is <strong>permanent</strong>. Once unlinked, the two sessions cannot be re-bundled.</blockquote><h3 id="acaf2b57-a96e-4942-8925-a94dd0244480" class="" dir="auto">Admin View After Unlinking</h3><ul id="d8b195ea-aee8-42ea-86dd-27788c7867de" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Both sessions appear in the sessions list as independent rows with no bundle indicator.</li></ul><ul id="69b2e429-8390-4924-a589-0de7d5cf3459" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each session can be edited, withdrawn, cancelled, or restored independently.</li></ul><ul id="8e1e562a-3d20-47d4-9731-734832f59583" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each session has its own visibility, coach assignment, and publish date.</li></ul><ul id="3ef3c26b-1c9e-4918-ba22-5d4a1a3a432a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The <code>bundle_link</code> association is removed from the database.</li></ul><h3 id="6ffd6859-604f-44be-897e-12d3ca7c1765" class="" dir="auto">Independence Rules After Unlinking</h3><p id="76f48737-0a7c-4e6f-8304-e3089430e7d4" class="" dir="auto">Once unlinked, each session operates fully independently. There is no auto-sync between them.</p><table id="1bcbafb5-0928-424d-840f-1eb3497f79fc" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="9219e33e-3a0e-4316-bc8b-1f0856917baa" dir="ltr"><th id="I:n|" class="simple-table-header-color simple-table-header">Action</th><th id="nM?w" class="simple-table-header-color simple-table-header">Bundled behaviour</th><th id="tUTx" class="simple-table-header-color simple-table-header">Unbundled behaviour</th></tr></thead><tbody><tr id="b87356c6-fc43-443b-887c-b23b50001aee" dir="ltr"><td id="I:n|" class=""><strong>Editing</strong></td><td id="nM?w" class="">Changes to one session do not sync to the other</td><td id="tUTx" class="">Each session edited independently</td></tr><tr id="e1516117-68c6-4703-a8aa-8ceef1599ef4" dir="ltr"><td id="I:n|" class=""><strong>Cancellation</strong></td><td id="nM?w" class="">Admin must cancel the full bundle</td><td id="tUTx" class="">Each session cancelled independently</td></tr><tr id="1cab1e12-4c9a-4f98-9d27-7218488056e4" dir="ltr"><td id="I:n|" class=""><strong>Capacity</strong></td><td id="nM?w" class="">Shared across the bundle</td><td id="tUTx" class="">Each session has its own capacity</td></tr><tr id="a3906222-2a11-4a39-8159-febf021a6393" dir="ltr"><td id="I:n|" class=""><strong>Visibility</strong></td><td id="nM?w" class="">Shared across the bundle</td><td id="tUTx" class="">Each session has its own visibility rules</td></tr></tbody></table><blockquote id="46c924d0-45a1-43ec-89c3-20d37e6a966d" class="" dir="auto">⚠️ <strong>One remaining dependency:</strong> If a student fails the module (marked absent without an approved reason for any session), the remaining session — if not yet attended — is <strong>automatically cancelled</strong>.</blockquote><h2 id="398d7491-8f45-4a6a-abfd-a31770ef825b" class="" dir="auto">3.4 Student Visibility &amp; Eligibility</h2><p id="33494e81-8539-8086-8f36-c1a2c1df1bba" class="" dir="auto">Session visibility is controlled by eligibility conditions assigned to sessions. Only eligible students can see and book a session.</p><p id="33494e81-8539-80f7-9741-f867e990394f" class="" dir="auto"><strong>Eligibility criteria:</strong></p><table id="33494e81-8539-8059-b43e-e1b199bf3536" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-815c-a66e-da025612f69d" dir="ltr"><th id="eHEE" class="simple-table-header-color simple-table-header">Field</th><th id="qzez" class="simple-table-header-color simple-table-header">Status</th></tr></thead><tbody><tr id="33494e81-8539-814d-97ed-f56dfe73e8ed" dir="ltr"><td id="eHEE" class="">Programme codes</td><td id="qzez" class="">✅ Confirmed</td></tr><tr id="33494e81-8539-817a-893a-f73e0324d9ef" dir="ltr"><td id="eHEE" class="">Year of study</td><td id="qzez" class="">✅ In design — available for admin to use optionally</td></tr><tr id="33494e81-8539-814b-80c0-efc44dfa08ec" dir="ltr"><td id="eHEE" class="">Expected graduation year</td><td id="qzez" class="">✅ In design — available for admin to use optionally</td></tr><tr id="33494e81-8539-817e-8c10-e09b22267d3e" dir="ltr"><td id="eHEE" class="">Student status (isCurrent, LOA, Graduated)</td><td id="qzez" class="">🔲 TBC — Penny to confirm</td></tr></tbody></table><p id="33494e81-8539-8028-bb17-c5d512d368f0" class="" dir="auto">Year of study and expected graduation year are already included in the session visibility design for optional use. The team will use programme codes by default, and can apply the additional filters when needed.</p><blockquote id="33494e81-8539-80cc-9ec5-efba97bd0022" class="" dir="auto">🔲 <strong>Open item:</strong> Penny to confirm whether student status fields (isCurrent, LOA, Graduated) should be included as eligibility filters.</blockquote><p id="33494e81-8539-805c-ae92-c174d78dc3ad" class="" dir="auto">Sessions can also be made <strong>unlisted</strong> (private), making them visible only to a specific sub-group of students — e.g. a special cohort — while remaining invisible to all other eligible students. This can be set via the CSV upload (dedicated column) or the session creation/edit UI.</p><h2 id="33494e81-8539-8005-bf18-fbb2c0bfd5b8" class="" dir="auto">3.3 Admin Dashboard</h2><p id="33494e81-8539-808c-a910-cafe312fe5ef" class="" dir="auto">The admin dashboard provides a high-level operational view including:</p><ul id="33494e81-8539-8047-a72b-dde79e6ca0d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Enrolled student counts per session</li></ul><ul id="33494e81-8539-8023-8508-f0a04fa61747" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Attendance tracking and flagged absences</li></ul><ul id="33494e81-8539-809a-b5c7-c125dee6ce76" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Sessions below minimum capacity (highlighted, with a filter under Sessions view)</li></ul><ul id="33494e81-8539-8021-8b67-daf1a7196034" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Bulk actions: assign coaches, publish, withdraw, cancel sessions</li></ul><ul id="33494e81-8539-800a-9511-d529da37c671" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The sessions list supports <strong>column sorting</strong> (ascending/descending) and <strong>filtering and search</strong> by session name, coach name, session type, and status.</li></ul><p id="33494e81-8539-802e-bf79-cb7b3d4b636a" class="" dir="auto"><strong>Minimum capacity alerts:</strong></p><ul id="33494e81-8539-805e-bdc1-dce6c4debf46" class="bulleted-list" dir="auto"><li style="list-style-type:disc">System highlights sessions where minimum capacity is not met.</li></ul><ul id="33494e81-8539-80a0-ac4e-de65159a3be7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">System notifies admins <strong>5 working days before the session</strong> when minimum capacity has not been met.</li></ul><ul id="33494e81-8539-802c-8a7e-c45259b0a9c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If a session is cancelled/rescheduled due to low attendance, the system sends students a <strong>reschedule email.</strong></li></ul><ul id="33494e81-8539-8011-ac72-dd4d9c1af902" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Minimum capacity threshold is configurable in settings.</li></ul><h2 id="33494e81-8539-8089-b6fd-f4fd735f031e" class="" dir="auto">3.4 Student Management Within Sessions</h2><p id="33494e81-8539-80d3-8e94-e0b550e75b96" class="" dir="auto">Admins have the following controls over students in sessions:</p><table id="33494e81-8539-8023-bef9-d26d1dfe509d" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-8162-97f6-d6461f2e0bb5" dir="ltr"><th id="C;m^" class="simple-table-header-color simple-table-header">Action</th><th id="zM\Z" class="simple-table-header-color simple-table-header">Notes</th></tr></thead><tbody><tr id="33494e81-8539-81c8-ae57-df5157077443" dir="ltr"><td id="C;m^" class="">Move student to a different session</td><td id="zM\Z" class="">Admin selects the target session</td></tr><tr id="33494e81-8539-8106-9f14-fdbfeb5f7f8a" dir="ltr"><td id="C;m^" class="">Override max capacity</td><td id="zM\Z" class="">Adds a student beyond the cap. Requires confirmation modal (&quot;Are you sure?&quot;). Action is audit-logged.</td></tr><tr id="33494e81-8539-81a5-805f-c003f9863824" dir="ltr"><td id="C;m^" class="">Send reschedule link to student</td><td id="zM\Z" class="">Available from Admin &gt; Students &gt; Actions</td></tr><tr id="33494e81-8539-819e-91ee-d9a89d135da7" dir="ltr"><td id="C;m^" class="">Change student&#x27;s slot directly</td><td id="zM\Z" class="">Admin selects a new slot on behalf of the student</td></tr><tr id="33494e81-8539-81bb-a46f-dbacdc926f12" dir="ltr"><td id="C;m^" class="">Create a new session and move students into it</td><td id="zM\Z" class="">For custom timings or special cases</td></tr><tr id="33494e81-8539-8161-ac91-c52e30e80355" dir="ltr"><td id="C;m^" class="">Allow student to book sessions individually</td><td id="zM\Z" class="">Admin can unlink sessions for a specific student, enabling unbundled booking</td></tr></tbody></table><h2 id="33494e81-8539-8091-b3f2-ecc6ab50ab4a" class="" dir="auto">3.5 Resume Submission Management</h2><p id="33494e81-8539-80fd-8777-df2d0e564930" class="" dir="auto">If a student does not upload their resume by the deadline:</p><ul id="33494e81-8539-8051-807b-f4ca7c0ccd3d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Admin can review the case and either:<ul id="33494e81-8539-816c-8c34-e74bf85d47fc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Allow the student to reschedule (admin always retains this ability)</li></ul><ul id="33494e81-8539-816a-90c9-cdc69abbe798" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Cancel the student&#x27;s session slot</li></ul></li></ul><p id="33494e81-8539-806d-a35c-eb1758d4f77d" class="" dir="auto">Admins can always send a reschedule link to a student regardless of the system&#x27;s automated state.</p><h2 id="33494e81-8539-802e-b1cd-e02b9ebe324a" class="" dir="auto">3.6 SIS Integration (Student List Sync)</h2><p id="33494e81-8539-8065-9a31-dd1808320297" class="" dir="auto">Only students enrolled in NTU module <strong>ML0004</strong> are eligible for SGCC. Students who are not enrolled in ML0004 will <strong>not be able to see the SGCC module at all</strong>.</p><p id="33494e81-8539-8030-873f-f13d6f82ebcc" class="" dir="auto">The system retrieves the ML0004 enrolment list via a <strong>daily sync</strong> with the SIS (Student Information System). Each day, a refreshed view of the enrolled student list is pulled, and the system reconciles the delta.</p><blockquote id="33494e81-8539-80d2-8aa3-cbc07b978aa8" class="" dir="auto">⚠️ <strong>Enrolment is not finalised at the start of semester.</strong> During the first 1–2 weeks of each semester, students can drop the class and new students can enrol. The ML0004 enrolment list will therefore be changing daily during this period. The daily sync must handle this gracefully — additions and removals are expected and normal during this window.</blockquote><p id="33494e81-8539-80c8-bc09-ccaab35589c4" class="" dir="auto"><strong>New students (appeared on today&#x27;s list but not yesterday&#x27;s):</strong></p><ul id="33494e81-8539-80a8-9de0-f6436a8b6284" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Imported into the SGCC student list and tagged as <strong>New</strong>.</li></ul><ul id="33494e81-8539-80c0-9ff1-dfac0dc00963" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The New tag is visible to admins. The New tag Once an admin has seen the new student entry and navigates away from the page, the New tag is removed.</li></ul><ul id="33494e81-8539-8005-a88c-dc56f4451462" class="bulleted-list" dir="auto"><li style="list-style-type:disc">System automatically emails newly added students prompting them to book their SGCC sessions.</li></ul><p id="33494e81-8539-808f-929b-da30bd8ab6a3" class="" dir="auto"><strong>Removed students (were on yesterday&#x27;s list but not today&#x27;s — i.e. dropped out):</strong></p><ul id="33494e81-8539-802f-bc8e-e8be016547a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Retained in the SGCC student list but marked as <strong>Withdrawn</strong>.</li></ul><ul id="33494e81-8539-804f-915a-e536779f156a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Their existing SGCC session bookings are automatically cancelled.</li></ul><p id="33494e81-8539-8059-88bd-e554afd61327" class="" dir="auto">The system does not permanently delete student records from the SGCC list when they drop out — data is retained for reporting purposes.</p><h2 id="33494e81-8539-8030-982e-c440c5d50953" class="" dir="auto">3.7 Venue Management</h2><p id="33494e81-8539-80d8-b340-f1673e31c85b" class="" dir="auto">The system integrates with <strong>NTU Maps</strong> to provide a live, centrally maintained list of all NTU venues, including hyperlinks using the NTU Maps system.</p><p id="33494e81-8539-80fd-8d3b-ebef948917a5" class="" dir="auto"><strong>Venue data sourced from NTU Maps includes:</strong></p><ul id="33494e81-8539-80c8-81d5-cb809cffa666" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Venue name and building</li></ul><ul id="33494e81-8539-800f-947a-c8b8fd1ff6af" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Room details</li></ul><ul id="33494e81-8539-801a-9fb0-d77fa824acd9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">NTU Maps hyperlink for each venue</li></ul><p id="33494e81-8539-8029-8c98-eed6f23a19f0" class="" dir="auto"><strong>Admin-managed venue capacity:</strong></p><p id="33494e81-8539-801f-8b96-d676ea1e8725" class="" dir="auto">Within CSM, admins must configure the <strong>session capacity</strong> for each venue individually through a dedicated venue management interface. This capacity data is not sourced from NTU Maps — it is entered and saved by admins in CSM and stored as part of the venue record. When a session is created and assigned to a venue, the venue&#x27;s configured capacity is used as a reference.</p><p id="33494e81-8539-809e-9a7b-e2b260bf721e" class="" dir="auto">Staff (coaches) select venues from this list (dropdown) when configuring face-to-face sessions.</p><h2 id="33494e81-8539-800c-9d3a-da4ac3fd8c03" class="" dir="auto">3.9 Student Detail View &amp; Activity Log</h2><p id="33494e81-8539-80fc-90e3-c54067bf2ae1" class="" dir="auto">From the SGCC home page, admins can navigate to the <strong>Students</strong> tab to view the full student list. The students list supports <strong>column sorting</strong> and <strong>filtering and search</strong> — admins can search by student name or matric number, and filter by student attributes including programme and booking status.</p><p id="33494e81-8539-8010-9be5-f410099b1f14" class="" dir="auto">Clicking any individual student row opens the <strong>Student Detail View</strong>.</p><p id="33494e81-8539-80bd-80fa-f25627ceb53c" class="" dir="auto"><strong>Student detail view includes:</strong></p><ul id="33494e81-8539-80e6-a15f-f8e0bf7606c0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Student profile information: email address, student ID, programme, and other relevant fields</li></ul><ul id="33494e81-8539-8098-84cd-c5dc607e7433" class="bulleted-list" dir="auto"><li style="list-style-type:disc">SGCC sessions booked by the student</li></ul><ul id="33494e81-8539-8045-bf0c-ec7c6dbb4ae0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Session remarks left by coaches, admins, or managers — each remark can be linked to a specific SGCC session or left unlinked (an SGCC-level remark not tied to a particular session)</li></ul><ul id="67bc77d3-9e96-4ac2-bf73-295f593c263e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Overall remarks left on the student&#x27;s profile (global, not session-specific — see ⚙️ System &gt; Student Remarks)</li></ul><ul id="33494e81-8539-80fe-a47b-f0e6943296bf" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A <strong>Student Log</strong> tab (see below)</li></ul><p id="33494e81-8539-80ae-afdf-e244608fbf96" class="" dir="auto"><strong>Student Log</strong> captures a timestamped, chronological record of all activity for that student within the SGCC module, including:</p><table id="33494e81-8539-80a8-8f46-ee2138adb6b7" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-816b-b8f9-f71c20507756" dir="ltr"><th id="HJL?" class="simple-table-header-color simple-table-header">Event Type</th><th id="MglH" class="simple-table-header-color simple-table-header">Description</th></tr></thead><tbody><tr id="33494e81-8539-8137-a931-c57416242f03" dir="ltr"><td id="HJL?" class="">Session booked</td><td id="MglH" class="">Student booked a session or bundle</td></tr><tr id="33494e81-8539-8171-9746-e788990eee16" dir="ltr"><td id="HJL?" class="">Session rescheduled</td><td id="MglH" class="">Student rescheduled a session, including the reason provided</td></tr><tr id="33494e81-8539-8184-a598-d5fb22370ede" dir="ltr"><td id="HJL?" class="">Session cancelled</td><td id="MglH" class="">Student cancelled a session, including the reason provided</td></tr><tr id="33494e81-8539-81d1-bffc-f33559d0736e" dir="ltr"><td id="HJL?" class="">Coach remark added</td><td id="MglH" class="">A coach left a remark on the student&#x27;s session</td></tr><tr id="33494e81-8539-813f-8ae2-edf411473a84" dir="ltr"><td id="HJL?" class="">Admin/Manager remark added</td><td id="MglH" class="">An admin or manager left a remark</td></tr><tr id="33494e81-8539-8183-89b1-ddc49b7907f5" dir="ltr"><td id="HJL?" class="">System reminder sent</td><td id="MglH" class="">The system sent an automated reminder email to the student</td></tr><tr id="33494e81-8539-8174-be56-eb1f2c59a5bd" dir="ltr"><td id="HJL?" class="">Admin reminder sent</td><td id="MglH" class="">An admin manually triggered a reminder email to the student</td></tr><tr id="33494e81-8539-814a-9c8d-dcee45c7095f" dir="ltr"><td id="HJL?" class="">Absence marked</td><td id="MglH" class="">Coach marked the student as absent for a session</td></tr><tr id="33494e81-8539-8194-82ac-eb86dca54243" dir="ltr"><td id="HJL?" class="">Absentee form submitted</td><td id="MglH" class="">Student submitted the absentee justification form</td></tr><tr id="33494e81-8539-8153-817c-c97877aa4f70" dir="ltr"><td id="HJL?" class="">Absentee request approved/rejected</td><td id="MglH" class="">Admin reviewed and actioned the absentee form</td></tr><tr id="33494e81-8539-8166-aa6d-e55fd4300fe5" dir="ltr"><td id="HJL?" class="">Resume synced</td><td id="MglH" class="">Student triggered a VMock resume sync</td></tr><tr id="33494e81-8539-8181-a479-e8a712cb3530" dir="ltr"><td id="HJL?" class="">Any other SGCC module activity</td><td id="MglH" class="">All events occurring within the SGCC module for this student</td></tr></tbody></table><p id="33494e81-8539-809e-b1e9-ef5bf293e7d3" class="" dir="auto">The student log is read-only and cannot be edited by any role.</p><blockquote id="a352c822-fbc5-4a41-871f-9ec9ac010127" class="" dir="auto"><em>Note: Overall student remarks (global profile-level remarks) do not appear in the SGCC Student Log. They are visible in the student&#x27;s profile view under Users &gt; Students.</em></blockquote><h2 id="33494e81-8539-8040-8144-ced7f1ef4b59" class="" dir="auto">3.8 CSV Re-upload for Published Sessions</h2><p id="33494e81-8539-804c-b65d-e4c557bbd0a1" class="" dir="auto">When a CSV is re-uploaded while sessions are already published, sessions are updated with the new details while existing student enrolments are retained. Students may be notified of changes depending on what changed.</p><blockquote id="33494e81-8539-80dc-a5a5-c2bbdb3610f5" class="" dir="auto">⚠️ This is separate from the session unlinking flow. See Section 6.2 for unlinking published bundle sessions.</blockquote><hr id="33494e81-8539-8008-9773-f12c1c822e7a" dir="auto"/><h1 id="33494e81-8539-80b7-8304-f88b2cbb51e2" class="" dir="auto">4. Student View</h1><h2 id="33494e81-8539-80cd-b696-d269ccad3ebd" class="" dir="auto">4.1 Session Browsing &amp; Booking (Happy Path)</h2><ol type="1" id="33494e81-8539-809d-ba26-f800ce2d183a" class="numbered-list" start="1" dir="auto"><li>Student enters the SGCC module and clicks <strong>Book Sessions</strong>.</li></ol><ol type="1" id="33494e81-8539-80cc-9728-d02793002ac0" class="numbered-list" start="2" dir="auto"><li>Student selects a preferred date range.</li></ol><ol type="1" id="33494e81-8539-8025-b4a3-ce27c101aabb" class="numbered-list" start="3" dir="auto"><li>The system displays available bundle sessions (Resume Critique + Mock Interview as a pair), filtered to show only sessions assigned to the student&#x27;s designated coach and eligible based on their programme.</li></ol><ol type="1" id="33494e81-8539-80bc-af77-ef3c1961a0be" class="numbered-list" start="4" dir="auto"><li>Students only see sessions made available to their programme — not all available sessions.</li></ol><ol type="1" id="33494e81-8539-8000-b7f0-c62ab57266d2" class="numbered-list" start="5" dir="auto"><li>Student selects a bundle (date/time).</li></ol><ol type="1" id="33494e81-8539-8019-b535-d0843422964a" class="numbered-list" start="6" dir="auto"><li>Student is prompted to sync their resume from VMock (see Section 4.3). The student <strong>can proceed to book a slot without uploading their resume</strong> — this is intentional, as students may be booking early and need more time to prepare their resume.</li></ol><blockquote id="33494e81-8539-8083-9198-f3fd612a2fe0" class="" dir="auto">⚠️ <strong>Booking confirmation notice:</strong> A student&#x27;s booking is <strong>not confirmed</strong> until their resume has been uploaded. The system must display a clear notice of this to the student at the point of booking and in the booking confirmation state. The hard deadline for resume upload is <strong>12pm, 1 working day before the session</strong>. Admins reserve the right to cancel the student&#x27;s session if no resume is submitted by this deadline.</blockquote><ol type="1" id="33494e81-8539-80f7-8389-c51f3c241e80" class="numbered-list" start="7" dir="auto"><li>Student confirms booking.</li></ol><ol type="1" id="33494e81-8539-8055-9dce-e30ab4edd840" class="numbered-list" start="8" dir="auto"><li>System sends a <strong>booking confirmation email</strong> with the session details and an Outlook calendar (.ics) attachment.</li></ol><ol type="1" id="33494e81-8539-804c-9dd3-ec4f3653ff19" class="numbered-list" start="9" dir="auto"><li>Session appears in the student&#x27;s <strong>Calendar View</strong>.</li></ol><h2 id="33494e81-8539-8002-9fa1-fc2e67d19fb8" class="" dir="auto">4.2 Reschedule Rules</h2><ul id="33494e81-8539-801c-bae9-f4bf2639a47a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Students may reschedule <strong>up to 1 time per session</strong> (configurable in settings).</li></ul><ul id="33494e81-8539-80d2-b6ae-cb6e19963f77" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Reschedule is only permitted if made <strong>at least 5 working days before the session</strong> (configurable).</li></ul><ul id="33494e81-8539-80fd-975f-c6db0be38bec" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><del>Cancellations made less than 24 hours before the session (configurable) are blocked; the system displays a prompt.</del> Cancellation is not available.</li></ul><ul id="33494e81-8539-807b-8249-d28fd3e3e1c6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If a student with a <strong>bundled booking</strong> wants to reschedule, they must reschedule the entire bundle — individual sessions within a bundle cannot be rescheduled separately (unless an admin has explicitly unlinked them).</li></ul><ul id="33494e81-8539-80a0-876f-c4236983916b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Before a student can reschedule or cancel, they must <strong>enter a reason</strong>. This is required in addition to any deadline or limit restrictions enforced by settings. The reason entered is captured in the student&#x27;s activity log (see Section 3.9).</li></ul><h2 id="33494e81-8539-8051-b347-e72ea8e128dc" class="" dir="auto">4.3 Resume Upload &amp; VMock Integration</h2><p id="33494e81-8539-8055-851a-eda332966853" class="" dir="auto"><strong>Resume deadline rules (confirmed by Joreen):</strong></p><table id="33494e81-8539-80a9-bb4d-c293df823bf2" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-81b0-9a34-e8abd40836a3" dir="ltr"><th id="~]US" class="simple-table-header-color simple-table-header">Trigger</th><th id="TlFK" class="simple-table-header-color simple-table-header">Action</th></tr></thead><tbody><tr id="33494e81-8539-8192-9080-dcf9abef12f0" dir="ltr"><td id="~]US" class="">3 working days before session</td><td id="TlFK" class="">System sends reminder email to student about the upcoming resume deadline</td></tr><tr id="33494e81-8539-8117-844a-f077b402fa1a" dir="ltr"><td id="~]US" class="">1 working day before session, 12:00pm</td><td id="TlFK" class="">Hard deadline for resume submission</td></tr><tr id="33494e81-8539-8124-b7f8-d55184e06008" dir="ltr"><td id="~]US" class="">Deadline missed</td><td id="TlFK" class="">Student is treated as a no-show (absent). Student must submit the absentee form and go through the absence flow before rebooking.</td></tr></tbody></table><p id="33494e81-8539-8005-9eaa-da274c64fdb7" class="" dir="auto"><strong>VMock integration:</strong></p><ul id="33494e81-8539-8020-828e-f40169761685" class="bulleted-list" dir="auto"><li style="list-style-type:disc">VMock provides CSM with a list of student resumes that have scored <strong>60 or above</strong>. CSM does not have access to resumes below this threshold.</li></ul><ul id="33494e81-8539-80e8-812d-c219e5347398" class="bulleted-list" dir="auto"><li style="list-style-type:disc">VMock sends each student&#x27;s highest-scoring resume to CSM. CSM makes this available for students and coaches to read in <strong>PDF format</strong>. Students and coaches will not see the score of this resume.</li></ul><ul id="33494e81-8539-8005-9952-d4e6e277d58e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Students can trigger a VMock resume sync from within the CSM system for both Resume Critique and Mock Interview sessions.</li></ul><ul id="33494e81-8539-80e0-a1f6-ee8a589dafd5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If no resume exists for a student in the VMock-provided list, the system informs the student that either: (a) they do not have a resume in VMock, or (b) their resume has not yet scored 60 or above.</li></ul><h2 id="33494e81-8539-806b-84b3-e55b60233046" class="" dir="auto">4.4 Attendance Confirmation</h2><ul id="33494e81-8539-80c5-8c1b-c1faada50486" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The system sends a <strong>reminder email</strong> 1 day (24 hours) before the session (configurable to X days).</li></ul><ul id="33494e81-8539-80ab-97d0-d4b7f2e4de5b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Students attend the session.</li></ul><ul id="33494e81-8539-80fa-9333-f4cd74da4478" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The system sends an <strong>attendance acknowledgement</strong> email after Session 1, which also includes details of Session 2.</li></ul><ul id="33494e81-8539-8000-81f4-c71260036df9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">After Session 2, the system sends a final <strong>attendance acknowledgement</strong> email.</li></ul><h2 id="33494e81-8539-809d-b090-f619eba586ba" class="" dir="auto">4.5 Absence Flow — Session 1 (Resume Critique)</h2><p id="33494e81-8539-8031-b9c0-ecb3d47617b9" class="" dir="auto"><strong>Trigger:</strong> Coach marks student as Absent (grade = 0) for Session 1.</p><ol type="1" id="33494e81-8539-8049-8c7e-c229aa070360" class="numbered-list" start="1" dir="auto"><li>System sends a follow-up email to the student requesting justification for absence.</li></ol><ol type="1" id="33494e81-8539-8005-8f67-f6f40fe7c7f0" class="numbered-list" start="2" dir="auto"><li>System continues to send <strong>daily reminder emails</strong> until the student submits the absentee form.</li></ol><ol type="1" id="33494e81-8539-80dc-baaf-df625c106ea2" class="numbered-list" start="3" dir="auto"><li>Student fills in the absentee form and attaches supporting documentation.</li></ol><ol type="1" id="33494e81-8539-80d3-9b0c-c8fe0a2b141f" class="numbered-list" start="4" dir="auto"><li>CAO reviews the submission:<ul id="33494e81-8539-81fa-b57c-e670cb8cf52a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Rejected:</strong> Student is not allowed to rebook. The student fails the module.</li></ul><ul id="33494e81-8539-8140-a008-de897b4eec40" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Approved:</strong> System opens makeup bundle slots for the student and sends an email to re-book a bundle + upload resume.</li></ul></li></ol><ol type="1" id="33494e81-8539-808b-ac80-d0f4c95adfad" class="numbered-list" start="5" dir="auto"><li>Student rebooks a bundle (both sessions) and uploads their resume.</li></ol><ol type="1" id="33494e81-8539-803d-b9f7-ec26de37c584" class="numbered-list" start="6" dir="auto"><li>Student may reschedule <strong>up to 1 additional time</strong> (configurable) from this point.</li></ol><ol type="1" id="33494e81-8539-80f2-a296-fe338f47dbee" class="numbered-list" start="7" dir="auto"><li>Flow re-enters the Happy Path from Step 6 onwards.</li></ol><blockquote id="33494e81-8539-8076-9cfe-dcb5a8bef0c8" class="" dir="auto">⚠️ <strong>Critical rule:</strong> If a student misses Session 1 (Resume Critique), their Session 2 (Mock Interview) booking is <strong>automatically cancelled</strong>. The student must rebook both sessions as a bundle. There is no path to attend Session 2 alone if Session 1 was missed without completing the absentee process.</blockquote><h2 id="33494e81-8539-8031-9195-d8d087b70cf5" class="" dir="auto">4.6 Absence Flow — Session 2 (Mock Interview)</h2><p id="33494e81-8539-8032-bcd1-f3474d6e7504" class="" dir="auto"><strong>Trigger:</strong> Coach marks student as Absent (grade = 0) for Session 2.</p><ol type="1" id="33494e81-8539-807b-bd63-c4c0849a296c" class="numbered-list" start="1" dir="auto"><li>System sends a follow-up email to the student requesting justification.</li></ol><ol type="1" id="33494e81-8539-8022-b04c-fdcbedff1666" class="numbered-list" start="2" dir="auto"><li>System continues to send <strong>daily reminder emails</strong> until the student submits the absentee form.</li></ol><ol type="1" id="33494e81-8539-802f-964f-c9d791da878c" class="numbered-list" start="3" dir="auto"><li>Student fills in the absentee form and attaches supporting documentation.</li></ol><ol type="1" id="33494e81-8539-80b9-820e-cbb0fd5858f2" class="numbered-list" start="4" dir="auto"><li>CAO reviews the submission:<ul id="33494e81-8539-81d8-a4cf-da3f0be20583" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Rejected:</strong> Student cannot rebook Session 2. Student fails the module.</li></ul><ul id="33494e81-8539-819a-8811-db59fd26a49a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Approved:</strong> Student can book Mock Interview sessions only (both bundled and unbundled slots) which the student is eligible for.</li></ul></li></ol><ol type="1" id="33494e81-8539-806e-b6f9-f1833ee968e9" class="numbered-list" start="5" dir="auto"><li>Student books Session 2 only (unbundled — see Case 1 in Section 5.1).</li></ol><ol type="1" id="33494e81-8539-8008-8be8-e508bbb39365" class="numbered-list" start="6" dir="auto"><li>Student may reschedule <strong>up to 1 time</strong> from this point (configurable).</li></ol><ol type="1" id="33494e81-8539-80fd-bea2-c673ec091ae3" class="numbered-list" start="7" dir="auto"><li>Flow re-enters the Happy Path at Session 2.</li></ol><h2 id="33494e81-8539-8012-bc9c-d8afc77b0f1a" class="" dir="auto">4.7 Cancellation Rules</h2><table id="33494e81-8539-8019-a0ed-d6e3303210f7" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-81c8-8001-ec243b083826" dir="ltr"><th id="QRcW" class="simple-table-header-color simple-table-header">Booking Type</th><th id="aUEO" class="simple-table-header-color simple-table-header">Cancellation Rule</th></tr></thead><tbody><tr id="33494e81-8539-8183-897f-cc69448471a4" dir="ltr"><td id="QRcW" class="">Bundled booking</td><td id="aUEO" class="">Must cancel the entire bundle. Individual sessions within a bundle cannot be cancelled separately.</td></tr><tr id="33494e81-8539-8115-814c-f2aef3ce2ca1" dir="ltr"><td id="QRcW" class="">Individual session bookings (unbundled)</td><td id="aUEO" class="">Each session can be cancelled independently.</td></tr><tr id="33494e81-8539-81d4-b263-c1dc2704c3a2" dir="ltr"><td id="QRcW" class="">Within 24 hours of session</td><td id="aUEO" class="">Cancellation is blocked. System displays a prompt.</td></tr></tbody></table><h2 id="33494e81-8539-8027-a20f-e4fee9fc7234" class="" dir="auto">4.8 Unbundled Session Booking</h2><p id="afe1f519-fb8f-4d67-9b7b-75d7be0c0baf" class="" dir="auto">There are two scenarios where a student books individual sessions rather than a bundle.</p><h3 id="98d7c7c1-e024-45b1-a245-ef8816606406" class="" dir="auto">Student View After Admin Unlinking</h3><p id="7c5313e5-73de-4541-a996-bc65adc31097" class="" dir="auto">Once an admin has unlinked sessions and made them available individually:</p><ul id="6da9b9d9-b8bf-4090-955e-ee8d032aa19e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Individual sessions appear in the student&#x27;s session list alongside any bundled sessions, clearly tagged with an <strong>&quot;Individual Session&quot;</strong> label.</li></ul><ul id="c085bf2c-c34c-4875-930b-a0f60b2139e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each individual session card states the session type (Resume Critique or Mock Interview).</li></ul><ul id="3ea919ed-bd4a-4bf2-88db-e285a762aee8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Selecting an individual session — the detail and confirmation UI makes clear this is an unbundled booking.</li></ul><p id="909ccad1-d3bb-4122-a3cd-1d03609ef591" class="" dir="auto"><strong>Independence rules for students on unbundled sessions:</strong></p><table id="3cf4f926-62e6-43c6-928d-13f9645ccb14" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="fd4dc755-279f-4605-9643-80132951a4d8" dir="ltr"><th id=";DuA" class="simple-table-header-color simple-table-header">Action</th><th id="WDe:" class="simple-table-header-color simple-table-header">Bundled behaviour</th><th id="hv]~" class="simple-table-header-color simple-table-header">Unbundled behaviour</th></tr></thead><tbody><tr id="4db4f633-2b5f-49ac-a20f-64c1d75e08f2" dir="ltr"><td id=";DuA" class=""><strong>Booking</strong></td><td id="WDe:" class="">Both sessions booked together</td><td id="hv]~" class="">Each session booked separately, in any order</td></tr><tr id="618b078e-31a3-4f9b-9962-2752dbadbd5c" dir="ltr"><td id=";DuA" class=""><strong>Rescheduling</strong></td><td id="WDe:" class="">Rescheduling one reschedules the bundle</td><td id="hv]~" class="">Each session rescheduled independently</td></tr><tr id="30d2542e-30f5-40d7-bd9c-cd88ca31e02d" dir="ltr"><td id=";DuA" class=""><strong>Cancellation</strong></td><td id="WDe:" class="">Must cancel the full bundle</td><td id="hv]~" class="">Each session cancelled independently</td></tr><tr id="4f8a3dae-cc38-4328-a446-9bc703d42c8d" dir="ltr"><td id=";DuA" class=""><strong>Resume sync</strong></td><td id="WDe:" class="">Single sync covers both sessions</td><td id="hv]~" class="">Each session has its own resume sync</td></tr><tr id="f43078b1-2928-484e-8541-fc42f936d953" dir="ltr"><td id=";DuA" class=""><strong>Absentee form</strong></td><td id="WDe:" class="">Absence on Session 1 auto-cancels Session 2</td><td id="hv]~" class="">Absence on one session does not affect the other</td></tr></tbody></table><p id="35e9f245-ccfe-425f-a438-abce8833f11c" class="" dir="auto"><strong>If a student has an existing bundled booking and wants to book individual sessions:</strong></p><p id="1abad1f2-12dc-4294-8904-74a7c7a3e4da" class="" dir="auto">The student must first cancel their bundled booking. Once cancelled, they can book individual sessions.</p><p id="30e3d0bb-44f9-43ee-92d7-71d5a1878217" class="" dir="auto"><strong>Post-booking confirmation page (first individual session booked):</strong></p><ul id="f675c166-cca3-45b1-bb9e-7419a4f06f53" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Clearly shows that only one session has been booked.</li></ul><ul id="35168e9c-e254-418e-bdc0-9af78c7657ae" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Informs the student which session they still need to book.</li></ul><ul id="049d1600-d7a5-4753-8477-945a95eba34d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If they booked Resume Critique → prompt to book Mock Interview, and vice versa.</li></ul><ul id="b76922e3-876d-4264-9177-3825fdbaad89" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Displays a CTA button to book the remaining session.</li></ul><blockquote id="6c6ec928-4bfe-4b0e-b105-f01939a932c1" class="" dir="auto">📌 When the student clicks the CTA to book their second individual session, only <strong>individual sessions of the required type</strong> are shown. Bundled sessions are excluded.</blockquote><h3 id="500b92fc-f35b-47f6-b888-668d850aa635" class="" dir="auto">Case 1 — Missed Mock Interview After Attending Resume Critique</h3><p id="1ed24e6a-cf07-42f3-8e63-80fc27482fc2" class="" dir="auto"><strong>When it applies:</strong> Student attended Session 1 (Resume Critique) AND was absent for Session 2 (Mock Interview), and their absentee request has been approved.</p><p id="a9c3515b-dcab-427c-b573-ef8e15b5fb2d" class="" dir="auto"><strong>Sessions shown:</strong> Mock Interview sessions only (both bundled and individual slots the student is eligible for).</p><p id="031bf857-f6aa-43f2-9b22-48160547bf2a" class="" dir="auto"><strong>UI behaviour:</strong></p><ul id="0ee1503a-98a2-4fc8-bdaa-63f8139c1881" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Session list shows Mock Interview sessions only — no Resume Critique slots shown.</li></ul><ul id="f6f68038-71a3-4802-b5b1-b3d7a009325b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Cards render as single-session cards (not bundle cards).</li></ul><ul id="d8b3a08f-3eb7-4507-9191-ee1a469f1be0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Sessions tagged with &quot;Individual Session&quot; label where applicable.</li></ul><p id="f77d2212-3b5d-4e60-a35e-924353b34b0c" class="" dir="auto"><strong>Confirmation page:</strong></p><ul id="a787c105-a7d2-4f7e-be76-c10e88ba4976" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Standard booking confirmation shown.</li></ul><ul id="d6b3f9e1-d5d3-44ac-9312-848bfc241dc6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Resume Critique card remains visible with an &quot;Attended&quot; tag — it does not change.</li></ul><h3 id="a77eeb71-5b96-48d2-a563-b3c1f81d2ca0" class="" dir="auto">Quick Reference — Unbundled Booking Scenarios</h3><table id="752256e0-6cef-4341-b96a-f07f3ae5cae8" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="43606df7-3131-4d99-9b7c-1210a90b7e05" dir="ltr"><th id="OmWZ" class="simple-table-header-color simple-table-header">Scenario</th><th id="BoU_" class="simple-table-header-color simple-table-header">Sessions shown</th><th id="iAJa" class="simple-table-header-color simple-table-header">Bundled sessions included?</th><th id="maVK" class="simple-table-header-color simple-table-header">Post-booking prompt?</th></tr></thead><tbody><tr id="9b09bb0b-c48b-464c-b166-6be3135d8bee" dir="ltr"><td id="OmWZ" class="">Case 1: Approved absence — Missed Mock Interview</td><td id="BoU_" class="">Mock Interview only (bundled + individual)</td><td id="iAJa" class="">Yes</td><td id="maVK" class="">No — Resume Critique already attended</td></tr><tr id="ced06396-3acb-4204-bdc3-491cfe5073ff" dir="ltr"><td id="OmWZ" class="">Admin-unlinked: No existing booking — books individual session first</td><td id="BoU_" class="">Bundled + individual (tagged)</td><td id="iAJa" class="">Yes (initial browse)</td><td id="maVK" class="">Yes — prompt to book second session</td></tr><tr id="9c3bf2e1-3623-4787-8955-b113229e8e0d" dir="ltr"><td id="OmWZ" class="">Admin-unlinked: Booking second individual session</td><td id="BoU_" class="">Individual sessions of required type only</td><td id="iAJa" class="">No</td><td id="maVK" class="">No — both sessions now booked</td></tr><tr id="d008ffef-7557-4bc5-946b-ae160d468db6" dir="ltr"><td id="OmWZ" class="">Admin-unlinked: Has existing bundled booking</td><td id="BoU_" class="">N/A — must cancel bundle first</td><td id="iAJa" class="">N/A</td><td id="maVK" class="">N/A</td></tr></tbody></table><h2 id="466de86f-d5b9-45ae-b299-d8f378d654e5" class="" dir="auto">4.9 Student Email Support</h2><p id="33494e81-8539-80b6-a3f4-f147d12bc7bd" class="" dir="auto">Students have access to a support email button within the SGCC interface for raising issues or requesting assistance.</p><hr id="33494e81-8539-8056-a6cd-c058b3de4b3e" dir="auto"/><h1 id="33494e81-8539-8080-9a9f-c047b5e43b39" class="" dir="auto">5. Coach View</h1><h2 id="33494e81-8539-80fe-a198-f71dd5eea554" class="" dir="auto">5.1 Session View</h2><p id="33494e81-8539-802a-ad34-cb926b8a458a" class="" dir="auto">Coaches can log in to see:</p><ul id="33494e81-8539-805a-9375-fb3aeece37a6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">All sessions assigned to them</li></ul><ul id="33494e81-8539-80dc-b375-f6c9fff8840c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Number of students signed up for each session</li></ul><ul id="33494e81-8539-80a3-9e04-d7ab121c8ef2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Student resumes submitted at booking (downloadable)</li></ul><p id="33494e81-8539-80f7-a427-cf6b1fbcb267" class="" dir="auto">Coach view retains <strong>failed/absent students</strong> even after rescheduling, to preserve the attendance record.</p><p id="7d7e2ca3-49a2-4b57-b3f0-25f5024b4d22" class="" dir="auto"><strong>&quot;New&quot; Student Tag — Session Details Page</strong></p><p id="a478de89-24de-49f4-bd67-a008a7dfb095" class="" dir="auto">A student row in the Session Details page is tagged <strong>New</strong> if the student was added to the session within 1 working day before the session start time. Working days exclude weekends and Singapore Public Holidays. The tag disappears at the session end time.</p><p id="feb456b2-52ae-4547-8d70-078a00f4e673" class="" dir="auto">The same rule applies to the coach notification email: students added within 1 working day of session start trigger both the New tag and the coach notification email.</p><p id="1ad88b16-d2f5-4c70-9ef4-b508b836f8e3" class="" dir="auto"><strong>Examples:</strong></p><ul id="ef47c7ea-e1ff-4965-972c-e4aa81b5faa8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Student added <strong>Friday afternoon</strong> for a <strong>Monday session</strong> (Monday is not a public holiday) → New tag shown; Friday is within 1 working day of Monday.</li></ul><ul id="ad191a38-00e4-43e9-943b-908de592d61b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Student added <strong>Friday afternoon</strong> for a <strong>Tuesday session</strong> (Monday is a public holiday) → New tag shown; Friday is the last working day before Tuesday.</li></ul><ul id="000f78db-42ff-4142-8c86-3151c09f65ce" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Student added <strong>Saturday</strong> for a <strong>Monday session</strong> → New tag shown; Saturday falls within the 1-working-day window before Monday.</li></ul><h2 id="33494e81-8539-80c4-859a-c26299dced17" class="" dir="auto">5.2 Attendance &amp; Grading</h2><p id="33494e81-8539-8007-9e32-e55e211c238a" class="" dir="auto"><strong>Attendance and grade are a single combined field.</strong> There is no separate grade component.</p><table id="33494e81-8539-8020-bf72-fffd0bfc3821" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-81a0-97c4-d9a271b2f900" dir="ltr"><th id="~=QB" class="simple-table-header-color simple-table-header">Value</th><th id="]e`C" class="simple-table-header-color simple-table-header">Meaning</th></tr></thead><tbody><tr id="33494e81-8539-810a-a0d5-e403a6b7d8cd" dir="ltr"><td id="~=QB" class=""><strong>5</strong></td><td id="]e`C" class="">Present — student attended</td></tr><tr id="33494e81-8539-8178-8c9f-c92b1a183652" dir="ltr"><td id="~=QB" class=""><strong>0</strong></td><td id="]e`C" class="">Absent — student did not attend</td></tr></tbody></table><p id="33494e81-8539-8027-ae0f-d0da651c6c57" class="" dir="auto">Additional fields on the attendance record:</p><ul id="33494e81-8539-8091-8872-d1e3b6f212ff" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Absence reason</strong> (dropdown — selectable by coach)</li></ul><ul id="33494e81-8539-8053-8abb-fb4d30c4b5e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Remarks</strong> (free text — coach can add notes about the absence or session) <em>(This is a session remark — linked to this specific session registration. For overall student remarks, see ⚙️ System &gt; Student Remarks.)</em></li></ul><p id="33494e81-8539-809d-9922-d6b115145d9e" class="" dir="auto">Coaches mark attendance for Session 1 and Session 2 separately.</p><p id="33494e81-8539-803a-bd82-cb31541047ec" class="" dir="auto"><strong>Admin access:</strong> Admins (L4) can also mark attendance and add remarks on student sessions, for both Session 1 and Session 2.</p><h2 id="33494e81-8539-8052-99b6-e43dbfc5f468" class="" dir="auto">5.3 Coach Assignment</h2><ul id="33494e81-8539-80dc-94e9-c7b70239f0d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A session can have <strong>more than one coach</strong> assigned.</li></ul><ul id="33494e81-8539-80dc-bef2-dc161089b340" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Coaches can work with students outside their normally assigned schools if an admin configures this.</li></ul><ul id="33494e81-8539-8087-8dbc-f7d77602b095" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Coach assignment is managed by admins; coaches do not assign themselves to SGCC sessions.</li></ul><h2 id="33494e81-8539-8099-9212-c22c4df19f7d" class="" dir="auto">5.4 Session Format</h2><p id="33494e81-8539-805f-bb89-c14399b3d2dd" class="" dir="auto">Coaches specify session format when sessions are set up:</p><table id="33494e81-8539-8079-b614-fd436ce2193e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-815d-8b2f-c5a16e861450" dir="ltr"><th id="QpXg" class="simple-table-header-color simple-table-header">Format</th><th id="^fVk" class="simple-table-header-color simple-table-header">Details</th></tr></thead><tbody><tr id="33494e81-8539-819b-a01c-cc346f6be204" dir="ltr"><td id="QpXg" class=""><strong>Online</strong></td><td id="^fVk" class="">System generates and includes a meeting link in the confirmation email</td></tr><tr id="33494e81-8539-81fe-86da-c6b75d7c2688" dir="ltr"><td id="QpXg" class=""><strong>Face-to-Face</strong></td><td id="^fVk" class="">Coach selects venue from the system&#x27;s configured venue dropdown</td></tr></tbody></table><h2 id="38da48db-5c48-44c7-868d-70f531c3a858" class="" dir="auto">5.5 Unbundled Sessions</h2><p id="159a3ff8-b1ce-464d-98c1-c6f0193ce385" class="" dir="auto">When sessions have been unlinked by an admin, coaches see the following:</p><ul id="3f538c10-4af2-4c12-9229-8a36aa630647" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each session appears as a standalone entry in the coach&#x27;s session list — there is no bundle indicator.</li></ul><ul id="bf6ea035-28ac-4c5b-b06c-e5f195490c2d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Attendance and grading (5/0) are marked independently per session.</li></ul><ul id="35e7711d-5919-4df9-a432-e0208584cbd7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Session remarks can be added independently per session. <em>(Session remarks only — overall student remarks are not session-scoped.)</em></li></ul><ul id="78c487dc-79fd-4fe3-8410-cf85f77329ee" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Student resumes are downloadable per session independently.</li></ul><ul id="7aad45e9-150a-4b19-8de3-d82bb357b230" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If a student has only one unbundled session remaining (e.g. only a Mock Interview after an approved absence), only that session appears in the coach&#x27;s view for that student.</li></ul><p id="40cb926e-7c82-48a5-ab87-b49e68c8bcc0" class="" dir="auto">Coaches specify session format when sessions are set up:</p><table id="a2caffb8-c7fd-47e1-9644-18b64adf81de" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="93fb4034-3113-4157-8cb3-3c824d702954" dir="ltr"><th id="Nj&lt;K" class="simple-table-header-color simple-table-header">Format</th><th id="&lt;aKo" class="simple-table-header-color simple-table-header">Details</th></tr></thead><tbody><tr id="66d738b2-8936-478d-a2a5-3e4144a4f08a" dir="ltr"><td id="Nj&lt;K" class=""><strong>Online</strong></td><td id="&lt;aKo" class="">System generates and includes a meeting link in the confirmation email</td></tr><tr id="396f8012-2c30-426a-acf8-483a00106a88" dir="ltr"><td id="Nj&lt;K" class=""><strong>Face-to-Face</strong></td><td id="&lt;aKo" class="">Coach selects venue from the system&#x27;s configured venue dropdown</td></tr></tbody></table><hr id="33494e81-8539-8082-9b21-c28b9be57648" dir="auto"/><h1 id="33494e81-8539-8097-a6ce-cc81a5e4766e" class="" dir="auto">6. Automated Emails &amp; Notifications</h1><table id="33494e81-8539-805d-841a-d976b06c7b95" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-81fd-a03c-d53b0d2803ae" dir="ltr"><th id="J;e]" class="simple-table-header-color simple-table-header">Trigger</th><th id="K?ae" class="simple-table-header-color simple-table-header">Recipient</th><th id="ed@=" class="simple-table-header-color simple-table-header">Email</th></tr></thead><tbody><tr id="33494e81-8539-8120-b7c4-fb8f8b705426" dir="ltr"><td id="J;e]" class="">Student books a session</td><td id="K?ae" class="">Student</td><td id="ed@=" class="">Booking confirmation + .ics calendar file</td></tr><tr id="33494e81-8539-81ca-83a0-f60f95e69e07" dir="ltr"><td id="J;e]" class="">Session details change (direct edit to published session)</td><td id="K?ae" class="">Enrolled students</td><td id="ed@=" class="">Updated details notification + updated .ics</td></tr><tr id="33494e81-8539-8124-907e-c501421597b5" dir="ltr"><td id="J;e]" class="">Session withdrawn (optional notify)</td><td id="K?ae" class="">Enrolled students</td><td id="ed@=" class="">Optional notification (admin can toggle)</td></tr><tr id="33494e81-8539-81fa-96ea-d7615777c190" dir="ltr"><td id="J;e]" class="">Session cancelled</td><td id="K?ae" class="">Enrolled students</td><td id="ed@=" class="">Cancellation notification</td></tr><tr id="33494e81-8539-81e0-8914-c040d5d0e27b" dir="ltr"><td id="J;e]" class="">X days before session (configurable)</td><td id="K?ae" class="">Student</td><td id="ed@=" class="">Reminder email</td></tr><tr id="33494e81-8539-8151-ab9a-f3ff838b94f3" dir="ltr"><td id="J;e]" class="">3 working days before session</td><td id="K?ae" class="">Student</td><td id="ed@=" class="">Resume submission reminder</td></tr><tr id="33494e81-8539-8172-a622-f524ac70ec5f" dir="ltr"><td id="J;e]" class="">1 working day before session (12pm deadline missed)</td><td id="K?ae" class="">Student</td><td id="ed@=" class="">Final resume deadline reminder</td></tr><tr id="33494e81-8539-814e-8563-f023583c2e11" dir="ltr"><td id="J;e]" class="">Student marked absent</td><td id="K?ae" class="">Student</td><td id="ed@=" class="">Follow-up email requesting justification</td></tr><tr id="33494e81-8539-8171-9a99-f4336c140a28" dir="ltr"><td id="J;e]" class="">Daily (until form submitted)</td><td id="K?ae" class="">Absent student</td><td id="ed@=" class="">Recurring reminder to submit absentee form</td></tr><tr id="33494e81-8539-81d5-bbc2-e0630404b509" dir="ltr"><td id="J;e]" class="">Absentee request approved</td><td id="K?ae" class="">Student</td><td id="ed@=" class="">Email with makeup slots / rebooking instructions</td></tr><tr id="33494e81-8539-8126-9997-c86b8be3d601" dir="ltr"><td id="J;e]" class="">After Session 1 (attended)</td><td id="K?ae" class="">Student</td><td id="ed@=" class="">Attendance acknowledgement + Session 2 details</td></tr><tr id="33494e81-8539-817c-9b80-f7e800b27efa" dir="ltr"><td id="J;e]" class="">After Session 2 (attended)</td><td id="K?ae" class="">Student</td><td id="ed@=" class="">Final attendance acknowledgement</td></tr><tr id="33494e81-8539-819e-9586-f15687c49336" dir="ltr"><td id="J;e]" class="">5 working days before session (min capacity not met)</td><td id="K?ae" class="">Admin</td><td id="ed@=" class="">Low enrolment alert</td></tr><tr id="33494e81-8539-8199-9618-d1b647ad3b14" dir="ltr"><td id="J;e]" class="">Minimum capacity not met — session rescheduled</td><td id="K?ae" class="">Enrolled students</td><td id="ed@=" class="">Reschedule email (not cancellation email)</td></tr><tr id="33494e81-8539-81c7-a247-f42241621212" dir="ltr"><td id="J;e]" class="">New student added via SIS sync</td><td id="K?ae" class="">New student</td><td id="ed@=" class="">Email prompting them to book their sessions</td></tr><tr id="33494e81-8539-8190-993c-d9261af09268" dir="ltr"><td id="J;e]" class="">Student dropped out via SIS sync</td><td id="K?ae" class="">Student (if booked)</td><td id="ed@=" class="">Booking cancellation notification</td></tr><tr id="33494e81-8539-81d1-8557-ff5d85d43372" dir="ltr"><td id="J;e]" class="">Post-session</td><td id="K?ae" class="">Student</td><td id="ed@=" class="">Feedback form trigger email</td></tr></tbody></table><p id="33494e81-8539-80ab-a9bb-e78d6333770c" class="" dir="auto">All email templates are configurable by admins. Multiple reminder emails can be set up per session.</p><hr id="33494e81-8539-8080-baee-ca05dc3211f0" dir="auto"/><h1 id="33494e81-8539-804a-bc92-f0b79f8ae535" class="" dir="auto">7. Feedback Forms</h1><ul id="33494e81-8539-803f-8f19-d270153f1bd0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">After each session, coaches will ask students to complete a <strong>session feedback form</strong>.</li></ul><ul id="33494e81-8539-80dc-9128-e3f02519b3a7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">As per CAO processes, two dedicated feedback forms will be created: one for <strong>Resume Critique</strong> and one for <strong>Mock Interview</strong>.</li></ul><ul id="33494e81-8539-802a-a044-e025f5b165f6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Feedback forms auto-populate with session data (session name, date, time, coach name) and student data (name, matric number, programme, school, year of study) — students only need to answer the feedback questions themselves.</li></ul><ul id="33494e81-8539-801c-8a77-c920d2f530c2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Form analytics include: percentage distribution per option, response count per option, average score, total respondents.</li></ul><ul id="33494e81-8539-809d-b22f-da2ca2c4d510" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Form analytics are exportable to PDF.</li></ul><ul id="33494e81-8539-80dd-b33d-d32955ba5ad9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">SGCC feedback forms pull session and student data directly from the SGCC module.</li></ul><p id="7b0d5f9b-e3e3-4383-9ff2-cfa19e6373e8" class="" dir="auto"><strong>Forms Responses Summary — display rules:</strong></p><p id="2ad4f97f-9656-4e7e-81d8-9ad9b68523db" class="" dir="auto">The Responses Summary for SGCC feedback forms excludes auto-populated fields from the summary view. Only responses to questions authored by the form creator are displayed. Specifically:</p><ul id="8ffb7c86-ef51-439a-b0ca-2bf9b0078325" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Name of Student</strong> — not shown in the summary. Collected at submission but excluded from the aggregated view.</li></ul><ul id="8c49f957-d3a7-4003-8c21-2c782e0a8217" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Date of Session</strong> — not shown in the summary.</li></ul><ul id="1439ecef-ad3c-4d95-8105-293869c57441" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Time of Session</strong> — not shown in the summary.</li></ul><ul id="25f29682-3da6-40d7-895c-e5091c5fccec" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Name of Coach</strong> — displayed as a <strong>horizontal bar chart</strong> showing response count per coach (not as a text list). Designed to support up to ~20 coaches. Figma reference: <a href="https://www.figma.com/design/0beJrMcFmbg8PwEh62xHi0/NTU-CSM---Final-Designs?node-id=9244-73015">Coach chart design</a>.</li></ul><p id="c9fa3fdc-5b3b-42dc-9fc4-2550069b32f3" class="" dir="auto"><em>Source: Linear </em><em><a href="https://linear.app/su-platform/issue/SU-4635/remove-text-only-fields-on-forms-responses-summary">SU-4635</a></em></p><hr id="33494e81-8539-80ca-a91a-eeedbfaf8f2f" dir="auto"/><h1 id="33494e81-8539-8082-83dc-f76fc36ba526" class="" dir="auto">8. Settings &amp; Configuration</h1><p id="33494e81-8539-80a5-a760-df4758b7b710" class="" dir="auto">The following parameters are configurable by admins in SGCC Settings:</p><table id="33494e81-8539-8019-ab55-f6d3180d50f0" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-818a-92a1-e5804544d99d" dir="ltr"><th id="jVfP" class="simple-table-header-color simple-table-header">Setting</th><th id="b|Dt" class="simple-table-header-color simple-table-header">Description</th></tr></thead><tbody><tr id="33494e81-8539-81ef-a6ba-f48d5c8ab4c9" dir="ltr"><td id="jVfP" class="">Reschedule limit per session</td><td id="b|Dt" class="">Number of times a student can reschedule (default: 1)</td></tr><tr id="33494e81-8539-81f2-964e-edc8282e983f" dir="ltr"><td id="jVfP" class="">Cancellation/reschedule deadline</td><td id="b|Dt" class="">Working days before session (default: 5 working days)</td></tr><tr id="33494e81-8539-81ca-917a-d4a263f10ce9" dir="ltr"><td id="jVfP" class="">Reminder email timing</td><td id="b|Dt" class="">X days before session</td></tr><tr id="33494e81-8539-81af-8d10-f07c6a78c94b" dir="ltr"><td id="jVfP" class="">Minimum session capacity</td><td id="b|Dt" class="">Threshold below which admin is alerted</td></tr><tr id="33494e81-8539-81d7-9723-c5f63540f8f3" dir="ltr"><td id="jVfP" class="">Maximum session capacity</td><td id="b|Dt" class="">Hard cap on bookings per session</td></tr><tr id="33494e81-8539-8111-8435-cac2f006f08b" dir="ltr"><td id="jVfP" class="">VMock minimum score</td><td id="b|Dt" class="">Minimum score for a VMock resume to be accepted (default: 60)</td></tr><tr id="33494e81-8539-81ad-8db1-d246e1452cb9" dir="ltr"><td id="jVfP" class="">Resume submission deadline</td><td id="b|Dt" class="">Working days before session (default: 3 days for reminder, 1 day 12pm for hard deadline)</td></tr><tr id="33494e81-8539-8120-9ef3-fe19e8a9e890" dir="ltr"><td id="jVfP" class="">Absence limit</td><td id="b|Dt" class="">Max times a student can be absent before penalty (e.g. max 1 time)</td></tr><tr id="33494e81-8539-81d6-9dc6-e1f07e307722" dir="ltr"><td id="jVfP" class="">Session types</td><td id="b|Dt" class="">Configurable types of clinics/sessions</td></tr><tr id="33494e81-8539-8187-b321-f0e9afa2b61e" dir="ltr"><td id="jVfP" class="">Publish date</td><td id="b|Dt" class="">When sessions become visible to students (can be set per session or in CSV)</td></tr><tr id="33494e81-8539-81bb-9166-f0e5a40b0fcd" dir="ltr"><td id="jVfP" class="">Custom session instructions</td><td id="b|Dt" class="">Per-session email instruction overrides</td></tr></tbody></table><hr id="33494e81-8539-806b-bcd2-d5f875a5df54" dir="auto"/><h1 id="33494e81-8539-806b-80df-ef4db4d28b16" class="" dir="auto">9. Reporting &amp; Analytics</h1><h2 id="0cc3aa1e-3f20-40f1-b61e-d006ad362f55" class="" dir="auto">Analytics — CP3 Enhancements</h2><blockquote id="9a3a566c-958c-4419-9123-62da623bc3ff" class="" dir="auto"><strong>CP3 enhancement</strong> — The following analytics features are in design. Linear issues: <a href="https://linear.app/su-platform/issue/SU-3664">SU-3664</a> (Coach View) and <a href="https://linear.app/su-platform/issue/SU-3665">SU-3665</a> (Institutional Reporting). Both moved to <strong>In Design</strong> as of May 2026.</blockquote><p id="aa522f07-1b0b-4aaf-9506-4555b288d1f5" class="" dir="auto"><strong>SGCC Feedback Analytics — Coach View (SU-3664)</strong></p><ul id="eb73c806-213b-4eeb-892f-530dae8bc1ec" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Coaches can see aggregated scores and distributions for feedback questions across their sessions (&quot;My Sessions&quot;) and all sessions (&quot;All Sessions&quot;)</li></ul><ul id="05575af8-aa15-49b0-ae30-ded26845e30e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Metrics include: response summary (total respondents, response rate), quantitative ratings per question (SA/A/N/D/SD with visual representation), qualitative comments in full, and student-level data alongside comments so coaches can follow up with specific students</li></ul><ul id="d3163f5c-1a7e-45bc-aea4-a19138749429" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Feedback shown separately for Resume Critique and Mock Interview sessions</li></ul><ul id="a343c492-8bff-48c6-a2df-63e9dde3690c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Students are blocked from submitting a second response once one has been recorded for a given session type</li></ul><p id="bc242ffa-e933-4b26-9992-a1c5334a967b" class="" dir="auto"><strong>SGCC Feedback — Institutional Reporting (SU-3665)</strong></p><ul id="4999a7d9-ce07-4fdd-845f-0c32b8db463e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Coach feedback data integrated with Events/SGCC and the data warehouse</li></ul><ul id="36a44bcb-3816-4e21-a34a-ee7ed6cd33b2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Supports institutional reporting and audit/governance by admins</li></ul><hr id="28190efd-53f1-4d69-8de6-619e5d5260ce" dir="auto"/><ul id="33494e81-8539-8080-b3fd-c1c884ab1487" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Admins can generate a report of students who attended each clinic, including: First Name, Last Name, School, NTU email, Personal email, Matric Number, Phone number, Nationality, Gender, Degree, Year of study, Graduation Month &amp; Year, Mode of delivery, Clinic date, Start time, End time, Clinic session name, Appointment status (cancelled / fulfilled), Total session length, Coaching type, Coach name, Reason for cancellation, Student request (coaching type needed).</li></ul><ul id="33494e81-8539-8057-8ad3-d27500b3fdb2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Dashboard provides separate metrics for Resume Critique and Mock Interview session types.</li></ul><ul id="33494e81-8539-8002-aefd-cdba17d1f48b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Sentiment analysis from feedback forms is included in dashboard analytics.</li></ul><ul id="33494e81-8539-80ba-bec9-d70c4cf0b167" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Student landing page (data snapshot) includes SGCC clinic attendance history alongside other module activity.</li></ul><hr id="33494e81-8539-803d-8ddf-d42afaddfafa" dir="auto"/><h1 id="33494e81-8539-8063-bad6-c4e1d747d16c" class="" dir="auto">10. Conflicts Flagged</h1><table id="33494e81-8539-809e-aeaa-f6a8d7770adf" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-8124-a5b6-dcbb4243f815" dir="ltr"><th id="U&lt;L@" class="simple-table-header-color simple-table-header">#</th><th id="CPdW" class="simple-table-header-color simple-table-header">Conflict</th><th id="yr&lt;:" class="simple-table-header-color simple-table-header">Resolution</th></tr></thead><tbody><tr id="33494e81-8539-816b-a264-c8e9e7eafb46" dir="ltr"><td id="U&lt;L@" class="">1</td><td id="CPdW" class="">Reschedule limit: Nov 2025 feedback said &quot;up to 2 times&quot;; Mar 2026 workshop findings say &quot;1 time (configurable)&quot;</td><td id="yr&lt;:" class=""><strong>Resolved: 1 reschedule (configurable) is the confirmed position</strong></td></tr><tr id="33494e81-8539-81ab-b990-f45698ec72a9" dir="ltr"><td id="U&lt;L@" class="">2</td><td id="CPdW" class="">VMock score threshold: Workshop findings said minimum 50; Joreen&#x27;s Mar 2026 answer said ≥ 60</td><td id="yr&lt;:" class=""><strong>Resolved: 60 is the confirmed threshold</strong></td></tr><tr id="33494e81-8539-810f-b61e-ef1bf2fae3a0" dir="ltr"><td id="U&lt;L@" class="">3</td><td id="CPdW" class="">VMock behaviour: Nov feedback said &quot;pull highest-scored resume&quot;; workshop said &quot;minimum score gate&quot;</td><td id="yr&lt;:" class=""><strong>Both apply together: gate at ≥ 60, then pull highest-scored eligible resume</strong></td></tr></tbody></table><hr id="33494e81-8539-8010-af67-ce745052590a" dir="auto"/><h1 id="33494e81-8539-8002-979c-f8c26a6ab801" class="" dir="auto">11. Open Items</h1><table id="33494e81-8539-802c-81bc-c5ce0236c01e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-81dd-b6eb-e4d55584d138" dir="ltr"><th id="QV=;" class="simple-table-header-color simple-table-header">#</th><th id="oLNy" class="simple-table-header-color simple-table-header">Item</th><th id="wup;" class="simple-table-header-color simple-table-header">Owner</th><th id="CMBD" class="simple-table-header-color simple-table-header">Status</th></tr></thead><tbody><tr id="33494e81-8539-81b1-b1a9-e385a2a794a4" dir="ltr"><td id="QV=;" class="">1</td><td id="oLNy" class="">Confirm student status eligibility fields: isCurrent, LOA, Graduated</td><td id="wup;" class="">Penny</td><td id="CMBD" class="">🔲 Pending</td></tr><tr id="33494e81-8539-81e1-8d9b-d7714d9009d8" dir="ltr"><td id="QV=;" class="">2</td><td id="oLNy" class="">VMock API integration feasibility</td><td id="wup;" class="">Penny</td><td id="CMBD" class="">🔲 Pending</td></tr></tbody></table><hr id="33494e81-8539-809b-b11b-d9ccd2ac6716" dir="auto"/><h1 id="33494e81-8539-8026-9ab0-c132645decfd" class="" dir="auto">12. Backend Implementation Notes</h1><blockquote id="33494e81-8539-8020-a4f2-c724396012d0" class="" dir="auto">This section documents the backend schema and API endpoints implemented by the dev team. It is intended as a reference for frontend engineers and reviewers.</blockquote><h2 id="33494e81-8539-80f8-9a5b-de377412676b" class="" dir="auto">12.1 Database Tables</h2><table id="33494e81-8539-80af-8438-ff83a042e0b0" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-81ee-b538-fdef9e4fb1d8" dir="ltr"><th id=":?\a" class="simple-table-header-color simple-table-header">Table</th><th id="OtTA" class="simple-table-header-color simple-table-header">Purpose</th></tr></thead><tbody><tr id="33494e81-8539-8108-9d9e-f3e2b1219043" dir="ltr"><td id=":?\a" class=""><code>sgcc_sessions</code></td><td id="OtTA" class="">Main sessions table — stores session type, date, time, venue, coach, booking limit, bundle link, and FK to <code>academic_calendars</code></td></tr><tr id="33494e81-8539-81be-9151-fd17eac3276c" dir="ltr"><td id=":?\a" class=""><code>sgcc_semester_statuses</code></td><td id="OtTA" class="">Tracks publish status per semester (draft / published / scheduled). FK to <code>academic_calendars</code></td></tr><tr id="33494e81-8539-8167-b86b-ed0758d472da" dir="ltr"><td id=":?\a" class=""><code>sgcc_session_visibility_rules</code></td><td id="OtTA" class="">Targeting rules for student visibility (Year / School / College / Programme with <code>is</code> / <code>is_not</code> operators, AND/OR logic)</td></tr><tr id="33494e81-8539-8150-a84b-fb5209566e2c" dir="ltr"><td id=":?\a" class=""><code>sgcc_session_registrations</code></td><td id="OtTA" class="">Student registrations for sessions, with attendance tracking (registered / attended / absent)</td></tr><tr id="33494e81-8539-8100-a9b6-f0e570d704c6" dir="ltr"><td id=":?\a" class=""><code>sgcc_session_remarks</code></td><td id="OtTA" class="">Admin remarks on individual student registrations</td></tr><tr id="33494e81-8539-8181-bebe-ca7a2deb7a10" dir="ltr"><td id=":?\a" class=""><code>sgcc_time_slots</code></td><td id="OtTA" class="">Predefined and custom time slots for session scheduling</td></tr></tbody></table><p id="33494e81-8539-805b-b125-f466fdd753ae" class="" dir="auto"><strong>Enum types created:</strong> session type, venue type, semester status, visibility entity/operator, logical connector, attendance status.</p><p id="33494e81-8539-8065-baf3-e2adf20da416" class="" dir="auto"><strong>Infrastructure:</strong> All admin endpoints are protected by <code>AdminGuard</code> (extends <code>AuthGuard</code>, restricts to users with <code>type = &#x27;admin&#x27;</code>). <code>SgccSessionsRepository</code> is registered in the shared <code>RepositoriesModule</code>.</p><h2 id="33494e81-8539-80da-9f60-d846e991d44c" class="" dir="auto">12.2 API Endpoints</h2><h3 id="33494e81-8539-80bc-bb4d-c4f81a45485f" class="" dir="auto">Session List &amp; Semesters</h3><table id="33494e81-8539-8056-ba47-cb37cb387702" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-811c-8f2a-e39db26fb3a1" dir="ltr"><th id="E:?k" class="simple-table-header-color simple-table-header">Method</th><th id="lcQd" class="simple-table-header-color simple-table-header">Endpoint</th><th id="FODx" class="simple-table-header-color simple-table-header">Description</th></tr></thead><tbody><tr id="33494e81-8539-810e-bdf0-f24f9c08b9ad" dir="ltr"><td id="E:?k" class=""><code>POST</code></td><td id="lcQd" class=""><code>/admin/sessions/upload-csv?academicCalendarId={id}</code></td><td id="FODx" class="">Upload CSV to bulk-create draft sessions. Strict validation — if any row errors, nothing is created and all errors are returned with line numbers. Supports session types: Resume Critique, Mock Interview, Bundle (auto-creates both RC + MI with 4-week offset).</td></tr><tr id="33494e81-8539-8180-b905-ff195af55233" dir="ltr"><td id="E:?k" class=""><code>GET</code></td><td id="lcQd" class=""><code>/admin/sessions?academicCalendarId={id}&amp;pageIndex=1&amp;pageSize=20&amp;search=</code></td><td id="FODx" class="">Paginated session list for a semester. Includes coach name, location, registration/attendance counts, and visibility rules. Standard response format: <code>totalCount</code>, <code>pageSize</code>, <code>pageIndex</code>, <code>totalPages</code>.</td></tr><tr id="33494e81-8539-81d6-8561-fd23ecbb857d" dir="ltr"><td id="E:?k" class=""><code>GET</code></td><td id="lcQd" class=""><code>/admin/sessions/semesters</code></td><td id="FODx" class="">Returns available semesters (current + next) with their SGCC publish status.</td></tr></tbody></table><h3 id="33494e81-8539-80a0-968c-eacd41fc2350" class="" dir="auto">Session Details, Attendance &amp; Remarks</h3><table id="33494e81-8539-80d2-8358-e7a015fc51ef" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-8122-8c54-f8a9776f1863" dir="ltr"><th id="l@wF" class="simple-table-header-color simple-table-header">Method</th><th id="xS[~" class="simple-table-header-color simple-table-header">Endpoint</th><th id="Q}HE" class="simple-table-header-color simple-table-header">Description</th></tr></thead><tbody><tr id="33494e81-8539-81d4-95f8-cd2af3631e8e" dir="ltr"><td id="l@wF" class=""><code>GET</code></td><td id="xS[~" class=""><code>/admin/sessions/:id</code></td><td id="Q}HE" class=""><em>(Improved)</em> Now includes a <code>students</code> array (unpaginated) with registration data, attendance status, and full remarks history per student. Powers both the student table and the details sidebar from a single request.</td></tr><tr id="33494e81-8539-81db-bf0f-f3fc46992076" dir="ltr"><td id="l@wF" class=""><code>GET</code></td><td id="xS[~" class=""><code>/admin/sessions/:id/registrations</code></td><td id="Q}HE" class="">Paginated student list for a session. Supports search, attendance status filter, and sorting.</td></tr><tr id="33494e81-8539-81cf-bcca-d3fd39d81e01" dir="ltr"><td id="l@wF" class=""><code>PATCH</code></td><td id="xS[~" class=""><code>/admin/sessions/:id/mark-attendance</code></td><td id="Q}HE" class="">Mark one or more students as present or absent. Returns the full updated registration array.</td></tr><tr id="33494e81-8539-814e-88f4-cd0222d57289" dir="ltr"><td id="l@wF" class=""><code>POST</code></td><td id="xS[~" class=""><code>/admin/sessions/:id/remarks</code></td><td id="Q}HE" class="">Add a remark to one or more students. Returns the full updated registration array with remarks.</td></tr></tbody></table><blockquote id="33494e81-8539-8053-b1fc-e16020d77ded" class="" dir="auto">All bulk and single-student actions on the above endpoints return the full updated registration array.</blockquote><h3 id="33494e81-8539-8042-a3fb-c93c872b6ca6" class="" dir="auto">Session Restore</h3><table id="33494e81-8539-8053-9b3b-d4b384705f30" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-8166-8890-ef643402bccc" dir="ltr"><th id="Mqfg" class="simple-table-header-color simple-table-header">Method</th><th id="QuSW" class="simple-table-header-color simple-table-header">Endpoint</th><th id="^dif" class="simple-table-header-color simple-table-header">Description</th></tr></thead><tbody><tr id="33494e81-8539-816c-85e1-f3973eac0c93" dir="ltr"><td id="Mqfg" class=""><code>PATCH</code></td><td id="QuSW" class=""><code>/admin/sessions/:id/restore</code></td><td id="^dif" class="">Restore a Cancelled session back to Draft or Published status.</td></tr></tbody></table><p id="33494e81-8539-8015-9d66-e2bdbe0d3a00" class="" dir="auto"><strong>Business rules for session restoration:</strong></p><ul id="33494e81-8539-8037-8ba8-ffbe7990050c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Cancelled sessions can be restored via the <strong>Restore</strong> action, available from both the SGCC Sessions table view and the session detail view.</li></ul><ul id="33494e81-8539-8054-bb78-c1fd53192c3e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Since student registrations are removed at the time of cancellation, a restored session will have <strong>no active registrations</strong>. Students will need to rebook if the session is re-published.</li></ul><h3 id="33494e81-8539-803c-b9f8-cbd0fe13305c" class="" dir="auto">Session CRUD &amp; Reference Data</h3><table id="33494e81-8539-8063-bf04-d1d1e42e9b3b" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-81b0-84ca-f7032fd51b6a" dir="ltr"><th id="EI;G" class="simple-table-header-color simple-table-header">Method</th><th id="yfUg" class="simple-table-header-color simple-table-header">Endpoint</th><th id="x=[o" class="simple-table-header-color simple-table-header">Description</th></tr></thead><tbody><tr id="33494e81-8539-81fa-b9b8-f0f7af6da7f3" dir="ltr"><td id="EI;G" class=""><code>POST</code></td><td id="yfUg" class=""><code>/admin/sessions</code></td><td id="x=[o" class="">Create a single session or bundle. Bundle auto-creates the paired Mock Interview session.</td></tr><tr id="e9eb2867-d5bb-43df-8568-0174cdb0e1a2" dir="ltr"><td id="EI;G" class=""><code>PATCH</code></td><td id="yfUg" class=""><code>/admin/sessions/:id</code></td><td id="x=[o" class="">Update a session. Each session&#x27;s fields (date, time, venue, coach) are updated independently — changes to one session in a bundle do <strong>not</strong> sync to the paired session. The bundle link is preserved.</td></tr><tr id="33494e81-8539-81ac-a0bd-e9fa8ce3cbf0" dir="ltr"><td id="EI;G" class=""><code>GET</code></td><td id="yfUg" class=""><code>/admin/sessions/:id</code></td><td id="x=[o" class="">Get session details including visibility rules, unlisted users, and registration count.</td></tr><tr id="33494e81-8539-811d-a0ea-f60bbb80d5f7" dir="ltr"><td id="EI;G" class=""><code>GET</code></td><td id="yfUg" class=""><code>/admin/sessions/time-slots</code></td><td id="x=[o" class="">Reference data for the time slot dropdown.</td></tr><tr id="33494e81-8539-8121-843a-d5610f0e6aad" dir="ltr"><td id="EI;G" class=""><code>GET</code></td><td id="yfUg" class=""><code>/admin/sessions/coaches</code></td><td id="x=[o" class="">Reference data for the coach dropdown.</td></tr><tr id="33494e81-8539-817a-9440-f6c8d9b83111" dir="ltr"><td id="EI;G" class=""><code>GET</code></td><td id="yfUg" class=""><code>/admin/sessions/programmes</code></td><td id="x=[o" class="">Reference data for programme visibility selection.</td></tr><tr id="33494e81-8539-81d4-ade3-d00ee94b7c0a" dir="ltr"><td id="EI;G" class=""><code>GET</code></td><td id="yfUg" class=""><code>/admin/sessions/students?search=</code></td><td id="x=[o" class="">Search/list students for unlisted session assignment (by matric number).</td></tr><tr id="33494e81-8539-81c5-8155-d66e75c92de3" dir="ltr"><td id="EI;G" class=""><code>GET</code></td><td id="yfUg" class=""><code>/admin/sessions/csv-template?academicCalendarId=</code></td><td id="x=[o" class="">Download CSV template pre-filled with existing sessions (IDs included). Bundle exported as 1 row; re-upload with ID updates both sessions in the pair.</td></tr></tbody></table><h2 id="33494e81-8539-809e-a71d-c7a79f3450aa" class="" dir="auto">12.3 Key Behaviours Confirmed by Dev</h2><ul id="33494e81-8539-80b7-a27d-c1198edb084c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Session sub-status logic:</strong> Determined by session date relative to current date (SGT, UTC+8 by default). Scheduled = published session with future date. Ongoing = published session occurring today (date-level, not time-level). Completed = published session with past date.</li></ul><ul id="33494e81-8539-803f-bb1a-dd3423836acb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cancelled sessions are soft-deleted:</strong> They remain visible in the session list with Cancelled status. Cancellations from CSV re-upload are also shown in the session list (not hidden).</li></ul><ul id="33494e81-8539-8011-8186-d895e1dd300a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cancelled status is reversible:</strong> A cancelled session can be restored to Draft or Published status.</li></ul><ul id="33494e81-8539-80d4-9c35-c91d13c92106" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Conflict validation:</strong> Coach and location availability is checked per date/time slot; cancelled sessions are excluded from conflict checks.</li></ul><ul id="33494e81-8539-80f0-8fc3-d980c29910f4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Minimum capacity:</strong> Stored as a threshold. When registrations fall below minimum, the admin-facing UI shows &quot;Minimum capacity not met.&quot; Students are not blocked from booking — the max capacity controls that.</li></ul><ul id="33494e81-8539-80db-a09e-da380962cfc4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>CSV notification behaviour on cancellation:</strong> To be confirmed. Suggestion is to follow the same notify/don&#x27;t-notify toggle used in UI-initiated cancellations.</li></ul><ul id="33494e81-8539-800a-917c-e4eb4b287905" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Timezone:</strong> All dates and times stored and evaluated in SGT (UTC+8).</li></ul><ul id="33494e81-8539-8017-8043-e54f5386c296" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>All sessions must fall within the assigned semester&#x27;s start and end dates.</strong> No exceptions.</li></ul><ul id="33494e81-8539-8062-9729-e5204cffbab3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Holiday/weekend validation:</strong> Singapore Public Holidays are stored manually (reference: <a href="https://www.mom.gov.sg/employment-practices/public-holidays">MOM Public Holidays</a>) and NTU academic calendar. Automation of holiday calendar sync is deferred to a future phase.</li></ul><h2 id="c36e0dbe-5892-46c9-b96e-e02bc20768a3" class="" dir="auto">Role Changes — Staff to Manager</h2><p id="bf422a2a-f379-4276-9293-14690e2a064c" class="" dir="auto">A Manager can also act as a coach and take coaching sessions. When a coach is changed from Staff to Manager, their existing session and student assignments remain valid.</p><p id="1e8cd476-935e-450a-bf64-97ac2ada96a4" class="" dir="auto"><strong>Confirm:</strong> Are sessions currently only assignable to Staff users? If yes, this needs to change — Managers must also be valid assignees.</p><p id="a5a8ce9a-538c-4fec-b680-ffe0082a1e15" class="" dir="auto"><strong>On visibility:</strong> No UI change needed for now. Managers (whether or not they are assigned any SGCC sessions) will see all sessions. They can filter by their own name to view their personal sessions. Enhancing this with a dedicated &quot;My Sessions&quot; vs &quot;All Sessions&quot; filter is deferred to CP3 or CP4.</p><hr id="33494e81-8539-80ae-b19f-fcd1715f222b" dir="auto"/><h1 id="33494e81-8539-808a-b476-f035dae9d848" class="" dir="auto">13. Requirements Traceability</h1><table id="33494e81-8539-8059-97e4-eae7f47b15a7" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="33494e81-8539-8118-b6ef-f6b765568d33" dir="ltr"><th id="lBuk" class="simple-table-header-color simple-table-header">Req Ref</th><th id="g&lt;L=" class="simple-table-header-color simple-table-header">Description</th><th id="^aW?" class="simple-table-header-color simple-table-header">Section in This Doc</th></tr></thead><tbody><tr id="33494e81-8539-815c-b677-c0db05161d1f" dir="ltr"><td id="lBuk" class="">6.1.1.14.1</td><td id="g&lt;L=" class="">Booking confirmation email + calendar (.ics) to student</td><td id="^aW?" class="">7</td></tr><tr id="33494e81-8539-8108-8ca4-ef8cfb9f5278" dir="ltr"><td id="lBuk" class="">6.1.1.14.2</td><td id="g&lt;L=" class="">Real-time sync with Outlook</td><td id="^aW?" class="">7</td></tr><tr id="33494e81-8539-8189-9587-cf8caf4ec826" dir="ltr"><td id="lBuk" class="">6.1.1.15.1</td><td id="g&lt;L=" class="">Reminder email 1 day (24h) before session</td><td id="^aW?" class="">7</td></tr><tr id="33494e81-8539-815a-ad14-c28f6f60444b" dir="ltr"><td id="lBuk" class="">6.1.1.15.2</td><td id="g&lt;L=" class="">Configurable X-day reminder setting</td><td id="^aW?" class="">9</td></tr><tr id="33494e81-8539-818c-b342-ee6f33d7397f" dir="ltr"><td id="lBuk" class="">6.1.1.48.1</td><td id="g&lt;L=" class="">Coach sets up sessions; visible in student calendar</td><td id="^aW?" class="">3.1, 6.1</td></tr><tr id="33494e81-8539-8104-9a95-ebc4b8bdcfc7" dir="ltr"><td id="lBuk" class="">6.1.1.48.2</td><td id="g&lt;L=" class="">Students only see their designated coach&#x27;s slots</td><td id="^aW?" class="">4.1</td></tr><tr id="33494e81-8539-815a-b859-ef84ad4e2b81" dir="ltr"><td id="lBuk" class="">6.1.1.49.1</td><td id="g&lt;L=" class="">Configurable session types</td><td id="^aW?" class="">9</td></tr><tr id="33494e81-8539-81c4-9b46-c3ec6214874e" dir="ltr"><td id="lBuk" class="">6.1.1.49.2</td><td id="g&lt;L=" class="">Min/max capacity; admin alert if min not met</td><td id="^aW?" class="">3.3, 9</td></tr><tr id="33494e81-8539-81b0-95ed-f80a9adaf6fb" dir="ltr"><td id="lBuk" class="">6.1.1.49.3</td><td id="g&lt;L=" class="">One Resume Critique + one Mock Interview per student; prompt if duplicate attempt</td><td id="^aW?" class="">4.1</td></tr><tr id="33494e81-8539-81e8-a5bf-de1b1b2d86e3" dir="ltr"><td id="lBuk" class="">6.1.1.49.4</td><td id="g&lt;L=" class="">Resume upload prompt when booking Resume Critique</td><td id="^aW?" class="">4.3</td></tr><tr id="33494e81-8539-81ce-baa3-f1eb7299e279" dir="ltr"><td id="lBuk" class="">6.1.1.49.5</td><td id="g&lt;L=" class="">Cancellation blocked &lt; 24h before session</td><td id="^aW?" class="">4.7</td></tr><tr id="33494e81-8539-81d6-afd3-d31813f0e49d" dir="ltr"><td id="lBuk" class="">6.1.1.50.1</td><td id="g&lt;L=" class="">Coach specifies Online or Face-to-Face</td><td id="^aW?" class="">6.4</td></tr><tr id="33494e81-8539-81cb-be53-dcd5b06c491c" dir="ltr"><td id="lBuk" class="">6.1.1.50.2</td><td id="g&lt;L=" class="">Venue dropdown for face-to-face sessions</td><td id="^aW?" class="">3.7, 6.4</td></tr><tr id="33494e81-8539-8156-97e7-c0ae366f0443" dir="ltr"><td id="lBuk" class="">6.1.1.51.1</td><td id="g&lt;L=" class="">Calendar view for student session selection</td><td id="^aW?" class="">4.1</td></tr><tr id="33494e81-8539-8193-a331-f44bcad536d0" dir="ltr"><td id="lBuk" class="">6.1.1.51.2</td><td id="g&lt;L=" class="">Session type and location indicators in calendar</td><td id="^aW?" class="">4.1</td></tr><tr id="33494e81-8539-8122-af59-e69f4479bc61" dir="ltr"><td id="lBuk" class="">6.1.1.51.3</td><td id="g&lt;L=" class="">Capacity status shown in student calendar</td><td id="^aW?" class="">4.1</td></tr><tr id="33494e81-8539-811e-bcbc-e131186c514f" dir="ltr"><td id="lBuk" class="">6.1.1.51.4</td><td id="g&lt;L=" class="">Waitlist configuration</td><td id="^aW?" class=""><strong>Waitlist is explicitly disabled for SGCC</strong></td></tr><tr id="33494e81-8539-81b4-98eb-d673e186e839" dir="ltr"><td id="lBuk" class="">6.1.1.52.1</td><td id="g&lt;L=" class="">Coach views sign-up count per session</td><td id="^aW?" class="">6.1</td></tr><tr id="33494e81-8539-816b-98b4-df0bdef064cd" dir="ltr"><td id="lBuk" class="">6.1.1.52.2</td><td id="g&lt;L=" class="">Coach downloads student resumes</td><td id="^aW?" class="">6.1</td></tr><tr id="33494e81-8539-812c-b485-d84afd096546" dir="ltr"><td id="lBuk" class="">6.1.1.53.1</td><td id="g&lt;L=" class="">QR code and manual attendance marking</td><td id="^aW?" class="">6.2</td></tr><tr id="33494e81-8539-81cf-af97-d8eb2f02850c" dir="ltr"><td id="lBuk" class="">6.1.1.53.2</td><td id="g&lt;L=" class="">QR code regeneration</td><td id="^aW?" class="">6.2</td></tr><tr id="33494e81-8539-81ba-8b4e-f2d98786253a" dir="ltr"><td id="lBuk" class="">6.1.1.76.1</td><td id="g&lt;L=" class="">Feedback form email trigger post-session</td><td id="^aW?" class="">8</td></tr><tr id="33494e81-8539-814a-b92d-e63d69267f62" dir="ltr"><td id="lBuk" class="">6.1.1.99.1</td><td id="g&lt;L=" class="">Attendance/clinic report with full student details</td><td id="^aW?" class="">10</td></tr><tr id="33494e81-8539-81ee-a260-ebd437dc0026" dir="ltr"><td id="lBuk" class="">6.1.1.121.1</td><td id="g&lt;L=" class="">Student data snapshot includes SGCC history</td><td id="^aW?" class="">10</td></tr></tbody></table><p id="33494e81-8539-805e-bc33-ea83c4e0c3b5" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

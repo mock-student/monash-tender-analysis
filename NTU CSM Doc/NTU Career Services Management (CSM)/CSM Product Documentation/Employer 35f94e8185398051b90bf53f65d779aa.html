@@ -1,0 +1,767 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Employer</title><meta name="data-notion-page-icon" content="👨🏽‍💼"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BC%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="35f94e81-8539-8051-b90b-f53f65d779aa" class="page sans" data-notion-page-icon="👨🏽‍💼"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="👨🏽‍💼"></span></div><h1 class="page-title" dir="auto">Employer</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-last_edited_by"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/user-circle_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited by</th><td><span class="user"><img src="https://lh3.googleusercontent.com/a/ACg8ocKvzGHEpJauKI2uoiprUb1a8p_Ghl3XXKOO6UP2DWZirF9XLHc=s100" class="icon user-icon"/>Joji Mendoza-Chan</span></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/clock_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited time</th><td><time datetime="2026-07-01T13:27">July 1, 2026 1:27 PM</time></td></tr></tbody></table></header><div class="page-body"><blockquote id="d21b5001-46a9-4acc-ad1b-80d57096f598" class="" dir="auto"><strong>Sources:</strong> Phase 2 CSM Workshop Findings, CSM Milestones Epics Stories Requirements, Linear issues SU-4474 to SU-4498</blockquote><hr id="0d088389-d782-483f-b2c2-4ef30e836874" dir="auto"/><h1 id="51d5d58c-74c7-4355-8c1e-4e4edc4820c3" class="" dir="auto">1. Overview</h1><p id="0851da35-a9f7-4ff0-b0bd-530b5149d330" class="" dir="auto">The Employer module manages the full lifecycle of employer participation in the CSM platform — from company registration and profile management, to job and internship posting, event hosting, and student application tracking.</p><p id="cddd7b91-34f7-482f-ad85-7dabb2df09ca" class="" dir="auto"><strong>Roles:</strong></p><table id="a805528a-336a-4da2-b176-a7f2afc55d21" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="627064bf-0054-44aa-8861-3e6e9fc687a4" dir="ltr"><th id="Fi[H" class="simple-table-header-color simple-table-header">Role</th><th id="rxbm" class="simple-table-header-color simple-table-header">Access Level</th><th id="S||g" class="simple-table-header-color simple-table-header">Responsibilities</th></tr></thead><tbody><tr id="85f7fbef-4ff8-4625-98f0-fdd027324e4e" dir="ltr"><td id="Fi[H" class=""><strong>CAO Admin</strong></td><td id="rxbm" class="">L4 — Administer</td><td id="S||g" class="">Full access. Approves new company registrations, manages IRC assignments, configures industry lists, blacklists employers, bulk operations, all reports.</td></tr><tr id="0a5c1184-5663-4911-ab5b-7d9796258901" dir="ltr"><td id="Fi[H" class=""><strong>CAO Manager</strong></td><td id="rxbm" class="">L3 — Manage</td><td id="S||g" class="">Approves new company registrations, adds company entities, manages IRC assignments, edits company profiles, blacklists employers, bulk operations.</td></tr><tr id="5f2e0b17-3e6d-4e43-8610-cfeaed2dc9bb" dir="ltr"><td id="Fi[H" class=""><strong>CAO Staff (IRC)</strong></td><td id="rxbm" class="">L2 — Contribute</td><td id="S||g" class="">Approves individual employer join requests, approves/rejects job postings and employer events, manages contacts for assigned companies. IRCs are Staff-level — no separate IRC role exists.</td></tr><tr id="a28e95ac-8cf1-4e6a-89fb-48fcdb98efcd" dir="ltr"><td id="Fi[H" class=""><strong>Employer Admin</strong></td><td id="rxbm" class="">Employer L2 — own company</td><td id="S||g" class="">Manages company profile, contacts, addresses, posts jobs and events, views all company listings and applications.</td></tr><tr id="6542372e-e959-4db2-b734-3dc042a41fb9" dir="ltr"><td id="Fi[H" class=""><strong>Employer</strong></td><td id="rxbm" class="">Employer L1 — own company</td><td id="S||g" class="">Views all company listings and events (filter to own postings available), creates and submits job postings and events, views own listing applications.</td></tr><tr id="53ce32aa-7743-4e40-ae21-87beca0a6ec5" dir="ltr"><td id="Fi[H" class=""><strong>Internship </strong><strong>Supervisor</strong></td><td id="rxbm" class="">No account — time-limited link</td><td id="S||g" class="">Accesses system via unique time-limited email link to submit student assessments only. No persistent access. See Section 7.</td></tr><tr id="1a4c4166-cdd4-4a03-8d15-22420f3f4e50" dir="ltr"><td id="Fi[H" class=""><strong>Faculty Supervisor</strong></td><td id="rxbm" class="">Staff role (scoped)</td><td id="S||g" class="">Assigned by CAO. Can view own supervisees&#x27; internship details and assessments, and submit their own assessment of the student. Dedicated RBAC structure pending — to be defined in Phase 4.</td></tr><tr id="38094e81-8539-809f-9d28-ec3c40b1f1dd" dir="ltr"><td id="Fi[H" class=""><strong>School Staff</strong></td><td id="rxbm" class=""></td><td id="S||g" class="">Can only see/approve internships from their school.</td></tr><tr id="38094e81-8539-80c7-a42e-dcd104dd9c70" dir="ltr"><td id="Fi[H" class="">Student</td><td id="rxbm" class=""></td><td id="S||g" class=""></td></tr></tbody></table><hr id="f8c7a19c-f421-43c3-aa4e-f5a066ad4367" dir="auto"/><h1 id="baffbd5f-3f8b-4834-8d91-e1f6250f208d" class="" dir="auto">2. Employer Registration &amp; Onboarding</h1><h2 id="0702609a-5da7-4d76-b5b2-d2c8d25c82ac" class="" dir="auto">2.1 Registration Flow — CareerAxis Migration</h2><p id="dc58ba71-2332-458c-a52d-7ede920a2cd5" class="" dir="auto">Employers migrated from the legacy CareerAxis platform are onboarded via a dedicated migration flow. This is the primary onboarding path for existing employer accounts at go-live.</p><p id="d7a01b0d-edc0-4c88-88f9-58ac22f20bde" class="" dir="auto"><strong>Trigger:</strong> The system sends an onboarding email to the contact who was first registered in CareerAxis for each migrated company. The email contains a link to complete their profile setup on CSM.</p><p id="87ff520c-67f3-47e0-ac99-60cc941e186d" class="" dir="auto"><strong>Profile setup flow:</strong></p><ol type="1" id="a63f8858-f2c0-4895-8da7-f2b49528ce68" class="numbered-list" start="1" dir="auto"><li>Contact clicks through and sets a new CSM password.</li></ol><ol type="1" id="71af8b61-d89c-4b5b-a5b6-d0d6bc713126" class="numbered-list" start="2" dir="auto"><li>They are presented with their migrated company information, pre-filled from CareerAxis data. Fields displayed for review: company name, primary country of operation, location, contact details, and address.</li></ol><ol type="1" id="748c23c6-4c24-4bd1-8b99-0032b1466a8e" class="numbered-list" start="3" dir="auto"><li>They are prompted to upload their company logo.</li></ol><ol type="1" id="03d403c2-d0f7-4c53-a0f7-bb73748fb301" class="numbered-list" start="4" dir="auto"><li>Any required fields that could not be migrated are flagged and must be completed before proceeding. The contact cannot advance until all required fields are filled.</li></ol><ol type="1" id="59843401-01ad-455c-b377-61359d456cdb" class="numbered-list" start="5" dir="auto"><li>Once all required fields are filled, the contact clicks <strong>&quot;Let&#x27;s Begin&quot;</strong> to complete profile setup and become the Employer Admin for their company.</li></ol><p id="d03d0144-a7c5-4bdd-807a-2bc4ba75c169" class="" dir="auto"><strong>Migrated job postings:</strong> Existing job postings from CareerAxis are migrated as a separate flow after company onboarding is complete. Migrated postings are not automatically published.</p><blockquote id="f0c5bbdc-215d-422b-85fb-0f3b55ac2288" class="" dir="auto">⚠️ <strong>Open item:</strong> Confirm with CAO whether migrated job postings should be placed directly into Active status or routed through the standard CAO approval queue before publishing. Owner: Joji.</blockquote><p id="b90f394c-8125-473c-b1d7-829970ab64e0" class="" dir="auto"><em>Linear: SU-4474 (migration), Del (technical owner)</em></p><h2 id="86fefb08-4169-472b-99ed-2948ab624e04" class="" dir="auto">2.2 Registration Flow — Self-Registration</h2><p id="dbfe956b-179b-481e-9612-a74462234a7f" class="" dir="auto">Employers register on the CSM platform without SSO — each employer creates their own username and password. The registration form opens with a company search field. Two paths follow.</p><p id="a77562eb-a3ad-4d1a-bed5-77e772f36b0b" class="" dir="auto"><strong>Path A — Company already exists (join request):</strong></p><p id="d617dc20-76fb-4d8c-a38c-c94fb96b8073" class="" dir="auto">Employer selects their company from results and fills in: name, email, phone/office number, job title (free text), and designation type (Section 2.5). A join request is routed to the assigned IRC for Staff-level review. On approval, contact is added as base Employer. On rejection, contact is notified by email with a reason.</p><p id="cadd20d8-5966-40ee-abc8-09e51711eb6e" class="" dir="auto"><strong>Path B — Company does not exist (new company registration):</strong></p><p id="9c90e49f-81a9-427c-a44a-eea6098c9af2" class="" dir="auto">Employer selects &quot;Singapore-registered company&quot; or &quot;Overseas-registered company,&quot; then proceeds through a four-step wizard: (1) UEN &amp; Verify (Singapore) or Company Details (Overseas), (2) Hiring Details, (3) Primary Contact, (4) Review.</p><ul id="95a7dbc7-e9ae-4144-9532-848aadf3111e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Singapore companies:</strong> entering a UEN triggers a real-time ACRA lookup that pre-fills company name, industry, company size, business address, and website — all editable before continuing. If the UEN returns no match or the ACRA call fails, a &quot;UEN verification failed&quot; modal blocks progression; clicking &quot;Go Back&quot; returns to the UEN entry step, with no limit on retries.</li></ul><ul id="a92792c7-ebdb-40e7-9e9f-d062e129ccb2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Overseas companies:</strong> all company details are entered manually. Company ID is not entered by the employer — it is auto-generated only once CAO approves.</li></ul><p id="73be02be-2fab-4e59-980c-c97c94fd03f3" class="" dir="auto">Form collects: UEN (or overseas company ID, auto-generated on approval), industry (NTU classification — Section 2.6), the four required routing fields (below), primary contact details, and an optional free-text field for additional information.</p><p id="7e0a7352-5f59-4acd-8a9a-3724eef4171b" class="" dir="auto"><strong>No account credentials are collected during this flow</strong> — the employer sets up their password only after CAO approval, via the link sent at that stage.</p><p id="665920aa-ab59-4f0d-83b4-742255ac4ae9" class="" dir="auto"><em>Source: Linear SU-4474 · Original Requirements 6.1.1.35.1, 6.1.1.35.2, 6.1.1.40.1, 6.2.1.7.1, 6.2.1.7.2</em></p><p id="39f5e5ee-778d-45ff-a307-fffdb08f4de2" class="" dir="auto"><strong>Required routing fields (each with a tooltip definition shown to the employer):</strong></p><ul id="faa0c70f-b20a-4f11-aa03-eeeb76520690" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Primary country of operation</strong> — the country where the company is legally registered and primarily operates</li></ul><ul id="e21408b8-99dd-4eed-a764-620f64311aa8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>HR team location</strong> — the country or region where the HR/hiring team managing this account is based</li></ul><ul id="cdc7b463-53e8-4dc1-893f-54c56f709821" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Primary hiring market</strong> — whether the company is primarily hiring for Singapore-based roles or primarily overseas-based roles (single-select: Singapore / Overseas)</li></ul><ul id="d791f82e-1093-4b53-93b3-bba928a2e853" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Countries hiring for</strong> — specific country or countries the company intends to hire for</li></ul><p id="ed1eebeb-edd5-4a9e-8ec9-3735958c550b" class="" dir="auto">Approval routing is determined by the combination of HR team location and primary hiring market (see Section 2.4).</p><p id="938e8241-5dc3-4404-b7f9-3465d3c741f6" class="" dir="auto">On approval by Manager or Admin: company is created in CSM, registering contact becomes Employer Admin, and company is assigned an IRC based on industry (Section 2.4).</p><p id="5268e212-663f-43a4-8d87-f402802912c5" class="" dir="auto"><strong>RBAC — Registration approval:</strong></p><table id="fd85629f-64f6-4e2b-8485-ca8c342bb7e8" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="3134d54f-a468-49cf-987f-1c32370a7691" dir="ltr"><th id="sM{Y" class="simple-table-header-color simple-table-header">Action</th><th id="KfjU" class="simple-table-header-color simple-table-header">CAO Admin</th><th id="FSNo" class="simple-table-header-color simple-table-header">CAO Manager</th><th id="~Q_V" class="simple-table-header-color simple-table-header">CAO Staff (IRC)</th><th id="xS~W" class="simple-table-header-color simple-table-header">Employer Admin</th><th id="`wwR" class="simple-table-header-color simple-table-header">Employer</th></tr></thead><tbody><tr id="cf34d74b-de92-4780-93d6-96b8631b4af7" dir="ltr"><td id="sM{Y" class="">Approve/reject new company registration</td><td id="KfjU" class="">✅</td><td id="FSNo" class="">✅</td><td id="~Q_V" class="">❌</td><td id="xS~W" class="">❌</td><td id="`wwR" class="">❌</td></tr><tr id="48cd3a32-a890-4c90-9844-f359a28b2cf1" dir="ltr"><td id="sM{Y" class="">Approve/reject individual join request (existing company)</td><td id="KfjU" class="">✅</td><td id="FSNo" class="">✅</td><td id="~Q_V" class="">✅ (assigned IRC)</td><td id="xS~W" class="">❌</td><td id="`wwR" class="">❌</td></tr></tbody></table><p id="2afa7e0b-87e6-4b0c-8297-10214799aef5" class="" dir="auto"><em>Linear: SU-4474, SU-4498, SU-4431</em></p><h2 id="48844cfa-566f-4a2c-b75c-72fdea0486df" class="" dir="auto">2.3 Registration Flow — CAO-Invited Employer</h2><p id="26415e91-1100-47f5-a4b2-619a686c5cb6" class="" dir="auto">CAO can invite an employer directly from the Users module (Employers tab).</p><ol type="1" id="ac539387-e9be-42e1-970a-bed69182a406" class="numbered-list" start="1" dir="auto"><li>Admin or Manager searches for the company by name or UEN — soft warning shown if a similar company exists (not a hard block).</li></ol><ol type="1" id="1d148072-8069-4c9e-9b19-ee5a69f93195" class="numbered-list" start="2" dir="auto"><li>If the company does not exist, Admin or Manager creates it.</li></ol><ol type="1" id="06c2648e-125e-4bae-b19f-7230d49a7d53" class="numbered-list" start="3" dir="auto"><li>Any Staff member or above adds a primary contact (name and email).</li></ol><ol type="1" id="0a3a7a38-255b-4b91-a468-8c1b56787b47" class="numbered-list" start="4" dir="auto"><li>System sends an invitation email to the primary contact.</li></ol><ol type="1" id="0252103f-d5ae-4c77-b309-de079e1c9bfa" class="numbered-list" start="5" dir="auto"><li>Primary contact clicks through to a new password-set screen (unique design — not reusing student/staff onboarding patterns).</li></ol><ol type="1" id="5dd8b0e8-9f01-4569-9799-c8bdd1cd6d9d" class="numbered-list" start="6" dir="auto"><li>After setting their password, contact is directed to complete the company profile (Section 3).</li></ol><p id="29f64bc9-b59f-42ca-b65f-44d4e41411a9" class="" dir="auto"><strong>Individual contact invites:</strong> CAO may also invite an individual contact (e.g. a company executive met at a networking event) without first creating a company entity. In this case, CAO creates the individual contact record and associates it with an existing company if applicable. If no company exists, a new company entity must be created first. The contact sets their password and is directed to complete their profile.</p><p id="19351a1e-a91e-4398-873b-abb609c7c3eb" class="" dir="auto"><strong>RBAC — CAO-invite flow:</strong></p><table id="02b5f413-853f-403f-85d5-a51a88815ab1" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="e25c34d4-4779-47b0-be35-9c332b61b563" dir="ltr"><th id="YPug" class="simple-table-header-color simple-table-header">Action</th><th id="YdPU" class="simple-table-header-color simple-table-header">CAO Admin</th><th id="~lIS" class="simple-table-header-color simple-table-header">CAO Manager</th><th id="KYnE" class="simple-table-header-color simple-table-header">CAO Staff (IRC)</th><th id="=FYf" class="simple-table-header-color simple-table-header">Employer Admin</th><th id="WY_U" class="simple-table-header-color simple-table-header">Employer</th></tr></thead><tbody><tr id="4880c4a7-9eab-4c30-8bf0-b3f9df66afcb" dir="ltr"><td id="YPug" class="">Add a new company entity to CSM</td><td id="YdPU" class="">✅</td><td id="~lIS" class="">✅</td><td id="KYnE" class="">❌</td><td id="=FYf" class="">❌</td><td id="WY_U" class="">❌</td></tr><tr id="9e0c7b2a-4cd5-4c4e-839c-7997e3d15563" dir="ltr"><td id="YPug" class="">Add a primary contact to an existing company</td><td id="YdPU" class="">✅</td><td id="~lIS" class="">✅</td><td id="KYnE" class="">✅</td><td id="=FYf" class="">❌</td><td id="WY_U" class="">❌</td></tr></tbody></table><p id="f208e86e-8640-4a79-ace5-85a055850d01" class="" dir="auto"><em>Linear: SU-4475</em></p><h2 id="9c84c44d-bef9-4126-991a-98b21e01852d" class="" dir="auto">2.4 Approval Routing &amp; Workgroup Assignment</h2><p id="38daff73-d11b-4b33-ba1b-ce768a211a68" class="" dir="auto">Every company in CSM must be assigned to a workgroup and a named approver at the point of company approval. The assignment is determined by two fields captured during registration: <strong>HR team location</strong> and <strong>primary hiring market</strong>.</p><table id="8ac3f438-d116-4b63-8c4e-c7d0ab516759" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="cb7871b0-d933-4154-902d-c4b71ad441e0" dir="ltr"><th id="ejbz" class="simple-table-header-color simple-table-header">HR team location</th><th id="zXV&gt;" class="simple-table-header-color simple-table-header">Primary hiring market</th><th id="I[o:" class="simple-table-header-color simple-table-header">Assigned workgroup</th><th id="=Zz?" class="simple-table-header-color simple-table-header">Approver</th></tr></thead><tbody><tr id="7de7558b-cc04-4732-9fc5-3e84f622d704" dir="ltr"><td id="ejbz" class="">Singapore</td><td id="zXV&gt;" class="">Primarily Singapore</td><td id="I[o:" class="">IRC workgroup</td><td id="=Zz?" class="">IRC by industry (auto-assigned)</td></tr><tr id="50ca9b91-3fb7-4bd2-8dd7-6c0397350476" dir="ltr"><td id="ejbz" class="">Singapore</td><td id="zXV&gt;" class="">Primarily overseas (incl. SG)</td><td id="I[o:" class="">IRC workgroup</td><td id="=Zz?" class="">IRC by industry (auto-assigned)</td></tr><tr id="b20527ff-e64e-4f04-91d6-bb547bc6af4b" dir="ltr"><td id="ejbz" class="">Overseas</td><td id="zXV&gt;" class="">Primarily Singapore</td><td id="I[o:" class="">IRC workgroup</td><td id="=Zz?" class="">IRC by industry (auto-assigned)</td></tr><tr id="29388897-4437-4405-bc47-0bb46a3e09c6" dir="ltr"><td id="ejbz" class="">Overseas</td><td id="zXV&gt;" class="">Primarily overseas (incl. SG)</td><td id="I[o:" class="">GE workgroup</td><td id="=Zz?" class="">GE Manager — Karin (configurable)</td></tr><tr id="f5d83544-7efc-4158-85c6-ad136641d9c8" dir="ltr"><td id="ejbz" class="">Overseas</td><td id="zXV&gt;" class="">Overseas only</td><td id="I[o:" class="">GE workgroup</td><td id="=Zz?" class="">GE Manager — Karin (configurable)</td></tr></tbody></table><p id="67c98141-39e3-456b-b238-d68e2ebf04f1" class="" dir="auto"><strong>Notes:</strong></p><ul id="724a52fb-a963-4da8-8c67-c6f79b1f797c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The GE Manager list by region/country is configurable by the Admin</li></ul><ul id="9275603e-a16f-4230-a9a7-7da961c4719f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Primary IRC is auto-assigned based on industry; Secondary IRC can be manually updated</li></ul><ul id="72dc392f-c45e-4507-9541-1db401bd043f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each company record stores up to two &quot;Account Manager&quot; fields: Primary IRC or GE Manager (compulsory), Secondary IRC (optional)</li></ul><ul id="6076abf8-2056-42a2-a289-1bda64ac17ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ECS (Events and Centralised Services) is the internal CAO team responsible for the approval function</li></ul><ul id="8a401ffb-8d52-49db-b4d6-ebddbcef6057" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The Internship team is involved in approving <strong>job postings</strong> for credit-bearing internships, not in the company account approval process. Company accounts are approved by IRCs and GE Managers only.</li></ul><ul id="ea71355f-3f68-4e37-ba36-9188c7bb3c48" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Email notification is sent to the assigned IRC or GE Manager when a new employer is pending approval</li></ul><blockquote id="d023d7d3-30c3-4e91-bec1-b004b4830b7d" class="" dir="auto">⚠️ <strong>Open item:</strong> Confirm with NTU whether the Internship team has any role in approving company accounts for credit-bearing internship purposes, or whether their involvement is limited to job posting review only. Owner: Joji.</blockquote><blockquote id="5f7f6672-564a-414f-9b61-66cf6f8e4982" class="" dir="auto">⚠️ <strong>Open item:</strong> Events routing by student level (UG, PGC, PGR) involves named individuals (Jamie, Corlene, Jia Chi). Confirm which configurable roles these map to in the system. Owner: Joji. To be raised in discovery.</blockquote><blockquote id="89016552-9871-4e96-a6d8-e78655fd2fa4" class="" dir="auto">⚠️ <strong>Open item:</strong> Confirm configurable GE manager list by region/country — who maintains this list and what is the initial setup? Owner: Joji.</blockquote><p id="65c1af2d-6d83-4489-b775-83689aaab0c9" class="" dir="auto"><em>Linear: SU-4356</em></p><h2 id="3ef16b7e-5c4b-4601-b10b-d69f784b896d" class="" dir="auto">2.5 Designation Types</h2><p id="09bb931d-ed3d-4d6b-b28a-8ce9d0c14c94" class="" dir="auto">Every employer contact stores two fields: <strong>Designation Type</strong> (fixed picklist) and <strong>Job Title</strong> (free text). A tooltip on the Designation Type field explains each option when a contact is added.</p><table id="dc552348-7e7f-4f60-88cf-f7745fbea490" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="f7f053ea-eccd-4a8e-b53d-333cd4d3f268" dir="ltr"><th id="|L:V" class="simple-table-header-color simple-table-header">Designation Type</th><th id="k^Bn" class="simple-table-header-color simple-table-header">Description</th><th id="lDvs" class="simple-table-header-color simple-table-header">Default comms</th></tr></thead><tbody><tr id="790b19bf-eef5-42cd-a024-c3049b1c7062" dir="ltr"><td id="|L:V" class=""><strong>Executive</strong></td><td id="k^Bn" class="">C-suite and senior leadership (e.g. CEO, MD, Director). Mailing list for awareness only — do not post jobs or manage events.</td><td id="lDvs" class="">Email Subscribers only</td></tr><tr id="cb1b86f1-faff-4349-b94b-ab7cd7d53330" dir="ltr"><td id="|L:V" class=""><strong>Talent Acquisition</strong></td><td id="k^Bn" class="">HR, recruiters, and hiring managers. Primary active portal users for job posting, application management, and event registration. Contacts with this designation may also be assigned as an Internship Supervisor for a student placement — in that capacity, they receive the time-limited assessment email link in addition to their standard platform access.</td><td id="lDvs" class="">Full notifications</td></tr><tr id="2821ee0b-238c-4603-a3e2-eacc057d58fd" dir="ltr"><td id="|L:V" class=""><strong>Supervisor</strong></td><td id="k^Bn" class="">Line managers with no other CSM role, overseeing students during placements. No platform account — access via time-limited email link for assessment submission only.</td><td id="lDvs" class="">Assessment email only</td></tr></tbody></table><p id="b9d41bd9-6faf-4fcb-b30e-271d7be60e39" class="" dir="auto"><em>Linear: SU-4487</em></p><h2 id="830e9d6a-db6f-4245-8797-2fa182b07a2e" class="" dir="auto">2.6 Industry Classification</h2><p id="167dccd9-5316-456e-bc31-63f10f8bf575" class="" dir="auto">Each company is assigned one industry from the <strong>NTU custom industry list</strong> (single-select, one-to-one). CAO Admins and Managers can create, edit, and manage this list (same pattern as the labels flow). The list can be uploaded via file to support other institutions. The <strong>ACRA industry field</strong> (from the government API on UEN lookup) is stored as a read-only field on the company record — it cannot be edited and is not linked to the NTU industry classification.</p><p id="15b339d7-0d83-4e9d-b32c-dbbe0e2b8481" class="" dir="auto"><em>Linear: SU-4487</em></p><h2 id="1fcd6a13-20d1-413a-85cd-353dc3f4a939" class="" dir="auto">2.7 Data Migration</h2><p id="7079ed61-f6fc-43c9-b818-789f462c6919" class="" dir="auto">A one-time migration of existing employer records from the legacy system (Symplicity / CareerHub) is required before go-live, covering company profiles, contact details, IRC assignments, and historical job posting records (relevant to the repost-from-history feature in Section 5.3). Migration is owned by Del and the technical team.</p><p id="edf2eab6-6988-41d0-b4c0-caa8fa881b64" class="" dir="auto"><em>Original Requirements: 6.1.1.35.3</em></p><h2 id="1d399da0-9389-46f1-b710-70b80321f3c3" class="" dir="auto">2.8 CAO Review Queue — Company Registrations</h2><p id="91c78c04-e200-4097-9b9b-d5ee384fef1a" class="" dir="auto">CAO Admins review incoming new company registrations (Section 2.2, Path B) in a dedicated Company Registrations queue, separate from the individual join-request queue (Path A).</p><p id="f1fba0dd-80a5-41cf-8db4-4bcac86666ae" class="" dir="auto"><strong>Queue:</strong> Lists every incoming request with company name, industry, assigned IRC/GE Manager, contact person, email, date registered, and days elapsed. Filterable by any column.</p><p id="05876bc2-0add-4bb3-ba2f-1a8148bcacda" class="" dir="auto"><strong>Review panel:</strong> Selecting a request opens a panel showing the submitted company details, contact details, and uploaded documents (business registration certificate, company profile, tax clearance certificate), each viewable and downloadable by the admin.</p><p id="c3915f3a-2942-4d87-90dd-300bfc70e048" class="" dir="auto"><strong>Status timeline:</strong> Each request shows a timeline of Application Received → Admin Review in Progress, followed by one of: More Information Requested → Information Provided (if the admin requests additional detail and the employer responds), or a final Approved/Rejected outcome.</p><p id="9bcd124e-26e0-4ab9-be66-9e0269bd594a" class="" dir="auto"><strong>Admin actions:</strong></p><ul id="a24649d0-21fd-452b-a3ea-07770178efee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Approve</strong> — triggers automatic IRC/GE Manager assignment by industry (Section 2.4 routing logic); the admin can override the auto-assigned IRC/GE Manager before confirming. Approval grants the employer account access to post job/internship listings, publish their public profile, and appear in the employer directory.</li></ul><ul id="8eabd220-e7f4-4647-a6b6-3445b306910b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Reject</strong> — requires a reason, which is included in the rejection email sent to the applicant.</li></ul><ul id="c63e45f8-288a-4756-a3f4-e213246a29ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Request More Information</strong> — requires a message, which is emailed to the applicant and logged in the timeline; the applicant&#x27;s response is likewise logged as an &quot;Information Provided&quot; entry.</li></ul><ul id="da0c9b3c-b9fe-4753-8747-2afb0e620083" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Change IRC</strong> — lets the admin reassign the primary IR consultant on an already-approved employer; the newly assigned IRC is notified by email and becomes the employer&#x27;s primary point of contact.</li></ul><p id="cbc50549-7223-4474-aa65-73e280b7be0e" class="" dir="auto"><em>Source: Linear SU-4431 · Original Requirements 6.1.1.35.2, 6.1.1.39.1</em></p><hr id="d901062f-70c3-4da1-b6b6-b641b699be61" dir="auto"/><h1 id="dc9ad7f4-36ec-4bfb-a8f3-e2e5d6c97304" class="" dir="auto">3. Company Profile</h1><h2 id="c633db4b-783c-49a3-820d-7c7e13681ee9" class="" dir="auto">3.1 Profile Setup</h2><p id="a4f62641-86a3-4437-a064-e6ff5765304f" class="" dir="auto">After setting their password, an employer contact must complete 2FA setup (AWS Cognito TOTP) before proceeding to their company profile. Required fields: company name (pre-filled), NTU industry classification, primary contact details. The NTU industry classification list is the same Admin-managed custom list described in Section 2.6. Optional fields: about section (rich text), social media links, additional office addresses (Employer Admin only — for multi-site companies; design pending, see SU-4752).</p><p id="f006d154-8a42-4381-8199-5c90f425e9ce" class="" dir="auto">Key Contacts require at least one contact with exactly one marked as primary. A company may have more than one Employer Admin account, with a minimum of one enforced at all times. Adding additional team members during onboarding is optional and can be skipped.</p><h2 id="2b5dd67b-6d22-491e-8173-e745b0a60237" class="" dir="auto">3.2 Company Portal Homepage</h2><p id="c5494cfe-b138-478f-8fb4-259591865d81" class="" dir="auto">Logged-in employers land on their company profile page. The page shows: about section, social media links, key contacts, active job listings block, and upcoming events block. The Employer Admin sidebar includes a &quot;Contacts&quot; navigation item; the Employer sidebar does not. For the Employer role, the Open Opportunities block includes a toggle between own listings and all company listings.</p><p id="c2b12be2-2177-4cfc-86ab-220910f5f097" class="" dir="auto">A <strong>&quot;View as Student&quot;</strong> preview mode lets employers see how their profile appears to students, using live data. All edit affordances are hidden in preview mode, and Desktop/Mobile view toggles are available.</p><h2 id="c1490b31-2c93-48c9-b0bd-23cce01efb95" class="" dir="auto">3.3 Editing the Company Profile</h2><blockquote id="eb7c917d-3a1f-4fc4-88a4-a58efcd01cd8" class="" dir="auto">⚠️ <strong>Open item:</strong> Confirm which company profile fields are locked vs editable after CAO approval. Owner: Joji/Myles, NTU CAO sign-off needed.</blockquote><table id="64a6aee1-8cd1-4624-b770-a034ce483c50" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="fdad2253-6d88-4e33-b911-6bc2ba1c6b1d" dir="ltr"><th id=":T`b" class="simple-table-header-color simple-table-header">Action</th><th id="e&lt;pC" class="simple-table-header-color simple-table-header">CAO Admin</th><th id="D{h&lt;" class="simple-table-header-color simple-table-header">CAO Manager</th><th id="crk@" class="simple-table-header-color simple-table-header">CAO Staff (IRC)</th><th id="_bpC" class="simple-table-header-color simple-table-header">Employer Admin</th><th id="o=Yd" class="simple-table-header-color simple-table-header">Employer</th></tr></thead><tbody><tr id="b36a2a84-eef9-47b5-af6a-e3f599022603" dir="ltr"><td id=":T`b" class="">Edit company profile (about, social links, addresses)</td><td id="e&lt;pC" class="">✅</td><td id="D{h&lt;" class="">✅</td><td id="crk@" class="">❌</td><td id="_bpC" class="">✅</td><td id="o=Yd" class="">❌</td></tr><tr id="1a2c727c-9f50-4d26-9e4f-dd554e61b61d" dir="ltr"><td id=":T`b" class="">Add/remove employer contacts</td><td id="e&lt;pC" class="">✅</td><td id="D{h&lt;" class="">✅</td><td id="crk@" class="">✅</td><td id="_bpC" class="">✅</td><td id="o=Yd" class="">❌</td></tr><tr id="8b52decd-1bb1-4cac-aea3-6fc36eb584c8" dir="ltr"><td id=":T`b" class="">Elevate a contact to Employer Admin</td><td id="e&lt;pC" class="">✅</td><td id="D{h&lt;" class="">✅</td><td id="crk@" class="">❌</td><td id="_bpC" class="">✅</td><td id="o=Yd" class="">❌</td></tr><tr id="3b00b97b-b766-4eb3-98b6-1a3a2ca38524" dir="ltr"><td id=":T`b" class="">Add additional office addresses</td><td id="e&lt;pC" class="">✅</td><td id="D{h&lt;" class="">✅</td><td id="crk@" class="">❌</td><td id="_bpC" class="">✅</td><td id="o=Yd" class="">❌</td></tr></tbody></table><p id="9e04d6f0-e987-44dc-83e0-33074ec17184" class="" dir="auto"><em>Linear: SU-4476</em></p><hr id="b97fd3bc-c923-4c07-8bcd-84c6c4e3fa05" dir="auto"/><h1 id="7cac60cd-1a7e-4a15-a462-4cf0420c699c" class="" dir="auto">4. Contact Management</h1><h2 id="1668c8f0-b3d0-49f0-b334-7e1268902fa5" class="" dir="auto">4.1 Contact Records</h2><p id="7722f4cc-760c-4726-801c-d294614bcaf6" class="" dir="auto">Each contact record stores: name, email, phone/office number, job title (free text), designation type, Email Subscribers only flag, and account status (Active/Deactivated). Contacts are filterable by designation type and industry in the CAO employer database view.</p><h2 id="a60b0e7e-8d62-4181-8e78-5ef78a686482" class="" dir="auto">4.2 Email Subscribers Flag</h2><p id="2fea7848-c187-4de7-be7a-3c14c5a17429" class="" dir="auto">Contacts marked <strong>Email Subscribers only</strong> receive email communications only and are excluded from in-platform notifications. Settable by CAO Staff and above, and by Employer Admin for their own company&#x27;s contacts. Executive designation type contacts default to this setting.</p><p id="7a784e43-a50a-4609-b080-3a088e6ad5bb" class="" dir="auto"><em>Linear: SU-4489</em></p><h2 id="0ce5bf7c-a80e-402d-bb3a-dcfb1ee956ce" class="" dir="auto">4.3 Auto-Deactivation</h2><p id="08df96e7-d2a0-49eb-8b43-5872befc3182" class="" dir="auto">Contacts inactive beyond a configurable threshold (X days/months, set by Admin) are automatically deactivated, with a warning email sent beforehand. Hard-bounce emails also trigger auto-deactivation. Deactivated contacts do not receive system communications and can be manually reactivated by CAO Admin or Manager.</p><p id="f373676f-f02d-4493-9bd4-ebe2e80377ed" class="" dir="auto"><em>Linear: SU-4485</em></p><h2 id="8193f85e-a778-4fe5-97dd-5a4e9e767cad" class="" dir="auto">4.4 Importing Non-Account Contacts</h2><p id="bce11f2e-ca77-4a96-8700-899eb85f5e0a" class="" dir="auto">Authorised users can add employer contacts who have no platform account — either manually one at a time or in bulk via CSV — for inclusion in mass email campaigns via the Communications module. Non-account contacts receive no platform login access and are available only in the Communications recipient picker.</p><p id="787aacaa-227a-439a-bf33-1bd047b17de6" class="" dir="auto"><strong>Manual entry:</strong> The contact form collects first name, last name, email (required), company, and notes. The company field does not require an existing platform record — new company names are accepted. For Singapore-registered companies, the field triggers a UEN lookup against ACRA and surfaces matching suggestions; if no match is found, the user can still proceed.</p><p id="8f9614f3-599f-4c37-a35e-16dde8f21821" class="" dir="auto"><strong>Bulk CSV upload:</strong> Follows the same all-or-nothing rule as SGCC bulk upload. If any row contains an error, the entire file is rejected and nothing is saved. On rejection, the user receives a downloadable error report — the original CSV with an &quot;Error&quot; column appended as the last column. The user corrects and re-uploads.</p><p id="48ceca31-3496-48a1-9001-151645c84a6d" class="" dir="auto">Access to this flow is controlled by RBAC permissions configured at the workspace level. Role restrictions must not be hardcoded.</p><p id="6719c340-30ac-494b-80c9-079a2248d483" class="" dir="auto"><em>Source: Linear SU-4488 · Original Requirements 6.1.1.41.1, 6.1.1.41.2</em></p><hr id="73185598-2f27-480c-82f8-c3ff41031395" dir="auto"/><h1 id="27166d99-3f74-4e76-9a32-6e491a66a2e9" class="" dir="auto">5. Job &amp; Internship Opportunities</h1><h2 id="066d9a4a-9319-4de4-811e-b46d83f158ea" class="" dir="auto">5.1 Jobs Listing Page</h2><p id="f6545e12-d41f-4316-a03b-d944f8464c9e" class="" dir="auto">Employers access their job and internship listings from a dedicated page in the Employer Portal, displayed as a table (100 rows per page). Table columns: job title, job type, campaign/internship period, status, posted date, close date, views, applications.</p><p id="1f883ab6-9779-4ad7-9846-4e8aa8dd3782" class="" dir="auto"><strong>Job type values:</strong> Internship (Credit-Bearing), Internship (Non-Credit-Bearing), Full-Time.</p><p id="c0cb6b50-5766-4741-9e12-4b7624855124" class="" dir="auto"><strong>Campaign/internship period</strong> (single-select): Summer, Special Term, Semester 1, Semester 2.</p><p id="59571e3b-d182-4445-968f-4d65aa905986" class="" dir="auto"><strong>Status values:</strong></p><table id="8d2b907f-2ee2-49df-992b-1f9e3ea265e8" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="e0e449d7-576e-45d8-9bea-f11a97fb7eb3" dir="ltr"><th id="wb;[" class="simple-table-header-color simple-table-header">Status</th><th id="dimY" class="simple-table-header-color simple-table-header">Description</th></tr></thead><tbody><tr id="2af2fcee-0fe9-469d-b134-fdd719e9f5d7" dir="ltr"><td id="wb;[" class=""><strong>Draft</strong></td><td id="dimY" class="">Created but not yet submitted for CAO approval.</td></tr><tr id="7e348951-9d18-4b3e-8e31-562ab3aa33ed" dir="ltr"><td id="wb;[" class=""><strong>Pending Approval</strong></td><td id="dimY" class="">Submitted to CAO and awaiting review.</td></tr><tr id="c91dda8a-6e6d-479a-b5e5-89df2823a01a" dir="ltr"><td id="wb;[" class=""><strong>Active</strong></td><td id="dimY" class="">Approved and published — open and collecting student applications.</td></tr><tr id="1b939dfb-8c62-41c7-b690-7515f0d74a97" dir="ltr"><td id="wb;[" class=""><strong>Closed</strong></td><td id="dimY" class="">Employers can choose to close when they have hired sufficiently for the position or decide to no longer hire.</td></tr><tr id="113edc3a-dc86-4c50-b54a-f9adaa12073f" dir="ltr"><td id="wb;[" class=""><strong>Cancelled</strong></td><td id="dimY" class="">Similar to a &#x27;delete&#x27; function where an employer no longer wishes for the job to be posted.</td></tr></tbody></table><p id="6c789d4a-2fdb-49d6-ac3e-595ddaa7ff98" class="" dir="auto">Employer Admin sees all company listings. Employer sees only their own postings by default, with a dropdown to show all other postings.</p><p id="ed147fc9-2dc0-483a-be3c-9b823784e904" class="" dir="auto"><em>Linear: SU-4477</em></p><h2 id="927e1b3a-3b88-45a6-89e4-9c75c065c167" class="" dir="auto">5.2 Job Detail Page</h2><p id="61ed44e7-4e80-4662-83c0-56455857ed25" class="" dir="auto">Each job listing has a detail page showing: job title, job type, salary range (SGD, can be a range), location, internship period, preferred schools and programmes, job description (rich text), and status badge. A <strong>&quot;View Applications&quot;</strong> CTA links to the application management view. Fields locked after CAO approval — exact list TBD (see open item below).</p><blockquote id="0554be12-f8a7-4cb9-9d1d-a239ba8cca90" class="" dir="auto">⚠️ <strong>Open item:</strong> Confirm which job posting fields are locked vs editable after CAO approval. Owner: Joji/Myles, NTU CAO sign-off needed. Related: SU-4478.</blockquote><table id="d6016c02-d8b1-44b6-8ab2-caedc5714801" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="be07362f-df0d-470d-aed1-e12e6447439e" dir="ltr"><th id="h&lt;BT" class="simple-table-header-color simple-table-header">Action</th><th id="k;hc" class="simple-table-header-color simple-table-header">CAO Admin</th><th id="ff[u" class="simple-table-header-color simple-table-header">CAO Manager</th><th id="g_dd" class="simple-table-header-color simple-table-header">CAO Staff (IRC)</th><th id="\g;u" class="simple-table-header-color simple-table-header">Employer Admin</th><th id="NVew" class="simple-table-header-color simple-table-header">Employer</th></tr></thead><tbody><tr id="271c4ac7-133d-4057-b0d6-7b3e3d3c6430" dir="ltr"><td id="h&lt;BT" class="">View job detail page</td><td id="k;hc" class="">✅</td><td id="ff[u" class="">✅</td><td id="g_dd" class="">✅</td><td id="\g;u" class="">✅</td><td id="NVew" class="">✅</td></tr><tr id="ed364987-02c4-45d4-a40c-8d3f82003225" dir="ltr"><td id="h&lt;BT" class="">Edit job listing (pre-approval)</td><td id="k;hc" class="">✅</td><td id="ff[u" class="">✅</td><td id="g_dd" class="">✅</td><td id="\g;u" class="">✅</td><td id="NVew" class="">✅</td></tr><tr id="7dbf2873-cc77-413a-b855-43c6ca01c2af" dir="ltr"><td id="h&lt;BT" class="">Edit job listing (post-approval, unlocked fields only)</td><td id="k;hc" class="">✅</td><td id="ff[u" class="">✅</td><td id="g_dd" class="">❌</td><td id="\g;u" class="">✅</td><td id="NVew" class="">✅</td></tr></tbody></table><p id="76d99727-bc70-47d1-84a3-29ce99a43fd8" class="" dir="auto"><em>Linear: SU-4478</em></p><h2 id="c67700bb-24db-44d6-af0d-36976efef07a" class="" dir="auto">5.3 Posting a New Job</h2><p id="10279972-f8c7-4cc2-97c8-c38d0be32438" class="" dir="auto">Employers can create a new job listing via three methods.</p><p id="b49629ec-11c9-4a8e-a173-8e54894a488e" class="" dir="auto"><strong>Method 1 — Bulk upload (PDF or Word):</strong> Upload up to 20 PDF or .docx files at once via drag-and-drop. Each file corresponds to one job listing. The system parses each document and pre-fills available fields; any field the parser could not populate shows a validation error. The employer reviews all uploaded jobs in a batch &quot;Review &amp; Edit Jobs&quot; screen — a sidebar lists every job (title, source filename, status) with a running completed/needs-review count. &quot;Submit All for Publication&quot; stays disabled until every job is complete. &quot;Continue Later&quot; exits the batch without submitting; unfinished jobs remain as individual Draft rows in the main Jobs table, each showing a &quot;Created via PDF, needs review&quot; banner when reopened. Employer sets Publish Date and Expiry per job before it counts as complete. Word (.docx) upload is in scope but not yet reflected in the current Figma design (PDF only) — see Open Items.</p><p id="0b728662-c4ba-475b-b7ef-37d89aab3720" class="" dir="auto"><strong>Method 2 — Manual entry:</strong> Employer fills in all job fields directly via a form. The fields shown adapt to the Job Type(s) selected — Duration appears only when an Internship type is checked, Start Date appears only when Full-time/Contract is checked, and Location switches to full address fields when Full-time is combined with an Internship type. Preferred Schools &amp; Programmes are AI-suggested with Accept All/Reject All controls. Employer sets Publish Date and Expiry at submission, then submits for CAO approval.</p><p id="497c6000-85bc-4b37-b5ee-fee5ce576818" class="" dir="auto"><strong>Method 3 — Duplicate from previous listing:</strong> Employer browses and selects up to 20 listings posted within the past 12 months, then reviews and edits each duplicated job individually (with autosave) before batch-submitting. Only job-content fields are copied from the original — Publish Date and Expiry must be set fresh per job. On the CAO admin side, duplicated listings are tagged as reposts; a &quot;no changes detected&quot; indicator for unedited duplicates is planned but not yet designed (see Open Items).</p><p id="cb93666c-52fb-4339-babf-297aa897857c" class="" dir="auto"><strong>Submission and approval flow (all methods):</strong></p><ol type="1" id="2543e27b-b1c3-4082-9ee9-a7465af06504" class="numbered-list" start="1" dir="auto"><li>Employer submits → confirmation email sent (message: log in to view status).</li></ol><ol type="1" id="bf0f3621-4adf-4ae6-886c-cda584776a6d" class="numbered-list" start="2" dir="auto"><li>CAO Staff (assigned IRC) reviews and may take one of three actions:</li></ol><ul id="ad860de3-4450-4076-abdb-a3ca141a2639" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Approve</strong> → listing is saved and employer is notified.</li></ul><ul id="9be9b609-3837-4dc8-a439-8092fddebe3c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Reject</strong> → CAO-typed rejection reason is visible to employer on login; listing is closed.</li></ul><ul id="1e694300-26e0-46f2-94d8-7bc1cee6c3da" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Request changes</strong> → IRC proposes specific field-level edits and returns the listing to the employer. Employer is notified by email.</li></ul><ol type="1" id="8c9fcbfc-f23b-4999-91b1-f4e94bfcf7e2" class="numbered-list" start="1" dir="auto"><li>On <strong>Request changes</strong>: the employer is shown a diff view comparing their original submission against the IRC&#x27;s proposed changes. The employer may accept the proposed changes, modify them further, or revert to their original values, then resubmit.</li></ol><ol type="1" id="b3eba7c5-8726-4a69-9943-4a2e54335561" class="numbered-list" start="2" dir="auto"><li>On resubmission after requested changes: the IRC is shown a three-way comparison — the original employer submission, the IRC&#x27;s proposed changes, and the employer&#x27;s actual resubmission — to facilitate a clear decision.</li></ol><ol type="1" id="a7a20c06-336d-48b2-b610-a0bbbdc406e8" class="numbered-list" start="3" dir="auto"><li>On approval → listing saved as Draft; employer must actively Publish.</li></ol><ol type="1" id="204212c1-36a5-4095-83f8-42bca0e8dbf2" class="numbered-list" start="4" dir="auto"><li>Employer chooses <strong>Publish Now</strong> (immediately live) or <strong>Publish Later</strong> (scheduled date/time).</li></ol><blockquote id="c9cf3cb9-9a00-4a51-9889-c2e886cded4f" class="" dir="auto">Steps 3–4 (Draft → employer-chosen Publish Now/Publish Later) describe the <strong>original</strong> spec and no longer apply to any of the three creation methods. All three (Bulk upload, Manual entry, Duplicate) now capture Publish Date and Expiry upfront at submission, before CAO review — the system auto-publishes at the stored Publish Date once approved, immediately if that date has already passed or on schedule if still in the future. See Conflicts Flagged for the correction history.</blockquote><blockquote id="0337e161-7fcb-4c81-92ee-1e521a7e48c9" class="" dir="auto">⚠️ <strong>Open item:</strong> IRC-only job posting approval needs to be enforced at system level — only the assigned IRC (or Manager/Admin) can approve a given company&#x27;s job postings. Not yet captured in Linear. Owner: Joji. Related: SU-4358, SU-4480, SU-4481.</blockquote><table id="bd1f1ecd-6697-4756-be34-fa1d87b81c07" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="d848d7e2-cdd8-44f8-a908-5b73e571e350" dir="ltr"><th id="cg=_" class="simple-table-header-color simple-table-header">Action</th><th id="~VYK" class="simple-table-header-color simple-table-header">CAO Admin</th><th id="CwOJ" class="simple-table-header-color simple-table-header">CAO Manager</th><th id="&gt;Kzh" class="simple-table-header-color simple-table-header">CAO Staff (IRC)</th><th id="kVx@" class="simple-table-header-color simple-table-header">Employer Admin</th><th id="Fbch" class="simple-table-header-color simple-table-header">Employer</th></tr></thead><tbody><tr id="ab5236fa-9e25-4fc0-972f-25dbf0378f9b" dir="ltr"><td id="cg=_" class="">Create and submit a job posting</td><td id="~VYK" class="">✅</td><td id="CwOJ" class="">✅</td><td id="&gt;Kzh" class="">✅</td><td id="kVx@" class="">✅</td><td id="Fbch" class="">✅</td></tr><tr id="70d3f252-1de3-4c36-b501-2204aa2dd622" dir="ltr"><td id="cg=_" class="">Approve/reject a job posting</td><td id="~VYK" class="">✅</td><td id="CwOJ" class="">✅</td><td id="&gt;Kzh" class="">✅ (assigned IRC only)</td><td id="kVx@" class="">❌</td><td id="Fbch" class="">❌</td></tr><tr id="8e579d1a-cf17-446a-b006-ccaefd6c4fea" dir="ltr"><td id="cg=_" class="">Request changes on a job posting</td><td id="~VYK" class="">✅</td><td id="CwOJ" class="">✅</td><td id="&gt;Kzh" class="">✅ (assigned IRC only)</td><td id="kVx@" class="">❌</td><td id="Fbch" class="">❌</td></tr><tr id="b489a31b-39ce-4bde-adeb-e8ca512f0833" dir="ltr"><td id="cg=_" class="">Publish an approved listing</td><td id="~VYK" class="">✅</td><td id="CwOJ" class="">✅</td><td id="&gt;Kzh" class="">❌</td><td id="kVx@" class="">✅</td><td id="Fbch" class="">✅</td></tr></tbody></table><p id="e4548d9b-fdf0-44c0-a84b-47bf08602917" class="" dir="auto"><em>This row is now superseded — none of the three creation methods have a separate manual Publish step; all auto-publish on approval per the stored Publish Date. Row retained for historical RBAC reference pending a decision on whether to remove it entirely.</em></p><p id="2b3d0a71-8317-4638-b0e2-b9ddb879137c" class="" dir="auto"><em>Linear: SU-4480, SU-4481, SU-4358</em></p><h2 id="8d2c2234-9eda-4ac8-abfe-291fe2d217a4" class="" dir="auto">5.4 Application Management</h2><p id="b4b7ff99-7bb1-4be8-94cc-6fce9c415d79" class="" dir="auto">From a job detail page, employers click <strong>&quot;View Applications&quot;</strong> to access the applicant table. Table columns: student name, school, programme, year of study, application date, status.</p><p id="56477a42-32d9-463b-ae2d-eda77b4ad303" class="" dir="auto"><strong>Application status values:</strong> Applied, Under Review, Rejected, Hired. Setting a student to Hired automatically sets the parent job listing status to Hired.</p><p id="f4e1f56b-9daa-4e4d-8cc7-98e2ffc05b1d" class="" dir="auto"><strong>Available actions per applicant:</strong> view resume (inline or modal), copy email to clipboard or send email via CSM comms module (employer chooses), and Download All Resumes (ZIP of all resumes for that listing).</p><table id="d4c902ee-4d70-4dc5-8179-caf8e0e82bb7" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="d3e3f657-33d7-469b-a7ac-368f2160eb68" dir="ltr"><th id="`KKq" class="simple-table-header-color simple-table-header">Action</th><th id="gfer" class="simple-table-header-color simple-table-header">CAO Admin</th><th id="IlVj" class="simple-table-header-color simple-table-header">CAO Manager</th><th id="L\:;" class="simple-table-header-color simple-table-header">CAO Staff (IRC)</th><th id="h_O`" class="simple-table-header-color simple-table-header">Employer Admin</th><th id="e@I[" class="simple-table-header-color simple-table-header">Employer</th></tr></thead><tbody><tr id="e3464d3b-2300-4be5-bbe3-acbdf66b83fe" dir="ltr"><td id="`KKq" class="">View application list</td><td id="gfer" class="">✅</td><td id="IlVj" class="">✅</td><td id="L\:;" class="">✅</td><td id="h_O`" class="">✅</td><td id="e@I[" class="">✅ (own listings)</td></tr><tr id="5728d39e-29a4-4f24-868b-26fe5f156eaf" dir="ltr"><td id="`KKq" class="">Update application status</td><td id="gfer" class="">✅</td><td id="IlVj" class="">✅</td><td id="L\:;" class="">❌</td><td id="h_O`" class="">✅</td><td id="e@I[" class="">✅ (own listings)</td></tr><tr id="e51cb954-bb1a-4f03-88e2-420e096bfc83" dir="ltr"><td id="`KKq" class="">Download all resumes (ZIP)</td><td id="gfer" class="">✅</td><td id="IlVj" class="">✅</td><td id="L\:;" class="">✅</td><td id="h_O`" class="">✅</td><td id="e@I[" class="">✅ (own listings)</td></tr></tbody></table><p id="3d426c07-29e7-4fdd-8b0e-76c4cf02a13e" class="" dir="auto"><em>Linear: SU-4479</em></p><h2 id="bd4f5d5d-519a-49de-b620-12872f95689b" class="" dir="auto">5.5 Student Hiring &amp; Placement Confirmation</h2><p id="6da669d1-2aeb-46f2-862b-445e3e92884c" class="" dir="auto">When an employer sets a student&#x27;s application status to <strong>Hired</strong>, the following workflow is triggered:</p><ol type="1" id="bef1480f-4890-4bd3-b549-eb81feca24c9" class="numbered-list" start="1" dir="auto"><li><strong>Student notification:</strong> The student is notified by the system that they have been selected for the position.</li></ol><ol type="1" id="def94e5d-f3d1-4dd6-98f4-13a5ea2b8b03" class="numbered-list" start="2" dir="auto"><li><strong>Document submission:</strong> The student is required to submit relevant documents for placement confirmation. These are routed to their <strong>school/faculty</strong> and to <strong>CAO</strong> for review and approval.</li></ol><ol type="1" id="843796dd-be18-4fd8-bb64-3277ab0f81b0" class="numbered-list" start="3" dir="auto"><li><strong>Placement confirmation:</strong> Once all parties have confirmed the placement, the system auto-generates a <strong>placement letter</strong> for the student.</li></ol><ol type="1" id="ad43f448-ddfd-46dd-a3f3-4e88ce6b8233" class="numbered-list" start="4" dir="auto"><li><strong>Faculty Supervisor assignment:</strong> A faculty supervisor from the student&#x27;s school is assigned to oversee the placement. This assignment is made by CAO within CSM. The faculty supervisor has restricted access to CSM — they can view only their own supervisees&#x27; internship details (company, duration) and assessments submitted by the employer supervisor, and can submit their own independent assessment of the student. They cannot access any other part of the platform. A dedicated RBAC structure for this role is pending and will be defined in Phase 4.</li></ol><ol type="1" id="6590a929-0713-4628-9f34-9b7e8b1a34f3" class="numbered-list" start="5" dir="auto"><li><strong>Employer Supervisor assignment:</strong> The employer is prompted to assign an Internship Supervisor from their company. The employer uploads the supervisor&#x27;s contact details (name, email, phone/office number). CAO and the faculty supervisor can view the assigned employer supervisor&#x27;s details from the placement record.</li></ol><blockquote id="8dd77b25-23b7-4f58-b195-fd57439443e9" class="" dir="auto">⚠️ <strong>Note:</strong> This workflow applies primarily to credit-bearing internships. Applicability to non-credit-bearing internships to be confirmed with CAO.</blockquote><blockquote id="6d6910ac-a3b3-4664-a176-10ac802abdcd" class="" dir="auto">⚠️ <strong>Open item:</strong> Faculty Supervisor RBAC structure to be defined in Phase 4. Interim: Faculty Supervisors use the Staff role scoped to own supervisees. Owner: Joji.</blockquote><p id="a175c435-92ce-4d2c-a551-530a48bf771f" class="" dir="auto"><em>Linear: To be created (CP5 — Internship module)</em></p><hr id="9b82edfd-47b8-4c32-8171-3dddc3ac11c2" dir="auto"/><h1 id="d6be22a9-44ae-4613-89aa-0b7ad25e342e" class="" dir="auto">6. Events</h1><h2 id="155c572f-f454-4bd0-9f89-093a0bf298c2" class="" dir="auto">6.1 Viewing CAO-Organised Events</h2><p id="0fae3db1-d131-45ae-a7d2-fc837a99d45b" class="" dir="auto">Employers can view upcoming CAO-organised events (career fairs, roadshows, recruitment talks) from a dedicated events listing page. Table columns: event name, event type, date, status (Open, Registered, Closed). Each row links to an event detail page. Open events show a <strong>&quot;Request to Join&quot;</strong> CTA that connects to the career fair registration flow (SU-4361). Registered events show confirmed participation. Table filterable by event type and date range. Employers cannot edit or cancel confirmed events — change requests must be routed to CAO.</p><p id="36e32944-c09e-4c61-9385-388dfd3a273c" class="" dir="auto"><em>Linear: SU-4482, SU-4361</em></p><h2 id="a35926c3-b3c0-4718-a15c-0bc9170077a5" class="" dir="auto">6.2 Employer-Created Events</h2><p id="13cf2268-9092-406c-a6a4-1228148788d0" class="" dir="auto">Employers can create their own on-campus or off-campus events. All employer-created events require CAO approval before appearing in the student portal.</p><p id="bc2693fa-e0e0-40d3-95ba-be933f0f1e22" class="" dir="auto"><strong>Event creation form fields:</strong> Event name, event type, on-campus/off-campus toggle, description, up to 3 preferred date options, venue (on-campus: from CAO venue list; off-campus: free text), estimated attendance, logistics requirements. Employer saves as draft before submitting.</p><p id="2644f186-ee4a-4c33-ba5e-a70877b95bfa" class="" dir="auto"><strong>On-campus vs off-campus:</strong> On-campus events are flagged for venue booking review by CAO. Off-campus events are tagged as &quot;Off-Campus&quot; in the CAO admin view to indicate lighter vetting is required.</p><p id="3c6a2c26-b666-44a1-a2ce-655e5fd9db2d" class="" dir="auto"><strong>Employer event workflow status (visible to employer):</strong> Requested → Approved → Waiting for Requirements → Live/Published.</p><p id="fd83c6a5-449f-4ea7-8830-100bc94d8fc7" class="" dir="auto"><strong>Post-approval:</strong> Approved events are published to the student portal. Employers cannot edit or cancel after approval — they must submit a withdrawal request to CAO. System sends automated reminders to employer to complete any missing information prior to the event. Employer can view registrant count and attendance (CAO-configurable visibility — on by default).</p><table id="26fc77fa-c8b9-4c42-9ead-91c4c724adee" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="4bf72aa6-5648-408b-a349-12eee3980c17" dir="ltr"><th id="OSP?" class="simple-table-header-color simple-table-header">Action</th><th id="A^rU" class="simple-table-header-color simple-table-header">CAO Admin</th><th id="L&gt;fK" class="simple-table-header-color simple-table-header">CAO Manager</th><th id="{ELu" class="simple-table-header-color simple-table-header">CAO Staff (IRC)</th><th id="Z]?J" class="simple-table-header-color simple-table-header">Employer Admin</th><th id=":eSx" class="simple-table-header-color simple-table-header">Employer</th></tr></thead><tbody><tr id="f9bbbb9a-1f0f-4344-a88a-a717a8e6c386" dir="ltr"><td id="OSP?" class="">Create and submit an event for approval</td><td id="A^rU" class="">✅</td><td id="L&gt;fK" class="">✅</td><td id="{ELu" class="">✅</td><td id="Z]?J" class="">✅</td><td id=":eSx" class="">✅</td></tr><tr id="f58a1908-1f83-4960-8e67-1334f78f8a6b" dir="ltr"><td id="OSP?" class="">Approve/reject employer-created events</td><td id="A^rU" class="">✅</td><td id="L&gt;fK" class="">✅</td><td id="{ELu" class="">✅</td><td id="Z]?J" class="">❌</td><td id=":eSx" class="">❌</td></tr><tr id="92848179-9a45-4fa2-bccb-d8e70699767c" dir="ltr"><td id="OSP?" class="">Register for a CAO-organised event</td><td id="A^rU" class="">N/A</td><td id="L&gt;fK" class="">N/A</td><td id="{ELu" class="">N/A</td><td id="Z]?J" class="">✅</td><td id=":eSx" class="">✅</td></tr><tr id="baf1c34e-f4bd-4e12-81d9-e5ba4a2646ff" dir="ltr"><td id="OSP?" class="">View registrant count and attendance</td><td id="A^rU" class="">✅</td><td id="L&gt;fK" class="">✅</td><td id="{ELu" class="">✅</td><td id="Z]?J" class="">✅ (configurable)</td><td id=":eSx" class="">✅ (configurable)</td></tr></tbody></table><p id="2807e5ba-a4f8-40b2-8ec8-1876f4b55e15" class="" dir="auto"><em>Linear: SU-4483, SU-4360, SU-4361</em></p><hr id="ee3c5f19-0540-429b-8b8b-81da3c78a93d" dir="auto"/><h1 id="be6696ad-2827-4805-9eaf-9a3aab49d479" class="" dir="auto">7. Internship Supervisor Access</h1><p id="e513631f-5804-45b7-8e78-8903f0ea9c14" class="" dir="auto">Internship Supervisors are not platform account holders. When a student assessment is required, the system sends an automated email to the assigned Internship Supervisor with a unique, time-limited access link. Clicking the link takes the supervisor directly to the assessment form for that specific student — no login or account creation required. Once the form is submitted, the link expires. Supervisors have no persistent access to the platform.</p><p id="86364535-a7b0-4151-ab94-8d985b2d52c8" class="" dir="auto">Full workflow documentation for the Internship Supervisor assessment flow will be included in the Internship module documentation (Phase 4).</p><p id="ce4294e7-7003-488c-a418-1db226be6860" class="" dir="auto"><em>Linear: SU-4476, SU-4487</em></p><hr id="1f89f105-2ec4-4bea-acdc-7ee12eaf5743" dir="auto"/><h1 id="d32b9d7a-05e4-4ec2-93cb-6c9de12ca730" class="" dir="auto">8. Employer Tracker &amp; Reporting</h1><h2 id="b0a96c3d-b34d-4fbe-9881-02a1bfacc79b" class="" dir="auto">8.1 Employer Tracker Dashboard</h2><p id="863cd9ca-199a-4837-8874-fbceba310bf6" class="" dir="auto">CAO Staff (IRCs), Managers, and Admins can access the employer tracker dashboard. Metrics include: opportunities posted by company, placements made, AWO ratings and comments, current students on internship per company, past interns, and graduating student interest-to-hire flags (3-month and 6-month horizon).</p><table id="86d37449-8411-452d-8402-4fd49ebc29af" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="9b88e544-8267-47fc-ab0b-d9f0d07319e6" dir="ltr"><th id="y{_I" class="simple-table-header-color simple-table-header">Action</th><th id="?zUX" class="simple-table-header-color simple-table-header">CAO Admin</th><th id="H&gt;A;" class="simple-table-header-color simple-table-header">CAO Manager</th><th id="}Orv" class="simple-table-header-color simple-table-header">CAO Staff (IRC)</th><th id="W@F;" class="simple-table-header-color simple-table-header">Employer Admin</th><th id="BFAa" class="simple-table-header-color simple-table-header">Employer</th></tr></thead><tbody><tr id="23a88e49-31fb-4054-ac52-b5dba5eb6495" dir="ltr"><td id="y{_I" class="">View employer tracker dashboard</td><td id="?zUX" class="">✅</td><td id="H&gt;A;" class="">✅</td><td id="}Orv" class="">✅</td><td id="W@F;" class="">❌</td><td id="BFAa" class="">❌</td></tr></tbody></table><p id="476f4cb3-da92-49d3-9aea-b3f72decd909" class="" dir="auto"><em>Linear: SU-4363, SU-4486</em></p><h2 id="8d7aa2cc-243f-41dd-8a43-c22450fdeb31" class="" dir="auto">8.2 Employer Status Report</h2><p id="9116c90d-6f53-4c09-a8da-57b35e0065b8" class="" dir="auto">CAO Admins and Managers can view, filter, search, and export a report of all employer companies by status, for operational monitoring and compliance purposes. Accessed from the Employer module&#x27;s Company section. Access permissions are configured via the RBAC module.</p><p id="1eb24947-f808-4033-be6b-1d23ba5e0858" class="" dir="auto"><strong>Table view (in-app):</strong> A table lists every company with Company Name, UEN/ID, Industry, Main Contact, IRC, Status, Status Since, and Last Active. Summary tiles above the table show a running count for Total Companies and each status. The list is filterable by one or more statuses and by a date range on Status Since, and searchable by company name.</p><p id="21940610-af8e-4e18-bc5b-04438375eca5" class="" dir="auto"><strong>Status values:</strong> Active, Inactive, Rejected, Blacklisted, Pending Review. A company automatically moves to Inactive after 2 years with no recorded activity.</p><p id="f5295b5f-1868-4ff1-adc9-09e4d5f3835b" class="" dir="auto"><strong>CSV export — Employer Status Report:</strong></p><p id="de380dad-3f5c-4e0d-9a5f-db273bde35a1" class="" dir="auto">UTF-8, comma-delimited. Fields containing commas are double-quoted. Empty cells (e.g. Last Active for companies with no activity) are left blank. The export reflects whatever filters and search term are currently applied on screen.</p><p id="831f1f1c-f721-4306-b109-df5ed8cfdc8f" class="" dir="auto"><strong>Suggested filename</strong>: <code>employer-status-report_all-companies_2026-07-01.csv</code></p><p id="ce8226e5-4b5f-48f0-b99a-c43eadd03873" class="" dir="auto"><strong>Column order</strong>:</p><table id="4a6b3c3b-1057-4b13-af19-641dc59852e8" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="835b1ad6-9dea-4259-a575-5c34cd336fbb" dir="ltr"><th id="vRaj" class="simple-table-header-color simple-table-header">#</th><th id="dAxH" class="simple-table-header-color simple-table-header">Column Name</th><th id="&gt;ggU" class="simple-table-header-color simple-table-header">Value Example</th><th id="]Vih" class="simple-table-header-color simple-table-header">Source</th></tr></thead><tbody><tr id="d3af5a50-4fcf-4781-a3bb-224abe2ddcfa" dir="ltr"><td id="vRaj" class="">1</td><td id="dAxH" class="">Company Name</td><td id="&gt;ggU" class="">Acme Innovations Ltd</td><td id="]Vih" class="">Company profile record</td></tr><tr id="f2400059-c462-4032-a64c-1ce385e1dce9" dir="ltr"><td id="vRaj" class="">2</td><td id="dAxH" class="">UEN / ID</td><td id="&gt;ggU" class="">202324350H</td><td id="]Vih" class="">Company profile record (ACRA UEN or overseas ID)</td></tr><tr id="19d61253-f229-4569-9aee-8641d33010ce" dir="ltr"><td id="vRaj" class="">3</td><td id="dAxH" class="">Industry</td><td id="&gt;ggU" class="">Tech Innovations</td><td id="]Vih" class="">NTU industry classification (Section 2.6)</td></tr><tr id="beb4ac26-19a3-4737-a3bf-12707397d867" dir="ltr"><td id="vRaj" class="">4</td><td id="dAxH" class="">Main Contact</td><td id="&gt;ggU" class="">Jasmine Tan</td><td id="]Vih" class="">Company contact record</td></tr><tr id="e2fc0965-2a09-4c03-b9bc-9ea3d2912827" dir="ltr"><td id="vRaj" class="">5</td><td id="dAxH" class="">IRC</td><td id="&gt;ggU" class="">Jasmine Tan</td><td id="]Vih" class="">Assigned IRC (Section 2.4)</td></tr><tr id="f6f8c1aa-df87-4b66-8680-becfe8be4224" dir="ltr"><td id="vRaj" class="">6</td><td id="dAxH" class="">Status</td><td id="&gt;ggU" class="">Active</td><td id="]Vih" class="">Company status field</td></tr><tr id="7ac10af5-0e2e-4d62-8508-122783200e5f" dir="ltr"><td id="vRaj" class="">7</td><td id="dAxH" class="">Status Since</td><td id="&gt;ggU" class="">12/05/26, 03:15pm</td><td id="]Vih" class="">System (timestamp of last status change)</td></tr><tr id="61c174de-948b-4b42-81a0-8fd4bb63df2f" dir="ltr"><td id="vRaj" class="">8</td><td id="dAxH" class="">Last Active</td><td id="&gt;ggU" class="">12/05/26, 03:15pm — blank if none</td><td id="]Vih" class="">System (last recorded platform activity)</td></tr></tbody></table><p id="cf796b3b-69b1-4182-8f0e-cee1d7dff3ea" class="" dir="auto"><em>Source: Linear SU-4490 · Original Requirements 6.1.2.1.2.a</em></p><h2 id="feb90022-77f8-4f27-a22f-3e4fbce31b18" class="" dir="auto">8.3 Analytics Segmentation</h2><p id="f0fe1604-de34-4724-b744-cb31d0ac1049" class="" dir="auto">CAO can segment employer contacts by designation type and NTU industry for reporting and form targeting. Segmentation attributes are included in all employer report exports.</p><p id="c2d38508-769e-48dd-97b0-6e3f0dbd0e3b" class="" dir="auto"><em>Linear: SU-4487</em></p><hr id="fff26dee-048d-40d7-9d02-756dea14b39e" dir="auto"/><h1 id="ec8e6d18-4796-4fb7-b8e3-f980b32fcb1c" class="" dir="auto">9. Employer Blacklist &amp; Access Restriction</h1><p id="7b0345e4-b560-4c34-805f-c4e69ba76f1a" class="" dir="auto">CAO Admins and Managers can restrict an employer&#x27;s access to specific platform modules for a configurable period. Blacklisted employers can still log in but restricted functions are disabled with a visible prompt. Restrictions can be lifted manually or auto-lift at the end of the configured period.</p><table id="c56f9832-0cb5-46ba-aedc-187e0ff071ce" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="aa1e13f5-4ace-4849-b13c-91651a5c8793" dir="ltr"><th id="FXDq" class="simple-table-header-color simple-table-header">Action</th><th id="_iFD" class="simple-table-header-color simple-table-header">CAO Admin</th><th id="hVUx" class="simple-table-header-color simple-table-header">CAO Manager</th><th id="h_Yd" class="simple-table-header-color simple-table-header">CAO Staff (IRC)</th><th id="IiEQ" class="simple-table-header-color simple-table-header">Employer Admin</th><th id="zaKB" class="simple-table-header-color simple-table-header">Employer</th></tr></thead><tbody><tr id="a2ce900b-e6f4-45a1-bdd8-3c89b13bef8a" dir="ltr"><td id="FXDq" class="">Blacklist or watchlist an employer</td><td id="_iFD" class="">✅</td><td id="hVUx" class="">✅</td><td id="h_Yd" class="">❌</td><td id="IiEQ" class="">❌</td><td id="zaKB" class="">❌</td></tr><tr id="2a7c1136-cd4c-4a6f-8118-78ebae4a3dbc" dir="ltr"><td id="FXDq" class="">Lift a blacklist restriction</td><td id="_iFD" class="">✅</td><td id="hVUx" class="">✅</td><td id="h_Yd" class="">❌</td><td id="IiEQ" class="">❌</td><td id="zaKB" class="">❌</td></tr></tbody></table><p id="461a058e-54a5-4e0a-8410-f2c80b90ca7b" class="" dir="auto"><em>Linear: SU-4484</em></p><hr id="3a7af2cb-a422-4850-8a18-fd7e6e720697" dir="auto"/><h1 id="2b69ad96-d466-4009-83d4-80db33b2b234" class="" dir="auto">10. Bulk Operations</h1><p id="1978fd90-e585-4019-a5bb-ae018e9a451b" class="" dir="auto">CAO Admins and Managers can perform bulk operations on the employer database. Restricted to Admins and Managers only.</p><ul id="299fed1a-af2b-4384-b8af-6c8a037fefff" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bulk employer search:</strong> Upload an Excel file with UEN numbers or email contacts to search and return matching employer records.</li></ul><ul id="2b3473e4-11e6-45fc-9a22-8b96e0a11445" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bulk label assignment:</strong> CAO can create labels and assign them to employers based on attributes such as industry or company size. Label management follows the same pattern as the Labels function used elsewhere in the platform. Admins and Managers can search for employers meeting specific criteria and add or remove labels for the selected group in bulk.</li></ul><table id="18f9cdee-1fea-48c5-8e10-a7fc42d98308" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="062749b1-de56-46c2-9ce5-bbdef2321bd0" dir="ltr"><th id="IIqk" class="simple-table-header-color simple-table-header">Action</th><th id="mZc&gt;" class="simple-table-header-color simple-table-header">CAO Admin</th><th id="eSc@" class="simple-table-header-color simple-table-header">CAO Manager</th><th id="?^BT" class="simple-table-header-color simple-table-header">CAO Staff (IRC)</th><th id="Z}a_" class="simple-table-header-color simple-table-header">Employer Admin</th><th id="w`;c" class="simple-table-header-color simple-table-header">Employer</th></tr></thead><tbody><tr id="f2b16c76-bdac-4aa2-90e3-fbe30ed43bfc" dir="ltr"><td id="IIqk" class="">Bulk search and label assignment</td><td id="mZc&gt;" class="">✅</td><td id="eSc@" class="">✅</td><td id="?^BT" class="">❌</td><td id="Z}a_" class="">❌</td><td id="w`;c" class="">❌</td></tr></tbody></table><p id="d48f97e5-ea7f-4a84-b964-898787d3fee7" class="" dir="auto"><em>Linear: SU-4362</em></p><hr id="c15d01c5-30fd-4362-a07c-ee209bb6f15c" dir="auto"/><h1 id="7dc441a0-15c6-40b8-b85e-739ae7464314" class="" dir="auto">11. Open Items</h1><table id="530c10f5-5a8c-4b0b-82fc-70a0782d6fc0" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="745ffcf0-385d-4d77-98a5-4fc05b4d1dcf" dir="ltr"><th id="bN^U" class="simple-table-header-color simple-table-header">#</th><th id="{=qa" class="simple-table-header-color simple-table-header">Item</th><th id="M~tX" class="simple-table-header-color simple-table-header">Owner</th><th id="Qw&lt;I" class="simple-table-header-color simple-table-header">Status</th></tr></thead><tbody><tr id="1a712c47-0717-494a-8403-c36a23c20b19" dir="ltr"><td id="bN^U" class="">1</td><td id="{=qa" class="">✅ Approval routing rules resolved — two-dimensional routing by HR team location + primary hiring market. Documented in Section 2.4. Related: SU-4474, SU-4431, SU-4498.</td><td id="M~tX" class="">Joji</td><td id="Qw&lt;I" class="">✅ Resolved</td></tr><tr id="35c2f012-2004-4bdf-8881-3fc265d2d102" dir="ltr"><td id="bN^U" class="">2</td><td id="{=qa" class="">✅ IRC assignment rules resolved — auto-assigned by industry; Secondary IRC manually updatable. Documented in Section 2.4. Related: SU-4356.</td><td id="M~tX" class="">Joji</td><td id="Qw&lt;I" class="">✅ Resolved</td></tr><tr id="8daa3699-f7bc-48e8-bd5e-1692c1f1bf29" dir="ltr"><td id="bN^U" class="">3</td><td id="{=qa" class="">Job posting fields locked vs editable after CAO approval — NTU CAO sign-off needed. Related: SU-4478.</td><td id="M~tX" class="">Joji / Myles</td><td id="Qw&lt;I" class="">🔲 Pending</td></tr><tr id="057258bd-d81f-485b-b9c1-1f3940634c1d" dir="ltr"><td id="bN^U" class="">4</td><td id="{=qa" class="">Company profile fields locked vs editable after CAO approval — NTU CAO sign-off needed. Related: SU-4476.</td><td id="M~tX" class="">Joji / Myles</td><td id="Qw&lt;I" class="">🔲 Pending</td></tr><tr id="ba8cb418-1438-44a0-a7a3-db5d252326e9" dir="ltr"><td id="bN^U" class="">5</td><td id="{=qa" class="">IRC-only job posting approval to be enforced at system level. Related: SU-4358, SU-4480.</td><td id="M~tX" class="">Joji</td><td id="Qw&lt;I" class="">🔲 Pending</td></tr><tr id="129ab159-895e-4366-b044-4507728eaa74" dir="ltr"><td id="bN^U" class="">6</td><td id="{=qa" class="">Events routing by student level (UG, PGC, PGR) involves named individuals (Jamie, Corlene, Jia Chi). Confirm which configurable roles these map to in the system. To be raised in discovery.</td><td id="M~tX" class="">Joji</td><td id="Qw&lt;I" class="">🔲 Pending</td></tr><tr id="62d612d0-1cfd-4203-b2b2-264c74fed034" dir="ltr"><td id="bN^U" class="">7</td><td id="{=qa" class="">GE manager list by region/country — confirm who maintains this list and what the initial setup looks like.</td><td id="M~tX" class="">Joji</td><td id="Qw&lt;I" class="">🔲 Pending</td></tr><tr id="eafb0ba7-5c11-430a-ab80-cad57e15b0f4" dir="ltr"><td id="bN^U" class="">8</td><td id="{=qa" class="">CB internship approvals by the Internship team — Phase 4 scope. Details to be confirmed after discovery. Related: new CP5 issue (pending creation).</td><td id="M~tX" class="">Joji</td><td id="Qw&lt;I" class="">🔲 Pending (Phase 4)</td></tr><tr id="70c2d7ef-13ef-4d9f-9fdf-b85f494bf765" dir="ltr"><td id="bN^U" class="">9</td><td id="{=qa" class="">Confirm with CAO whether migrated job postings should be placed directly into Active status or routed through the standard CAO approval queue before publishing.</td><td id="M~tX" class="">Joji</td><td id="Qw&lt;I" class="">🔲 Pending</td></tr><tr id="7d4a35fe-1f7e-4f46-84fc-46c9e16a3794" dir="ltr"><td id="bN^U" class="">10</td><td id="{=qa" class="">Confirm with NTU whether the Internship team has any role in approving company accounts for credit-bearing internship purposes, or whether their involvement is limited to job posting review only.</td><td id="M~tX" class="">Joji</td><td id="Qw&lt;I" class="">🔲 Pending</td></tr><tr id="99ccfef1-0fda-4138-8233-e6ba0c52f8bc" dir="ltr"><td id="bN^U" class="">11</td><td id="{=qa" class="">Faculty Supervisor RBAC structure to be defined in Phase 4. Interim: Faculty Supervisors use the Staff role scoped to own supervisees.</td><td id="M~tX" class="">Joji</td><td id="Qw&lt;I" class="">🔲 Pending (Phase 4)</td></tr><tr id="26422df0-afdf-4827-8d8a-af0ef586db4b" dir="ltr"><td id="bN^U" class="">12</td><td id="{=qa" class="">CAO admin review queue needs a &quot;no changes detected&quot; indicator for duplicated job listings with no edits from the original, plus a visible repost tag. Not covered by current Figma designs. Related: SU-4481.</td><td id="M~tX" class="">Joji</td><td id="Qw&lt;I" class="">🔲 Pending</td></tr><tr id="d075d304-ec46-44ae-9cdf-7f9ee5d5ce60" dir="ltr"><td id="bN^U" class="">13</td><td id="{=qa" class="">Word (.docx) upload path for bulk job posting is in scope per requirements but not yet reflected in Figma — current design covers PDF only. Design update pending. Related: SU-4480.</td><td id="M~tX" class="">Vetrick / Joji</td><td id="Qw&lt;I" class="">🔲 Pending</td></tr><tr id="070b1f2a-0055-4147-bdf5-719f1303ed54" dir="ltr"><td id="bN^U" class="">14</td><td id="{=qa" class="">Multi-site address management (Employer Admin only) has no design yet — new task created (SU-4752), assigned to Vetrick.</td><td id="M~tX" class="">Joji / Vetrick</td><td id="Qw&lt;I" class="">🔲 Pending</td></tr><tr id="121f690d-7294-413e-a769-9825754f50f0" dir="ltr"><td id="bN^U" class="">15</td><td id="{=qa" class="">Confirm whether Path A (join request to an existing company) also defers password setup to post-approval, or whether it differs from Path B&#x27;s SU-4474 flow.</td><td id="M~tX" class="">Joji</td><td id="Qw&lt;I" class="">🔲 Pending</td></tr></tbody></table><hr id="f7b95dec-a9fc-470d-badb-8282c4487893" dir="auto"/><h1 id="5e3ba2f1-582a-4008-a736-daa681a86022" class="" dir="auto">12. Requirements Traceability</h1><table id="9bb50749-3d2c-401f-a3ad-77bbaf1be5c0" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="a42b2faa-4310-42a0-b421-8ba07f47f4e6" dir="ltr"><th id="@Zo&gt;" class="simple-table-header-color simple-table-header">Req Ref</th><th id="e;JQ" class="simple-table-header-color simple-table-header">Description</th><th id="znT[" class="simple-table-header-color simple-table-header">Section</th></tr></thead><tbody><tr id="26577d84-acbb-44bd-b31e-e07fc0ed7cda" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.1.1</td><td id="e;JQ" class="">Employer Account Workflow process map</td><td id="znT[" class="">2</td></tr><tr id="43eafb15-f119-400b-b140-9f146b7fa5ad" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.9.1</td><td id="e;JQ" class="">Blacklist/Watchlist for employers</td><td id="znT[" class="">9</td></tr><tr id="f6fdc954-6c5b-4b24-9d74-7a9414236503" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.35.1–35.9</td><td id="e;JQ" class="">Employer access, profile, job posting, approval</td><td id="znT[" class="">2, 3, 5</td></tr><tr id="e61938ee-f817-4213-8f42-3c9e0ba7cde8" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.36.1–36.11</td><td id="e;JQ" class="">Employer requests for recruitment talks/roadshows</td><td id="znT[" class="">6.2</td></tr><tr id="d22d9bb2-5f24-4a85-8092-649b8fc0e148" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.37.1–37.7</td><td id="e;JQ" class="">Employer registration for career fairs</td><td id="znT[" class="">6.1</td></tr><tr id="e8d29dd1-c508-4380-9985-b05a752947df" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.38.1</td><td id="e;JQ" class="">Mobile-friendly employer portal</td><td id="znT[" class="">3.2</td></tr><tr id="a179a998-6b45-4ef9-a975-d81bd2404a42" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.39.1</td><td id="e;JQ" class="">Auto-assign IRC on registration</td><td id="znT[" class="">2.4</td></tr><tr id="e54e0d33-83fd-405b-a1d8-3d988200cd7d" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.40.1</td><td id="e;JQ" class="">Mandatory industry field on registration</td><td id="znT[" class="">2.6</td></tr><tr id="c97993c3-d6dc-4e4b-ae26-65bc981471ca" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.41.1–41.2</td><td id="e;JQ" class="">Import non-account contacts for mass email</td><td id="znT[" class="">4.4</td></tr><tr id="e2039331-f73e-4708-a7fd-5d09b915d8da" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.42.1</td><td id="e;JQ" class="">Bulk labelling of employers</td><td id="znT[" class="">10</td></tr><tr id="095512e0-5629-4fae-8b68-c430df3b401e" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.43.1</td><td id="e;JQ" class="">Bulk searching of employers</td><td id="znT[" class="">10</td></tr><tr id="75af638a-3c3e-4053-a05b-e1df4b23e1f9" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.44.1</td><td id="e;JQ" class="">Employer event registration form submission</td><td id="znT[" class="">6.1</td></tr><tr id="9c245444-393c-49d6-ad51-3c1674399168" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.45.1</td><td id="e;JQ" class="">Email Subscribers only flag for contacts</td><td id="znT[" class="">4.2</td></tr><tr id="88b790b0-d040-4d9f-b9db-dd933c3ae542" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.46.1</td><td id="e;JQ" class="">Auto-deactivation of inactive contacts</td><td id="znT[" class="">4.3</td></tr><tr id="dbe9d931-a3dc-454d-bee3-1e1870e284c7" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.47.1</td><td id="e;JQ" class="">Job posting views within company by role</td><td id="znT[" class="">5.1</td></tr><tr id="29ea0d4d-290a-4017-b25b-3619602f8c94" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.91.1–91.3</td><td id="e;JQ" class="">Overseas employer job postings</td><td id="znT[" class="">5.2</td></tr><tr id="f169018c-c0b4-41d3-b705-caa183af3896" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.92.1</td><td id="e;JQ" class="">IRC notification for job posting approval</td><td id="znT[" class="">5.3</td></tr><tr id="7435c040-68f8-4cf9-90a3-f29d89e8da11" dir="ltr"><td id="@Zo&gt;" class="">6.1.1.93.1</td><td id="e;JQ" class="">Batch download of student resumes</td><td id="znT[" class="">5.4</td></tr><tr id="7ba64963-741e-4230-a3b3-fe7fc32b11e3" dir="ltr"><td id="@Zo&gt;" class="">6.1.2.1.2.a</td><td id="e;JQ" class="">Employer status report</td><td id="znT[" class="">8.2</td></tr><tr id="6802d534-e4d9-4073-9d54-103e46b03bb7" dir="ltr"><td id="@Zo&gt;" class="">6.2.1.7.1–7.2</td><td id="e;JQ" class="">ACRA/SSIC/SSOC integration on registration</td><td id="znT[" class="">2.6</td></tr><tr id="19dedd4f-c076-4936-ade3-9fb77991dfc7" dir="ltr"><td id="@Zo&gt;" class="">6.2.1.8.1</td><td id="e;JQ" class="">Employer dashboard — internship history</td><td id="znT[" class="">8.1</td></tr><tr id="844c77fd-dadf-4695-94c4-1feea209a979" dir="ltr"><td id="@Zo&gt;" class="">6.2.1.9.1</td><td id="e;JQ" class="">Employer tracker</td><td id="znT[" class="">8.1</td></tr><tr id="b46fb710-be88-4789-ba93-3922deb5654d" dir="ltr"><td id="@Zo&gt;" class="">6.2.1.15.1–15.3</td><td id="e;JQ" class="">Internship to FTP / interest to hire</td><td id="znT[" class="">8.1</td></tr></tbody></table><hr id="5a8e944a-5139-41c4-880b-280d05ad4118" dir="auto"/><h1 id="c1eb83d5-d720-4713-8f26-15961ea08cba" class="" dir="auto">13. Conflicts Flagged</h1><table id="3511bd7d-c214-46b3-8300-42140f0bb06a" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="fa1fe400-09a9-4bfc-8aee-ab4d8e038f98" dir="ltr"><th id="sBBT" class="simple-table-header-color simple-table-header">#</th><th id="f?cS" class="simple-table-header-color simple-table-header">Conflict</th><th id="IHTR" class="simple-table-header-color simple-table-header">Resolution</th></tr></thead><tbody><tr id="76297e9d-494e-48d3-9b5f-d840a6a39e6c" dir="ltr"><td id="sBBT" class="">1</td><td id="f?cS" class="">Section 5.3 (written during the SU-4481 session) stated Method 1 (bulk upload) kept the original Draft + employer-chosen Publish Now/Publish Later flow while Methods 2 and 3 used the new upfront Publish Date/Expiry + auto-publish model. The SU-4480 Figma design shows Method 1 using the identical upfront Publish Date/Expiry fields.</td><td id="IHTR" class=""><strong>All three creation methods (Bulk upload, Manual entry, Duplicate) use the same upfront Publish Date/Expiry + auto-publish-on-approval model. Corrected in Section 5.3.</strong></td></tr><tr id="950da99b-d2c6-4306-a2ea-048c9ce4c885" dir="ltr"><td id="sBBT" class="">2</td><td id="f?cS" class="">Section 2.2&#x27;s intro line states self-registration employers &quot;create their own username and password,&quot; but the SU-4474 Figma shows Path B (new company) collects no credentials — password setup happens only after CAO approval.</td><td id="IHTR" class=""><strong>Path B corrected in Section 2.2 to defer password setup to post-approval. Path A (existing-company join request, SU-4498) not yet verified against a design — see Open Items #15.</strong></td></tr></tbody></table><hr id="d86cc693-59be-443d-863b-b7543d837f6b" dir="auto"/><h1 id="f52831dd-c2fc-4222-90a5-c03617bfcfdf" class="" dir="auto">14. Backend Implementation Notes</h1><blockquote id="0921f427-9103-4f2f-8af8-9908b183b180" class="" dir="auto">This section documents the backend schema and API endpoints implemented by the dev team. It is intended as a reference for frontend engineers and reviewers.</blockquote><ul id="39e9270b-eed0-461f-bb7b-6d3de0b8ece1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>SU-4481</strong>: Scheduled job required to auto-publish CAO-approved listings at their stored Publish Date (originally scoped to Methods 2 &amp; 3 — Manual entry and Duplicate from previous listing; now confirmed shared by Method 1 as well, see SU-4480). The recommended salary-floor value and the full-time Start Date warning threshold (default 2 months) must be admin-configurable settings, not hardcoded.</li></ul><ul id="d9d51d1c-f4da-45d1-8e55-d45a3880e8d9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>SU-4480</strong>: Document parsing/extraction service must support both PDF and Word (.docx) inputs, mapping extracted content to job fields. Uses the same auto-publish scheduled job as SU-4481.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

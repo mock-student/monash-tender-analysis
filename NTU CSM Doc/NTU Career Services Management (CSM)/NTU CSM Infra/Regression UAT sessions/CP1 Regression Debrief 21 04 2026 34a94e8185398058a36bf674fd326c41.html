@@ -1,0 +1,770 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>CP1 Regression Debrief 21.04.2026</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="34a94e81-8539-8058-a36b-f674fd326c41" class="page sans"><header><h1 class="page-title" dir="auto">CP1 Regression Debrief 21.04.2026</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="34a94e81-8539-811e-8132-fc628aaccdd2" class="" dir="auto">CP1 Regression Debrief</h1><p id="34a94e81-8539-81ce-b5c4-c2446c63b668" class="" dir="auto"><strong>Prepared by:</strong> Luis Romero<br/><strong>Date:</strong> 2026-04-22<br/><strong>Scope:</strong> The three regression tests that failed in CP1, CSM-232, CSM-239, CSM-240<br/></p><hr id="34a94e81-8539-8135-9544-d30e180e7b9c" dir="auto"/><h2 id="34a94e81-8539-8170-9528-cf3638fdbe90" class="" dir="auto">TL;DR</h2><blockquote id="34a94e81-8539-8149-9f52-ca09e30c22b4" class="" dir="auto">The three failures are <strong>real bugs</strong>, and the dev team has <strong>already shipped fixes</strong> for them. The fixes are on <code>dev</code> in both repos but <strong>not yet promoted to </strong><code><strong>qa</strong></code>. <p id="34a94e81-8539-80eb-bd20-dadd1f16c481" class="" dir="auto">A regression run against <strong>QA</strong> (qa.csm.ntu.edu.sg) today would still show these as failing. Del confirmed this is the environment NTU tests against.</p><p id="34a94e81-8539-81e7-9636-c3d4406d36a4" class="" dir="auto"><strong>Root cause of the CP1 result is release cadence, not missing work.</strong> The last <code>dev → qa</code> promotion was 2026-04-17; the three relevant PRs merged 2026-04-20 and 2026-04-21.</p></blockquote><p id="34a94e81-8539-81d9-a8ee-c249112dd574" class="" dir="auto">Two small items remain genuinely unfixed — noted under each ticket’s <strong>Gaps</strong> section.</p><hr id="34a94e81-8539-813e-92ff-c033fe00942a" dir="auto"/><h2 id="34a94e81-8539-81d5-9403-e17f898db827" class="" dir="auto">Release Pipeline Context</h2><p id="34a94e81-8539-8145-a246-d4dabd72e556" class="" dir="auto">Both <code>platform-frontend</code> and <code>platform-backend-v2</code> use the same flow:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="34a94e81-8539-814e-a08b-fdc172e41abe" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">dev  →  qa  →  main</code></pre><table id="34a94e81-8539-810f-b4b6-dcb96d3e8bca" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34a94e81-8539-8165-b7e3-e08b61a5987e" dir="ltr"><th id="vskV" class="simple-table-header-color simple-table-header">Repo</th><th id="rcwl" class="simple-table-header-color simple-table-header"><code>dev</code> tip</th><th id="eXX&gt;" class="simple-table-header-color simple-table-header"><code>main</code> tip</th><th id="?SjR" class="simple-table-header-color simple-table-header">Gap (commits on dev not in main)</th></tr></thead><tbody><tr id="34a94e81-8539-81f0-8312-f3dc61f95bda" dir="ltr"><td id="vskV" class="">platform-frontend</td><td id="rcwl" class=""><code>ebe9a36d3</code> (2026-04-21)</td><td id="eXX&gt;" class=""><code>ce330e98a</code> (2026-04-17)</td><td id="?SjR" class="">13 commits</td></tr><tr id="34a94e81-8539-814e-8c13-dd73c4c557c6" dir="ltr"><td id="vskV" class="">platform-backend-v2</td><td id="rcwl" class=""><code>fd797b0</code> (2026-04-21)</td><td id="eXX&gt;" class=""><code>5deb7a5</code> (2026-04-17)</td><td id="?SjR" class="">~30 commits, 6 SGCC-relevant</td></tr></tbody></table><p id="34a94e81-8539-810f-b5fd-db23b86dce45" class="" dir="auto">NTU runs regression against the <strong>QA</strong> environment (qa.csm.ntu.edu.sg), promoted 2026-04-17 — pre-dating the Apr 20–21 fix merges on dev. </p><hr id="34a94e81-8539-8133-868d-ccf360e9a36b" dir="auto"/><h2 id="34a94e81-8539-81af-801b-fbbfef49cf9d" class="" dir="auto">CSM-239 / Filter and Search Session List</h2><p id="34a94e81-8539-81e5-9112-cd1b0769a4de" class="" dir="auto"><strong>Status:</strong> FIXED on <code>dev</code>. Awaiting promotion.</p><h3 id="34a94e81-8539-8131-8354-ef3cee1a9e71" class="" dir="auto">What NTU reported (Joji, 2026-04-20)</h3><p id="34a94e81-8539-813a-8566-efbb01206484" class="" dir="auto">Not working:<br/>- Search for time strings: <code>09:30</code>, <code>9:30</code><br/>- Search for <code>Resume Critique</code>, <code>Resume</code>, <code>Critique</code><br/>- Filter: specific rooms multi-select (in-person)<br/>- Filter: coach multi-select<br/>- Filter: Online + In-Person combination</p><p id="34a94e81-8539-81fc-bf25-c59e3f986cde" class="" dir="auto">Working:<br/>- Multi-token search (e.g. <code>second 112</code>)<br/>- Coach name search<br/>- Date search (<code>2026-04-20</code>, <code>04-20</code>)<br/>- <code>Mock Interview</code>, <code>Mock</code>, <code>Interview</code></p><h3 id="34a94e81-8539-815b-83d7-c4c6a0e4761d" class="" dir="auto">Root cause (code-level)</h3><table id="34a94e81-8539-818c-8810-e9228d10ee96" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34a94e81-8539-81ae-b1b2-fd1467509323" dir="ltr"><th id="ZfsE" class="simple-table-header-color simple-table-header">Symptom</th><th id="^:[H" class="simple-table-header-color simple-table-header">File</th><th id="`hiw" class="simple-table-header-color simple-table-header">Cause</th></tr></thead><tbody><tr id="34a94e81-8539-8121-abac-f6a1b0aa4c8e" dir="ltr"><td id="ZfsE" class=""><code>Resume Critique</code> search returned nothing</td><td id="^:[H" class=""><code>apps/ntu/src/repositories/sgcc-sessions.repository.ts</code> (backend)</td><td id="`hiw" class="">A <code>Bundle</code> collapse in the session-type SQL <code>CASE</code> statement hid <code>resume_critique</code> rows from keyword matches. <code>mock_interview</code> rows were unaffected, which is why Mock-related keywords worked.</td></tr><tr id="34a94e81-8539-8132-9a29-f81eca34541d" dir="ltr"><td id="ZfsE" class="">Time string search broken</td><td id="^:[H" class="">same file</td><td id="`hiw" class=""><code>start_time</code> / <code>end_time</code> were not in the search <code>OR</code> list. Leading-zero variants (<code>09:30</code> vs <code>9:30</code>) were also not normalised.</td></tr><tr id="34a94e81-8539-81b4-ac9a-ef9f3c87a52c" dir="ltr"><td id="ZfsE" class="">No Online + In-Person combo</td><td id="^:[H" class="">same file + <code>list-sessions.dto.ts</code></td><td id="`hiw" class=""><code>venueType</code> accepted only a single value; not OR-combinable with <code>locationIds</code>.</td></tr><tr id="34a94e81-8539-81b9-8c89-fc6b899396b6" dir="ltr"><td id="ZfsE" class="">No rooms / coach multi-select in UI</td><td id="^:[H" class=""><code>apps/ntu/src/containers/SGCC/SGCCSessionsFilter/</code> (frontend)</td><td id="`hiw" class="">Filter UI used single-value dropdowns; no rooms component at all.</td></tr></tbody></table><h3 id="34a94e81-8539-81f4-885a-cee45b98f9a9" class="" dir="auto">Fix</h3><table id="34a94e81-8539-8131-9871-ed055cedc24d" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34a94e81-8539-818d-babe-dab33610acb5" dir="ltr"><th id="thx&gt;" class="simple-table-header-color simple-table-header">Ticket (Linear)</th><th id="?SRh" class="simple-table-header-color simple-table-header">PR</th><th id="XDD{" class="simple-table-header-color simple-table-header">Commit</th><th id="VU;T" class="simple-table-header-color simple-table-header">Repo</th></tr></thead><tbody><tr id="34a94e81-8539-813f-9548-f18983082f55" dir="ltr"><td id="thx&gt;" class="">SU-4139</td><td id="?SRh" class="">#535</td><td id="XDD{" class=""><code>0a19e23</code></td><td id="VU;T" class="">platform-backend-v2</td></tr><tr id="34a94e81-8539-8199-9c87-e1ae2bbcf7e7" dir="ltr"><td id="thx&gt;" class="">SU-4043</td><td id="?SRh" class="">#1235</td><td id="XDD{" class=""><code>ebe9a36d3</code></td><td id="VU;T" class="">platform-frontend</td></tr></tbody></table><p id="34a94e81-8539-81a6-8d5e-f33f7ec8fbe4" class="" dir="auto"><strong>Backend SU-4139 (2026-04-21)</strong> — drop the <code>Bundle</code> collapse in the search <code>CASE</code>; add <code>start_time</code> / <code>end_time</code> plus a leading-zero-stripped variant to the OR list; make <code>venueType</code> accept comma-separated values and OR with <code>locationIds</code>.</p><p id="34a94e81-8539-8111-9300-cdb20782c246" class="" dir="auto"><strong>Frontend SU-4043 (2026-04-21)</strong> — Venue becomes a checkbox multi-select; new <code>Rooms</code> MultiDropdown bound to <code>locationIds</code>; <code>Face-to-Face</code> copy standardised to <code>In-Person</code>; programme dropdown labels now show <code>programmeId - name</code> (which also closes CSM-254).</p><h3 id="34a94e81-8539-81dd-bc02-fd5071dc7b8e" class="" dir="auto">Gaps</h3><p id="34a94e81-8539-818e-863e-e12e20fa30fc" class="" dir="auto">None.</p><hr id="34a94e81-8539-811f-a7f0-ee38119056f4" dir="auto"/><h2 id="34a94e81-8539-8155-a9b9-cd9d4da9ad22" class="" dir="auto">CSM-240 / Unlink Sessions Within a Bundle</h2><p id="34a94e81-8539-8060-9a22-c92b5445e352" class="" dir="auto">
+</p><p id="34a94e81-8539-81b7-b38c-e5fe48bfe06f" class="" dir="auto"><strong>Status:</strong> FIXED on <code>dev</code> for the main complaint. One follow-up gap — see below.</p><h3 id="34a94e81-8539-8140-bc25-ef99469bc878" class="" dir="auto">What was reported</h3><ol type="1" id="34a94e81-8539-811d-afa3-e340b79dbaa2" class="numbered-list" start="1" dir="auto"><li>After unlinking, admin sees only one session with no way to trace the previously-linked pair.</li></ol><ol type="1" id="34a94e81-8539-81fa-990a-c30e8e1ced67" class="numbered-list" start="2" dir="auto"><li>Admin needs to be able to publish a session from the session detail view.</li></ol><h3 id="34a94e81-8539-81fe-8c3e-c864153dd332" class="" dir="auto">Root cause (code-level)</h3><ol type="1" id="34a94e81-8539-813f-9187-d1c69c8c021a" class="numbered-list" start="1" dir="auto"><li>Old <code>UnlinkBundleModal</code> was a generic “Are you sure?” confirm — no session context before or after the action.</li></ol><ol type="1" id="34a94e81-8539-8174-822b-ff589ce36d54" class="numbered-list" start="2" dir="auto"><li><code>SGCCSessionDetails</code> had no publish affordance; publishing was only reachable from the sessions list.</li></ol><h3 id="34a94e81-8539-8196-9ddc-fb31c9a519d0" class="" dir="auto">Fix</h3><table id="34a94e81-8539-8104-b59b-f3048cf4d17c" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34a94e81-8539-8108-bf62-d479390c5f06" dir="ltr"><th id=":^HI" class="simple-table-header-color simple-table-header">Ticket (Linear)</th><th id="&lt;FJl" class="simple-table-header-color simple-table-header">PR</th><th id="DYex" class="simple-table-header-color simple-table-header">Commit</th><th id="R|R]" class="simple-table-header-color simple-table-header">Repo</th></tr></thead><tbody><tr id="34a94e81-8539-8156-9036-f08ab3c71a95" dir="ltr"><td id=":^HI" class="">SU-4043</td><td id="&lt;FJl" class="">#1235</td><td id="DYex" class=""><code>ebe9a36d3</code></td><td id="R|R]" class="">platform-frontend</td></tr></tbody></table><p id="34a94e81-8539-819d-b592-f3278775a42b" class="" dir="auto"><strong>New flow (2026-04-21):</strong><br/>- <code>UnlinkBundleModal</code> now renders <strong>both</strong> sessions as <code>SessionSummaryCard</code>s with a <code>GoToIcon</code> link to each one.<br/>- Post-unlink success state keeps both cards visible so admin can act on either session directly from the modal.<br/>- New <code>SessionActionsMenu</code> component is used in both the session detail view and the unlink modal. It exposes <code>Publish Now</code> and <code>Publish Later</code> — which fixes complaint (2) above.<br/>- <code>AddEditSessionModal</code> now opens the unlink modal when a user toggles “bundled” off, using <code>unlinkSessionSnapshot</code> to keep the paired reference alive during confirmation.</p><h3 id="34a94e81-8539-8185-8789-c37c49e7015e" class="" dir="auto">Gaps</h3><p id="34a94e81-8539-811c-9a48-cb44b1f52429" class="" dir="auto"><strong>Persistent prior-link trace is not implemented.</strong> The fix only shows both sessions inside the unlink modal itself. Once the modal closes, <code>session.pairedSession</code> is <code>null</code> and <code>SGCCSessionDetails</code> has no “previously linked to X” indicator. If joji wants this visible indefinitely after unlink, we’d need a DB-level <code>formerlyPairedSessionId</code> (or similar) field plus a read surface in the detail view.</p><hr id="34a94e81-8539-81b2-9637-d243e766bc40" dir="auto"/><h2 id="34a94e81-8539-8135-b7bd-f9a40ba265ee" class="" dir="auto">CSM-232 / Student Books Individual Session After Admin Unlinking</h2><p id="34a94e81-8539-8177-98e8-f355deb94f1a" class="" dir="auto"><strong>Status:</strong> FIXED on <code>dev</code> for copy and cancellation logic. Session-order gap — see below.</p><h3 id="34a94e81-8539-815d-b821-d594d55f7b90" class="" dir="auto">What NTU reported</h3><p id="34a94e81-8539-8168-9a7e-e012c5bbc69a" class="" dir="auto"><strong>2026-04-07:</strong><br/>- Order of session should always be resume critique first.<br/>- Remove first line in the Important Reminders box: “Mark your attendance using the QR code provided by your coach at each session.”<br/>- Change first line to “Students must attend both resume critique and mock interview.”<br/>- If cancellation is toggled off, the third bullet must say “Cancellations are not allowed.” Same for Rescheduling (2nd bullet).</p><p id="34a94e81-8539-8195-9ba6-f77e86efba18" class="" dir="auto"><strong>2026-04-20 update:</strong><br/>- Remove the bullet point about rescheduling.<br/>- First bullet point change to: “Students MUST attend both Resume Critique and Mock Interview.”<br/>- Third bullet point change to: “Cancellations are NOT allowed.”</p><h3 id="34a94e81-8539-81a2-a7e9-de9e8c477830" class="" dir="auto">Root cause (code-level)</h3><ul id="34a94e81-8539-815f-97e1-e4d72050358b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>SGCCCollapsibleReminder.tsx</code> built the list with fallback strings like “Rescheduling is not allowed.” instead of hiding the bullet; wording didn’t match joji’s revised copy.</li></ul><ul id="34a94e81-8539-81df-a439-fdf9e7992512" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The cancel button was rendered even when cancellation was disabled, giving unintended click affordance.</li></ul><ul id="34a94e81-8539-810b-adf2-e5934b3bf8ac" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Student-side session list is ordered by <code>sessionDate</code> only (<code>sessions.service.ts:242</code>); no secondary sort by session type.</li></ul><h3 id="34a94e81-8539-815a-b16c-f212d17ae93b" class="" dir="auto">Fix</h3><table id="34a94e81-8539-81fb-b906-d1e10a4d22b2" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34a94e81-8539-8110-bdad-ffc0b8d97e0c" dir="ltr"><th id="Dk@i" class="simple-table-header-color simple-table-header">Ticket (Linear)</th><th id="YwxL" class="simple-table-header-color simple-table-header">PR</th><th id="ZRHl" class="simple-table-header-color simple-table-header">Commit</th><th id="xKL&gt;" class="simple-table-header-color simple-table-header">Repo</th></tr></thead><tbody><tr id="34a94e81-8539-8148-ab22-c4568b3a177b" dir="ltr"><td id="Dk@i" class="">SU-4156</td><td id="YwxL" class="">#1234</td><td id="ZRHl" class=""><code>242caaf51</code></td><td id="xKL&gt;" class="">platform-frontend</td></tr><tr id="34a94e81-8539-81aa-b301-f6cfdad19799" dir="ltr"><td id="Dk@i" class="">(inline)</td><td id="YwxL" class="">—</td><td id="ZRHl" class=""><code>f0101bbcd</code></td><td id="xKL&gt;" class="">platform-frontend</td></tr></tbody></table><p id="34a94e81-8539-8179-b0d9-cc9bfd8799aa" class="" dir="auto"><strong>Reminder copy rewrite (commit </strong><code><strong>f0101bbcd</strong></code><strong>, 2026-04-20)</strong><code>apps/ntu/src/containers/SGCC/StudentView/SGCCCollapsibleReminder.tsx</code> — now matches Joji’s Apr 20 list exactly:<br/>- Bullet 1: <code>Students MUST attend both Resume Critique and Mock Interview.</code> (MUST bolded)<br/>- Bullet 2: rendered <strong>only when </strong><code><strong>rescheduleEnabled</strong></code> — no more “Rescheduling is not allowed” fallback.<br/>- Bullet 3: <code>Cancellations are NOT allowed.</code> (NOT bolded) when cancellation disabled.<br/>- QR code line is already absent from both <code>dev</code> and <code>main</code>.</p><p id="34a94e81-8539-81cc-879d-ed5d4495533d" class="" dir="auto"><strong>Cancel button logic (PR SU-4156)</strong><code>SGCCSessionCard</code> and <code>SGCCPage</code> — button is disabled (not hidden) when cancellation is unavailable; click handler is gated behind the same flag.</p><h3 id="34a94e81-8539-81f5-8a7e-d4a74918e463" class="" dir="auto">Gaps</h3><p id="34a94e81-8539-81cb-bd21-fbc895b1ed24" class="" dir="auto"><strong>“Resume Critique first” session ordering is not implemented.</strong><code>apps/ntu/src/student/sessions/sessions.service.ts:242</code>:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js" integrity="sha512-uOw7XYETzS/DPmmirpP5UCMihSDNMeyTS965J0/456OSPfxn9xEtHHjj5Q/5WefVdqyMfN/afmQnNpZd/tpkcA==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-tsx.min.js" integrity="sha512-xjGCJ9YxyZBfYTCHsEjkOZMoOse1W3cKMXv1szXrxs68myuXt0YTj3/xKPar6iDMlXzTUSEqwUxprWcyp+plaw==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><pre id="34a94e81-8539-81c6-941e-c33c42d3f38d" class="code code-wrap" data-notion-code-syntax="tsx"><code class="language-tsx" style="white-space:pre-wrap;word-break:break-all">sessions
+  .sort((a, b) =&gt; a.sessionDate.localeCompare(b.sessionDate))
+  .map(formatSession)</code></pre><p id="34a94e81-8539-8188-a67d-fe9c9d677d1a" class="" dir="auto">If two sessions share a date, the order between Resume Critique and Mock Interview is non-deterministic. Fix is a one-line change to add a secondary sort by <code>sessionType</code> favouring <code>resume_critique</code>.</p><hr id="34a94e81-8539-815c-8417-f24be9d957ff" dir="auto"/><h2 id="34a94e81-8539-81e1-83dc-f6a05cc60e71" class="" dir="auto">Addressing questions:<br/><br/>1.- What happened on each failed ticket?</h2><ul id="34a94e81-8539-81e3-b9d6-f9f2d44fc631" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>No information or coordination gap on the dev side.</strong> PRs cite the failed-test IDs directly in branch names (e.g. <code>vitaliipetryk/su-4043-failed-test-p2-cp1-uat-se-12-unlink-sessions-within-a-bundle</code>), meaning devs had the context needed to ship targeted fixes on the first try.</li></ul><ul id="34a94e81-8539-81f7-890e-c59141c7645e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Gap was between QA timing and release cadence.</strong> Fixes were merged to <code>dev</code> on Apr 20–21; the regression build was cut against a version that pre-dated those merges.</li></ul><ul id="34a94e81-8539-81b3-a7c1-f136c96350d9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Two items slipped through the fix batch</strong> (session order RC-first, persistent prior-link trace). </li></ul><h2 id="34a94e81-8539-810c-b0de-d04e2dfbcc26" class="" dir="auto">2.- Prevention for CP2 (raw ideas):</h2><p id="34a94e81-8539-817c-a60e-c316c3cc5aac" class="" dir="auto"><strong>1. Run regression against dev (or a release-candidate branch), not against </strong><code><strong>qa</strong></code><strong> after the last promotion.</strong>  <br/>Three tickets were already closed in code by the time the regression report was compiled. This single change would have converted them from “failed” to “passed.”</p><p id="34a94e81-8539-8179-8b12-fec7b4f7fccf" class="" dir="auto"><strong>2. Shorten the </strong><code><strong>dev → qa → main</strong></code><strong> promotion cadence during UAT windows.</strong><br/>Current window showed ~4 days between promotions with SGCC fixes queuing behind it.</p><p id="34a94e81-8539-81b5-9f26-c2839dcbfebf" class="" dir="auto"><strong>3. Enforce a structured failure description on Jira tickets.</strong><br/>The three original Jira exports had <code>Expected behavior/results</code> and <code>Issue description/steps leading to the issue</code> as empty fields. All the detail lived in comments, which two of the three CSV exports stripped entirely. Either a required-field template or a QA checklist covers this.</p><p id="34a94e81-8539-814d-91bb-cde39eeee935" class="" dir="auto"><strong>4. Keep the new habit of citing failed-test IDs in branches and PRs.</strong><br/>This made it trivial to map CSM-XXX → SU-XXXX → commit in this debrief. Worth making it the default.</p><hr id="34a94e81-8539-81f0-a1f0-e2f43bd2c1e5" dir="auto"/><h2 id="34a94e81-8539-81c3-a7a7-f4ba7f9d910b" class="" dir="auto">Proposal for Action Items</h2><ul id="34a94e81-8539-8107-8bbd-dd2104ac9f5d" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-off" disabled=""/> <span class="to-do-children-unchecked">Make a more structured pipeline on deciding what goes into qa / regression and compare side by side with what’s been promoted from dev → main.</span><div class="indented"></div></li></ul><hr id="34a94e81-8539-816b-b57e-d9bc373a06a6" dir="auto"/><h2 id="34a94e81-8539-8190-b495-f82eb4b346f1" class="" dir="auto">Appendix — Commit Reference</h2><h3 id="34a94e81-8539-810c-be66-dfe534303471" class="" dir="auto">Frontend (<code>platform-frontend</code>)</h3><table id="34a94e81-8539-81ce-8e11-c1924ebf9ebc" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34a94e81-8539-813e-9633-d66cb8a1ab72" dir="ltr"><th id=":BaB" class="simple-table-header-color simple-table-header">Commit</th><th id="kkQL" class="simple-table-header-color simple-table-header">Date</th><th id="mE{X" class="simple-table-header-color simple-table-header">Description</th><th id="h:hq" class="simple-table-header-color simple-table-header">Closes</th></tr></thead><tbody><tr id="34a94e81-8539-8185-843f-e7642a8c9019" dir="ltr"><td id=":BaB" class=""><code>ebe9a36d3</code></td><td id="kkQL" class="">2026-04-21</td><td id="mE{X" class="">feat: unlink sessions within a bundle and enhance session filtering</td><td id="h:hq" class="">CSM-239, CSM-240 (main part)</td></tr><tr id="34a94e81-8539-81ff-9366-fa321cbcb88d" dir="ltr"><td id=":BaB" class=""><code>80650d613</code></td><td id="kkQL" class="">2026-04-21</td><td id="mE{X" class="">feat: enhance session unlinking functionality in SGCC modals</td><td id="h:hq" class="">CSM-240</td></tr><tr id="34a94e81-8539-8136-b5c9-fada93d13773" dir="ltr"><td id=":BaB" class=""><code>f6191d40c</code></td><td id="kkQL" class="">2026-04-21</td><td id="mE{X" class="">refactor: update venue terminology and enhance session filtering options</td><td id="h:hq" class="">CSM-239</td></tr><tr id="34a94e81-8539-8181-a84c-c412ea3b9a5c" dir="ltr"><td id=":BaB" class=""><code>242caaf51</code></td><td id="kkQL" class="">2026-04-21</td><td id="mE{X" class="">feat: update cancellation button logic in SGCC components</td><td id="h:hq" class="">CSM-232</td></tr><tr id="34a94e81-8539-8194-8f0d-ebc403f2f898" dir="ltr"><td id=":BaB" class=""><code>f0101bbcd</code></td><td id="kkQL" class="">2026-04-20</td><td id="mE{X" class="">fix: update reminder text for clarity in SGCC components</td><td id="h:hq" class="">CSM-232</td></tr><tr id="34a94e81-8539-81dc-a7d2-fbb9e5c91a79" dir="ltr"><td id=":BaB" class=""><code>308dd8c9a</code></td><td id="kkQL" class="">2026-04-20</td><td id="mE{X" class="">refactor: enhance programme options display in SGCC components</td><td id="h:hq" class="">CSM-254 (related)</td></tr></tbody></table><h3 id="34a94e81-8539-81db-8bc2-d999b7519e9b" class="" dir="auto">Backend (<code>platform-backend-v2</code>)</h3><table id="34a94e81-8539-81a7-9c40-dad0b0157b1a" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34a94e81-8539-8128-b430-f0585bcb028b" dir="ltr"><th id="WAHY" class="simple-table-header-color simple-table-header">Commit</th><th id="q[:N" class="simple-table-header-color simple-table-header">Date</th><th id="fXGt" class="simple-table-header-color simple-table-header">Description</th><th id="cKIx" class="simple-table-header-color simple-table-header">Closes</th></tr></thead><tbody><tr id="34a94e81-8539-81f4-8b69-d299be9d3f7b" dir="ltr"><td id="WAHY" class=""><code>0a19e23</code></td><td id="q[:N" class="">2026-04-21</td><td id="fXGt" class="">fix: improve SGCC session search and venue/location filter</td><td id="cKIx" class="">CSM-239</td></tr><tr id="34a94e81-8539-8140-bbb6-d0fdee9b495c" dir="ltr"><td id="WAHY" class=""><code>2dba6e7</code></td><td id="q[:N" class="">~Apr</td><td id="fXGt" class="">feat: enhance session search with multi-token AND logic, date search, fix CSV export</td><td id="cKIx" class="">CSM-239 (earlier)</td></tr><tr id="34a94e81-8539-813d-aee4-d9a891b3cd3b" dir="ltr"><td id="WAHY" class=""><code>153bec8</code></td><td id="q[:N" class="">~Apr</td><td id="fXGt" class="">fix: apply session type filters to both bundled and unbundled sessions</td><td id="cKIx" class="">CSM-232 (related)</td></tr></tbody></table><h3 id="34a94e81-8539-81a8-962d-cc18e56aa700" class="" dir="auto">Linear ↔︎ Jira mapping</h3><table id="34a94e81-8539-811e-bd01-f88082394e51" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34a94e81-8539-8128-8565-e4b41f8c69de" dir="ltr"><th id="\hpr" class="simple-table-header-color simple-table-header">Linear</th><th id="c|TY" class="simple-table-header-color simple-table-header">Jira</th><th id="}?=T" class="simple-table-header-color simple-table-header">Summary</th></tr></thead><tbody><tr id="34a94e81-8539-8173-9e73-ec4e77161753" dir="ltr"><td id="\hpr" class="">SU-4139</td><td id="c|TY" class="">CSM-239</td><td id="}?=T" class="">Filter and Search Session List</td></tr><tr id="34a94e81-8539-8187-9482-cbebc324106f" dir="ltr"><td id="\hpr" class="">SU-4043</td><td id="c|TY" class="">CSM-240</td><td id="}?=T" class="">Unlink Sessions Within a Bundle</td></tr><tr id="34a94e81-8539-81d9-97c5-dcf2df4c15a8" dir="ltr"><td id="\hpr" class="">SU-4156</td><td id="c|TY" class="">CSM-232</td><td id="}?=T" class="">Cancellation button + reminder copy (unbundled booking)</td></tr></tbody></table></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

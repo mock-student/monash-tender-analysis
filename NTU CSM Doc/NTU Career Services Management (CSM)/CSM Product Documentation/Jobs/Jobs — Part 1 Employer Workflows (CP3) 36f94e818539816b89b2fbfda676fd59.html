@@ -1,0 +1,767 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Jobs — Part 1: Employer Workflows (CP3)</title><meta name="data-notion-page-icon" content="💼"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%92%BC%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="36f94e81-8539-816b-89b2-fbfda676fd59" class="page sans" data-notion-page-icon="💼"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="💼"></span></div><h1 class="page-title" dir="auto">Jobs — Part 1: Employer Workflows (CP3)</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="c89d5c50-a5b4-475a-b374-7e177315a7e5" class="" dir="auto">1. Overview</h1><p id="d570a31b-dadb-4478-b610-36aac4b8c43f" class="" dir="auto">The Jobs module covers the full lifecycle of job and internship opportunity management at NTU. Part 1 documents employer-facing and administrator-facing workflows across three role types: Full-Time Jobs (Job Boards), Non-Credit Bearing (NCB) Internships (GE prefix), and Credit-Bearing (CB) Internships (WIE prefix). CB internships carry significantly more complex workflows — including campaign windows, faculty allocation, assessments, marks integration, and AWO performance risk — than FT jobs or NCB internships, which share broadly similar posting and application structures.</p><p id="2df658b3-1668-4e15-8efc-0d6a790d4e4e" class="" dir="auto"><strong>Users:</strong> Employer · CAO Staff / IR Consultant · WIE Administrator · School Administrator · Faculty Supervisor · CAO Career Coach</p><hr id="8da7fbfe-be18-4ada-b8d5-95b0a04fd16b" dir="auto"/><h1 id="3072b180-40fe-4b26-a6e6-447c960d7775" class="" dir="auto">2. Key Open Questions for Discovery</h1><table id="0226679a-81d2-4601-9cab-a0606648d148" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="a1b5bc62-68fe-49ab-bbd0-04bdcf0ca0ea" dir="ltr"><th id="xt&gt;i" class="simple-table-header-color simple-table-header">#</th><th id="ruVT" class="simple-table-header-color simple-table-header">Question</th><th id="Qn^Z" class="simple-table-header-color simple-table-header">Refs</th></tr></thead><tbody><tr id="25c2097c-a003-4f00-94d3-a73971a7ed82" dir="ltr"><td id="xt&gt;i" class="">1</td><td id="ruVT" class="">Does employer account setup differ between Job Boards, NCB, and CB contexts, or is it a shared account with a type flag?</td><td id="Qn^Z" class="">6.2.1.14.1</td></tr><tr id="faa7275c-1f79-4af1-8037-d1db655a4fa0" dir="ltr"><td id="xt&gt;i" class="">2</td><td id="ruVT" class="">What is the exact CB posting approval chain — School only, or WIE + School?</td><td id="Qn^Z" class="">6.2.1.14.2, 6.2.1.17.4</td></tr><tr id="7d8dc75f-21a7-4583-9080-42792761ce6b" dir="ltr"><td id="xt&gt;i" class="">3</td><td id="ruVT" class="">Are there different approval flows for overseas employers posting directly vs. CAO posting on their behalf?</td><td id="Qn^Z" class="">6.2.1.16.1, 6.2.1.16.2, 6.1.1.91.2</td></tr><tr id="26593af4-fcba-4ed0-92c1-bab4e54703ab" dir="ltr"><td id="xt&gt;i" class="">4</td><td id="ruVT" class="">What are the configurable approval levels for CB application statuses?</td><td id="Qn^Z" class="">6.2.1.14.2</td></tr><tr id="2b0bcc70-9650-46e4-83a8-9da56cd378eb" dir="ltr"><td id="xt&gt;i" class="">5</td><td id="ruVT" class="">Does the AWO score threshold formula vary by programme, or is it a global system setting?</td><td id="Qn^Z" class="">6.2.1.18.1</td></tr><tr id="8b52de98-33ca-4531-acce-2e15e5b61179" dir="ltr"><td id="xt&gt;i" class="">6</td><td id="ruVT" class="">Is the CV Book a one-time admin export or a live auto-updated document?</td><td id="Qn^Z" class="">6.1.1.129.1</td></tr><tr id="d1310408-f8ac-4f34-8b39-f2a6e6b47cb3" dir="ltr"><td id="xt&gt;i" class="">7</td><td id="ruVT" class="">Do Edge-Plus and WSDEG use separate posting flows or are they sub-types of the standard CB flow?</td><td id="Qn^Z" class="">6.2.1.2.1, 6.2.1.3.1</td></tr><tr id="d10bb3fc-bc81-4745-ac04-80bec387d788" dir="ltr"><td id="xt&gt;i" class="">8</td><td id="ruVT" class="">What integrations currently exist between CSM and NTU&#x27;s Assessment Mark Entry System (MES)?</td><td id="Qn^Z" class="">6.2.1.24.1</td></tr></tbody></table><hr id="e6421251-3a86-40ed-affa-55d88c5605eb" dir="auto"/><h1 id="0e0dec3f-fba7-4d5d-9147-93c8dababd9b" class="" dir="auto">3. Known Requirements</h1><p id="95beeac7-b422-4530-85be-dfee3d064b97" class="" dir="auto">Requirements are from <strong>Section 6.1.1 Job &amp; Internship Opportunities Management (Milestone: Job Boards)</strong> and <strong>Section 6.2 Internship Management (Milestone: Internship Boards)</strong> of the tender Original Requirements. C = Core; E = Enhancement.</p><h2 id="50e3dd2f-77ee-44c2-8259-344ede1c6a4e" class="" dir="auto">1. Full-Time Jobs (Job Boards)</h2><h3 id="916676d3-d950-4689-9b28-248036722c65" class="" dir="auto">A. Process References</h3><table id="bec119cd-a9cd-4f92-8a1c-2992aa4a875d" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="d9ef4b53-51dc-4c6e-9b9a-4598b3f25e43" dir="ltr"><th id="usW@" class="simple-table-header-color simple-table-header">Ref</th><th id="xTJp" class="simple-table-header-color simple-table-header">C/E</th><th id="EcbC" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="050193d0-d048-4385-a569-00a0345d44a1" dir="ltr"><td id="usW@" class="">6.1.1.1.2</td><td id="xTJp" class="">C</td><td id="EcbC" class="">Opportunities – Job Approval Workflow (refer to Part 2 Annex A Appendix 1 – Opportunities – Job Approval Workflow.pdf)</td></tr></tbody></table><h3 id="f725638a-9e41-482b-8f0c-d5b5004b2b9e" class="" dir="auto">B. Posting &amp; Approval Workflows</h3><table id="426098f5-3ea1-4bfd-8763-063f844790db" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="71caacb1-ae14-443d-8b87-18043d442576" dir="ltr"><th id="CMHr" class="simple-table-header-color simple-table-header">Ref</th><th id="zO{A" class="simple-table-header-color simple-table-header">C/E</th><th id="LVAf" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="204ee3cf-7c04-4ea8-8c30-125ff7b15bb9" dir="ltr"><td id="CMHr" class="">6.1.1.92.1</td><td id="zO{A" class="">C</td><td id="LVAf" class="">Email trigger to notify IR Consultants for approval of new job postings and any amended postings submitted by employers. Trigger can be case-by-case or by batch.</td></tr></tbody></table><h3 id="5abdb6d3-4a6a-43c3-8532-4ff70804a67e" class="" dir="auto">C. Overseas Posting</h3><table id="3ab5a513-77f6-4f76-b932-d1247a56d128" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="3a31108e-2d0a-4330-910a-440d79710aa0" dir="ltr"><th id="o?&lt;^" class="simple-table-header-color simple-table-header">Ref</th><th id="Ffsl" class="simple-table-header-color simple-table-header">C/E</th><th id="htQ{" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="9d21acd1-afd8-4b7c-af52-a1ee9c1489bc" dir="ltr"><td id="o?&lt;^" class="">6.1.1.91.1</td><td id="Ffsl" class="">C</td><td id="htQ{" class="">System supports overseas employer postings with student-facing filters (programme, city, country, business area, position type). Application tracking equivalent to local postings. ⟳ <em>Also Part 2 — students search these postings.</em></td></tr><tr id="0f6754a0-95d7-4675-9f86-a8ad20178bfd" dir="ltr"><td id="o?&lt;^" class="">6.1.1.91.2</td><td id="Ffsl" class="">C</td><td id="htQ{" class="">CAO staff can post jobs on behalf of overseas employers.</td></tr><tr id="c7b1d6ce-8245-483b-9460-3c33b2a30534" dir="ltr"><td id="o?&lt;^" class="">6.1.1.91.3</td><td id="Ffsl" class="">C</td><td id="htQ{" class="">Overseas employers can track student application records and view application statuses.</td></tr></tbody></table><h3 id="7e8c29c4-455d-4f8c-a7c2-a61c956da374" class="" dir="auto">D. Application Management (Employer-Facing)</h3><table id="9a166218-2dec-4524-8ee8-d03d34e7e590" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="84ed5d9f-3deb-46c3-820f-12309457ed28" dir="ltr"><th id="C[eS" class="simple-table-header-color simple-table-header">Ref</th><th id="kD^i" class="simple-table-header-color simple-table-header">C/E</th><th id="AYmb" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="5e675cd6-1cf8-41d7-9632-5477f7e5602e" dir="ltr"><td id="C[eS" class="">6.1.1.93.1</td><td id="kD^i" class="">E</td><td id="AYmb" class="">Batch download of students&#x27; resumes from job applications.</td></tr></tbody></table><h3 id="0dd7206a-03ba-4307-8b6d-04d449b22c12" class="" dir="auto">E. CV Book</h3><table id="667f4901-871f-4ed0-aa5c-35c4791cdce6" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="8f657233-2d4a-431f-9a69-f380f7cf7e56" dir="ltr"><th id="O=;O" class="simple-table-header-color simple-table-header">Ref</th><th id="=AWl" class="simple-table-header-color simple-table-header">C/E</th><th id="uU@j" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="ab5eb851-02e9-4df9-95f9-3c6283b90e8f" dir="ltr"><td id="O=;O" class="">6.1.1.129.1</td><td id="=AWl" class="">C</td><td id="uU@j" class="">System collects students&#x27; CVs/Resumes and compiles them into a CV/Resume book.</td></tr></tbody></table><h3 id="d7b8d262-a75a-4542-ae14-9a1db728e5cf" class="" dir="auto">F. Reporting &amp; Dashboards</h3><table id="8570f8f4-8ab3-45c1-aedb-2cc527fd842b" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="927ddf16-b01d-47c3-9d8f-27ecbe665361" dir="ltr"><th id="[|Qc" class="simple-table-header-color simple-table-header">Ref</th><th id="Q|i&gt;" class="simple-table-header-color simple-table-header">C/E</th><th id="V^ct" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="38f8ae10-fd03-4710-bd15-9413c2cca79e" dir="ltr"><td id="[|Qc" class="">6.1.1.97.1</td><td id="Q|i&gt;" class="">C</td><td id="V^ct" class="">Retrieve stats: new roles (FT and internship) by industry/employer; new employers by industry; employer events and vacancies promoted via events; CAO events with employer participation.</td></tr><tr id="1159dd0a-bf9d-4e01-96be-bbc06db0cd98" dir="ltr"><td id="[|Qc" class="">6.1.2.1.1.a</td><td id="Q|i&gt;" class="">C</td><td id="V^ct" class="">Report: List of Job &amp; Internship Opportunities (industry, employer, job details).</td></tr><tr id="911a7500-ab54-4fee-a674-d2827d80caf7" dir="ltr"><td id="[|Qc" class="">6.1.2.1.1.b</td><td id="Q|i&gt;" class="">C</td><td id="V^ct" class="">Report: List of Employers with Job &amp; Internship Opportunity Postings (industry, employer details, contact details, approval date).</td></tr></tbody></table><h2 id="7e6ebfe5-d983-43bc-838d-c61c73429b54" class="" dir="auto">2. Non-Credit Bearing (NCB) Internships — GE</h2><h3 id="1d726e94-f483-43ab-a2f5-eae57863f47b" class="" dir="auto">A. Process References</h3><table id="bbad774c-78bf-4397-9cf6-a5a5677b8e42" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="c249de92-aa16-4cb6-bab0-acec61f28c33" dir="ltr"><th id="vzWI" class="simple-table-header-color simple-table-header">Ref</th><th id=":z^c" class="simple-table-header-color simple-table-header">C/E</th><th id="?TsI" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="3acaeed4-3a4f-4f5f-b5aa-435e0cf9566c" dir="ltr"><td id="vzWI" class="">6.2.1.1.1</td><td id=":z^c" class="">C</td><td id="?TsI" class="">GE – Non-Credit Bearing Self-Source Internship Placement Workflow (refer to Part 2 Annex A Appendix 1)</td></tr><tr id="c91a3274-fa71-4d5b-b9b2-6b2b2a4eff64" dir="ltr"><td id="vzWI" class="">6.2.1.1.2</td><td id=":z^c" class="">C</td><td id="?TsI" class="">GE – Overseas Internship Onboarding Process (OOP) Workflow (refer to Part 2 Annex A Appendix 1)</td></tr></tbody></table><h3 id="aa338089-f019-4677-ab5d-c74c6e6336d5" class="" dir="auto">B. Employer Account &amp; Setup</h3><table id="05f482cc-67df-4163-9097-6705f4810685" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="3bba30b0-fda6-4a75-94bb-32d0d662acf2" dir="ltr"><th id="xM&gt;d" class="simple-table-header-color simple-table-header">Ref</th><th id="N[\r" class="simple-table-header-color simple-table-header">C/E</th><th id="V@WI" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="4f9c3354-3dc2-48b8-9800-c9ef93e61670" dir="ltr"><td id="xM&gt;d" class="">6.2.1.14.1</td><td id="N[\r" class="">C</td><td id="V@WI" class="">Employer account sign-up for internship posting, with approval process and status-tracking dashboard. ⟳ <em>Shared with CB — employer account setup may be unified across NCB and CB.</em></td></tr></tbody></table><h3 id="cbd41b08-d298-4eed-95f3-11a58d3b5d5f" class="" dir="auto">C. Posting &amp; Approval Workflows</h3><table id="8714af14-db20-4d4b-a522-99156fe17bf4" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="91a81242-469f-42d5-aec9-8304e2478d83" dir="ltr"><th id="RTQd" class="simple-table-header-color simple-table-header">Ref</th><th id="R?pH" class="simple-table-header-color simple-table-header">C/E</th><th id="`xXO" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="3e227312-1801-4801-8710-a0fd74a99fc4" dir="ltr"><td id="RTQd" class="">6.2.1.13.1</td><td id="R?pH" class="">C</td><td id="`xXO" class="">IR Consultants and employers (by role access) can view posted jobs, track posting statuses, and access secured intern information. ⟳ <em>Shared with CB Section C.</em></td></tr><tr id="9c552652-ee44-4dfa-b04f-202914dfcdf8" dir="ltr"><td id="RTQd" class="">6.2.1.14.2</td><td id="R?pH" class="">C</td><td id="`xXO" class="">Employers can view the status of student internship applications.</td></tr></tbody></table><h3 id="6e719bd0-7a9b-4422-9aef-9a6959c0b5a4" class="" dir="auto">D. Overseas Posting</h3><table id="40a45517-41c8-42ac-93ae-f0bcd3019ce0" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="311853ea-e673-4192-86ba-1395e61e5fb2" dir="ltr"><th id="_c&gt;F" class="simple-table-header-color simple-table-header">Ref</th><th id="NOaC" class="simple-table-header-color simple-table-header">C/E</th><th id="qwTN" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="539c7ad6-8d99-4edb-a3e9-410509af9811" dir="ltr"><td id="_c&gt;F" class="">6.2.1.16.1</td><td id="NOaC" class="">C</td><td id="qwTN" class="">System supports overseas employers managing internship opportunity postings. ⟳ <em>Shared with CB Section E.</em></td></tr><tr id="62f6c600-5370-47cc-b3a3-337d2f0acdfe" dir="ltr"><td id="_c&gt;F" class="">6.2.1.16.2</td><td id="NOaC" class="">C</td><td id="qwTN" class="">CAO staff can post internships on behalf of overseas employers. ⟳ <em>Shared with CB Section E.</em></td></tr><tr id="fc9698fb-3417-4fcd-8b27-55fe63421fec" dir="ltr"><td id="_c&gt;F" class="">6.2.1.5.8</td><td id="NOaC" class="">C</td><td id="qwTN" class="">Users can update overseas placement details in the system, linking them to the student&#x27;s application. ⟳ <em>Shared with CB Section F.</em></td></tr></tbody></table><h3 id="757035e8-cb67-4c8d-a340-2db00a00975f" class="" dir="auto">E. Application Management (Admin-Facing)</h3><table id="fdeabb89-66c5-424b-820b-098ab4c0a083" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="a2cc5455-1afa-4d75-bdc4-91033658280f" dir="ltr"><th id="r@DE" class="simple-table-header-color simple-table-header">Ref</th><th id="@g`O" class="simple-table-header-color simple-table-header">C/E</th><th id="a@Y=" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="8cfca79e-3299-40f8-8303-bca81195f6ac" dir="ltr"><td id="r@DE" class="">6.2.1.5.3</td><td id="@g`O" class="">C</td><td id="a@Y=" class="">Bulk download of all applications for the Internship/Work Study Programme. ⟳ <em>Shared with CB Section F.</em></td></tr><tr id="dc897c75-6609-4fd0-9d47-d3859f7bc2e0" dir="ltr"><td id="r@DE" class="">6.2.1.5.4</td><td id="@g`O" class="">C</td><td id="a@Y=" class="">System indicates Eligible/Ineligible status; supports interview invitation, result updates, and offer/no-offer decisions. ⟳ <em>Shared with CB Section F.</em></td></tr><tr id="cfda48b1-44f6-46f7-a0c4-45554590cd16" dir="ltr"><td id="r@DE" class="">6.2.1.5.5</td><td id="@g`O" class="">C</td><td id="a@Y=" class="">System generates Offer Letter on acceptance, attached to acceptance email. Notifies student of rejection. ⟳ <em>Shared with CB Section F. Also Part 2 — student receives and responds to the offer.</em></td></tr></tbody></table><h3 id="bf1c1a4d-707b-4601-98e5-1501a2ab7c0b" class="" dir="auto">F. Placement Management &amp; Offer Letters</h3><table id="d87ba409-45af-430e-b2e7-dca8b7e1b0fa" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="093e0e16-b97f-4692-bbf0-bfd03dfacdba" dir="ltr"><th id="H`fj" class="simple-table-header-color simple-table-header">Ref</th><th id="&gt;ZHY" class="simple-table-header-color simple-table-header">C/E</th><th id="gZYa" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="bdf24c8c-773a-4bb8-b2d7-f0976de3fda3" dir="ltr"><td id="H`fj" class="">6.2.1.17.7</td><td id="&gt;ZHY" class="">C</td><td id="gZYa" class="">NCB self-sourced placements: student updates internship details without approval. System auto-generates Placement Letter. If employer is new, WIE team notified; WIE Administrator creates and approves employer account if needed. ⟳ <em>Also Part 2 — student self-updates their own internship details.</em></td></tr><tr id="51b7fa4c-411d-494e-b718-443cb8e685d1" dir="ltr"><td id="H`fj" class="">6.2.1.17.8</td><td id="&gt;ZHY" class="">C</td><td id="gZYa" class="">Student placement records (CB and NCB) and application statuses visible to employers. ⟳ <em>Also Part 2 — students view their own records.</em></td></tr></tbody></table><h3 id="d5ea2ed3-5c9c-4686-acf8-29ecd9832779" class="" dir="auto">G. Internship-to-FTP Conversion</h3><table id="e245a390-b1b3-4ceb-8745-59f9804fd13d" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="4b59c03e-e0f3-42e9-a8eb-8c4ca1d7a31e" dir="ltr"><th id="JTY[" class="simple-table-header-color simple-table-header">Ref</th><th id="moAC" class="simple-table-header-color simple-table-header">C/E</th><th id="dy[h" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="80628a62-c2ff-4375-9500-8025be8f64e5" dir="ltr"><td id="JTY[" class="">6.2.1.15.1</td><td id="moAC" class="">C</td><td id="dy[h" class="">Employer inputs Employability Potential rating during evaluation. Upon graduation, student is notified of FTP opportunities with the same employer. ⟳ <em>Also Part 2 — student receives the FTP opportunity notification.</em></td></tr><tr id="4170cfad-ef79-4775-9609-8b93aa1fe4a8" dir="ltr"><td id="JTY[" class="">6.2.1.15.2</td><td id="moAC" class="">C</td><td id="dy[h" class="">Employer is notified of interns previously flagged as interest-to-hire for FTP.</td></tr><tr id="421960c0-c7d7-48b6-9135-15ae69bf1354" dir="ltr"><td id="JTY[" class="">6.2.1.15.3</td><td id="moAC" class="">C</td><td id="dy[h" class="">Employer can offer interns FTP conversion upon graduation.</td></tr></tbody></table><h3 id="e282724c-ba6f-401c-a121-13a8078ffa26" class="" dir="auto">H. Feedback &amp; Programme Evaluation (Admin)</h3><table id="4ba6db46-f114-4006-855a-a62dab4ef042" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="5ad1d651-3f64-4859-b2c9-0af14e744bee" dir="ltr"><th id="V:Oy" class="simple-table-header-color simple-table-header">Ref</th><th id="QJ_~" class="simple-table-header-color simple-table-header">C/E</th><th id="GCM;" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="36f9117f-8cfe-4b08-a262-32e2bd837b86" dir="ltr"><td id="V:Oy" class="">6.2.1.10.2</td><td id="QJ_~" class="">C</td><td id="GCM;" class="">Feedback results and ratings captured and stored for analytical purposes. ⟳ <em>Shared with CB Section O.</em></td></tr><tr id="236d3e86-a0c2-4ae9-b701-46fd48acf342" dir="ltr"><td id="V:Oy" class="">6.2.1.11.1</td><td id="QJ_~" class="">C</td><td id="GCM;" class="">Users can manually trigger or auto-send Programme Evaluation emails based on configurable criteria. ⟳ <em>Shared with CB Section O.</em></td></tr><tr id="4cab3954-c7b1-4457-ba08-21f5277ff93a" dir="ltr"><td id="V:Oy" class="">6.2.1.11.2</td><td id="QJ_~" class="">C</td><td id="GCM;" class="">Users can download student feedback results. ⟳ <em>Shared with CB Section O.</em></td></tr></tbody></table><h3 id="43ebf8c0-4b6d-447d-8f0f-e3db33aa94ea" class="" dir="auto">I. Financial Support Administration</h3><table id="45b68a4c-f4f4-4f17-9ada-8d0df62b885e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="287c341f-23e9-4d98-8d78-9e72f3cea6dc" dir="ltr"><th id="NClS" class="simple-table-header-color simple-table-header">Ref</th><th id="YhNt" class="simple-table-header-color simple-table-header">C/E</th><th id="G@GR" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="e81ddb46-fd20-48ef-b905-6d2a1727c836" dir="ltr"><td id="NClS" class="">6.2.1.12.2</td><td id="YhNt" class="">C</td><td id="G@GR" class="">Customisation of financial support application forms. ⟳ <em>Shared with CB Section P.</em></td></tr></tbody></table><h3 id="50f071ba-51f3-47e3-bb7d-9625da527753" class="" dir="auto">J. Reporting &amp; Dashboards</h3><table id="e3ed537e-76a7-4b57-ba60-d0bdf9b992bd" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="56b6edd9-f482-41b6-8724-78a20604071a" dir="ltr"><th id="LjCP" class="simple-table-header-color simple-table-header">Ref</th><th id="DbRK" class="simple-table-header-color simple-table-header">C/E</th><th id="Heih" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="ace50a6b-135b-448b-bb84-de95d0381a35" dir="ltr"><td id="LjCP" class="">6.2.1.25.1</td><td id="DbRK" class="">C</td><td id="Heih" class="">Stats: new roles by industry/employer; new employers by industry; employer events; CAO events with employer participation. ⟳ <em>Mirrors Job Boards 6.1.1.97.1 — likely the same report with internship data included. Shared with CB Section Q.</em></td></tr><tr id="bf2e31b7-a9e8-4ad8-a322-5ff002864c8a" dir="ltr"><td id="LjCP" class="">6.2.1.26.1</td><td id="DbRK" class="">C</td><td id="Heih" class="">Internship Performance Report generation with configurable fields and customisable templates. ⟳ <em>Shared with CB Section Q.</em></td></tr><tr id="6322c4f1-bb58-4871-b7c7-897b06692573" dir="ltr"><td id="LjCP" class="">6.2.1.26.2</td><td id="DbRK" class="">C</td><td id="Heih" class="">Users can view and print the Internship Performance Report (by access rights: Student, CAO Coordinator, Career Coach). ⟳ <em>Shared with CB Section Q. Also Part 2 — students can view this report.</em></td></tr><tr id="76f8bed9-44d0-4a58-9608-682974c71d23" dir="ltr"><td id="LjCP" class="">6.2.1.27.1</td><td id="DbRK" class="">C</td><td id="Heih" class="">Reporting &amp; Dashboards — refer to Section 6.2.3 of the CSM Functional Specifications document. ⟳ <em>Shared with CB Section Q.</em></td></tr></tbody></table><h2 id="ec19e21e-34d3-4645-bd34-5190e9450c7f" class="" dir="auto">3. Credit-Bearing (CB) Internships — WIE</h2><h3 id="50591234-b631-4599-a23b-09bf41bd1301" class="" dir="auto">A. Process References</h3><table id="5e53817a-d328-493b-baf7-8b587dc340ac" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="2143fea9-b6ef-424d-85d0-3d39f8d54ac5" dir="ltr"><th id="^N=K" class="simple-table-header-color simple-table-header">Ref</th><th id="K?wq" class="simple-table-header-color simple-table-header">C/E</th><th id="yIxf" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="416d585f-d12a-4ed4-b8e2-3f765be4dc49" dir="ltr"><td id="^N=K" class="">6.2.1.1.3</td><td id="K?wq" class="">C</td><td id="yIxf" class="">WIE – Credit-Bearing Internship Opportunities Posting Approval Workflow (refer to Part 2 Annex A Appendix 1)</td></tr><tr id="9a1212f5-f91d-492e-bd09-41dfb51cf72e" dir="ltr"><td id="^N=K" class="">6.2.1.1.4</td><td id="K?wq" class="">C</td><td id="yIxf" class="">WIE/GE – Credit-Bearing Self-Source Internship Placement Workflow (refer to Part 2 Annex A Appendix 1)</td></tr><tr id="3ab59a5d-4aa8-42e8-b3f9-6b6ccbd2941e" dir="ltr"><td id="^N=K" class="">6.2.1.1.5</td><td id="K?wq" class="">C</td><td id="yIxf" class="">WIE/GE – Credit Bearing Student Internship Placement Workflow (refer to Part 2 Annex A Appendix 1)</td></tr></tbody></table><h3 id="fe833682-8297-4954-bc40-7b13800a56d0" class="" dir="auto">B. Employer Account &amp; Setup</h3><table id="3a5e1379-0986-4538-ae66-82ac9dede8a7" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="b79a2e3f-6bdc-4a06-b19c-9b68ab04ba3b" dir="ltr"><th id="XaqP" class="simple-table-header-color simple-table-header">Ref</th><th id="kZEu" class="simple-table-header-color simple-table-header">C/E</th><th id="ptOt" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="a9de2b08-9d9f-4c20-aa4e-7e7e681403fb" dir="ltr"><td id="XaqP" class="">6.2.1.14.1</td><td id="kZEu" class="">C</td><td id="ptOt" class="">Employer account sign-up with approval process and status-tracking dashboard. ⟳ <em>Shared with NCB Section B.</em></td></tr></tbody></table><h3 id="cc753d24-8dd0-4500-af23-d90322fb3deb" class="" dir="auto">C. Posting &amp; Approval Workflows</h3><table id="50c2564f-72e5-477d-ae07-d0a5793e7a10" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="27a1d3c3-09df-4cb0-8236-a214edb99f37" dir="ltr"><th id="mP^\" class="simple-table-header-color simple-table-header">Ref</th><th id="V]b:" class="simple-table-header-color simple-table-header">C/E</th><th id="g:CR" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="12549c5f-66a5-46e3-a472-e62a57775e64" dir="ltr"><td id="mP^\" class="">6.2.1.13.1</td><td id="V]b:" class="">C</td><td id="g:CR" class="">IR Consultants and employers can view posted jobs, posting statuses, and secured intern information. ⟳ <em>Shared with NCB Section C.</em></td></tr><tr id="ab7dc51e-f0e7-487e-95f8-e3c91dbc1f87" dir="ltr"><td id="mP^\" class="">6.2.1.14.2</td><td id="V]b:" class="">C</td><td id="g:CR" class="">Employers view student application statuses. School/CAO Administrators approve CB student applications. Approval levels are configurable.</td></tr></tbody></table><h3 id="f4629fba-fcca-462d-8ab7-bf5238ba8b5c" class="" dir="auto">D. Campaign / Posting Windows</h3><table id="e04d2d5e-f9c2-4aad-9a48-4ff9d140975d" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="01232c29-1f1a-4bed-843f-c4e7a08b9078" dir="ltr"><th id="a{Gj" class="simple-table-header-color simple-table-header">Ref</th><th id="liSk" class="simple-table-header-color simple-table-header">C/E</th><th id="|\t]" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="4a79710f-e5a2-4ff3-8718-7c16ebf4c17e" dir="ltr"><td id="a{Gj" class="">6.2.1.17.1</td><td id="liSk" class="">C</td><td id="|\t]" class="">WIE team configures Opportunities Campaign parameters; sends targeted emails to specified student groups; supports bulk upload of targeted student lists for distribution.</td></tr><tr id="40f51ac6-71d9-404a-8e06-823cd3b26e57" dir="ltr"><td id="a{Gj" class="">6.2.1.17.2</td><td id="liSk" class="">C</td><td id="|\t]" class="">System triggers email inviting employers to participate in the campaign; invited employer group is configurable.</td></tr><tr id="63c94524-7f6e-4aa0-ae2c-c2b3688dbcb3" dir="ltr"><td id="a{Gj" class="">6.2.1.17.3</td><td id="liSk" class="">C</td><td id="|\t]" class="">Employers post opportunities during the campaign window before public release to students. ⟳ <em>Also Part 2 — students view approved opportunities relevant to their studies.</em></td></tr></tbody></table><h3 id="98cb04ea-78bc-44b0-b1ba-82bd234cb86d" class="" dir="auto">E. Overseas Posting</h3><table id="2da3c2dd-de8d-41db-b5da-00993f070df8" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="9ebc9323-48bb-4a8e-a043-c6533b0ed420" dir="ltr"><th id="~LFe" class="simple-table-header-color simple-table-header">Ref</th><th id="Cl}O" class="simple-table-header-color simple-table-header">C/E</th><th id="&lt;FRp" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="3d15905f-e250-4ea0-b124-11a6a8f3bf64" dir="ltr"><td id="~LFe" class="">6.2.1.16.1</td><td id="Cl}O" class="">C</td><td id="&lt;FRp" class="">System supports overseas employers managing internship opportunity postings. ⟳ <em>Shared with NCB Section D.</em></td></tr><tr id="c208ed4c-a020-4157-a56b-0ca28eabddae" dir="ltr"><td id="~LFe" class="">6.2.1.16.2</td><td id="Cl}O" class="">C</td><td id="&lt;FRp" class="">CAO staff can post internships on behalf of overseas employers. ⟳ <em>Shared with NCB Section D.</em></td></tr><tr id="9f586381-86e9-47c8-a744-a3877e477068" dir="ltr"><td id="~LFe" class="">6.2.1.5.8</td><td id="Cl}O" class="">C</td><td id="&lt;FRp" class="">Users can update overseas placement details linked to student applications. ⟳ <em>Shared with NCB Section D.</em></td></tr></tbody></table><h3 id="088d629f-97f8-4d01-ae87-3cf1d20e8a58" class="" dir="auto">F. Application Management (Admin-Facing)</h3><table id="70cce5f7-4e8b-4fea-9d26-c954e088dc0e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="8628e6a9-e367-4931-8767-d944dd291ed3" dir="ltr"><th id="hbv:" class="simple-table-header-color simple-table-header">Ref</th><th id="}x\G" class="simple-table-header-color simple-table-header">C/E</th><th id=";KGP" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="c288d6d7-47a4-4da8-8e82-c53afc1dc760" dir="ltr"><td id="hbv:" class="">6.2.1.5.3</td><td id="}x\G" class="">C</td><td id=";KGP" class="">Bulk download of all applications for the Internship/Work Study Programme. ⟳ <em>Shared with NCB Section E.</em></td></tr><tr id="d1199b41-3199-4c14-a54c-6239b6544753" dir="ltr"><td id="hbv:" class="">6.2.1.5.4</td><td id="}x\G" class="">C</td><td id=";KGP" class="">Eligibility/ineligibility indication; interview invitation and result updates; offer decision tracking. ⟳ <em>Shared with NCB Section E.</em></td></tr><tr id="cbc2cf30-d011-4de0-8cf6-e4292a3e01ef" dir="ltr"><td id="hbv:" class="">6.2.1.5.5</td><td id="}x\G" class="">C</td><td id=";KGP" class="">System generates Offer Letter on acceptance; rejection notification sent to student. ⟳ <em>Shared with NCB Section E. Also Part 2 — student receives and responds.</em></td></tr></tbody></table><h3 id="f090991c-3e31-4d9d-9e89-c0ab050cd520" class="" dir="auto">G. Placement Management &amp; Offer Letters</h3><table id="df1fed9c-0b8b-4a2f-9bc2-cc6c12338216" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="4bdaa279-2551-4270-b354-30e2d58edfff" dir="ltr"><th id="Im}`" class="simple-table-header-color simple-table-header">Ref</th><th id="wT{E" class="simple-table-header-color simple-table-header">C/E</th><th id="Hho[" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="15ba9f35-98ab-45a1-94c2-fa20fad31574" dir="ltr"><td id="Im}`" class="">6.2.1.17.5</td><td id="wT{E" class="">C</td><td id="Hho[" class="">Users can update Faculty Supervisor before internship start. If not updated by start date, system emails school to prompt update. Application rejection triggers notifications to student, employer, and WIE team.</td></tr><tr id="b1eebd97-664a-4077-8da7-67d72a24cc5d" dir="ltr"><td id="Im}`" class="">6.2.1.17.6</td><td id="wT{E" class="">C</td><td id="Hho[" class="">CB placements: system auto-generates Internship Placement Letter upon approval and emails to student and employer. Downloadable from portal.</td></tr><tr id="b336efa3-43f3-4604-9d55-cc711fcbc520" dir="ltr"><td id="Im}`" class="">6.2.1.2.2</td><td id="wT{E" class="">C</td><td id="Hho[" class="">View consolidated student placement information and download placement letter upon approval/allocation (Edge-Plus context). ⟳ <em>Also Part 2 — students access their own placement letter.</em></td></tr><tr id="9742af3d-20ae-43ae-b774-b11394b591ef" dir="ltr"><td id="Im}`" class="">6.2.1.2.3</td><td id="wT{E" class="">C</td><td id="Hho[" class="">System triggers email on placement confirmation and notifies employer to update placement details.</td></tr><tr id="ffecc5c2-2e06-490a-9d6f-7afeba1874bc" dir="ltr"><td id="Im}`" class="">6.2.1.17.8</td><td id="wT{E" class="">C</td><td id="Hho[" class="">Student placement records (CB and NCB) visible to employers. ⟳ <em>Shared with NCB Section F. Also Part 2 — students view their own records.</em></td></tr></tbody></table><h3 id="976e8497-cd0a-4f7a-b3da-889cd6b0b464" class="" dir="auto">H. AWO &amp; Performance Risk</h3><table id="895b70cb-3103-4a51-b2fa-df08462d0053" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="f4e47c51-3ee4-47ab-9e51-0342ff65db32" dir="ltr"><th id="hjjS" class="simple-table-header-color simple-table-header">Ref</th><th id="Kzh~" class="simple-table-header-color simple-table-header">C/E</th><th id="kZSD" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="b02f6e6a-34c3-46b2-aef7-86b2ab5a7a39" dir="ltr"><td id="hjjS" class="">6.2.1.18.1</td><td id="Kzh~" class="">C</td><td id="kZSD" class="">System supports AWO ratings; employers input ratings; system calculates final AWO score. Score below threshold triggers notification to school and student. System also notifies school and student if student fails to meet placement criteria (Placement at Risk).</td></tr></tbody></table><h3 id="8b66e8aa-b639-4646-9455-f480918f5d9d" class="" dir="auto">I. Assessment &amp; Grading Administration</h3><table id="9ee28de8-73f7-48c1-9c31-3b08e730654d" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="e5f82df8-0027-4fed-af2f-b0bc721ed1d3" dir="ltr"><th id="CD?h" class="simple-table-header-color simple-table-header">Ref</th><th id="]b]_" class="simple-table-header-color simple-table-header">C/E</th><th id="KLF;" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="19c5b855-2981-43e2-9f23-f5bf6000bf3c" dir="ltr"><td id="CD?h" class="">6.2.1.21.1</td><td id="]b]_" class="">C</td><td id="KLF;" class="">Assessment types: Journal (non-graded), Journal &amp; Presentation (Graded), Journal &amp; Presentation (Edge-Plus), AWO. Refer to Worksheet NITR15 (A, B, C) &amp; NITR15 (D). ⟳ <em>Also Part 2 — students view and submit.</em></td></tr><tr id="4ffc6404-667d-4bca-904a-4c62474ddb74" dir="ltr"><td id="CD?h" class="">6.2.1.21.3</td><td id="]b]_" class="">C</td><td id="KLF;" class="">Faculty Supervisors assess student submissions, assign ratings, and provide feedback accessible by students.</td></tr><tr id="424d056c-3de6-4fac-a9a3-6d1a480daa47" dir="ltr"><td id="CD?h" class="">6.2.1.21.4</td><td id="]b]_" class="">C</td><td id="KLF;" class="">Users can create, modify, and publish assessment templates; create configurable assessment survey types.</td></tr></tbody></table><h3 id="e1dfc079-b748-4485-b971-8c405dfadc2e" class="" dir="auto">J. Faculty Allocation</h3><table id="48231698-e8cd-4f56-a4f6-820672f533f8" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="5e7a810a-0cd7-41c6-8254-e4f19ffa43a1" dir="ltr"><th id="[]lW" class="simple-table-header-color simple-table-header">Ref</th><th id="X@EK" class="simple-table-header-color simple-table-header">C/E</th><th id="WEJ\" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="d29548ae-5271-4463-89c3-7487c4467194" dir="ltr"><td id="[]lW" class="">6.2.1.22.1</td><td id="X@EK" class="">C</td><td id="WEJ\" class="">Faculty Allocation modes: School Assigned and Faculty Supervisor Selects. Refer to Worksheet NITR14.</td></tr><tr id="a4dba230-c092-4539-bb31-e2eab27ab4b2" dir="ltr"><td id="[]lW" class="">6.2.1.22.2</td><td id="X@EK" class="">C</td><td id="WEJ\" class="">CAO staff and School can set allocation loads, assign faculty supervisors (individually or in bulk), view allocation progress, check supervisor availability, and monitor remaining capacity in real time.</td></tr><tr id="8e0d5cd7-6795-415b-8a46-d0a09f624f19" dir="ltr"><td id="[]lW" class="">6.2.1.22.3</td><td id="X@EK" class="">C</td><td id="WEJ\" class="">Faculty Supervisors can self-select supervision assignments based on configurable criteria.</td></tr></tbody></table><h3 id="1c37fcb3-5efd-4f39-82a1-262b4e7e99ec" class="" dir="auto">K. Programme-Based Internships (Edge-Plus, WSDEG)</h3><table id="76275d7c-5373-461c-851c-74c3a4ec773a" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="1954619d-fd3b-45a5-a1e2-c34568a8a7a7" dir="ltr"><th id="ZU}n" class="simple-table-header-color simple-table-header">Ref</th><th id="sSqZ" class="simple-table-header-color simple-table-header">C/E</th><th id=":dYK" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="cb0438e6-8f84-4840-aa73-7fb033ff6847" dir="ltr"><td id="ZU}n" class="">6.2.1.2.1</td><td id="sSqZ" class="">C</td><td id=":dYK" class="">NTU Edge-Plus: refer to Worksheet ITR09 (Opportunities Management) and NITR15 (A, B, C) (Assessment) for full functional details.</td></tr><tr id="b9cffe98-e8fc-4b4b-a3d5-da70f9b65dc4" dir="ltr"><td id="ZU}n" class="">6.2.1.2.4</td><td id="sSqZ" class="">C</td><td id=":dYK" class="">Edge-Plus: only the nominated team leader can submit the Final Report on behalf of the team. System marks other members as completed once leader submits. Relevant email notifications triggered throughout. ⟳ <em>Also Part 2 — team leader student role.</em></td></tr><tr id="f79e6e40-a2a5-4cea-9e22-77e25d806278" dir="ltr"><td id="ZU}n" class="">6.2.1.3.1</td><td id="sSqZ" class="">C</td><td id=":dYK" class="">WSDEG: configurable multi-block internship structure (e.g., Block 1 PA 10 wks, Block 2 PI 20 wks, Block 3A 11 wks / 3B 5 wks). Refer to Worksheet ITR10.</td></tr><tr id="1fcf735a-266d-4f30-86b5-88d70cfc6eed" dir="ltr"><td id="ZU}n" class="">6.2.1.3.2</td><td id="sSqZ" class="">C</td><td id=":dYK" class="">System auto-assigns students to three placement blocks under WSDEG Employer and tracks progress block-by-block.</td></tr></tbody></table><h3 id="8daf35ba-9d70-4db2-a4be-a2227a472e24" class="" dir="auto">L. Leave Management (Admin)</h3><table id="bd9181e1-d354-46b0-92a5-048a3d5a26a6" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="779074ce-5bab-4e73-ab6c-cc77dff26706" dir="ltr"><th id="~vQ@" class="simple-table-header-color simple-table-header">Ref</th><th id="Sezj" class="simple-table-header-color simple-table-header">C/E</th><th id="Hw|m" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="7ba63a7c-8d2e-48ec-84f3-9d73c7a9599f" dir="ltr"><td id="~vQ@" class="">6.2.1.23.2</td><td id="Sezj" class="">E</td><td id="Hw|m" class="">System notifies student, school, employer, and WIE team (where applicable) of leave application outcome. ⟳ <em>Also Part 2 — student receives leave outcome notification.</em></td></tr><tr id="07edecf8-ca0e-433d-bf2f-98db979eaabf" dir="ltr"><td id="~vQ@" class="">6.2.1.23.3</td><td id="Sezj" class="">E</td><td id="Hw|m" class="">System tracks student attendance during internship including absences; auto-calculates attendance percentage.</td></tr><tr id="2ce991fa-9942-476f-b594-a9ae0d223244" dir="ltr"><td id="~vQ@" class="">6.2.1.23.4</td><td id="Sezj" class="">E</td><td id="Hw|m" class="">CB: system auto-adjusts internship period based on leave taken, per defined leave type rules.</td></tr></tbody></table><h3 id="a63fa053-c986-4ed8-b693-26246a9b76e9" class="" dir="auto">M. Marks / Grading</h3><table id="b6728adf-0d7d-4a2a-80e0-ac330420b63e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="d80fcb6a-ff05-45a5-9c09-361d81fc68df" dir="ltr"><th id="h=dj" class="simple-table-header-color simple-table-header">Ref</th><th id="Bh^B" class="simple-table-header-color simple-table-header">C/E</th><th id="Q_||" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="e17bbf53-0a1e-467b-a4b2-e5b05eecad9a" dir="ltr"><td id="h=dj" class="">6.2.1.24.1</td><td id="Bh^B" class="">C</td><td id="Q_||" class="">System consolidates and stores raw assessment scores per student. Transfers scores to Assessment Mark Entry System (MES) via integration once all components are completed.</td></tr><tr id="a15d3b8c-de6e-49be-a1ed-9254c070d5dc" dir="ltr"><td id="h=dj" class="">6.2.1.24.2</td><td id="Bh^B" class="">C</td><td id="Q_||" class="">Mark Moderation field for faculty input and score updates after marks release.</td></tr></tbody></table><h3 id="56a279bf-5a53-435f-bdb4-55f4ca9273f4" class="" dir="auto">N. Amend &amp; Cancel (Admin)</h3><table id="8d9f1c84-e2e5-4ede-8474-bfbdceb475d2" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="ae1fa797-87e5-4cc2-beca-00c481b2a6f0" dir="ltr"><th id="Es&lt;|" class="simple-table-header-color simple-table-header">Ref</th><th id="fJ`p" class="simple-table-header-color simple-table-header">C/E</th><th id="\uXH" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="5a280b25-ee00-4ccc-be31-c0bd251ae48f" dir="ltr"><td id="Es&lt;|" class="">6.2.1.19.2</td><td id="fJ`p" class="">E</td><td id="\uXH" class="">WIE Administrator can update student internship details; depending on approval level, changes may require school forwarding.</td></tr><tr id="c4643182-dcda-4e9d-9c50-7d2e5813cc1d" dir="ltr"><td id="Es&lt;|" class="">6.2.1.19.3</td><td id="fJ`p" class="">E</td><td id="\uXH" class="">System triggers email notification once a change request is approved. ⟳ <em>Also Part 2 — student receives the approval notification.</em></td></tr></tbody></table><h3 id="ac3109d9-44a2-49c1-9861-31c3add2e051" class="" dir="auto">O. Feedback &amp; Programme Evaluation (Admin)</h3><table id="e23ec3b5-8bb9-414a-b194-6cfd4e17476c" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="90f46b52-c9e9-4e6a-8a18-5b48524ec875" dir="ltr"><th id="\:oT" class="simple-table-header-color simple-table-header">Ref</th><th id="siEd" class="simple-table-header-color simple-table-header">C/E</th><th id="~JS`" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="57b44e1a-9e88-4b63-84d7-3c1f21868955" dir="ltr"><td id="\:oT" class="">6.2.1.10.2</td><td id="siEd" class="">C</td><td id="~JS`" class="">Feedback results and ratings captured and stored for analytical purposes. ⟳ <em>Shared with NCB Section H.</em></td></tr><tr id="ee352ea3-426e-4263-a08d-062551caa5c6" dir="ltr"><td id="\:oT" class="">6.2.1.11.1</td><td id="siEd" class="">C</td><td id="~JS`" class="">Programme Evaluation email trigger (manual or auto, configurable criteria). ⟳ <em>Shared with NCB Section H.</em></td></tr><tr id="5e02ecc3-b158-4776-92ef-0e5f65b2387a" dir="ltr"><td id="\:oT" class="">6.2.1.11.2</td><td id="siEd" class="">C</td><td id="~JS`" class="">Users can download student feedback results. ⟳ <em>Shared with NCB Section H.</em></td></tr></tbody></table><h3 id="51abeb46-860d-47bd-b38d-1e1d48224af0" class="" dir="auto">P. Financial Support Administration</h3><table id="320640a4-1a1b-434a-b1b8-bcb3dffc3d3b" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="4a1ca133-f938-47f8-a116-2f9ca0765abe" dir="ltr"><th id="QAQ?" class="simple-table-header-color simple-table-header">Ref</th><th id="s_|&lt;" class="simple-table-header-color simple-table-header">C/E</th><th id="JDAh" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="7ff48f4d-2252-4812-bc51-79af8a43a912" dir="ltr"><td id="QAQ?" class="">6.2.1.12.2</td><td id="s_|&lt;" class="">C</td><td id="JDAh" class="">Customisation of financial support application forms. ⟳ <em>Shared with NCB Section I.</em></td></tr></tbody></table><h3 id="77d3be78-bdd5-41b7-a0b2-b91d52606699" class="" dir="auto">Q. Reporting &amp; Dashboards</h3><table id="d896bc94-8bd0-49f2-8387-71ac893a539f" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="76e7545c-d4e8-44c7-b177-5dfcb678464a" dir="ltr"><th id="qRjD" class="simple-table-header-color simple-table-header">Ref</th><th id="FqQZ" class="simple-table-header-color simple-table-header">C/E</th><th id="BGhd" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="28916228-415f-4011-b083-2e77404cc984" dir="ltr"><td id="qRjD" class="">6.2.1.25.1</td><td id="FqQZ" class="">C</td><td id="BGhd" class="">Stats: new roles by industry/employer; new employers by industry; employer events; CAO events with employer participation. ⟳ <em>Shared with NCB Section J.</em></td></tr><tr id="cb7e2488-06bc-4895-8e0f-68e4367c9dc8" dir="ltr"><td id="qRjD" class="">6.2.1.26.1</td><td id="FqQZ" class="">C</td><td id="BGhd" class="">Internship Performance Report generation with configurable fields and customisable templates. ⟳ <em>Shared with NCB Section J.</em></td></tr><tr id="dcb2ebd7-9aa3-425a-b006-e0761b1a58a5" dir="ltr"><td id="qRjD" class="">6.2.1.26.2</td><td id="FqQZ" class="">C</td><td id="BGhd" class="">Users can view and print the Internship Performance Report (by access rights). ⟳ <em>Shared with NCB Section J. Also Part 2 — students can view.</em></td></tr><tr id="30c8541d-bdcf-46b8-9659-ff6ddf131098" dir="ltr"><td id="qRjD" class="">6.2.1.27.1</td><td id="FqQZ" class="">C</td><td id="BGhd" class="">Reporting &amp; Dashboards — refer to Section 6.2.3 of the CSM Functional Specifications document. ⟳ <em>Shared with NCB Section J.</em></td></tr></tbody></table><hr id="16b3b534-0b3e-422a-8af5-d05c04ab154d" dir="auto"/><h1 id="90b796de-6c3b-4e85-83fa-f09f9e3a8110" class="" dir="auto">4. Prototype Scope for Vetrick</h1><p id="87e14457-492f-497a-b80b-9dfdd0507256" class="" dir="auto"><strong>Employer and admin screens to design from scratch:</strong></p><ol type="1" id="c41ab621-6e84-45c4-b280-22672db75b55" class="numbered-list" start="1" dir="auto"><li><strong>Employer account sign-up and approval flow</strong> — employer self-registers for the portal; admin reviews and approves or rejects; status dashboard shows account progress and secured interns</li></ol><ol type="1" id="86c2e990-71f8-44b5-8046-572717a29507" class="numbered-list" start="2" dir="auto"><li><strong>Job / internship posting form</strong> — employer creates a role with type, duration, location, position details, and overseas-specific fields; IR Consultant receives email trigger for approval of new and amended postings (Job Boards: 6.1.1.92.1)</li></ol><ol type="1" id="cc887b79-1144-47fb-90a5-a38517f59397" class="numbered-list" start="3" dir="auto"><li><strong>Application management dashboard (employer-facing)</strong> — applicant list with statuses (Applied, Invited, Offered, Accepted, Rejected), eligibility flags, interview invite and result update, offer generation with letter attachment</li></ol><ol type="1" id="0566dc3c-5a8f-4e2d-a60b-5219282af5a0" class="numbered-list" start="4" dir="auto"><li><strong>CB campaign window setup</strong> — WIE team configures campaign parameters; sends targeted emails to student groups and employer invitations; controls employer posting window before student release (6.2.1.17.1–17.3)</li></ol><ol type="1" id="39d2f336-302a-4491-8039-4851828d0a80" class="numbered-list" start="5" dir="auto"><li><strong>Faculty allocation UI</strong> — admin sets allocation loads, assigns faculty supervisors individually or in bulk, monitors real-time capacity and availability; faculty self-select mode (6.2.1.22.1–22.3)</li></ol><ol type="1" id="b9438c41-62af-40fb-b1f6-a21ab3b1ee36" class="numbered-list" start="6" dir="auto"><li><strong>Assessment template configuration</strong> — admin creates, modifies, and publishes templates for journals, presentations, and AWO survey types (6.2.1.21.4)</li></ol><ol type="1" id="f1551a1b-3b66-4ca2-9d2f-e5b0b396fa42" class="numbered-list" start="7" dir="auto"><li><strong>AWO rating entry and at-risk management</strong> — employer inputs AWO score during evaluation; system calculates final score; threshold breach triggers notification to school and student; Placement at Risk view (6.2.1.18.1)</li></ol><ol type="1" id="90b4ef71-e540-4c06-9c05-56a1e37be372" class="numbered-list" start="8" dir="auto"><li><strong>Internship-to-FTP conversion flow</strong> — employer inputs Employability Potential rating; conversion offer extended to intern upon graduation; employer dashboard of previously flagged interns (6.2.1.15.1–15.3)</li></ol><ol type="1" id="c6df46c1-7c06-4b3c-bf72-79c879370363" class="numbered-list" start="9" dir="auto"><li><strong>Leave management dashboard (admin)</strong> — view and approve student leave requests, track attendance percentage, CB: auto-adjust internship period based on approved leave (6.2.1.23.2–23.4)</li></ol><ol type="1" id="75a50a51-17e2-470f-9102-07c14314bd4a" class="numbered-list numbered-list-digits-2" start="10" dir="auto"><li><strong>Marks generation and MES transfer</strong> — admin consolidates raw assessment scores, triggers transfer to Assessment Mark Entry System, mark moderation field for post-release faculty updates (6.2.1.24.1–24.2)</li></ol><ol type="1" id="b6e2bd27-f2d8-47de-9d8f-12863b3c71ad" class="numbered-list numbered-list-digits-2" start="11" dir="auto"><li><strong>Edge-Plus and WSDEG programme management</strong> — Edge-Plus team structure with team leader Final Report enforcement; WSDEG multi-block configuration and auto-assignment (6.2.1.2.1, 6.2.1.3.1–3.2)</li></ol><ol type="1" id="2c45a384-1388-4a8a-827d-21a9565e25f1" class="numbered-list numbered-list-digits-2" start="12" dir="auto"><li><strong>CV book compilation</strong> — admin view for collecting and exporting students&#x27; CV/Resume book (6.1.1.129.1)</li></ol><ol type="1" id="6c4932a8-67a9-45bf-b70f-914cdbf89a01" class="numbered-list numbered-list-digits-2" start="13" dir="auto"><li><strong>Internship Performance Report generation</strong> — configurable fields, customisable layout, print/download (6.2.1.26.1)</li></ol><p id="3e6272cb-2933-496c-9ca7-7d1216df45f6" class="" dir="auto"><strong>Screens shared between FT Jobs and NCB internship flows (design once, parameterise for type):</strong></p><ol type="1" id="59d96558-0e60-48f6-ba95-5d0099fbe803" class="numbered-list" start="1" dir="auto"><li><strong>Employer posting form</strong> — FT Jobs and NCB internships share similar posting structure; position type field distinguishes role category (6.1.1.92.1, 6.2.1.13.1)</li></ol><ol type="1" id="762a7c7a-d98b-4159-acd7-445d39483671" class="numbered-list" start="2" dir="auto"><li><strong>Overseas posting (CAO-initiated)</strong> — same admin-side form for posting on behalf of an overseas employer; overseas employer tracks student application records (6.1.1.91.2–91.3, 6.2.1.16.1–16.2)</li></ol><ol type="1" id="2cfc717f-e540-463c-94bd-219cbcc7e64f" class="numbered-list" start="3" dir="auto"><li><strong>Bulk application download</strong> — shared feature across NCB and CB contexts (6.2.1.5.3)</li></ol><ol type="1" id="7465e6b3-f7a2-461b-a581-06a345800be6" class="numbered-list" start="4" dir="auto"><li><strong>Placement records view (employer-facing)</strong> — employer sees student placement records and application statuses; shared NCB/CB data model (6.2.1.17.8)</li></ol><ol type="1" id="43cab389-7e12-4904-a04a-a97db6590291" class="numbered-list" start="5" dir="auto"><li><strong>Feedback and programme evaluation admin</strong> — download student feedback results, trigger evaluation emails; same flow for NCB and CB (6.2.1.10.2, 6.2.1.11.1–11.2)</li></ol><ol type="1" id="a584a994-2332-46f8-838c-114c23d73122" class="numbered-list" start="6" dir="auto"><li><strong>Reporting dashboard</strong> — new roles by industry/employer, new employers by industry, employer events, CAO events; same report structure for Job Boards (6.1.1.97.1) and Internship Boards (6.2.1.25.1)</li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,769 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Test 1</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="34594e81-8539-8004-9b15-cdc72731e346" class="page sans"><header><h1 class="page-title" dir="auto">Test 1</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><p id="34594e81-8539-808a-9c0b-e94125f45702" class="" dir="auto">
+</p><nav id="34594e81-8539-8049-a437-ffe2e0ed084b" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#34594e81-8539-80e5-b7b9-fbe36e028ac8">ok-api — Disaster Recovery (DR) Drill</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34594e81-8539-807b-a69b-ff224808ebe5">Step-by-Step Execution Runbook</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-80d2-bd60-c8025c4fc106">Focus: ECS (Fargate) Service Recovery | Multi-AZ within ap-southeast-1 | Drill Environment: ok-api (demo)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34594e81-8539-80a4-bee6-d755d3dbeaa6">Section 1: Infrastructure Inventory</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-80d4-a408-c4d91f6cd969">1.1 ECS Fargate (Application)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-80bd-873f-f5068f74bb04">1.2 Database</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-80fa-82be-d9f38547b806">1.3 VPC &amp; Networking</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-80c7-b00a-f229db4d93ed">1.4 Load Balancer &amp; Target Group</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-8024-b5ce-d090c50e1d8e">1.5 IaC &amp; CI/CD</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34594e81-8539-8074-8346-d022410feb85">Section 2: DR Scenarios Overview</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34594e81-8539-8066-a090-f107f0001c43">Section 3: Pre-Drill Preparation (Day Before)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34594e81-8539-809b-a7ef-d07198a66360">Section 4: Scenario B — ECS Service Recovery</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-802b-9f40-d7a6dcb9187c">4.1 Record Pre-Disruption State</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-80d3-bb3d-d169a5401ca5">4.2 Start Monitoring</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-8016-9182-c32ddb1dc197">4.3 Simulate Task Failure</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-8049-b17a-ed191779ffff">4.4 Monitor ECS Recovery</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-8078-8bd0-d4ecb56ee855">4.5 Verify New Task is Healthy in the ALB</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-8044-b3f6-f6d4cb65b3dc">4.6 Verify Application Recovery</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-80e0-8102-cf5942f38539">4.7 Verify New Task Details</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-8069-bdbd-de08d2b07ba4">4.8 Scenario B — Results</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34594e81-8539-80a2-83ea-d71615bcf909">Section 5: Post-Drill Validation</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-8046-a89f-d51ff19fb041">5.1 Smoke Test</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-8064-b8a2-d8bd101f8808">5.2 Service State</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34594e81-8539-8087-835d-f75a67c0f069">5.3 Review CloudWatch / ALB Metrics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34594e81-8539-8063-a035-d6c6ed2e4935">Section 6: Rollback Procedures</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34594e81-8539-8026-bdec-c6e86701506a">Section 7: Drill Results Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34594e81-8539-8053-a325-caab59da3538">Section 8: DR Drill Report Template</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34594e81-8539-802d-bc50-c01cccf7644f">Section 9: Key Risks and Limitations</a></div></nav><h1 id="34594e81-8539-80e5-b7b9-fbe36e028ac8" class="" dir="auto">ok-api — Disaster Recovery (DR) Drill</h1><h2 id="34594e81-8539-807b-a69b-ff224808ebe5" class="" dir="auto">Step-by-Step Execution Runbook</h2><h3 id="34594e81-8539-80d2-bd60-c8025c4fc106" class="" dir="auto">Focus: ECS (Fargate) Service Recovery | Multi-AZ within ap-southeast-1 | Drill Environment: ok-api (demo)</h3><hr id="34594e81-8539-8004-9b0f-dad248463dd9" dir="auto"/><table id="34594e81-8539-8094-8cfd-db3cb4fb95a8" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-8047-bf71-dfbc7242f7d7" dir="ltr"><th id="=Z?f" class="simple-table-header-color simple-table-header">Field</th><th id="Igqz" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34594e81-8539-8076-9a52-ca0116b2dc37" dir="ltr"><td id="=Z?f" class="">Application</td><td id="Igqz" class="">ok-api (nginx:alpine behind ALB)</td></tr><tr id="34594e81-8539-803d-aa09-d025a462a835" dir="ltr"><td id="=Z?f" class="">AWS Account</td><td id="Igqz" class="">255945442255</td></tr><tr id="34594e81-8539-80a2-ad3a-e317e465d276" dir="ltr"><td id="=Z?f" class="">Region</td><td id="Igqz" class="">ap-southeast-1 (Singapore) — single region, multi-AZ only</td></tr><tr id="34594e81-8539-8091-ac9a-e074f34a1a0a" dir="ltr"><td id="=Z?f" class="">Drill Environment</td><td id="Igqz" class="">ok-api (demo / non-production)</td></tr><tr id="34594e81-8539-8090-8a17-f599ebe62b84" dir="ltr"><td id="=Z?f" class="">ISO Requirement</td><td id="Igqz" class="">Business Continuity / Disaster Recovery validation</td></tr><tr id="34594e81-8539-80f9-a39c-c65515ba6b20" dir="ltr"><td id="=Z?f" class="">Date Prepared</td><td id="Igqz" class="">2026-04-17</td></tr></tbody></table><hr id="34594e81-8539-806b-a30f-cfa61e9033fc" dir="auto"/><h2 id="34594e81-8539-80a4-bee6-d755d3dbeaa6" class="" dir="auto">Section 1: Infrastructure Inventory</h2><h3 id="34594e81-8539-80d4-a408-c4d91f6cd969" class="" dir="auto">1.1 ECS Fargate (Application)</h3><table id="34594e81-8539-80f6-8b4c-cd9a306450e4" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-8051-b666-cd74e18b212d" dir="ltr"><th id="p[{L" class="simple-table-header-color simple-table-header">Attribute</th><th id="bW[`" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34594e81-8539-8083-a142-e931670fd37f" dir="ltr"><td id="p[{L" class="">Cluster</td><td id="bW[`" class="">ok-api</td></tr><tr id="34594e81-8539-80d8-b80d-e2c955410e99" dir="ltr"><td id="p[{L" class="">Service</td><td id="bW[`" class="">ok-api</td></tr><tr id="34594e81-8539-809a-ba99-dc80d943764e" dir="ltr"><td id="p[{L" class="">Launch Type</td><td id="bW[`" class="">Fargate (LATEST platform version)</td></tr><tr id="34594e81-8539-80b1-ab84-d78801c57bd4" dir="ltr"><td id="p[{L" class="">Desired / Running Tasks</td><td id="bW[`" class="">1 (0.25 vCPU / 0.5 GiB)</td></tr><tr id="34594e81-8539-8000-ad71-de4067c4aa11" dir="ltr"><td id="p[{L" class="">Task Definition</td><td id="bW[`" class="">ok-api:1 (Linux/X86_64)</td></tr><tr id="34594e81-8539-8086-8ad9-e1ffa7dea5a2" dir="ltr"><td id="p[{L" class="">Container Image</td><td id="bW[`" class="">public.ecr.aws/docker/library/nginx:alpine</td></tr><tr id="34594e81-8539-809e-a379-c9d878a844a9" dir="ltr"><td id="p[{L" class="">Container Port</td><td id="bW[`" class="">80/TCP (container name: <code>app</code>)</td></tr><tr id="34594e81-8539-8030-b6dc-fdf6a8b308dd" dir="ltr"><td id="p[{L" class="">Task Execution Role</td><td id="bW[`" class="">ecsTaskExecutionRole</td></tr><tr id="34594e81-8539-80fc-ba42-e1e249bfe0b5" dir="ltr"><td id="p[{L" class="">Task Role</td><td id="bW[`" class="">none</td></tr><tr id="34594e81-8539-80b9-bdf1-c17fd298a38b" dir="ltr"><td id="p[{L" class="">Load Balancer</td><td id="bW[`" class="">ALB <code>ok-api-alb</code> — HTTP:80, no TLS</td></tr><tr id="34594e81-8539-800d-acb0-f888efb1455a" dir="ltr"><td id="p[{L" class="">Health Check</td><td id="bW[`" class="">HTTP GET <code>/</code> on port 80, success code 200</td></tr><tr id="34594e81-8539-8081-aa97-c36354014ecf" dir="ltr"><td id="p[{L" class="">Circuit Breaker</td><td id="bW[`" class="">Not configured (single-task demo)</td></tr><tr id="34594e81-8539-8011-9e3c-c4e186621a18" dir="ltr"><td id="p[{L" class="">Service Security Group</td><td id="bW[`" class=""><code>ok-api-svc-sg</code> (sg-0789e767b8dda4316) — inbound 80 from ALB SG only</td></tr><tr id="34594e81-8539-80f9-9bff-eea2b6db9629" dir="ltr"><td id="p[{L" class="">ALB Security Group</td><td id="bW[`" class=""><code>ok-api-alb-sg</code> (sg-051d35891d702c8b0) — inbound 80 from 0.0.0.0/0</td></tr><tr id="34594e81-8539-8027-a6ac-c283cce91bce" dir="ltr"><td id="p[{L" class="">Public IP on tasks</td><td id="bW[`" class="">ENABLED (required for image pull — no NAT gateway)</td></tr><tr id="34594e81-8539-8006-afee-ecd642a44e05" dir="ltr"><td id="p[{L" class="">CI/CD</td><td id="bW[`" class="">None (manual AWS Console deployment)</td></tr></tbody></table><h3 id="34594e81-8539-80bd-873f-f5068f74bb04" class="" dir="auto">1.2 Database</h3><p id="34594e81-8539-8019-9f78-fd5f661ff927" class="" dir="auto">Not applicable — this service is stateless. No RDS, no persistent store. DR scope is limited to compute/network recovery.</p><h3 id="34594e81-8539-80fa-82be-d9f38547b806" class="" dir="auto">1.3 VPC &amp; Networking</h3><table id="34594e81-8539-8068-afa9-e47a114cf2be" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-8090-8c44-f3e5b812d97c" dir="ltr"><th id="ii&gt;\" class="simple-table-header-color simple-table-header">Attribute</th><th id="zXQ~" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34594e81-8539-803f-a05f-f417c9734fbb" dir="ltr"><td id="ii&gt;\" class="">VPC</td><td id="zXQ~" class=""><code>ok-api</code> (vpc-0309525a3196d0867), CIDR 10.20.0.0/16</td></tr><tr id="34594e81-8539-8089-a80f-c7cfa4ec2977" dir="ltr"><td id="ii&gt;\" class="">Public Subnet AZ-a</td><td id="zXQ~" class="">subnet-0c34e7b98822c1733 (10.20.1.0/24, ap-southeast-1a)</td></tr><tr id="34594e81-8539-80fa-b915-cb95f6ce3250" dir="ltr"><td id="ii&gt;\" class="">Public Subnet AZ-b</td><td id="zXQ~" class="">subnet-0bc92108d401b84bc (10.20.2.0/24, ap-southeast-1b)</td></tr><tr id="34594e81-8539-8074-915e-cf7f7bb9c5b8" dir="ltr"><td id="ii&gt;\" class="">Internet Gateway</td><td id="zXQ~" class="">igw-0e3e205bab200fe22</td></tr><tr id="34594e81-8539-801f-b8fe-fa7e0ef6efe0" dir="ltr"><td id="ii&gt;\" class="">Route Table</td><td id="zXQ~" class="">rtb-07a0bad272f6d78d3 (0.0.0.0/0 → IGW)</td></tr><tr id="34594e81-8539-8088-a044-cc6b0c280ab8" dir="ltr"><td id="ii&gt;\" class="">Private Subnets / NAT</td><td id="zXQ~" class="">None (tasks use public subnets with public IPs)</td></tr><tr id="34594e81-8539-80b9-8741-f1b9e449c902" dir="ltr"><td id="ii&gt;\" class="">DNS hostnames / resolution</td><td id="zXQ~" class="">Enabled</td></tr><tr id="34594e81-8539-8004-978c-e542469ce60e" dir="ltr"><td id="ii&gt;\" class="">Bastion</td><td id="zXQ~" class="">None</td></tr><tr id="34594e81-8539-8083-8be0-fd9904904644" dir="ltr"><td id="ii&gt;\" class="">VPN</td><td id="zXQ~" class="">None</td></tr></tbody></table><h3 id="34594e81-8539-80c7-b00a-f229db4d93ed" class="" dir="auto">1.4 Load Balancer &amp; Target Group</h3><table id="34594e81-8539-8066-a640-d96b79965928" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-8050-9b40-de4554f51ee9" dir="ltr"><th id="Hl^d" class="simple-table-header-color simple-table-header">Attribute</th><th id="~Zf[" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34594e81-8539-805c-9b53-d4d07c766942" dir="ltr"><td id="Hl^d" class="">ALB Name</td><td id="~Zf[" class="">ok-api-alb (internet-facing, IPv4)</td></tr><tr id="34594e81-8539-80b3-9543-e86a013e6bb3" dir="ltr"><td id="Hl^d" class="">ALB DNS</td><td id="~Zf[" class=""><a href="http://ok-api-alb-127382228.ap-southeast-1.elb.amazonaws.com/">ok-api-alb-127382228.ap-southeast-1.elb.amazonaws.com</a></td></tr><tr id="34594e81-8539-8070-91c9-da0b10ac1077" dir="ltr"><td id="Hl^d" class="">ALB Subnets</td><td id="~Zf[" class="">Both public subnets above (two AZs)</td></tr><tr id="34594e81-8539-808f-8359-c7b4a65fc6dc" dir="ltr"><td id="Hl^d" class="">Listener</td><td id="~Zf[" class="">HTTP:80 → forward to target group <code>ok-api-tg</code></td></tr><tr id="34594e81-8539-80f3-9e71-c5ac7214d82a" dir="ltr"><td id="Hl^d" class="">Target Group</td><td id="~Zf[" class="">ok-api-tg (type: IP, HTTP:80, health path <code>/</code>, success 200)</td></tr><tr id="34594e81-8539-8035-8270-daa665b5286e" dir="ltr"><td id="Hl^d" class="">ARN</td><td id="~Zf[" class="">arn:aws:elasticloadbalancing:ap-southeast-1:255945442255:targetgroup/ok-api-tg/ac25db17435e8c2d</td></tr><tr id="34594e81-8539-80ac-8256-dbc0b1859dc0" dir="ltr"><td id="Hl^d" class="">Registered Target (baseline)</td><td id="~Zf[" class="">10.20.2.104:80 — Healthy</td></tr></tbody></table><h3 id="34594e81-8539-8024-b5ce-d090c50e1d8e" class="" dir="auto">1.5 IaC &amp; CI/CD</h3><table id="34594e81-8539-8086-8876-cb565ac60cf1" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-80ad-8403-ceca002922f1" dir="ltr"><th id="|=fd" class="simple-table-header-color simple-table-header">Attribute</th><th id="U}of" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34594e81-8539-8010-9158-efde3f4c41c8" dir="ltr"><td id="|=fd" class="">IaC</td><td id="U}of" class="">None — provisioned manually via AWS Console</td></tr><tr id="34594e81-8539-80d5-a241-f189bf090063" dir="ltr"><td id="|=fd" class="">CI/CD</td><td id="U}of" class="">None — image pulled directly from public ECR</td></tr><tr id="34594e81-8539-8076-bcf4-d47e278f3f25" dir="ltr"><td id="|=fd" class="">App Env Secrets</td><td id="U}of" class="">None</td></tr></tbody></table><hr id="34594e81-8539-8002-9044-d1a36e368ea8" dir="auto"/><h2 id="34594e81-8539-8074-8346-d022410feb85" class="" dir="auto">Section 2: DR Scenarios Overview</h2><p id="34594e81-8539-802b-8fe7-ff0a4c867b6d" class="" dir="auto">Scope for this drill is intentionally narrowed to Scenario B only.</p><table id="34594e81-8539-8011-be5e-f417732f363d" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-80d3-beea-ff3c7f568008" dir="ltr"><th id="lSKp" class="simple-table-header-color simple-table-header">Scenario</th><th id="?C|s" class="simple-table-header-color simple-table-header">What It Tests</th><th id="xVmu" class="simple-table-header-color simple-table-header">Expected Downtime</th></tr></thead><tbody><tr id="34594e81-8539-802c-8240-ec9828cba183" dir="ltr"><td id="lSKp" class="">B — ECS Service Recovery</td><td id="?C|s" class="">Compute failure simulation: ECS task force-stop, auto-replacement, ALB re-routing to a new healthy target</td><td id="xVmu" class="">2–5 minutes</td></tr></tbody></table><p id="34594e81-8539-805a-bce0-e91bff0a4375" class="" dir="auto">Scenarios A (RDS failover) and any CI/CD validation are <strong>out of scope</strong> — the service is stateless and has no pipeline.</p><hr id="34594e81-8539-807e-9e5f-c7284628a5e0" dir="auto"/><h2 id="34594e81-8539-8066-a090-f107f0001c43" class="" dir="auto">Section 3: Pre-Drill Preparation (Day Before)</h2><table id="34594e81-8539-803e-98a4-de0d42bc5d39" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-80fd-a78d-c941cda5d5a9" dir="ltr"><th id="Oigt" class="simple-table-header-color simple-table-header">Step</th><th id="a}&gt;L" class="simple-table-header-color simple-table-header">Action / Command</th><th id="&lt;CmK" class="simple-table-header-color simple-table-header">Evidence</th><th id="FD[x" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34594e81-8539-80ef-9655-f6bd7d68a5dd" dir="ltr"><td id="Oigt" class="">3.1</td><td id="a}&gt;L" class="">Notify stakeholders — Send notification stating date, time window, expected duration (~15–20 min), and that the <code>ok-api</code> ALB endpoint may return 5xx briefly during the drill.</td><td id="&lt;CmK" class="">☐ Done</td><td id="FD[x" class="">Coordinator</td></tr><tr id="34594e81-8539-807e-8f98-cf827019a280" dir="ltr"><td id="Oigt" class="">3.2</td><td id="a}&gt;L" class="">Verify ECS service health: <code>aws ecs describe-services --cluster ok-api --services ok-api --region ap-southeast-1 --query &#x27;services[0].{status:status,desiredCount:desiredCount,runningCount:runningCount,rolloutState:deployments[0].rolloutState}&#x27;</code></td><td id="&lt;CmK" class="">Status: ______ / Running: ______ / rolloutState: ______</td><td id="FD[x" class="">Drill Lead</td></tr><tr id="34594e81-8539-80b5-b72a-f1723228bd2f" dir="ltr"><td id="Oigt" class="">3.3</td><td id="a}&gt;L" class="">Verify ALB target health: <code>aws elbv2 describe-target-health --target-group-arn arn:aws:elasticloadbalancing:ap-southeast-1:255945442255:targetgroup/ok-api-tg/ac25db17435e8c2d --region ap-southeast-1</code></td><td id="&lt;CmK" class="">Healthy targets: ______</td><td id="FD[x" class="">Drill Lead</td></tr><tr id="34594e81-8539-80cc-96d0-f2c017f210d0" dir="ltr"><td id="Oigt" class="">3.4</td><td id="a}&gt;L" class="">Record baseline: current task ARN, task private IP, task AZ, ALB request count, 5xx count, and <code>curl -I &lt;http://ok-api-alb-127382228.ap-southeast-1.elb.amazonaws.com/</code>&gt; status + timing.</td><td id="&lt;CmK" class="">Documented: ☐</td><td id="FD[x" class="">Scribe</td></tr><tr id="34594e81-8539-800a-8b95-f0f583153dd8" dir="ltr"><td id="Oigt" class="">3.5</td><td id="a}&gt;L" class="">Confirm tooling: AWS CLI with ECS/ELB read + <code>ecs:StopTask</code> permissions; CloudWatch Logs access (note: this task def has no log driver configured, so container logs will not be available — note this as a known gap).</td><td id="&lt;CmK" class="">All confirmed: ☐</td><td id="FD[x" class="">Drill Lead</td></tr></tbody></table><blockquote id="34594e81-8539-8057-ac29-f9e163aeb0f8" class="" dir="auto"><strong>Note — no snapshot step:</strong> The service is stateless. There is nothing to back up before the drill. The equivalent &quot;safety net&quot; is simply noting the current task definition revision (<code>ok-api:1</code>) so the service can be re-pointed if needed.</blockquote><hr id="34594e81-8539-80e7-86bf-c6c520bd2e5f" dir="auto"/><h2 id="34594e81-8539-809b-a7ef-d07198a66360" class="" dir="auto">Section 4: Scenario B — ECS Service Recovery</h2><p id="34594e81-8539-8028-a912-c8c99680d8d7" class="" dir="auto"><strong>Objective:</strong> Validate that ECS Fargate automatically replaces a stopped task and the ALB resumes routing traffic to healthy targets within the expected downtime budget.</p><p id="34594e81-8539-8016-bcee-c6a019d54d40" class="" dir="auto"><strong>Expected Downtime:</strong> 2–5 minutes (new task provisioning + image pull + 2 consecutive successful ALB health checks at default interval).</p><h3 id="34594e81-8539-802b-9f40-d7a6dcb9187c" class="" dir="auto">4.1 Record Pre-Disruption State</h3><table id="34594e81-8539-8007-97f1-d3c8a2f0c1a2" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-8087-906f-fb167d9d950d" dir="ltr"><th id="BMZb" class="simple-table-header-color simple-table-header">Step</th><th id="dgVu" class="simple-table-header-color simple-table-header">Action / Command</th><th id="qrvH" class="simple-table-header-color simple-table-header">Evidence</th><th id="AGL?" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34594e81-8539-802b-8e4b-c41970d534a5" dir="ltr"><td id="BMZb" class="">4.1</td><td id="dgVu" class="">List the running task ARN: <code>TASK_ARN=$(aws ecs list-tasks --cluster ok-api --service-name ok-api --desired-status RUNNING --region ap-southeast-1 --query &#x27;taskArns[0]&#x27; --output text); echo $TASK_ARN</code></td><td id="qrvH" class="">Task ARN: ______</td><td id="AGL?" class="">Drill Lead</td></tr><tr id="34594e81-8539-80e3-9ade-eb13d4bb0bb6" dir="ltr"><td id="BMZb" class=""></td><td id="dgVu" class="">Describe it: <br/>aws ecs describe-tasks --cluster ok-api --tasks $TASK_ARN --region ap-southeast-1 \<br/>--query &#x27;tasks[0].{TaskArn:taskArn,LastStatus:lastStatus,StartedAt:startedAt,AZ:availabilityZone,PrivateIp:attachments[0].details[?name==<code>privateIPv4Address</code>].value|[0]}&#x27; \<br/>--output json</td><td id="qrvH" class="">Last status: ______ / Started at: ______ / AZ: ______ / Private IP: ______</td><td id="AGL?" class=""></td></tr></tbody></table><p id="34594e81-8539-80af-a693-e51875ad26b8" class="" dir="auto">
+</p><h3 id="34594e81-8539-80d3-bb3d-d169a5401ca5" class="" dir="auto">4.2 Start Monitoring</h3><table id="34594e81-8539-807c-93ac-f1272564e541" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-807d-bfc7-d041870a0702" dir="ltr"><th id="ulTW" class="simple-table-header-color simple-table-header">Step</th><th id="N^?[" class="simple-table-header-color simple-table-header">Action / Command</th><th id="dfl^" class="simple-table-header-color simple-table-header">Evidence</th><th id="&gt;ALH" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34594e81-8539-80e5-86ea-ecacf035d2d2" dir="ltr"><td id="ulTW" class="">4.2</td><td id="N^?[" class="">In a separate terminal, run continuous health monitoring against the ALB: <br/><br/><code>while true; do TS=$(date &#x27;+%H:%M:%S&#x27;); R=$(curl -s -o /dev/null -w &quot;%{http_code} %{time_total}s&quot; --connect-timeout 5 --max-time 10 </code><code><a href="http://ok-api-alb-127382228.ap-southeast-1.elb.amazonaws.com/">http://ok-api-alb-127382228.ap-southeast-1.elb.amazonaws.com/</a></code><code>); echo &quot;$TS $R&quot;; sleep 5; done</code></td><td id="dfl^" class="">Monitoring active: ☐</td><td id="&gt;ALH" class="">Drill Observer</td></tr><tr id="34594e81-8539-8077-a647-c88014aa0148" dir="ltr"><td id="ulTW" class=""></td><td id="N^?[" class="">Also keep an ALB target health watch: <br/><br/><code>while true; do echo &quot;=== $(date &#x27;+%Y-%m-%d %H:%M:%S&#x27;) ===&quot;; aws elbv2 describe-target-health --target-group-arn arn:aws:elasticloadbalancing:ap-southeast-1:255945442255:targetgroup/ok-api-tg/ac25db17435e8c2d --region ap-southeast-1 --query &#x27;TargetHealthDescriptions[].{Id:Target.Id,State:TargetHealth.State,Reason:TargetHealth.Reason}&#x27;; sleep 10; done</code></td><td id="dfl^" class="">TG watch active: ☐</td><td id="&gt;ALH" class=""></td></tr></tbody></table><h3 id="34594e81-8539-8016-9182-c32ddb1dc197" class="" dir="auto">4.3 Simulate Task Failure</h3><table id="34594e81-8539-808b-978c-e4c19db3eba7" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-80f6-8a72-c39aaaa78f71" dir="ltr"><th id="[QBb" class="simple-table-header-color simple-table-header">Step</th><th id="z^OE" class="simple-table-header-color simple-table-header">Action / Command</th><th id="|\La" class="simple-table-header-color simple-table-header">Evidence</th><th id="]kRD" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34594e81-8539-8039-a2ec-d1d36325adea" dir="ltr"><td id="[QBb" class="">4.3</td><td id="z^OE" class="">Force-stop the running task: <code>aws ecs stop-task --cluster ok-api --task $TASK_ARN --reason &quot;DR Drill - simulating Fargate task failure&quot; --region ap-southeast-1</code></td><td id="|\La" class="">T1 (task stopped): ______</td><td id="]kRD" class="">Drill Lead</td></tr><tr id="34594e81-8539-80ae-8a8b-e308bdee558d" dir="ltr"><td id="[QBb" class=""></td><td id="z^OE" class="">Record exact wall-clock timestamp as <strong>T1_TASK_STOPPED</strong>.</td><td id="|\La" class=""></td><td id="]kRD" class=""></td></tr></tbody></table><h3 id="34594e81-8539-8049-b17a-ed191779ffff" class="" dir="auto">4.4 Monitor ECS Recovery</h3><table id="34594e81-8539-80e1-bc56-e3ebd808ca88" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-8047-a59d-f944a1b10334" dir="ltr"><th id="G|K@" class="simple-table-header-color simple-table-header">Step</th><th id="`zMJ" class="simple-table-header-color simple-table-header">Action / Command</th><th id="rsjW" class="simple-table-header-color simple-table-header">Evidence</th><th id="iwhE" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34594e81-8539-80d4-b3bd-c70e84ef36c7" dir="ltr"><td id="G|K@" class="">4.4</td><td id="`zMJ" class="">Poll the service until <code>runningCount == desiredCount</code>: <code>while true; do read R D P &lt; &lt;(aws ecs describe-services --cluster ok-api --services ok-api --region ap-southeast-1 --query &#x27;services[0].[runningCount,desiredCount,pendingCount]&#x27; --output text); echo &quot;$(date &#x27;+%H:%M:%S&#x27;) running=$R desired=$D pending=$P&quot;; [ &quot;$R&quot; = &quot;$D&quot; ] &amp;&amp; [ &quot;$R&quot; -ge 1 ] &amp;&amp; break; sleep 10; done</code></td><td id="rsjW" class="">T2 (new task running): ______</td><td id="iwhE" class="">Drill Lead</td></tr><tr id="34594e81-8539-80be-a986-e7f8ee9d0164" dir="ltr"><td id="G|K@" class=""></td><td id="`zMJ" class="">Record when <code>runningCount</code> returns to 1 as <strong>T2_NEW_TASK_RUNNING</strong>.</td><td id="rsjW" class=""></td><td id="iwhE" class=""></td></tr></tbody></table><h3 id="34594e81-8539-8078-8bd0-d4ecb56ee855" class="" dir="auto">4.5 Verify New Task is Healthy in the ALB</h3><table id="34594e81-8539-8028-acdf-ca4c1b688e94" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-8060-be11-e710f28f181f" dir="ltr"><th id="LTVx" class="simple-table-header-color simple-table-header">Step</th><th id="oa[R" class="simple-table-header-color simple-table-header">Action / Command</th><th id="pg\n" class="simple-table-header-color simple-table-header">Evidence</th><th id="K_[|" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34594e81-8539-807a-b878-d8b69439bc49" dir="ltr"><td id="LTVx" class="">4.5</td><td id="oa[R" class="">Wait for target-group health: <code>aws elbv2 describe-target-health --target-group-arn arn:aws:elasticloadbalancing:ap-southeast-1:255945442255:targetgroup/ok-api-tg/ac25db17435e8c2d --region ap-southeast-1 --query &#x27;TargetHealthDescriptions[].{Id:Target.Id,State:TargetHealth.State}&#x27;</code></td><td id="pg\n" class="">T3 (target healthy): ______ / Target state: ______</td><td id="K_[|" class="">Drill Lead</td></tr><tr id="34594e81-8539-8088-ab7e-ec3e16625c2d" dir="ltr"><td id="LTVx" class=""></td><td id="oa[R" class="">Record timestamp when the new IP transitions from <code>initial</code> → <code>healthy</code> as <strong>T3_TARGET_HEALTHY</strong>.</td><td id="pg\n" class=""></td><td id="K_[|" class=""></td></tr></tbody></table><h3 id="34594e81-8539-8044-b3f6-f6d4cb65b3dc" class="" dir="auto">4.6 Verify Application Recovery</h3><table id="34594e81-8539-809b-80b4-dc6618ffe1bc" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-8094-a77c-efeea4c9771d" dir="ltr"><th id="MyTU" class="simple-table-header-color simple-table-header">Step</th><th id="`]TD" class="simple-table-header-color simple-table-header">Action / Command</th><th id="N:iP" class="simple-table-header-color simple-table-header">Evidence</th><th id="EKa_" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34594e81-8539-804a-9fa9-c453af56df29" dir="ltr"><td id="MyTU" class="">4.6</td><td id="`]TD" class="">From the monitoring loop in 4.2, identify the first HTTP 200 after T1. Functional check: <code>curl -sI &lt;http://ok-api-alb-127382228.ap-southeast-1.elb.amazonaws.com/&gt; \| head -n 1</code> should print <code>HTTP/1.1 200 OK</code>.</td><td id="N:iP" class="">T4 (app recovered): ______ / Response OK: ☐ Yes ☐ No</td><td id="EKa_" class="">Drill Observer</td></tr></tbody></table><h3 id="34594e81-8539-80e0-8102-cf5942f38539" class="" dir="auto">4.7 Verify New Task Details</h3><table id="34594e81-8539-80b9-9b26-c347053970b0" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-80d8-83d0-f3411cc38290" dir="ltr"><th id="Er&gt;l" class="simple-table-header-color simple-table-header">Step</th><th id="Apsp" class="simple-table-header-color simple-table-header">Action / Command</th><th id="yVqI" class="simple-table-header-color simple-table-header">Evidence</th><th id="acS=" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34594e81-8539-808f-82ea-cc05dfd77418" dir="ltr"><td id="Er&gt;l" class="">4.7</td><td id="Apsp" class="">Confirm the replacement task has a <strong>different</strong> ARN and likely a different private IP: <code>NEW_TASK_ARN=$(aws ecs list-tasks --cluster ok-api --service-name ok-api --desired-status RUNNING --region ap-southeast-1 --query &#x27;taskArns[0]&#x27; --output text); aws ecs describe-tasks --cluster ok-api --tasks $NEW_TASK_ARN --region ap-southeast-1 --query &#x27;tasks[0].{TaskArn:taskArn,LastStatus:lastStatus,StartedAt:startedAt,AZ:availabilityZone,PrivateIp:attachments[0].details[?name==\\</code>privateIPv4Address\<code>].value\|[0]}&#x27;</code></td><td id="yVqI" class="">New Task ARN: ______ / New Private IP: ______ / New AZ: ______ / Different from original: ☐ Yes ☐ No</td><td id="acS=" class="">Drill Lead</td></tr></tbody></table><h3 id="34594e81-8539-8069-bdbd-de08d2b07ba4" class="" dir="auto">4.8 Scenario B — Results</h3><table id="34594e81-8539-80ea-9af7-fb72a7a9001d" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-8014-b08e-f8e8e1f0e4dd" dir="ltr"><th id="]Cka" class="simple-table-header-color simple-table-header">Metric</th><th id="ItZ^" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34594e81-8539-8073-930c-ead3d7bc2061" dir="ltr"><td id="]Cka" class="">T1 — Task stopped</td><td id="ItZ^" class="">________</td></tr><tr id="34594e81-8539-80eb-92bd-de801fcd9163" dir="ltr"><td id="]Cka" class="">T2 — New task running</td><td id="ItZ^" class="">________</td></tr><tr id="34594e81-8539-8040-b86f-c138b599f247" dir="ltr"><td id="]Cka" class="">T3 — Target healthy in ALB</td><td id="ItZ^" class="">________</td></tr><tr id="34594e81-8539-8096-ac09-eb7f6e316d01" dir="ltr"><td id="]Cka" class="">T4 — Application responding</td><td id="ItZ^" class="">________</td></tr><tr id="34594e81-8539-80ec-aec3-c64ba9f66911" dir="ltr"><td id="]Cka" class="">Task provisioning time (T2 − T1)</td><td id="ItZ^" class="">______ seconds</td></tr><tr id="34594e81-8539-80cb-ad5e-d37772364681" dir="ltr"><td id="]Cka" class="">Time to healthy target (T3 − T1)</td><td id="ItZ^" class="">______ seconds</td></tr><tr id="34594e81-8539-80a3-a06a-d928179a05b5" dir="ltr"><td id="]Cka" class="">Total application downtime (T4 − T1)</td><td id="ItZ^" class="">______ seconds</td></tr><tr id="34594e81-8539-80d4-bd20-ccf9ccf128d6" dir="ltr"><td id="]Cka" class="">ECS auto-recovery worked</td><td id="ItZ^" class="">☐ Yes ☐ No</td></tr><tr id="34594e81-8539-80f4-bb1f-c15ec577b5ef" dir="ltr"><td id="]Cka" class="">Manual intervention required</td><td id="ItZ^" class="">☐ No ☐ Yes</td></tr><tr id="34594e81-8539-801a-8583-f70f02306e66" dir="ltr"><td id="]Cka" class="">Overall Pass/Fail</td><td id="ItZ^" class="">☐ PASS ☐ FAIL</td></tr></tbody></table><p id="34594e81-8539-803c-9205-e917889cd6cc" class="" dir="auto"><strong>Acceptance Criteria:</strong></p><ul id="34594e81-8539-80f3-aa4b-efd88aad7164" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ECS auto-replaces the stopped task without operator action.</li></ul><ul id="34594e81-8539-80d2-bfb8-cae344fbf571" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ALB registers the new task IP and marks it <code>healthy</code>.</li></ul><ul id="34594e81-8539-8013-b52b-fc3a490e7a09" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Total application downtime is under <strong>5 minutes</strong>.</li></ul><ul id="34594e81-8539-80ac-85bc-fc0766b61ee6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">No manual intervention required.</li></ul><hr id="34594e81-8539-80fa-9485-d01ce386d8ca" dir="auto"/><h2 id="34594e81-8539-80a2-83ea-d71615bcf909" class="" dir="auto">Section 5: Post-Drill Validation</h2><h3 id="34594e81-8539-8046-a89f-d51ff19fb041" class="" dir="auto">5.1 Smoke Test</h3><table id="34594e81-8539-80ad-b7ee-d59c1e16222e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-802b-8f05-db25ed3cff88" dir="ltr"><th id="cD^v" class="simple-table-header-color simple-table-header">Step</th><th id="PTA;" class="simple-table-header-color simple-table-header">Action / Command</th><th id="`Krq" class="simple-table-header-color simple-table-header">Evidence</th><th id="tNeB" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34594e81-8539-806e-8dfc-e04f0f08b6a4" dir="ltr"><td id="cD^v" class="">5.1</td><td id="PTA;" class=""><code>curl -s &lt;http://ok-api-alb-127382228.ap-southeast-1.elb.amazonaws.com/&gt; \| head -n 5</code> — expect nginx welcome page.</td><td id="`Krq" class="">HTTP 200 + nginx body: ☐</td><td id="tNeB" class="">Drill Observer</td></tr></tbody></table><h3 id="34594e81-8539-8064-b8a2-d8bd101f8808" class="" dir="auto">5.2 Service State</h3><table id="34594e81-8539-80ef-9e9d-ee25538a0908" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-80ea-8f46-fc49df45e1e4" dir="ltr"><th id="IAww" class="simple-table-header-color simple-table-header">Step</th><th id="RaJZ" class="simple-table-header-color simple-table-header">Action / Command</th><th id="z{Wv" class="simple-table-header-color simple-table-header">Evidence</th><th id="_|]b" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34594e81-8539-805d-97d6-c056d6910655" dir="ltr"><td id="IAww" class="">5.2</td><td id="RaJZ" class=""><code>aws ecs describe-services --cluster ok-api --services ok-api --region ap-southeast-1 --query &#x27;services[0].{status:status,desiredCount:desiredCount,runningCount:runningCount,rolloutState:deployments[0].rolloutState}&#x27;</code> — expect ACTIVE, 1/1, COMPLETED.</td><td id="z{Wv" class="">Matches expected: ☐ Yes ☐ No</td><td id="_|]b" class="">Drill Lead</td></tr></tbody></table><h3 id="34594e81-8539-8087-835d-f75a67c0f069" class="" dir="auto">5.3 Review CloudWatch / ALB Metrics</h3><table id="34594e81-8539-80a0-b20d-c8f8c6452e6d" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-80e9-a621-edcf9f8e655b" dir="ltr"><th id="?P\Q" class="simple-table-header-color simple-table-header">Step</th><th id="lgeK" class="simple-table-header-color simple-table-header">Action / Command</th><th id="Uj?d" class="simple-table-header-color simple-table-header">Evidence</th><th id="bNVY" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34594e81-8539-8009-af9c-ce86f8eb3e20" dir="ltr"><td id="?P\Q" class="">5.3</td><td id="lgeK" class="">In CloudWatch, review for the drill window: ALB <code>HTTPCode_Target_5XX_Count</code>, <code>HTTPCode_ELB_5XX_Count</code>, <code>TargetResponseTime</code>, <code>UnHealthyHostCount</code>. Confirm they return to baseline after T4.</td><td id="Uj?d" class="">All normal: ☐ Yes ☐ No / Notes: ______</td><td id="bNVY" class="">Drill Lead</td></tr></tbody></table><hr id="34594e81-8539-8030-bfdf-c2425186b403" dir="auto"/><h2 id="34594e81-8539-8063-a035-d6c6ed2e4935" class="" dir="auto">Section 6: Rollback Procedures</h2><table id="34594e81-8539-8086-a966-ed266274b728" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-80c6-a8f3-d365d94f1ec0" dir="ltr"><th id="w@Ri" class="simple-table-header-color simple-table-header">Step</th><th id="dJPg" class="simple-table-header-color simple-table-header">Action / Command</th><th id="uMwB" class="simple-table-header-color simple-table-header">Evidence</th><th id="EMYG" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34594e81-8539-804c-ad14-f934c99f098d" dir="ltr"><td id="w@Ri" class="">RB-1</td><td id="dJPg" class="">If the service does not self-recover, force a new deployment: <code>aws ecs update-service --cluster ok-api --service ok-api --force-new-deployment --region ap-southeast-1 &amp;&amp; aws ecs wait services-stable --cluster ok-api --services ok-api --region ap-southeast-1</code></td><td id="uMwB" class="">☐ Triggered ☐ N/A</td><td id="EMYG" class="">Drill Lead</td></tr><tr id="34594e81-8539-80ac-8bcb-fa3693f12ce1" dir="ltr"><td id="w@Ri" class="">RB-2</td><td id="dJPg" class="">If tasks fail to start (image pull, ENI exhaustion), verify: public IP is enabled on the service network configuration, both public subnets are attached, SG <code>ok-api-svc-sg</code> is attached, route table has <code>0.0.0.0/0 → igw-0e3e205bab200fe22</code>.</td><td id="uMwB" class="">☐ Verified</td><td id="EMYG" class="">Drill Lead</td></tr><tr id="34594e81-8539-805e-9821-e774727fe8b2" dir="ltr"><td id="w@Ri" class="">RB-3</td><td id="dJPg" class="">If the task def is the problem, roll back to the previous revision: <code>aws ecs update-service --cluster ok-api --service ok-api --task-definition ok-api:1 --force-new-deployment --region ap-southeast-1</code></td><td id="uMwB" class="">☐ Triggered ☐ N/A</td><td id="EMYG" class="">Drill Lead</td></tr></tbody></table><hr id="34594e81-8539-80e6-b8fc-c5d18516e41e" dir="auto"/><h2 id="34594e81-8539-8026-bdec-c6e86701506a" class="" dir="auto">Section 7: Drill Results Summary</h2><table id="34594e81-8539-803f-9aa9-dd60afa241d9" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-80fe-983a-f28acbebab3e" dir="ltr"><th id="k_&lt;W" class="simple-table-header-color simple-table-header">Criterion</th><th id="TEtD" class="simple-table-header-color simple-table-header">Target</th><th id="pUDz" class="simple-table-header-color simple-table-header">Actual</th></tr></thead><tbody><tr id="34594e81-8539-801a-b04f-f5e92cb6965b" dir="ltr"><td id="k_&lt;W" class="">Task provisioning time (T2 − T1)</td><td id="TEtD" class="">&lt; 2 minutes</td><td id="pUDz" class="">______</td></tr><tr id="34594e81-8539-80d1-a0a1-cf3b5022927c" dir="ltr"><td id="k_&lt;W" class="">Time to healthy target (T3 − T1)</td><td id="TEtD" class="">&lt; 3 minutes</td><td id="pUDz" class="">______</td></tr><tr id="34594e81-8539-8020-921e-d9a4b8ecb0d0" dir="ltr"><td id="k_&lt;W" class="">Total application downtime (T4 − T1)</td><td id="TEtD" class="">&lt; 5 minutes</td><td id="pUDz" class="">______</td></tr><tr id="34594e81-8539-8055-8541-c44cf9f9ee22" dir="ltr"><td id="k_&lt;W" class="">ECS auto-recovery</td><td id="TEtD" class="">Yes</td><td id="pUDz" class="">______</td></tr><tr id="34594e81-8539-80c5-a187-d9193fb86811" dir="ltr"><td id="k_&lt;W" class="">Manual intervention</td><td id="TEtD" class="">None</td><td id="pUDz" class="">______</td></tr></tbody></table><p id="34594e81-8539-808e-b714-d39607a4f2d8" class="" dir="auto"><strong>Overall Drill Result:</strong> ☐ PASS ☐ FAIL ☐ PARTIAL</p><hr id="34594e81-8539-80f7-8aad-c024126094c9" dir="auto"/><h2 id="34594e81-8539-8053-a325-caab59da3538" class="" dir="auto">Section 8: DR Drill Report Template</h2><table id="34594e81-8539-80af-9c56-e58d74bc362c" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-80c9-b609-f614e549b56a" dir="ltr"><th id="dkSI" class="simple-table-header-color simple-table-header">Field</th><th id="jfQk" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34594e81-8539-8054-a27f-ff84fd7ddf5b" dir="ltr"><td id="dkSI" class="">Date of drill</td><td id="jfQk" class="">______</td></tr><tr id="34594e81-8539-8016-a2e2-ea9ed78617d8" dir="ltr"><td id="dkSI" class="">Duration</td><td id="jfQk" class="">______</td></tr><tr id="34594e81-8539-802c-b998-cd3c662af159" dir="ltr"><td id="dkSI" class="">Environment</td><td id="jfQk" class="">ok-api (ap-southeast-1)</td></tr><tr id="34594e81-8539-8075-861a-f1628ed0864b" dir="ltr"><td id="dkSI" class="">Participants</td><td id="jfQk" class="">______</td></tr></tbody></table><p id="34594e81-8539-8074-ba5e-e086c93de8b2" class="" dir="auto"><strong>Scenario B — ECS Service Recovery</strong></p><table id="34594e81-8539-8087-bc12-ce4a34f6e8d2" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-8011-b128-cfda0bdcd2d9" dir="ltr"><th id="TQFv" class="simple-table-header-color simple-table-header">Item</th><th id="_UH&lt;" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34594e81-8539-8042-bf20-d283cd553341" dir="ltr"><td id="TQFv" class="">Result</td><td id="_UH&lt;" class="">☐ Pass ☐ Fail</td></tr><tr id="34594e81-8539-805c-9e34-e658e26e18ea" dir="ltr"><td id="TQFv" class="">Task replacement time</td><td id="_UH&lt;" class="">______ seconds</td></tr><tr id="34594e81-8539-8037-8ed9-f5c3dff14c55" dir="ltr"><td id="TQFv" class="">Time to healthy ALB target</td><td id="_UH&lt;" class="">______ seconds</td></tr><tr id="34594e81-8539-8040-a753-caeac5b394b0" dir="ltr"><td id="TQFv" class="">Application recovery time (total downtime)</td><td id="_UH&lt;" class="">______ seconds</td></tr><tr id="34594e81-8539-80c7-87b9-f550f6df5915" dir="ltr"><td id="TQFv" class="">Original task AZ → New task AZ</td><td id="_UH&lt;" class="">______ → ______</td></tr><tr id="34594e81-8539-8064-955a-db460d75deb9" dir="ltr"><td id="TQFv" class="">Issues encountered</td><td id="_UH&lt;" class="">______</td></tr></tbody></table><p id="34594e81-8539-807c-bd55-ec0c8d4ad629" class="" dir="auto"><strong>Findings &amp; Recommendations:</strong> ______</p><p id="34594e81-8539-80fd-9782-ce1d64591da9" class="" dir="auto"><strong>Sign-off:</strong></p><table id="34594e81-8539-80ca-ac75-d6251f6791fe" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34594e81-8539-80b0-a3d6-d3d6a592994e" dir="ltr"><th id="jUs|" class="simple-table-header-color simple-table-header">Role</th><th id="lDUj" class="simple-table-header-color simple-table-header">Name</th><th id="ig&gt;A" class="simple-table-header-color simple-table-header">Signature</th><th id="A~Sw" class="simple-table-header-color simple-table-header">Date</th></tr></thead><tbody><tr id="34594e81-8539-8053-b297-cdc231cc92ae" dir="ltr"><td id="jUs|" class="">DR Drill Lead</td><td id="lDUj" class="">____________</td><td id="ig&gt;A" class="">____________</td><td id="A~Sw" class="">______</td></tr><tr id="34594e81-8539-80ad-a020-eb008a073ae7" dir="ltr"><td id="jUs|" class="">DevOps</td><td id="lDUj" class="">____________</td><td id="ig&gt;A" class="">____________</td><td id="A~Sw" class="">______</td></tr><tr id="34594e81-8539-8066-b260-db34fedfabf1" dir="ltr"><td id="jUs|" class="">Management</td><td id="lDUj" class="">____________</td><td id="ig&gt;A" class="">____________</td><td id="A~Sw" class="">______</td></tr></tbody></table><hr id="34594e81-8539-806c-a4bd-d2ead1f8ab6e" dir="auto"/><h2 id="34594e81-8539-802d-bc50-c01cccf7644f" class="" dir="auto">Section 9: Key Risks and Limitations</h2><p id="34594e81-8539-8078-bc1b-f60b59a449c3" class="" dir="auto"><strong>Risk 1 — Single task (</strong><code><strong>desiredCount: 1</strong></code><strong>).</strong> There is no redundancy; the drill <em>guarantees</em> a brief total outage between T1 and T4. For production workloads, set <code>desiredCount ≥ 2</code> spread across both AZs and enable the deployment circuit breaker with rollback.</p><p id="34594e81-8539-8022-823a-f76719ac3b94" class="" dir="auto"><strong>Risk 2 — Public subnets + public IPs for image pull.</strong> The service has no NAT gateway, so Fargate tasks must be assigned public IPs to pull <code>public.ecr.aws/docker/library/nginx:alpine</code>. If <code>assignPublicIp</code> is ever flipped to <code>DISABLED</code>, new tasks will fail to start with a <code>CannotPullContainer</code> error and recovery will stall indefinitely. Rollback step RB-2 covers this.</p><p id="34594e81-8539-80a3-bbac-c3c78dbc344a" class="" dir="auto"><strong>Risk 3 — No container logging.</strong> The task definition has no <code>awslogs</code> log driver configured. Failure diagnostics during the drill are limited to ECS event history and ALB metrics. Recommend adding <code>awslogs</code> → <code>/ecs/ok-api</code> before the next drill.</p><p id="34594e81-8539-80d0-96fb-dd29d47b8675" class="" dir="auto"><strong>Risk 4 — No circuit breaker.</strong> The service was created without deployment circuit breaker + rollback. A bad task definition revision could keep failing tasks indefinitely. Recommend enabling it.</p><p id="34594e81-8539-8045-af18-c89279660668" class="" dir="auto"><strong>Risk 5 — HTTP only, no TLS.</strong> The ALB listener is HTTP:80 with no ACM cert. Acceptable for a demo, not for anything real.</p><p id="34594e81-8539-8006-8789-d06cdcd088c2" class="" dir="auto"><strong>Risk 6 — AZ of replacement task is not pinned.</strong> ECS may place the replacement task in the same AZ as the one that &quot;failed&quot;. This drill simulates task-level failure, not AZ-level failure. A true AZ-outage test would require pulling an AZ&#x27;s subnet from the service network config, which is out of scope here.</p><p id="34594e81-8539-8018-bfb0-ccae50202b1b" class="" dir="auto"><strong>Out of scope:</strong> RDS failover (no database), CI/CD pipeline validation (no pipeline), multi-region failover (single-region by design), WAF/Route 53/ACM (not provisioned).</p><p id="34594e81-8539-80f7-9edb-cb5f38c2e658" class="" dir="auto">This DR drill plan covers <strong>one scenario (ECS task recovery)</strong> and can be completed in approximately <strong>15–20 minutes</strong> on the <code>ok-api</code> demo environment.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,767 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Events</title><meta name="data-notion-page-icon" content="📆"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%93%86%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="35f94e81-8539-8018-8db9-c8a786a090eb" class="page sans" data-notion-page-icon="📆"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="📆"></span></div><h1 class="page-title" dir="auto">Events</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-last_edited_by"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/user-circle_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited by</th><td><span class="user"><img src="https://lh3.googleusercontent.com/a/ACg8ocKvzGHEpJauKI2uoiprUb1a8p_Ghl3XXKOO6UP2DWZirF9XLHc=s100" class="icon user-icon"/>Joji Mendoza-Chan</span></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/clock_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited time</th><td><time datetime="2026-06-13T08:38">June 13, 2026 8:38 AM</time></td></tr></tbody></table></header><div class="page-body"><h1 id="af78a2b7-3999-4068-a6fa-e34ba0f8f0ba" class="" dir="auto">1. Pre-Screening for Event Registration</h1><p id="b39d4bf9-c03a-4bb3-b3db-d83b52dc17b7" class="" dir="auto">Event organisers — admins, managers, staff, and employers — can attach a pre-screening form to any event. When enabled, prospective registrants must submit the form before their registration is processed. Pre-screening can be set as <strong>required</strong> (registration is blocked until the form is submitted) or <strong>optional</strong> (students may register without submitting).</p><h2 id="627731cc-18be-44ef-855f-39dee703f8be" class="" dir="auto">1.1 Form Configuration</h2><p id="6ebd806e-824d-48b0-aa04-6980954f74e4" class="" dir="auto">During event setup, the organiser can either select an existing template from the Forms module or create a new inline pre-screening form directly within the event settings page. Inline forms are limited to a single section and support the following field types: text block, single-select, multi-select, free text, and file upload.</p><h2 id="593c2e0b-bb9e-40ef-a0df-d20e810c8184" class="" dir="auto">1.2 Approval Gate</h2><p id="0d555bd9-bbb9-4497-8567-7d45b01ce4e1" class="" dir="auto">An approval gate can be enabled alongside pre-screening. When the approval gate is on, a submitted form creates a <strong>Registrant</strong> record with status <code>Submitted</code>; the student is not yet admitted to the event. When the approval gate is off, a successful submission immediately admits the student as a <strong>Participant</strong>.</p><p id="03fb7682-5190-4e9f-a497-788235b35a68" class="" dir="auto">Organiser roles (admin, manager, staff, employer) can update registrant status from <code>Submitted</code> to <code>Approved</code> or <code>Rejected</code>. On approval, the system automatically enrolls the registrant as a Participant and notifies them. On rejection, the organiser may optionally provide a reason; the student is notified of the outcome and, if a reason was provided, it is included in the notification.</p><h2 id="0c98906c-b8e6-426f-b373-81ce9cf10a27" class="" dir="auto">1.3 Registrants View</h2><p id="e65c16b4-983c-4508-9c7e-e7c72b862f9c" class="" dir="auto">The event management panel includes a <strong>Registrants</strong> tab (distinct from the Participants tab). The Registrants tab shows all students who have submitted the pre-screening form, along with their status (Submitted / Approved / Rejected). Organisers can open individual records to review responses and approve or reject inline or from the detail view. Bulk approval and bulk rejection are supported; bulk rejection allows an optional shared reason that applies to all selected registrants.</p><h2 id="93e729ab-3bd6-46c7-ad79-11e94bcec185" class="" dir="auto">1.4 Student-Facing States</h2><p id="2572f314-f0b8-44a5-b26a-c9c96ae746a2" class="" dir="auto">After submitting the form, students see a confirmation that their registration is pending approval (when the approval gate is on). Students can view their submitted responses from their event registration record and receive in-platform (and, if configured, email) notifications when their status changes. If a rejection reason was provided, it is included in the notification.</p><p id="43be8fb5-282c-4814-92ef-7ee5b282925b" class="" dir="auto"><strong>Scope boundary:</strong> The Participants list, including day-of attendance marking, is tracked separately. Inline-created forms are not required to be reusable across events in the initial release.</p><p id="b24b9e87-29ca-42b0-aca2-5cd5e74da2f1" class="" dir="auto"><em>Source: Linear SU-4372</em></p><hr id="cdfef30b-6458-4757-93ed-2309fad5861e" dir="auto"/><h1 id="8f2380f6-e12a-466d-a159-07962c2009dd" class="" dir="auto">2. Non-NTU Participant Account Creation via Event Registration</h1><p id="e10c3afc-2d41-4338-90d2-57094acfad98" class="" dir="auto">When an event is configured as open to non-NTU participants, the event organiser can enable an <strong>&quot;Invite registrants to create an account&quot;</strong> toggle in the event settings. When enabled, a post-registration screen is shown to non-NTU registrants with an invitation to create a platform account. Registrants may skip this step; skipping does not affect their event registration record.</p><p id="f8f7ee16-ce42-4ea6-b1de-ba4b05d027fa" class="" dir="auto">If the registrant&#x27;s email already matches an existing platform account, the post-registration screen instead prompts them to log in rather than creating a duplicate account.</p><h2 id="2bc1bb21-1539-4942-95b6-13bc7b613612" class="" dir="auto">2.1 Account Creation Form</h2><p id="97047871-e437-47f6-99af-ec6ab1505bfa" class="" dir="auto">Name and email are pre-filled from the event registration submission and are read-only. The registrant selects an account type from two options, each shown with a short descriptor:</p><table id="80b2397b-20e0-4d47-89f9-66b466a881ff" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="6defb366-55b0-4103-b059-2aebc5cb4c05" dir="ltr"><th id=":;]E" class="simple-table-header-color simple-table-header">Account Type</th><th id="FaSL" class="simple-table-header-color simple-table-header">Descriptor</th></tr></thead><tbody><tr id="24f13a2f-f9c2-4a53-8a36-c7c2b6735661" dir="ltr"><td id=":;]E" class=""><strong>Employer</strong></td><td id="FaSL" class="">For organisations looking to connect with NTU talent and post opportunities for students</td></tr><tr id="44d05d40-1c29-43a2-aa24-1309f637aa8d" dir="ltr"><td id=":;]E" class=""><strong>Mentor</strong></td><td id="FaSL" class="">For individuals who&#x27;d like to give back by volunteering their time to guide NTU students</td></tr></tbody></table><p id="5330cc71-d2d4-471b-be55-590c60b01c0b" class="" dir="auto">If <strong>Employer</strong> is selected, a company name field is shown. As the registrant types, the system performs a fuzzy match against existing employer records and surfaces a confirmation prompt if a close match is found (&quot;We found a matching organisation — is this you: [Company Name]?&quot;). If no match is found, the typed name is accepted as a new company entry. An optional UEN field is shown below the company name; leaving it blank is not a blocker to submission.</p><p id="eaabdd8a-af2f-4ea4-a75f-0bd4bb467299" class="" dir="auto">The registrant submits the account request without setting a password at this stage.</p><h3 id="4bf0adbe-3eb6-433a-98c7-04036fa10771" class="" dir="auto">2.1.1 Role-Based Access — &quot;Invite registrants to create an account&quot; Toggle</h3><table id="c1030ea2-d2a5-4bac-81b3-4b8956885843" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="a772c833-8d29-4927-ad32-9dc29b1d8605" dir="ltr"><th id="qS]~" class="simple-table-header-color simple-table-header">Action</th><th id="GMqT" class="simple-table-header-color simple-table-header">Admin</th><th id="~N[?" class="simple-table-header-color simple-table-header">Manager</th><th id="ReK&lt;" class="simple-table-header-color simple-table-header">Staff</th></tr></thead><tbody><tr id="99ca3e9d-f6ac-4a8b-b7fd-74b0d996a265" dir="ltr"><td id="qS]~" class=""><strong>View toggle</strong></td><td id="GMqT" class="">✅</td><td id="~N[?" class="">✅</td><td id="ReK&lt;" class="">✅</td></tr><tr id="7fea79b3-dd35-48e7-aa07-6a4d174a6161" dir="ltr"><td id="qS]~" class=""><strong>Enable / disable toggle</strong></td><td id="GMqT" class="">✅</td><td id="~N[?" class="">✅ (workgroup events only)</td><td id="ReK&lt;" class="">❌ (requires approval from manager or admin)</td></tr></tbody></table><h2 id="4b73c50c-8445-4f7c-b013-ea278bfbef27" class="" dir="auto">2.2 Approval and Activation</h2><p id="200b0ef4-79e5-4da6-abc6-3275c8623896" class="" dir="auto">All non-NTU account submissions are held as pending approval and do not grant immediate access. On submission, the registrant sees a confirmation message and receives a confirmation email acknowledging receipt. On approval, the registrant receives an email with a link to set their password and activate their account.</p><p id="2f087650-b5d3-4ae9-8907-f20a3cac93b1" class="" dir="auto">The admin approval queue for incoming Employer and Mentor account requests is scoped to a separate task cluster (see <a href="https://linear.app/su-platform/issue/SU-4430">SU-4430</a>, <a href="https://linear.app/su-platform/issue/SU-4431">SU-4431</a>, <a href="https://linear.app/su-platform/issue/SU-4432">SU-4432</a>).</p><p id="b0da675e-0177-48b2-9523-47c999933ba1" class="" dir="auto"><em>Source: Linear SU-4381 · Original Requirements — source ref pending</em></p><hr id="b813f1ba-d237-4dd2-89c4-756a798b3113" dir="auto"/><h1 id="f869e364-56c4-4516-9a67-9ebabe248f44" class="" dir="auto">3. Interest Tagging, Event Matching, and Alert Delivery for Students</h1><p id="8a64c05e-fd8e-41d7-8622-024f1ae34281" class="" dir="auto">For CP3, students can tag their interests on their profile, the system matches newly published events against those tags, and matching students receive alerts — either per event or rolled up into a digest cadence configured from their Communication Preferences. The feature spans three connected capabilities: profile interest indication, admin-side event tagging, and the matching engine plus alert delivery. The comms-side controls (digest cadence selection, channel routing, suppression/blacklist integration) are documented on the Communications module page §2.6.</p><h2 id="75fa4524-c612-46e5-a0b1-6d247f15dec2" class="" dir="auto">3.1 Student Profile Interests</h2><p id="56bf9e2d-bc19-4d3f-93b3-94f587931dfa" class="" dir="auto">Students indicate interests via an <code>Interests</code> section on their profile with three categories: <strong>Industry</strong> (e.g. Finance, Tech, Healthcare, Public Sector, Consulting), <strong>Function / role</strong> (e.g. SWE, Marketing, Data Analytics, HR), <strong>Topic areas</strong> (e.g. Sustainability, Entrepreneurship, Leadership, AI). Initial vocabulary above is illustrative — confirm with stakeholders before dev start. The tag vocabulary is institution-managed (controlled list maintained by admins in Settings); students select one or more tags per category and can edit at any time. The profile shows currently selected interests with a short helper text explaining usage (e.g., &quot;We use these to send you relevant event alerts. You can change these anytime.&quot;). Interests are stored per student and joined to the student&#x27;s profile record.</p><p id="ef9f2a54-17d3-466b-92b9-c4467620e2a4" class="" dir="auto"><strong>Onboarding nudge</strong> — on first login after this ships, students see a one-time prompt to set interests. The prompt is dismissible; dismissed students are reminded once more after a configurable delay (default 7 days). Students without interests do not receive event alerts until they opt in from their profile.</p><h2 id="ed298b72-4a82-4b9f-adc1-3a8891deab63" class="" dir="auto">3.2 Event Tagging (Admin)</h2><p id="f57e9b8d-2919-4de2-aa1a-6a961a2a94fa" class="" dir="auto">Admins set event tags in the same three categories (industry, function, topic areas) when creating or editing an event. Tags persist on the event record and feed the matching engine. The tag vocabulary is shared with the student profile interests vocabulary — admins maintain a single controlled list in Settings; admins can add, edit, and retire tags.</p><h2 id="ee687dd0-ce24-4c93-b64e-e3c7c29a0af6" class="" dir="auto">3.3 Matching Engine and Alert Delivery</h2><p id="96801149-eb95-4c0a-9344-a57f2f8a478b" class="" dir="auto"><strong>Match rule:</strong> When an event is published — or an existing event&#x27;s publish window opens — the system compares each student&#x27;s interest tags against the event&#x27;s tags. By default, a student matches if they share <strong>at least one tag in any category</strong> with the event; the rule is admin-configurable for stricter matching (e.g., AND across categories).</p><p id="f5c387a0-1282-4aea-80ce-0b1e33c8b76d" class="" dir="auto"><strong>Alert content:</strong> matching students receive an alert with event title, date, time, location or online link, short description, matched interests (e.g., &quot;Matches your interest in Finance, Leadership&quot;), and a registration CTA linking into CSM.</p><p id="5a0680ec-0ebb-471e-8917-32c41e6f1c2e" class="" dir="auto"><strong>Channel routing:</strong> alerts default to email but route to verified non-email channels (WhatsApp, Telegram — channel verification scoped in the related Communications Preferences ticket) when the student has selected one in Communication Preferences.</p><p id="b198e9ed-1f4c-42e7-a2bf-05039a83a2fc" class="" dir="auto"><strong>Safeguards:</strong></p><ul id="9636303e-1d6a-41a6-b76c-778dd36aecbd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each student receives at most one alert per event — tag changes after first alert do not auto-trigger a second alert. Admins can trigger a manual one-off re-alert if event tags or audience change significantly.</li></ul><ul id="c68e8e95-2e4c-4fe8-8823-1e40f8ff4a62" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Per-student per-day cap on direct alerts is admin-configurable; over-cap matches roll into the digest (see Communications §2.6).</li></ul><ul id="26514fef-e78b-442d-84aa-6f0e99458ac4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">All alerts respect the <code>Event alerts</code> Communication Preference (optional notification type), the suppression list, and the blacklist (see Communications §2.5).</li></ul><h2 id="d135b659-f06f-48f2-a174-00a590c6a4d7" class="" dir="auto">3.4 Admin Analytics</h2><p id="e5d32d34-7c50-470a-a625-f1d00351b80a" class="" dir="auto"><strong>Per event:</strong></p><ul id="c9149705-e381-43db-b578-dd10bbf40151" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Match count (students who matched the event)</li></ul><ul id="5854073c-723c-420f-898f-3112b40d8af8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Alerts sent vs. included in digest</li></ul><ul id="69772eea-b0d7-4b4c-8dcb-7320fc9f6aaa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Open and click rates on alerts — surfaces in the per-campaign performance dashboard (see Communications §3.3)</li></ul><p id="2debd8df-d740-4d6e-9c25-4e771fa0f7a7" class="" dir="auto"><strong>Per student</strong> (visible in the student&#x27;s activity log):</p><ul id="cd40f29d-98a0-4735-82f0-041e449b9af5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Current interest tags</li></ul><ul id="c521fa80-067d-486c-89da-db98f091bec6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Matched-events history</li></ul><p id="1e0e58c2-142a-43ce-a6d8-760550429d7f" class="" dir="auto"><strong>Admin controls:</strong> manage the interest-tag controlled vocabulary, configure the default match rule, configure per-day rate limits and digest send times, trigger a one-off re-alert for a specific event.</p><h2 id="02d935b8-694d-40c7-b298-8595012547b3" class="" dir="auto">3.5 Compliance</h2><p id="491d4679-9a04-425d-80f5-35ea87ef3c38" class="" dir="auto">Interest data is PDPA-classed personal data. It is used only for matching and alerting; it is not shared with third parties. Clearing all interests immediately stops event alerts; the student remains opted-in to other notifications unless they change Communication Preferences separately (see Communications §2.6).</p><p id="e1fb18d7-f864-4de5-944e-eaaa964ffb28" class="" dir="auto"><em>Source: Linear SU-3693 · Original Requirements 6.1.1.20.1 (Core: &quot;The system shall trigger an email notification to inform students when events open for registration based on their interests/preferences and email notification/mailing preferences.&quot;), 6.1.1.20.2 (student mailing preferences config), 6.1.1.24.1 (notifications when events open, based on preferences), 6.1.1.31.1 (subscribe to notifications — applied analogously to events), 6.1.1.31.2 (notification frequency / digest cadence), 6.1.1.127.1 (opt-out semantics for non-essential email types) · Phase 2 Workshop Findings — Communications (System must auto-generate daily/weekly digests for events and opportunities)</em></p><hr id="5f9a463c-e82c-4bb9-92eb-ef4f9073b178" dir="auto"/><h1 id="ffdedf5d-5c8d-4738-b2d6-3d2f08703898" class="" dir="auto">4. Feedback Forms</h1><p id="8bf48c75-4366-4529-9edc-a6510eed1a8f" class="" dir="auto">Event organisers can attach a feedback form to an event. The form must first be created as a template in the Forms module. Once created, a single form template can be attached to one or multiple events.</p><p id="a9acb28c-f37f-4489-9764-3585bc599320" class="" dir="auto">When a feedback form is attached to an event, the system automatically collects respondent metadata alongside form responses. For logged-in users (SSO), metadata is collected silently — respondents do not need to key anything in. Metadata collected includes: name, student ID / matric number, programme, school, year of study, event date, and session time.</p><p id="7b72a212-25fc-4d65-859d-0d03611f09fa" class="" dir="auto"><strong>Public events:</strong> For public events where participants may not be logged in, metadata fields should be surfaced as optional inputs. Unauthenticated participants may need to self-declare some details. This is a flag for design and dev to resolve.</p><p id="dbd5d433-0e5f-4b60-983d-4ffc5014730a" class="" dir="auto"><strong>Forms Responses Summary — display rules:</strong></p><p id="7624bf9b-6f94-405c-abe0-81db3d08995c" class="" dir="auto">The Responses Summary for event-attached feedback forms excludes auto-populated respondent and event metadata fields. Only responses to questions authored by the form creator are displayed in the summary. This is consistent with the behaviour for SGCC feedback forms (see <a href="SGCC%2033494e81853980b48b3bd371e1f7935b.html">📋 SGCC</a> §7).</p><p id="9720c52a-a8f8-403b-83f8-b2396ac08826" class="" dir="auto"><em>Source: Linear </em><em><a href="https://linear.app/su-platform/issue/SU-4672/events-attach-feedback-form-and-collect-responses">SU-4672</a></em></p><hr id="1b47063e-2994-4a27-a412-bd38404b305a" dir="auto"/><h1 id="a5790587-2c6a-4860-9ea6-b5765d96e82d" class="" dir="auto">5. Conflicts Flagged</h1><table id="168e5c1d-02df-459e-aced-f71d5897acee" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="ec805066-ea8d-430b-818c-ee785e733479" dir="ltr"><th id="k_X|" class="simple-table-header-color simple-table-header">#</th><th id="M\A[" class="simple-table-header-color simple-table-header">Conflict</th><th id="{^ES" class="simple-table-header-color simple-table-header">Resolution</th></tr></thead><tbody></tbody></table><hr id="b147530e-263e-4e0d-918b-b62322558ddd" dir="auto"/><h1 id="92b21571-55d6-4602-907f-1ff9050f82c4" class="" dir="auto">5. Open Items</h1><table id="397f1f73-8b25-4dc2-8428-d02b7a199785" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="ca1bdae2-5a67-4622-ae92-d54aa40003a4" dir="ltr"><th id="}VOu" class="simple-table-header-color simple-table-header">#</th><th id="g;AZ" class="simple-table-header-color simple-table-header">Item</th><th id="YIg~" class="simple-table-header-color simple-table-header">Owner</th><th id="hGlS" class="simple-table-header-color simple-table-header">Status</th></tr></thead><tbody><tr id="37e4f16b-62bc-4e8f-9a3b-06deb80ed1d8" dir="ltr"><td id="}VOu" class="">1</td><td id="g;AZ" class="">Source ref for SU-4381 — no matching Original Requirements row identified; confirm before dev start</td><td id="YIg~" class="">Joji</td><td id="hGlS" class="">🔲 Pending</td></tr><tr id="5de52e2f-8cd5-49e9-9b3c-ea4671af5713" dir="ltr"><td id="}VOu" class="">2</td><td id="g;AZ" class="">Design pending for SU-3693 — Vetrick to design: profile Interests section (3 categories, controlled vocabulary), admin Event tagging UI, onboarding nudge first-login prompt, admin analytics per-event and per-student views</td><td id="YIg~" class="">Vetrick</td><td id="hGlS" class="">🔲 Pending</td></tr><tr id="fa6b1204-621b-48e1-b441-3e53dea40411" dir="ltr"><td id="}VOu" class="">3</td><td id="g;AZ" class="">Confirm initial interest-tag vocabulary lists with stakeholders before dev start (SU-3693) — Industry, Function/role, Topic areas seed lists. Default values in original spec used as illustrative only.</td><td id="YIg~" class="">Myles</td><td id="hGlS" class="">🔲 Pending</td></tr></tbody></table><hr id="c3431b7d-5895-43f1-96b2-2ef3b81812ff" dir="auto"/><h1 id="47152ce8-da9a-462a-82da-4e5883e2ac3f" class="" dir="auto">6. Backend Implementation Notes</h1><blockquote id="a5ffcc16-5220-4033-8abb-854a1386ab99" class="" dir="auto">This section documents the backend schema and API endpoints implemented by the dev team. It is intended as a reference for frontend engineers and reviewers.</blockquote><hr id="9ae0eff8-64cb-4c85-b3f0-755ed9de90cb" dir="auto"/><h1 id="4a4fc6d2-bcae-497c-8a1b-db73e358b2eb" class="" dir="auto">7. Requirements Traceability</h1><table id="cf10a190-bba4-4c75-bd7e-e068f90c0a60" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="d39ec8e8-86ce-4932-a9de-24f60c7aecd7" dir="ltr"><th id="iHL|" class="simple-table-header-color simple-table-header">Req Ref</th><th id="[}it" class="simple-table-header-color simple-table-header">Description</th><th id="}e@@" class="simple-table-header-color simple-table-header">Linear Ticket(s)</th><th id="gLDd" class="simple-table-header-color simple-table-header">Section in This Doc</th></tr></thead><tbody></tbody></table></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

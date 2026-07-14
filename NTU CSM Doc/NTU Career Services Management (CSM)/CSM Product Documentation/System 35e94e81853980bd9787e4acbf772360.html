@@ -1,0 +1,767 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>System</title><meta name="data-notion-page-icon" content="⚙️"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%E2%9A%99%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="35e94e81-8539-80bd-9787-e4acbf772360" class="page sans" data-notion-page-icon="⚙️"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="⚙️"></span></div><h1 class="page-title" dir="auto">System</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-last_edited_by"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/user-circle_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited by</th><td><span class="user"><img src="https://lh3.googleusercontent.com/a/ACg8ocKvzGHEpJauKI2uoiprUb1a8p_Ghl3XXKOO6UP2DWZirF9XLHc=s100" class="icon user-icon"/>Joji Mendoza-Chan</span></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/clock_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited time</th><td><time datetime="2026-07-12T15:36">July 12, 2026 3:36 PM</time></td></tr></tbody></table></header><div class="page-body"><h1 id="09543faf-9fcc-4791-9d11-b99b378bdb7e" class="" dir="auto">Workspace Settings</h1><p id="74dc97b6-8940-4daa-b2ee-dfd6d866ae63" class="" dir="auto">The Workspace Settings module provides admins with tools to manage the organisational structure of the CSM platform. It contains three tabs: <strong>Work Groups</strong>, <strong>Venues</strong>, and <strong>Labels</strong>.</p><h2 id="86e70586-6e46-457e-ac05-ca2977e4d810" class="" dir="auto">Work Groups</h2><p id="4d121d57-de1b-455b-8379-9a32feee0a8c" class="" dir="auto">Work Groups define how users are organised within the platform and control access to modules and records.</p><p id="296ccea1-561f-4db8-8f06-41886f678004" class="" dir="auto">Workgroups operate at two levels:</p><p id="f8bfc1d2-3f1a-41fc-9952-ed46aa2900f0" class="" dir="auto"><strong>1. Module-level access</strong></p><p id="083397a1-0393-413d-859d-ebe484e82ce1" class="" dir="auto">Admins control which workgroups can access which modules. If a user does not belong to the relevant workgroup, the module is not visible to them. For example, the SGCC module is only visible to users in the SGCC workgroup; the Mentorships module would only be visible to users in the Mentorship workgroup.</p><p id="0604c37a-172c-4c45-8813-00118cb998f4" class="" dir="auto"><strong>2. Record-level visibility within shared modules</strong></p><p id="987a1d76-dede-43ce-9722-2d3bdb334645" class="" dir="auto">For platform-wide modules (Forms, Communications, Events), users can only see records — templates, campaigns, forms — that have been explicitly shared with their workgroup.</p><p id="580e2a18-b4d3-4713-947f-55aa4d172ed5" class="" dir="auto">Within any accessible module, users see all records (e.g. all Sessions, all Students) subject to role-level restrictions. Workgroup membership does not further filter records down to only those belonging to coaches within the same workgroup.</p><p id="70869e43-24bf-4c9d-bca0-ba73c1582eca" class="" dir="auto">The Work Groups tab displays a table of all work groups with the following columns: Name, Admin, No. of Members. Clicking a row opens a drawer showing the work group name, its members, and each member&#x27;s role in the CSM.</p><p id="90ce6af8-2995-4712-9e64-f4994ae9237e" class="" dir="auto"><strong>Filters:</strong> Keyword search (by name, creator, or member), Creator, Search by Member.</p><h2 id="f6f5743c-c6b8-4c57-8a4b-90413e30f8bd" class="" dir="auto">Venues</h2><p id="2d4958b4-846e-426f-ae11-f5de43825d28" class="" dir="auto">The Venues tab displays a table of all venues with the following columns: Venue, Capacity. Venue metadata includes Name, Building, Level, Room ID, Category, and Type. Capacity is an admin-editable free-text field; if empty, it displays as <code>—</code>.</p><p id="e9917da5-8ffb-4e9f-afdb-588c34bd98d6" class="" dir="auto"><strong>Filters:</strong> Keyword search, Building Code, Level, Category, Type, Capacity Range.</p><h2 id="0d91ea03-a95f-43ac-95c3-ec45905891ea" class="" dir="auto">Labels</h2><p id="5239d5eb-fd17-4964-9c10-2dc8cd0996d8" class="" dir="auto"><strong>Linear:</strong> <a href="https://linear.app/su-platform/issue/SU-4398/labels-admin-defined-studentstaff-grouping-tags-with-attribute-rules">SU-4398</a></p><p id="7235668b-4c89-475f-944d-f701085c2373" class="" dir="auto">Labels are a second, lighter-weight classification layer for segmenting users — distinct from Work Groups. Labels are surfaced as a dedicated tab in Workspace Settings and are automatically applied to students, staff, and admins based on declarative attribute rules (e.g. scholarship tag = YES, programme code = NHC/REP), rather than manual assignment.</p><p id="52f48a36-a397-4393-b96e-88671ef43316" class="" dir="auto">The Labels tab displays a table of all labels with Name, Description, and Matched Users count. Clicking a row opens a detail view showing active attribute rules and a paginated list of matched users.</p><p id="872edefe-d8e6-449e-8836-8fa5c03bc72b" class="" dir="auto"><strong>Filters:</strong> Keyword search by label name.</p><h3 id="7e6cd086-1d2c-4760-b5de-c12834df0dd6" class="" dir="auto">Attribute Rules</h3><p id="5fb31211-d304-4e59-b654-6d07cf9f0b7c" class="" dir="auto">Each label has one or more attribute rule conditions (<code>field + operator + value</code>) joined by AND/OR logic. Supported operators: equals, not equals, contains, is set, is not set. Label membership is evaluated automatically — any user whose profile satisfies the rules is included. Membership updates near real-time or on next login when a user&#x27;s attributes change.</p><p id="0d622cbf-5e64-40d0-8fd3-dad34d67b4fb" class="" dir="auto"><strong>Downstream usage:</strong> Labels are available as targeting primitives across Comms (M3), SGCC session filters, and Forms routing.</p><p id="4e3531d4-9e22-499e-9580-dfb9725ebc0d" class="" dir="auto"><strong>Dependency:</strong> The user-profile attribute extension (programme code, college, scholarship tag, year, internship status) must be schema-agreed before build begins. Data availability to be confirmed with Lily / NTU CITS.</p><h2 id="3035ee6a-b2f6-48f6-ab09-bde20a53c8d4" class="" dir="auto">Student Remarks</h2><p id="b4801190-7aa0-40e7-8d01-833db2216b45" class="" dir="auto">Student Remarks is a global, module-agnostic notes layer on each student&#x27;s profile. Unlike SGCC session remarks (which are scoped to a specific session or SGCC registration), overall remarks are visible wherever the student&#x27;s profile is accessed across the platform.</p><p id="9475f9f3-5f71-46ee-8073-1b1c39469c89" class="" dir="auto"><strong>Where it lives:</strong> Users &gt; Students tab &gt; student detail view.</p><p id="d241a6ad-2258-4373-94f6-4f9ca3a6b9c1" class="" dir="auto"><strong>Who can add remarks:</strong> Admin, Manager, and Staff roles.</p><p id="cc805ac3-5530-448a-92f8-e86923ad3b9d" class="" dir="auto"><strong>Behaviour:</strong></p><ul id="bb4b96d6-b484-43f5-9162-be3be596dac2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Remarks are freeform text, timestamped, and attributed to the author.</li></ul><ul id="6c1f7bb2-153c-443c-969a-9b45ed12dc57" class="bulleted-list" dir="auto"><li style="list-style-type:disc">All remarks are visible to Admin, Manager, and Staff — there is no per-remark visibility control.</li></ul><ul id="3c850697-03d2-41c0-b9ce-e73b7ef241a5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Remarks are read-only after submission and cannot be edited by any role.</li></ul><ul id="245dc3e0-b727-4541-ba98-33dcebc0b179" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Remarks cannot be deleted by any role (retained for audit integrity).</li></ul><blockquote id="15c8f609-a2d2-45ff-bfe2-d4e97f4b23b0" class="" dir="auto"><em>Scope note: This section covers overall remarks only. SGCC-specific session remarks — which can be linked or unlinked to a session — are documented in 📋 SGCC § 3.9 and § 5.2.</em></blockquote><h2 id="24fa4f0a-7a2a-46b4-acb1-84db88f95c6f" class="" dir="auto">RBAC</h2><table id="f4e982a3-3848-49c6-8d0c-fc7fe40017ce" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="dcf53718-7917-41d7-bd7e-52e62ac936cd" dir="ltr"><th id=";W}j" class="simple-table-header-color simple-table-header">Action</th><th id="[Eoc" class="simple-table-header-color simple-table-header">Admin</th><th id="RMIi" class="simple-table-header-color simple-table-header">Manager</th><th id="sNyZ" class="simple-table-header-color simple-table-header">Staff</th></tr></thead><tbody><tr id="54a0571c-bc45-4504-a124-2c09f6e9fa34" dir="ltr"><td id=";W}j" class="">Create work group</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">❌</td><td id="sNyZ" class="">❌</td></tr><tr id="801996fc-bd89-490c-86c5-6977279ce645" dir="ltr"><td id=";W}j" class="">Edit work group name</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">❌</td><td id="sNyZ" class="">❌</td></tr><tr id="595ff786-e2d6-4bc6-9b5d-f55c5cf809ef" dir="ltr"><td id=";W}j" class="">Add members to work group</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">❌</td><td id="sNyZ" class="">❌</td></tr><tr id="718e1f5c-db2f-4ca9-bacb-57832da40610" dir="ltr"><td id=";W}j" class="">Remove members from work group</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">❌</td><td id="sNyZ" class="">❌</td></tr><tr id="ad3a126c-a8c3-4a5d-8c08-bcf65ba65992" dir="ltr"><td id=";W}j" class="">Delete work group</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">❌</td><td id="sNyZ" class="">❌</td></tr><tr id="1bfbbcb7-7f70-40c6-a96b-9d75b5794f31" dir="ltr"><td id=";W}j" class="">View work groups</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">✅</td><td id="sNyZ" class="">✅</td></tr><tr id="0dcc2f6c-2a58-46c4-ba99-2c9ed3f47b8b" dir="ltr"><td id=";W}j" class="">Filter work groups</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">✅</td><td id="sNyZ" class="">✅</td></tr><tr id="44549de9-9451-43e4-b2af-2d8cb0ea1c40" dir="ltr"><td id=";W}j" class="">Edit venue capacity</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">❌</td><td id="sNyZ" class="">❌</td></tr><tr id="65af15f0-1d40-48ab-a4da-0a3f2e922d09" dir="ltr"><td id=";W}j" class="">View venues</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">✅</td><td id="sNyZ" class="">✅</td></tr><tr id="bba5a66d-af53-4300-bfd7-10e40a74ae00" dir="ltr"><td id=";W}j" class="">Filter venues</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">✅</td><td id="sNyZ" class="">✅</td></tr><tr id="bcc751e3-0089-4483-86c7-02c63da97ab3" dir="ltr"><td id=";W}j" class="">Create label</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">✅</td><td id="sNyZ" class="">❌</td></tr><tr id="afdfc9f0-3cf6-4aaf-b2ae-bde32c58e081" dir="ltr"><td id=";W}j" class="">Edit label</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">✅</td><td id="sNyZ" class="">❌</td></tr><tr id="a045f6e7-c656-4e9f-91e7-6938912d0209" dir="ltr"><td id=";W}j" class="">Delete label</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">✅</td><td id="sNyZ" class="">❌</td></tr><tr id="861faa3f-fe6f-4df2-8ecd-10f46d4c8d50" dir="ltr"><td id=";W}j" class="">View labels</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">✅</td><td id="sNyZ" class="">✅</td></tr><tr id="62839252-17a4-4aeb-820f-6b4373f856f1" dir="ltr"><td id=";W}j" class="">Filter labels</td><td id="[Eoc" class="">✅</td><td id="RMIi" class="">✅</td><td id="sNyZ" class="">✅</td></tr></tbody></table><h2 id="5f38ec09-5058-4313-8a6d-814ca6e1577f" class="" dir="auto">Concurrent Edit Locking</h2><p id="faee2401-602a-40cf-bf19-ab388a96061e" class="" dir="auto"><strong>Linear:</strong> <a href="https://linear.app/su-platform/issue/SU-4396/concurrent-edit-locking-prevent-two-adminsmanagers-editing-the-same">SU-4396</a></p><p id="b38edf1f-62f6-4541-8239-58982dc8a06d" class="" dir="auto">When two admins or managers open the same record in edit mode simultaneously, the last save silently overwrites the other&#x27;s changes. To prevent data loss, a <strong>pessimistic edit lock</strong> is implemented across all editable record types: Sessions, Events, Forms, and Campaigns.</p><h3 id="8db9745a-c25c-4dca-9762-fbc7c322c846" class="" dir="auto">How it works</h3><p id="2a4928d8-fd9c-4a2b-b998-63a6cf7f1a83" class="" dir="auto">When Admin A opens a record for editing, a lock is acquired and held until they save, cancel, or the lock TTL expires. If Admin B attempts to open the same record in edit mode, they see a non-dismissable blocking message:</p><blockquote id="82f8262b-171b-49cb-a913-45fbdf16bea5" class="" dir="auto"><em>&quot;[Name] is currently editing this [session/event/form/campaign]. You can view it in read-only mode.&quot;</em></blockquote><ul id="b6d8755b-8267-4ee0-8cea-f0183e0fbd44" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lock TTL:</strong> 15 minutes of inactivity. A countdown warning appears 2 minutes before expiry.</li></ul><ul id="5b6eff0a-3d30-44a8-b1ff-8cb0c9d282ce" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lock release:</strong> Immediate on save or explicit cancel. Best-effort release on tab close via <code>beforeunload</code>.</li></ul><ul id="66bd4c20-18dc-431b-8bf0-fab447016371" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lock holder experience:</strong> A heartbeat from the client extends the TTL while the edit form is mounted and the window has focus.</li></ul><ul id="4e6e4ab1-23f9-4fbf-ab00-4983a5eb61b8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Blocked user experience:</strong> Placed in read-only mode (genuine render — not just disabled inputs). Notified when the lock is released so they can enter edit mode without a full page reload.</li></ul><ul id="588fe3d9-22fb-4502-bbdb-c2ce10ed8737" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lock service failure:</strong> Fails open — edit is permitted and the failure is logged.</li></ul><h3 id="51f5fec3-b16a-4ed7-959d-3357866e36dc" class="" dir="auto">Scope</h3><p id="47364ef6-c035-4945-81f9-bd1b5a331056" class="" dir="auto">Applies across all modules: SGCC (M1), Forms (M2), Communications (M3), and future modules.</p><h2 id="eb85cb0e-1915-4ec8-8bde-0afbc0b86ffb" class="" dir="auto">Dynamic Column Visibility</h2><p id="e25e7789-2398-4c92-9004-2cf32958947f" class="" dir="auto"><strong>Linear:</strong> <a href="https://linear.app/su-platform/issue/SU-4505/implement-dynamic-column-visibility-and-reordering-across-all-tables">SU-4505</a></p><p id="ae169265-7003-4819-979c-c1587314f7a7" class="" dir="auto">Every table across the platform ships with a column picker letting users show, hide, and reorder columns to suit their workflow.</p><h3 id="72c6839d-ae2c-409b-bd03-92061ae277a7" class="" dir="auto">How it works</h3><ul id="88258474-11fa-40ea-8456-6adb8e912ae5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each table has a default set of visible columns (for existing tables, this is the table&#x27;s current column set) plus a set of optional columns, hidden by default.</li></ul><ul id="cea11e80-3262-41d8-b69f-eb72209bd17e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Optional columns are added into view via an &quot;Add Columns&quot; dropdown. Once added, a column cannot be removed from that dropdown — the checkbox becomes permanently checked and disabled there.</li></ul><ul id="90ac3934-a100-4069-860e-70537d92110b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The only way to remove an added column is via &quot;Hide column&quot; on that column&#x27;s own header dropdown, which also contains Sort ascending, Sort descending, Reset sorting (existing functionality, relocated here), Insert field left, and Insert field right.</li></ul><ul id="c0ff65ba-f0e6-485f-abdb-cfa8451f6036" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Columns can be reordered by dragging the header, or via &quot;Insert field left&quot; / &quot;Insert field right&quot;.</li></ul><ul id="e5ccef7a-6fa7-499b-b5b1-46d98d3c3ed6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Column visibility, order, and sort state are stored client-side only, scoped per user per table — preferences do not sync across devices or browsers.</li></ul><ul id="33f6f91b-c084-4450-a8cd-d54fd4f5211c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Table content scrolls at the page level rather than within an internal container.</li></ul><h3 id="ebde180a-4c13-4fcb-9453-9e8e9e2dc8d4" class="" dir="auto">Scope</h3><p id="58276a51-4ce2-493e-adcc-b8a43de3f7e5" class="" dir="auto">Applies to all existing tables at their current column sets. Any table built after this feature ships must have its default-visible and optional-additional columns explicitly defined before the column picker is implemented for it.</p><p id="42b960f4-b924-491e-a7be-e37d1e23ffb2" class="" dir="auto"><em>Source: Linear SU-4505 · Original Requirements pending</em></p><hr id="597ab24b-9283-4ce5-a418-fc5d2f1d3ddb" dir="auto"/><h1 id="98aa7462-4737-433f-a970-6d4b89f3490d" class="" dir="auto">1. Conflicts Flagged</h1><table id="0473fd67-790e-4610-9796-e1bd440f08d9" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="9976052b-286b-4fb9-82e5-d62c244cbbb8" dir="ltr"><th id="zOOa" class="simple-table-header-color simple-table-header">#</th><th id="j\Kj" class="simple-table-header-color simple-table-header">Conflict</th><th id="`&lt;BE" class="simple-table-header-color simple-table-header">Resolution</th></tr></thead><tbody></tbody></table><hr id="4958336b-4873-4944-a20a-4e3a65ed5410" dir="auto"/><h1 id="841e9304-707c-4772-9043-6cdbca79d23c" class="" dir="auto">2. Open Items</h1><table id="31473bb4-0b78-48b7-992d-b68224653c1a" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="beeec32a-7995-432b-9172-6870d66de6dd" dir="ltr"><th id="aVlE" class="simple-table-header-color simple-table-header">#</th><th id="_wTw" class="simple-table-header-color simple-table-header">Item</th><th id="o^B&gt;" class="simple-table-header-color simple-table-header">Owner</th><th id="Q&gt;I_" class="simple-table-header-color simple-table-header">Status</th></tr></thead><tbody></tbody></table><hr id="ac55afa0-822e-4ef0-83df-244a8fb9ce60" dir="auto"/><h1 id="f46d161a-3efe-4d63-ac87-5f919745ba1e" class="" dir="auto">3. Backend Implementation Notes</h1><blockquote id="7249f338-3952-44b1-a1ba-db5201fc98e6" class="" dir="auto">This section documents the backend schema and API endpoints implemented by the dev team. It is intended as a reference for frontend engineers and reviewers.</blockquote><hr id="7d6914c7-96de-41e8-ac7a-48ba5603e243" dir="auto"/><h1 id="47bda38b-02bc-4798-b48b-aa7351e304b0" class="" dir="auto">4. Requirements Traceability</h1><table id="65895801-21fb-4a3a-b1dc-51c8b9633889" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="0f602f2f-a104-44df-8f0f-6e87fb1b8c89" dir="ltr"><th id="p_&lt;Z" class="simple-table-header-color simple-table-header">Req Ref</th><th id="&gt;|us" class="simple-table-header-color simple-table-header">Description</th><th id="tzpn" class="simple-table-header-color simple-table-header">Linear Ticket(s)</th><th id="x{PI" class="simple-table-header-color simple-table-header">Section in This Doc</th></tr></thead><tbody></tbody></table></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

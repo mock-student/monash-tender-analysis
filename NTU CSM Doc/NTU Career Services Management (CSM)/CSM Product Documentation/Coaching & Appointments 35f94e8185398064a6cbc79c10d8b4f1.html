@@ -1,0 +1,767 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Coaching &amp; Appointments</title><meta name="data-notion-page-icon" content="🏓"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%8F%93%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="35f94e81-8539-8064-a6cb-c79c10d8b4f1" class="page sans" data-notion-page-icon="🏓"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="🏓"></span></div><h1 class="page-title" dir="auto">Coaching &amp; Appointments</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-last_edited_by"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/user-circle_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited by</th><td><span class="user"><img src="https://lh3.googleusercontent.com/a/ACg8ocLWLkn_w8xZYgETlVjlSHVKU6fSQkQTcvfjcR4D96uavjTB0A=s100" class="icon user-icon"/>Myles Ng</span></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/clock_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited time</th><td><time datetime="2026-05-28T16:27">May 28, 2026 4:27 PM</time></td></tr></tbody></table></header><div class="page-body"><h1 id="2635a0d9-4166-4886-bf66-e060ac38767b" class="" dir="auto">1. Overview</h1><p id="bcb53efe-eec6-48d0-a25c-b0fc302f4025" class="" dir="auto">The Coaching &amp; Appointments module manages the full lifecycle of 1:1 career coaching and consultant sessions, coaching workshops, and briefings between students and their designated Career Coaches or IR Consultants. Students view available timeslots for their assigned coach, request or book sessions, and receive confirmation and calendar invites; coaches set availability, approve requests, log session notes, and mark attendance. Admins manage coach accounts, school assignments, session configuration, and reporting. Several booking flows, calendar views, notification patterns, and attendance mechanisms overlap substantially with the SGCC module — Vetrick should review SGCC designs before designing from scratch for this module.</p><p id="3515900d-c388-4f3b-844f-ed65ab02b433" class="" dir="auto"><strong>Users:</strong> Students, Career Coaches, IR Consultants, Admins (L4), Managers (L3).</p><hr id="88b9cb69-65e5-4016-9f99-8d9b5e9f0b83" dir="auto"/><h1 id="54ae77a1-64a5-4712-99a3-6c9938f42327" class="" dir="auto">2. Key Open Questions for Discovery</h1><table id="202e68d8-da87-4605-930d-26bf92c4b845" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="7b271042-e09a-40a8-a7c8-3244da1b41d4" dir="ltr"><th id="KGtY" class="simple-table-header-color simple-table-header">#</th><th id="@IL?" class="simple-table-header-color simple-table-header">Question</th><th id="zL^J" class="simple-table-header-color simple-table-header">Refs</th></tr></thead><tbody><tr id="f86df9f4-e21a-4acf-8dfb-a05f64c12a87" dir="ltr"><td id="KGtY" class="">1</td><td id="@IL?" class="">Are &quot;Career Coaches&quot; and &quot;IR Consultants&quot; distinct roles (different permissions, profiles, workflows) or the same role with a different title?</td><td id="zL^J" class="">6.1.1.2.1, 6.1.1.3.1, 6.1.1.6.1</td></tr><tr id="3551d1e2-1c16-403a-96f8-b906f9ac5a1b" dir="ltr"><td id="KGtY" class="">2</td><td id="@IL?" class="">What are &quot;Coaching Workshops&quot; and &quot;Briefings&quot; — session sub-types managed here, or events managed by the Events module?</td><td id="zL^J" class="">6.1.1.16.1, 6.1.1.100.1, 6.1.1.101.1</td></tr><tr id="cf33bc7c-9459-49dc-9876-be79550b0121" dir="ltr"><td id="KGtY" class="">3</td><td id="@IL?" class="">The Events workshop noted that coaches must be able to delete (not just cancel) appointments — confirm scope and which roles this applies to.</td><td id="zL^J" class="">6.1.1.4.4</td></tr><tr id="efe498dc-fe0e-423f-85f5-9f37f08cd1dc" dir="ltr"><td id="KGtY" class="">4</td><td id="@IL?" class="">&quot;Students see only their designated coach&quot; — is this an admin-configured rule per student, per school, or per programme?</td><td id="zL^J" class="">6.1.1.3.5, 6.1.1.8.1</td></tr><tr id="e7e54d4f-e872-4383-bc7d-e77755c16d10" dir="ltr"><td id="KGtY" class="">5</td><td id="@IL?" class="">Multiple 1:1 sessions (6.1.1.6.3) — what are the configurable criteria? Cap per semester, per programme, or set per student by admin?</td><td id="zL^J" class="">6.1.1.6.3</td></tr><tr id="bbc636f4-0278-4140-8c20-6c2cef1da0b7" dir="ltr"><td id="KGtY" class="">6</td><td id="@IL?" class="">Backdated appointments — which roles can create them: admin only, or coaches/consultants too?</td><td id="zL^J" class="">6.1.1.2.10, 6.1.1.4.3</td></tr><tr id="5364a280-a530-4612-ad4d-fc1cf02e44a5" dir="ltr"><td id="KGtY" class="">7</td><td id="@IL?" class="">Coach notes (6.1.1.2.9, 94.1) and journal entries (6.1.1.95.1) — are these the same feature described differently, or two distinct constructs?</td><td id="zL^J" class="">6.1.1.94.1, 6.1.1.95.1</td></tr><tr id="96b71b77-38cb-48b5-9a02-a0734e76af1d" dir="ltr"><td id="KGtY" class="">8</td><td id="@IL?" class="">Analytics tool integration (6.1.1.27.2) — same Denodo/Qlik integration as the Dashboards module, or a separate tool?</td><td id="zL^J" class="">6.1.1.27.2</td></tr><tr id="1ba4c65d-dca8-41bf-b725-406755bf9568" dir="ltr"><td id="KGtY" class="">9</td><td id="@IL?" class="">Are the process workflow PDFs referenced in 6.1.1.1.4–1.6 (Annex A Appendix 1) available as design inputs for Vetrick?</td><td id="zL^J" class="">6.1.1.1.4, 6.1.1.1.5, 6.1.1.1.6</td></tr><tr id="f72fe787-06f9-4efa-9e26-47e8627e33ab" dir="ltr"><td id="KGtY" class="">10</td><td id="@IL?" class="">SGCC overlap: which specific SGCC booking designs can be directly reused vs. which need adaptation for the C&amp;A context (e.g., the approval step has no SGCC equivalent)?</td><td id="zL^J" class="">6.1.1.2.2, 6.1.1.6.1</td></tr></tbody></table><hr id="4ef5fb86-5d95-4af9-8198-2279c79754b7" dir="auto"/><h1 id="b7261209-3033-4e82-8a1a-16b81d7b96d9" class="" dir="auto">3. Known Requirements</h1><p id="63d0d9d7-e563-4724-a376-6510bf509e37" class="" dir="auto">All 50 requirements are from <strong>Section 6.1 Career Platform</strong> and <strong>Section 6.3 Mentorship Management</strong> of the tender Original Requirements. C = Core; E = Enhancement.</p><h2 id="2220acbf-9f52-48ac-94eb-6c0f0e3b257b" class="" dir="auto">Process References</h2><table id="83f32570-4ec3-4576-9f0a-0eb9301d3cb8" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="b517bf58-977a-452e-931e-0b4759be291f" dir="ltr"><th id="dKge" class="simple-table-header-color simple-table-header">Ref</th><th id="jpxa" class="simple-table-header-color simple-table-header">C/E</th><th id="oLLj" class="simple-table-header-color simple-table-header">Requirement</th><th id="LWbL" class="simple-table-header-color simple-table-header">SGCC Overlap Refs</th><th id="QupL" class="simple-table-header-color simple-table-header">Linear Ticket (SGCC)</th></tr></thead><tbody><tr id="f1b60643-3e57-4a99-87a5-b1be2c69e5e8" dir="ltr"><td id="dKge" class="">6.1.1.1.4</td><td id="jpxa" class="">C</td><td id="oLLj" class="">C&amp;C Profile &amp; Availability Setup Workflow (refer to Annex A Appendix 1 PDF)</td><td id="LWbL" class="">—</td><td id="QupL" class="">—</td></tr><tr id="2fd463d4-1281-4ec4-b473-410b5dcc5983" dir="ltr"><td id="dKge" class="">6.1.1.1.5</td><td id="jpxa" class="">C</td><td id="oLLj" class="">IR Consultant / Career Coach Session Workflow (refer to Annex A Appendix 1 PDF)</td><td id="LWbL" class="">—</td><td id="QupL" class="">—</td></tr><tr id="9280146c-ea87-4133-8581-3ac5a6379d43" dir="ltr"><td id="dKge" class="">6.1.1.1.6</td><td id="jpxa" class="">C</td><td id="oLLj" class="">Appointment Cancellation Workflow (refer to Annex A Appendix 1 PDF)</td><td id="LWbL" class="">—</td><td id="QupL" class="">—</td></tr></tbody></table><h2 id="673c58af-e386-479f-b53d-17f7efcd38fc" class="" dir="auto">Student Booking &amp; Calendar</h2><table id="1843c527-4736-4184-875f-a7b09c16c703" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="f95b1fa1-6231-4a85-8224-c22dca12fb5a" dir="ltr"><th id="bGde" class="simple-table-header-color simple-table-header">Ref</th><th id="jH?z" class="simple-table-header-color simple-table-header">C/E</th><th id="wm]A" class="simple-table-header-color simple-table-header">Requirement</th><th id=":]&lt;W" class="simple-table-header-color simple-table-header">SGCC Overlap Refs</th><th id="OpI]" class="simple-table-header-color simple-table-header">Linear Ticket (SGCC)</th></tr></thead><tbody><tr id="da17c18f-f516-4117-81ae-6bd91d01c0a3" dir="ltr"><td id="bGde" class="">6.1.1.2.1</td><td id="jH?z" class="">C</td><td id="wm]A" class="">Student filters by appointment type (Coach or IR Consultant) and selects a specific coach/consultant via dropdown or search to view available timeslots</td><td id=":]&lt;W" class="">6.1.1.48.1; 6.1.1.48.2; 6.1.1.51.1</td><td id="OpI]" class=""><a href="https://linear.app/su-platform/issue/SU-4161">SU-4161</a>, <a href="https://linear.app/su-platform/issue/SU-3601">SU-3601</a></td></tr><tr id="9e788eee-1a21-4677-b68b-b278c10bae4f" dir="ltr"><td id="bGde" class="">6.1.1.2.3</td><td id="jH?z" class="">C</td><td id="wm]A" class="">System displays a conflict prompt if the selected timeslot overlaps with existing appointments</td><td id=":]&lt;W" class="">6.1.1.51.3</td><td id="OpI]" class=""><a href="https://linear.app/su-platform/issue/SU-3598">SU-3598</a></td></tr><tr id="7c184e77-31a2-435e-9015-b2e87156849b" dir="ltr"><td id="bGde" class="">6.1.1.2.6</td><td id="jH?z" class="">C</td><td id="wm]A" class="">Approved appointments are flagged in the student&#x27;s calendar view</td><td id=":]&lt;W" class="">6.1.1.51.1</td><td id="OpI]" class=""><a href="https://linear.app/su-platform/issue/SU-3601">SU-3601</a></td></tr><tr id="d858c9a1-9f49-41e2-b213-79fcb8e32b9c" dir="ltr"><td id="bGde" class="">6.1.1.5.1</td><td id="jH?z" class="">C</td><td id="wm]A" class="">Student filter function: select type (Career Coach or IR Consultant) and specify a coach/consultant via dropdown or search</td><td id=":]&lt;W" class="">6.1.1.48.1; 6.1.1.48.2; 6.1.1.51.1</td><td id="OpI]" class=""><a href="https://linear.app/su-platform/issue/SU-4161">SU-4161</a>, <a href="https://linear.app/su-platform/issue/SU-3601">SU-3601</a></td></tr><tr id="4ed29829-fd12-4c9d-b5d7-35a95d27b084" dir="ltr"><td id="bGde" class="">6.1.1.5.2</td><td id="jH?z" class="">C</td><td id="wm]A" class="">System displays all available timeslots of the student&#x27;s designated coach(es) / IR Consultant(s) in a calendar view</td><td id=":]&lt;W" class="">6.1.1.51.1; 6.1.1.48.2</td><td id="OpI]" class=""><a href="https://linear.app/su-platform/issue/SU-3601">SU-3601</a></td></tr><tr id="5ef70492-8778-430c-b304-409df459a514" dir="ltr"><td id="bGde" class="">6.1.1.6.1</td><td id="jH?z" class="">C</td><td id="wm]A" class="">Approval process: Career Coaches and IR Consultants review and accept student appointment bookings</td><td id=":]&lt;W" class="">—</td><td id="OpI]" class="">—</td></tr><tr id="6cf87310-49f5-420e-8403-d3221accafb1" dir="ltr"><td id="bGde" class="">6.1.1.6.2</td><td id="jH?z" class="">C</td><td id="wm]A" class="">System displays a prompt when the selected timeslot conflicts with existing appointments</td><td id=":]&lt;W" class="">6.1.1.51.3</td><td id="OpI]" class=""><a href="https://linear.app/su-platform/issue/SU-3598">SU-3598</a></td></tr><tr id="ce9026b7-0ca7-4c99-97f6-ce1bcd1f4b01" dir="ltr"><td id="bGde" class="">6.1.1.6.3</td><td id="jH?z" class="">C</td><td id="wm]A" class="">System supports configurable criteria enabling students to request or book multiple 1:1 sessions</td><td id=":]&lt;W" class="">6.1.1.49.3</td><td id="OpI]" class=""><a href="https://linear.app/su-platform/issue/SU-3598">SU-3598</a></td></tr></tbody></table><h2 id="236b6da6-1fe6-4fbb-b2f8-dffb71a046f0" class="" dir="auto">Appointment Management</h2><table id="cad79276-a464-4497-b5e2-577c3a85c057" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="23d63303-6cd8-47f5-83e4-7a6413bd43ce" dir="ltr"><th id="Lw;O" class="simple-table-header-color simple-table-header">Ref</th><th id="sJ:p" class="simple-table-header-color simple-table-header">C/E</th><th id="Fvkc" class="simple-table-header-color simple-table-header">Requirement</th><th id="zk?B" class="simple-table-header-color simple-table-header">SGCC Overlap Refs</th><th id="uphx" class="simple-table-header-color simple-table-header">Linear Ticket (SGCC)</th></tr></thead><tbody><tr id="f6903aa4-42cf-470b-a843-3de76f5d2c27" dir="ltr"><td id="Lw;O" class="">6.1.1.2.2</td><td id="sJ:p" class="">C</td><td id="Fvkc" class="">Approval process: IR Consultants approve or accept student appointment requests</td><td id="zk?B" class="">—</td><td id="uphx" class="">—</td></tr><tr id="8ffc3b90-5ee6-4284-b308-d4a1a3faea7c" dir="ltr"><td id="Lw;O" class="">6.1.1.2.4</td><td id="sJ:p" class="">C</td><td id="Fvkc" class="">Email notification triggered to IR Consultant on student appointment request</td><td id="zk?B" class="">6.1.1.14.1</td><td id="uphx" class=""><a href="https://linear.app/su-platform/issue/SU-3604">SU-3604</a></td></tr><tr id="285c8277-9ce3-423b-be18-c19b73085a10" dir="ltr"><td id="Lw;O" class="">6.1.1.2.5</td><td id="sJ:p" class="">C</td><td id="Fvkc" class="">Email confirmation to student on approval or rejection; for Online/MS Teams appointments, a Teams meeting link is included</td><td id="zk?B" class="">6.1.1.14.1; 6.1.1.14.2</td><td id="uphx" class=""><a href="https://linear.app/su-platform/issue/SU-3604">SU-3604</a></td></tr><tr id="e4468357-87e3-432d-aec7-c8d697d254dd" dir="ltr"><td id="Lw;O" class="">6.1.1.2.7</td><td id="sJ:p" class="">C</td><td id="Fvkc" class="">Real-time synchronisation with external calendars (Microsoft Outlook)</td><td id="zk?B" class="">6.1.1.14.2</td><td id="uphx" class=""><a href="https://linear.app/su-platform/issue/SU-3604">SU-3604</a></td></tr><tr id="ee22ff0a-3437-45a2-8792-f63058e6fd0c" dir="ltr"><td id="Lw;O" class="">6.1.1.2.8</td><td id="sJ:p" class="">C</td><td id="Fvkc" class="">IR Consultants specify appointment type (Online / Face-to-Face); for F2F, venue selected from a predefined dropdown visible to students</td><td id="zk?B" class="">6.1.1.50.1; 6.1.1.50.2</td><td id="uphx" class=""><a href="https://linear.app/su-platform/issue/SU-3598">SU-3598</a>, <a href="https://linear.app/su-platform/issue/SU-3617">SU-3617</a></td></tr><tr id="b2160f35-2928-4bde-a42a-d2c4ea591a22" dir="ltr"><td id="Lw;O" class="">6.1.1.2.9</td><td id="sJ:p" class="">C</td><td id="Fvkc" class="">Free-text notes field for IR Consultants; visible only to other IR Consultants with appropriate access rights, not to students</td><td id="zk?B" class="">—</td><td id="uphx" class="">—</td></tr><tr id="4acb48d1-e117-404a-977a-147ed393d82e" dir="ltr"><td id="Lw;O" class="">6.1.1.2.10</td><td id="sJ:p" class="">C</td><td id="Fvkc" class="">Backdated appointments supported based on role control; manual check-in and check-out time updates allowed</td><td id="zk?B" class="">—</td><td id="uphx" class="">—</td></tr><tr id="8dd9acfc-8d8d-4ed4-90ae-88a2461534fe" dir="ltr"><td id="Lw;O" class="">6.1.1.2.11</td><td id="sJ:p" class="">C</td><td id="Fvkc" class="">System supports creation of IR Consultant accounts and one-time data migration for existing IR Consultants with all appointment information</td><td id="zk?B" class="">—</td><td id="uphx" class="">—</td></tr><tr id="96039597-2a33-4474-a0a2-807cc7da2926" dir="ltr"><td id="Lw;O" class="">6.1.1.4.2</td><td id="sJ:p" class="">C</td><td id="Fvkc" class="">For Online/MS Teams appointments, system automatically generates a Teams meeting link and includes it in the notification</td><td id="zk?B" class="">6.1.1.50.1</td><td id="uphx" class=""><a href="https://linear.app/su-platform/issue/SU-3598">SU-3598</a></td></tr><tr id="a37e718b-840e-401a-8091-ee7f836fc9d3" dir="ltr"><td id="Lw;O" class="">6.1.1.4.3</td><td id="sJ:p" class="">C</td><td id="Fvkc" class="">Backdated appointments supported based on role permissions; manual updates of check-in and check-out times allowed</td><td id="zk?B" class="">—</td><td id="uphx" class="">—</td></tr><tr id="687b0cde-347e-4f35-b0cc-6d839d107d83" dir="ltr"><td id="Lw;O" class="">6.1.1.4.4</td><td id="sJ:p" class="">C</td><td id="Fvkc" class="">System supports cancellation of approved appointments by student, Coach, or IR Consultant; cancellation email sent to all parties; appointment removed from calendar</td><td id="zk?B" class="">6.1.1.49.5</td><td id="uphx" class=""><a href="https://linear.app/su-platform/issue/SU-3601">SU-3601</a></td></tr></tbody></table><h2 id="d2b6d542-db1b-43bd-8794-2dfd31d62534" class="" dir="auto">Coach &amp; IR Consultant Setup</h2><table id="54080068-9c93-4dd6-86a0-073f61722b82" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="75cf2c8b-8f6e-4d59-ac15-2f9597a86a5a" dir="ltr"><th id="x:xV" class="simple-table-header-color simple-table-header">Ref</th><th id="Ifd`" class="simple-table-header-color simple-table-header">C/E</th><th id="N[XS" class="simple-table-header-color simple-table-header">Requirement</th><th id="Y=C?" class="simple-table-header-color simple-table-header">SGCC Overlap Refs</th><th id="`YbO" class="simple-table-header-color simple-table-header">Linear Ticket (SGCC)</th></tr></thead><tbody><tr id="10443ead-0992-43ee-8cc5-f987ffb5c6af" dir="ltr"><td id="x:xV" class="">6.1.1.3.1</td><td id="Ifd`" class="">C</td><td id="N[XS" class="">System supports creation of new Career Coach accounts and completion of their profiles</td><td id="Y=C?" class="">6.1.1.48.1</td><td id="`YbO" class=""><a href="https://linear.app/su-platform/issue/SU-4161">SU-4161</a></td></tr><tr id="ccf75637-1187-4167-8960-a36749c5539b" dir="ltr"><td id="x:xV" class="">6.1.1.3.2</td><td id="Ifd`" class="">C</td><td id="N[XS" class="">One-time data migration for existing Career Coaches and IR Consultants (accounts, profiles, appointment history)</td><td id="Y=C?" class="">—</td><td id="`YbO" class="">—</td></tr><tr id="51b0e7a8-7b9c-42d2-97d6-fbb0d87028d0" dir="ltr"><td id="x:xV" class="">6.1.1.3.3</td><td id="Ifd`" class="">C</td><td id="N[XS" class="">Career Coaches set up recurring appointments for a specified date range, with flexibility for different weekly schedules within that range (e.g., every Monday at 9:30 AM for Jan–Mar)</td><td id="Y=C?" class="">—</td><td id="`YbO" class="">—</td></tr><tr id="69f99cb1-1ae7-4124-80c5-d5ecdad2fdcc" dir="ltr"><td id="x:xV" class="">6.1.1.3.4</td><td id="Ifd`" class="">C</td><td id="N[XS" class="">Career Coaches choose recurring appointment type: Daily, Weekly, Monthly, Yearly, or Custom</td><td id="Y=C?" class="">—</td><td id="`YbO" class="">—</td></tr><tr id="bed9d537-e827-412e-892c-7f61b2925c3e" dir="ltr"><td id="x:xV" class="">6.1.1.3.5</td><td id="Ifd`" class="">C</td><td id="N[XS" class="">Career Coaches input their available slots; students can only view slots for their designated coach(es), not all coaches</td><td id="Y=C?" class="">6.1.1.48.1; 6.1.1.48.2</td><td id="`YbO" class=""><a href="https://linear.app/su-platform/issue/SU-4161">SU-4161</a>, <a href="https://linear.app/su-platform/issue/SU-3601">SU-3601</a></td></tr><tr id="9f9383ba-efe2-4a87-b31c-b6e794e3a5f4" dir="ltr"><td id="x:xV" class="">6.1.1.4.1</td><td id="Ifd`" class="">C</td><td id="N[XS" class="">System supports creation of new Career Coach accounts and completion of their profiles</td><td id="Y=C?" class="">6.1.1.48.1</td><td id="`YbO" class=""><a href="https://linear.app/su-platform/issue/SU-4161">SU-4161</a></td></tr><tr id="bf2c7c81-b83b-4596-8bf3-577d6dce04a3" dir="ltr"><td id="x:xV" class="">6.1.1.8.1</td><td id="Ifd`" class="">C</td><td id="N[XS" class="">Admin assigns one or more coaches to a specific school for a defined period; in case of absence, admin assigns a covering coach; coaches overseeing multiple schools can have more than one covering coach assigned</td><td id="Y=C?" class="">6.1.1.48.2</td><td id="`YbO" class=""><a href="https://linear.app/su-platform/issue/SU-3601">SU-3601</a></td></tr></tbody></table><h2 id="e8c59e37-eac1-4d0b-8fd5-74582ec475af" class="" dir="auto">Attendance &amp; Check-in/Check-out</h2><table id="b739328d-ad06-45a1-aa96-745e26786507" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="cca0bf05-4a30-4993-9d06-0578ad2b87cd" dir="ltr"><th id="lFce" class="simple-table-header-color simple-table-header">Ref</th><th id="`W_b" class="simple-table-header-color simple-table-header">C/E</th><th id="{^bF" class="simple-table-header-color simple-table-header">Requirement</th><th id="~kRh" class="simple-table-header-color simple-table-header">SGCC Overlap Refs</th><th id="?Kih" class="simple-table-header-color simple-table-header">Linear Ticket (SGCC)</th></tr></thead><tbody><tr id="1a1eaafc-c881-4b05-a74a-8c635bc18b57" dir="ltr"><td id="lFce" class="">6.1.1.7.1</td><td id="`W_b" class="">C</td><td id="{^bF" class="">System captures check-in (session start) and check-out (session end) timestamps for the coach in Online mode</td><td id="~kRh" class="">6.1.1.53.1</td><td id="?Kih" class=""><a href="https://linear.app/su-platform/issue/SU-3620">SU-3620</a></td></tr><tr id="3c8a0137-b70f-45a8-948f-37eca3de20cb" dir="ltr"><td id="lFce" class="">6.1.1.7.2</td><td id="`W_b" class="">C</td><td id="{^bF" class="">For Face-to-Face sessions: coach has a Check-In / Check-Out button; timestamps are editable by coaches when needed</td><td id="~kRh" class="">6.1.1.53.1; 6.1.1.53.2</td><td id="?Kih" class=""><a href="https://linear.app/su-platform/issue/SU-3620">SU-3620</a></td></tr></tbody></table><h2 id="92f9ffc0-6120-407e-8f4c-490de032344c" class="" dir="auto">Notifications &amp; Calendar Sync</h2><table id="f3061a67-c15f-4780-8b7c-820a45ee7cb2" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="99764ca8-e9d5-46c6-bf2b-b04114330552" dir="ltr"><th id=";pfa" class="simple-table-header-color simple-table-header">Ref</th><th id="RLyE" class="simple-table-header-color simple-table-header">C/E</th><th id="leXz" class="simple-table-header-color simple-table-header">Requirement</th><th id="^kCb" class="simple-table-header-color simple-table-header">SGCC Overlap Refs</th><th id="jYc_" class="simple-table-header-color simple-table-header">Linear Ticket (SGCC)</th></tr></thead><tbody><tr id="d37d715e-0644-406a-bfc0-eecaac14bfec" dir="ltr"><td id=";pfa" class="">6.1.1.11.1</td><td id="RLyE" class="">C</td><td id="leXz" class="">Email triggered to Career Coach / IR Consultant for approval on student appointment request; template configurable</td><td id="^kCb" class="">6.1.1.14.1; 6.1.1.15.1</td><td id="jYc_" class=""><a href="https://linear.app/su-platform/issue/SU-3604">SU-3604</a>, <a href="https://linear.app/su-platform/issue/SU-3692">SU-3692</a></td></tr><tr id="dab84795-e42a-46dc-94e0-c8d06d271f10" dir="ltr"><td id=";pfa" class="">6.1.1.12.1</td><td id="RLyE" class="">C</td><td id="leXz" class="">On coach approval: email confirmation triggered to both coach and student; template configurable</td><td id="^kCb" class="">6.1.1.14.1; 6.1.1.14.2</td><td id="jYc_" class=""><a href="https://linear.app/su-platform/issue/SU-3604">SU-3604</a></td></tr><tr id="f11de90a-30b8-4123-a09e-821ce3035cf8" dir="ltr"><td id=";pfa" class="">6.1.1.12.2</td><td id="RLyE" class="">C</td><td id="leXz" class="">Approved appointment flagged in student&#x27;s Calendar View</td><td id="^kCb" class="">6.1.1.51.1</td><td id="jYc_" class=""><a href="https://linear.app/su-platform/issue/SU-3601">SU-3601</a></td></tr><tr id="2206c179-40d5-4c18-8840-19cdf77173a2" dir="ltr"><td id=";pfa" class="">6.1.1.12.3</td><td id="RLyE" class="">C</td><td id="leXz" class="">Real-time synchronisation with external calendar applications (Microsoft Outlook)</td><td id="^kCb" class="">6.1.1.14.2</td><td id="jYc_" class=""><a href="https://linear.app/su-platform/issue/SU-3604">SU-3604</a></td></tr><tr id="c7b415ab-0c62-4b36-bd03-0206df12e3c0" dir="ltr"><td id=";pfa" class="">6.1.1.13.1</td><td id="RLyE" class="">C</td><td id="leXz" class="">Configurable reminder: &#x27;x&#x27; days or &#x27;x&#x27; hours before appointment (not a fixed interval); template configurable</td><td id="^kCb" class="">6.1.1.15.1; 6.1.1.15.2</td><td id="jYc_" class=""><a href="https://linear.app/su-platform/issue/SU-3692">SU-3692</a>, <a href="https://linear.app/su-platform/issue/SU-3697">SU-3697</a></td></tr><tr id="273b9a78-b343-419f-ab58-b104faeb59ea" dir="ltr"><td id=";pfa" class="">6.1.1.16.1</td><td id="RLyE" class="">C</td><td id="leXz" class="">Email confirmation triggered to students on workshop signup with calendar flag; template configurable</td><td id="^kCb" class="">6.1.1.14.1; 6.1.1.14.2</td><td id="jYc_" class=""><a href="https://linear.app/su-platform/issue/SU-3604">SU-3604</a></td></tr><tr id="f7a020d3-8365-4856-963d-90209ce31987" dir="ltr"><td id=";pfa" class="">6.1.1.16.2</td><td id="RLyE" class="">C</td><td id="leXz" class="">Signed-up workshop flagged in student&#x27;s Calendar View</td><td id="^kCb" class="">6.1.1.51.1</td><td id="jYc_" class=""><a href="https://linear.app/su-platform/issue/SU-3601">SU-3601</a></td></tr><tr id="5bdae2c6-a88e-4c8c-a5ca-c999c13c3f4f" dir="ltr"><td id=";pfa" class="">6.1.1.16.3</td><td id="RLyE" class="">C</td><td id="leXz" class="">Real-time Outlook calendar sync for workshop signups</td><td id="^kCb" class="">6.1.1.14.2</td><td id="jYc_" class=""><a href="https://linear.app/su-platform/issue/SU-3604">SU-3604</a></td></tr><tr id="59881208-8bcf-4b48-a570-e4b28b27951d" dir="ltr"><td id=";pfa" class="">6.1.1.17.2</td><td id="RLyE" class="">C</td><td id="leXz" class="">Configurable reminder setting: &#x27;x&#x27; hours/days; multiple reminders supported</td><td id="^kCb" class="">6.1.1.15.1; 6.1.1.15.2</td><td id="jYc_" class=""><a href="https://linear.app/su-platform/issue/SU-3692">SU-3692</a>, <a href="https://linear.app/su-platform/issue/SU-3697">SU-3697</a></td></tr><tr id="52aeb651-3372-4a41-97ec-51c0d44b4c23" dir="ltr"><td id=";pfa" class="">6.1.1.20.2</td><td id="RLyE" class="">C</td><td id="leXz" class="">System includes a configuration for students to set their mailing preferences</td><td id="^kCb" class="">—</td><td id="jYc_" class="">—</td></tr><tr id="c3d415ba-9e57-428a-b381-b13acc5e45ce" dir="ltr"><td id=";pfa" class="">6.1.1.27.2</td><td id="RLyE" class="">C</td><td id="leXz" class="">System supports integration with an Analytics Tool</td><td id="^kCb" class="">—</td><td id="jYc_" class="">—</td></tr></tbody></table><h2 id="2de31ea7-8b72-4b41-9451-4fef403d0438" class="" dir="auto">Misc Features</h2><table id="54df639b-c050-48cc-8679-0f55ce1f50ac" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="c49b6f5d-f464-49f0-8656-b5ddd4252135" dir="ltr"><th id="fkN`" class="simple-table-header-color simple-table-header">Ref</th><th id="KsI?" class="simple-table-header-color simple-table-header">C/E</th><th id="UqyY" class="simple-table-header-color simple-table-header">Requirement</th><th id="R]HZ" class="simple-table-header-color simple-table-header">SGCC Overlap Refs</th><th id="Um@Y" class="simple-table-header-color simple-table-header">Linear Ticket (SGCC)</th></tr></thead><tbody><tr id="57b11824-2fda-4fae-bda5-7306f608815d" dir="ltr"><td id="fkN`" class="">6.1.1.32.2</td><td id="KsI?" class="">E</td><td id="UqyY" class="">System includes a chatbot feature to handle queries</td><td id="R]HZ" class="">—</td><td id="Um@Y" class="">—</td></tr></tbody></table><h2 id="fbb033ab-5ffb-4e6a-b3e8-563647f05109" class="" dir="auto">Journal &amp; Notes</h2><table id="c4ad0221-e19b-40d2-a15c-d2d188d1f8b5" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="67b2b445-9fdb-47dd-870c-4c23ea23bbfc" dir="ltr"><th id="}mjQ" class="simple-table-header-color simple-table-header">Ref</th><th id="\_vT" class="simple-table-header-color simple-table-header">C/E</th><th id="Zy{G" class="simple-table-header-color simple-table-header">Requirement</th><th id="QhK@" class="simple-table-header-color simple-table-header">SGCC Overlap Refs</th><th id="i:gg" class="simple-table-header-color simple-table-header">Linear Ticket (SGCC)</th></tr></thead><tbody><tr id="e24bf29f-a832-462d-910b-1e4ac8b19fa3" dir="ltr"><td id="}mjQ" class="">6.1.1.94.1</td><td id="\_vT" class="">C</td><td id="Zy{G" class="">Free-text field for coach to update student coaching notes per session; notes not viewable by students but viewable by other coaches with access rights</td><td id="QhK@" class="">—</td><td id="i:gg" class="">—</td></tr><tr id="0544c294-2d82-4447-88e3-0f47721ce77b" dir="ltr"><td id="}mjQ" class="">6.1.1.95.1</td><td id="\_vT" class="">C</td><td id="Zy{G" class="">System supports journal entries for all admin users (view, create, edit)</td><td id="QhK@" class="">—</td><td id="i:gg" class="">—</td></tr></tbody></table><h2 id="584c6fee-3e11-4c40-8aa6-8a7cbf3496a4" class="" dir="auto">Reporting</h2><table id="40e9db4e-9d04-4495-95bc-0ea313a99245" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="5011db46-5b31-4c98-bda0-be808e8f3920" dir="ltr"><th id="Cm^d" class="simple-table-header-color simple-table-header">Ref</th><th id="RW?D" class="simple-table-header-color simple-table-header">C/E</th><th id="veex" class="simple-table-header-color simple-table-header">Requirement</th><th id="aOji" class="simple-table-header-color simple-table-header">SGCC Overlap Refs</th><th id="b?&lt;h" class="simple-table-header-color simple-table-header">Linear Ticket (SGCC)</th></tr></thead><tbody><tr id="0e1b0c7c-ecc8-4524-bf79-7cea8892252d" dir="ltr"><td id="Cm^d" class="">6.1.1.98.1</td><td id="RW?D" class="">C</td><td id="veex" class="">Report for coached students: First/Last Name, School, NTU + personal email, Matric No., handphone, nationality, gender, degree, year of study, graduation month/year, mode of delivery, consultation date, start/end time, coaching notes, appointment status, session length, coaching type, coach name, cancellation reason, student request type</td><td id="aOji" class="">6.1.1.99.1</td><td id="b?&lt;h" class=""><a href="https://linear.app/su-platform/issue/SU-3625">SU-3625</a></td></tr><tr id="7f360dc6-ae2a-47f4-abc0-d1131c01d521" dir="ltr"><td id="Cm^d" class="">6.1.1.100.1</td><td id="RW?D" class="">C</td><td id="veex" class="">Report for workshop attendees: First/Last Name, School, emails, Matric No., handphone, nationality, gender, degree, year of study, graduation month/year, mode of delivery, workshop date, start/end time, workshop name/type/topic, venue, description, attachment, AV requirements, RSVP dates, slots available, waitlist flag, coach, and more</td><td id="aOji" class="">6.1.1.99.1</td><td id="b?&lt;h" class=""><a href="https://linear.app/su-platform/issue/SU-3625">SU-3625</a></td></tr><tr id="4197ba10-6488-4a00-9049-9baceb55bf35" dir="ltr"><td id="Cm^d" class="">6.1.1.101.1</td><td id="RW?D" class="">C</td><td id="veex" class="">Report for briefing attendees: First/Last Name, School, emails, Matric No., handphone, nationality, gender, degree, year of study, graduation month/year, mode of delivery, briefing date, start/end time, briefing title</td><td id="aOji" class="">6.1.1.99.1</td><td id="b?&lt;h" class=""><a href="https://linear.app/su-platform/issue/SU-3625">SU-3625</a></td></tr></tbody></table><h2 id="a60e14bd-738b-4240-b8a6-b7e6f88b40dc" class="" dir="auto">Mentor Online Meetings (Enhancement)</h2><table id="86012a6a-fd05-4c25-b2c2-3d30c3610d6b" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="57a9d17b-5473-43b3-9544-965deeea2b35" dir="ltr"><th id="akOp" class="simple-table-header-color simple-table-header">Ref</th><th id="IQl@" class="simple-table-header-color simple-table-header">C/E</th><th id="?cFD" class="simple-table-header-color simple-table-header">Requirement</th><th id="i={K" class="simple-table-header-color simple-table-header">SGCC Overlap Refs</th><th id="g:C&lt;" class="simple-table-header-color simple-table-header">Linear Ticket (SGCC)</th></tr></thead><tbody><tr id="ae82f971-7508-49f9-9fb9-c964038e8bd3" dir="ltr"><td id="akOp" class="">6.3.1.4.1</td><td id="IQl@" class="">E</td><td id="?cFD" class="">Students can book online meetings with mentors; mentors can accept or reject the meeting invite</td><td id="i={K" class="">6.1.1.48.1</td><td id="g:C&lt;" class=""><a href="https://linear.app/su-platform/issue/SU-4161">SU-4161</a></td></tr><tr id="991faecb-0533-4e17-8277-d74e18816333" dir="ltr"><td id="akOp" class="">6.3.1.4.2</td><td id="IQl@" class="">E</td><td id="?cFD" class="">Meeting invite auto-generates a meeting link; Zoom/Teams links can be included</td><td id="i={K" class="">6.1.1.50.1</td><td id="g:C&lt;" class=""><a href="https://linear.app/su-platform/issue/SU-3598">SU-3598</a></td></tr></tbody></table><hr id="4a0affcf-0629-4a8c-aca5-ccaee1931cb3" dir="auto"/><h1 id="88c85b0c-7d2d-46b3-9ee3-cfd804bcf3bb" class="" dir="auto">4. Prototype Scope for Vetrick</h1><p id="3e21fef5-2cbd-40a0-bf07-55a2661427b7" class="" dir="auto"><strong>Screens and flows to design from scratch (no equivalent SGCC design):</strong></p><ol type="1" id="01b34937-95b1-408e-9906-449f38fa6adb" class="numbered-list" start="1" dir="auto"><li><strong>Appointment request &amp; approval flow</strong> — student requests a session → coach/consultant receives notification → approves or rejects → student notified (SGCC books directly without an approval step)</li></ol><ol type="1" id="adc8f0ce-4883-435a-9979-d2db3dbcb137" class="numbered-list" start="2" dir="auto"><li><strong>IR Consultant profile and account setup</strong> — distinct from Career Coach profile if roles differ; confirm in discovery</li></ol><ol type="1" id="a8a46688-c5f2-42ee-bba2-1a90505f2dc7" class="numbered-list" start="3" dir="auto"><li><strong>Recurring availability setup for coaches</strong> — date-range based recurring slots with per-week flexibility (Daily / Weekly / Monthly / Yearly / Custom)</li></ol><ol type="1" id="b0178f4a-9ef7-40bf-a970-d0532163ca73" class="numbered-list" start="4" dir="auto"><li><strong>Coach-to-school assignment and covering coach management</strong> — admin UI for assigning and substituting coaches per school and period</li></ol><ol type="1" id="9c5449cb-f3b5-4d1f-b66f-7b57284423f3" class="numbered-list" start="5" dir="auto"><li><strong>Multiple 1:1 session configuration</strong> — admin-configurable rules for how many sessions a student may book, and enforcement at booking time</li></ol><ol type="1" id="e23c7c6b-67cc-4324-87ea-ddeb8dd8f837" class="numbered-list" start="6" dir="auto"><li><strong>Backdated appointment creation</strong> — role-gated flow with manual check-in/out update capability</li></ol><ol type="1" id="984a9f9a-cdfc-4437-b606-84da22c6a0fb" class="numbered-list" start="7" dir="auto"><li><strong>Coach session notes</strong> — private per-session note entry, visible to other coaches with access rights, hidden from students</li></ol><ol type="1" id="ecb8e77a-98d8-447d-97ce-9667d232e6fa" class="numbered-list" start="8" dir="auto"><li><strong>Admin/user journal entries</strong> — separate journal construct if distinct from coach notes (confirm in discovery)</li></ol><ol type="1" id="a14e5026-2666-4631-a1b3-b90becae7373" class="numbered-list" start="9" dir="auto"><li><strong>Workshop and briefing management</strong> — listing, signup, capacity, and RSVP views (if not handled by Events module — confirm in discovery)</li></ol><ol type="1" id="91705770-0853-4d30-ab46-b03a5bba9135" class="numbered-list numbered-list-digits-2" start="10" dir="auto"><li><strong>Detailed coaching and workshop reports</strong> — full field-set report views for coached students, workshop attendees, and briefing attendees</li></ol><p id="6a36d8a1-c0e1-4732-9c80-79a5620d4098" class="" dir="auto"><strong>Screens and flows with SGCC overlap (review SGCC designs first — may need no new design or only minor adaptation):</strong></p><ol type="1" id="aa936beb-de34-4c79-9bab-b2ce9f40a71e" class="numbered-list" start="1" dir="auto"><li><strong>Student calendar view for timeslot selection</strong> — designated coach filter, fully-booked indicator, timeslot selection → SGCC: 6.1.1.51.1, 6.1.1.48.2</li></ol><ol type="1" id="db306dde-3c36-457c-bd9a-b68dbc016ce4" class="numbered-list" start="2" dir="auto"><li><strong>Coach availability slot setup</strong> — coach inputs available slots visible to assigned students only → SGCC: 6.1.1.48.1, 6.1.1.48.2</li></ol><ol type="1" id="2b2ddb01-fa3b-44e2-8769-25025776fc63" class="numbered-list" start="3" dir="auto"><li><strong>Online / Face-to-Face mode selector with venue dropdown</strong> → SGCC: 6.1.1.50.1, 6.1.1.50.2</li></ol><ol type="1" id="99809c83-ecc9-4c9f-a6fb-17d5ef37cdcb" class="numbered-list" start="4" dir="auto"><li><strong>Email confirmation + Outlook calendar (.ics) sync</strong> → SGCC: 6.1.1.14.1, 6.1.1.14.2</li></ol><ol type="1" id="87e1c4fb-a0b3-4ff4-921e-d3d4b607c293" class="numbered-list" start="5" dir="auto"><li><strong>Configurable reminder notifications</strong> (x hours/days, multiple triggers) → SGCC: 6.1.1.15.1, 6.1.1.15.2</li></ol><ol type="1" id="d3a87575-d654-4ab1-abe6-f9468cd346db" class="numbered-list" start="6" dir="auto"><li><strong>Cancellation flow</strong> (student or coach-initiated, email notification, calendar removal) → SGCC: 6.1.1.49.5</li></ol><ol type="1" id="bad1e9b8-d30f-4d66-b790-56e663ebe6f9" class="numbered-list" start="7" dir="auto"><li><strong>Attendance marking</strong> (Online: auto timestamp; F2F: manual check-in/out button with editable timestamps) → SGCC: 6.1.1.53.1, 6.1.1.53.2</li></ol><ol type="1" id="ea14cf98-8df0-4dee-9936-594ac534a430" class="numbered-list" start="8" dir="auto"><li><strong>Attendance/coaching report structure</strong> — field set closely mirrors SGCC attendance report → SGCC: 6.1.1.99.1</li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

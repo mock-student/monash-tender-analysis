@@ -1,0 +1,767 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Communications</title><meta name="data-notion-page-icon" content="📨"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%93%A8%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="33594e81-8539-806f-9178-cca20e67e2f2" class="page sans" data-notion-page-icon="📨"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="📨"></span></div><h1 class="page-title" dir="auto">Communications</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-last_edited_by"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/user-circle_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited by</th><td><span class="user"><img src="https://lh3.googleusercontent.com/a/ACg8ocLWLkn_w8xZYgETlVjlSHVKU6fSQkQTcvfjcR4D96uavjTB0A=s100" class="icon user-icon"/>Myles Ng</span></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/clock_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited time</th><td><time datetime="2026-05-26T06:51">May 26, 2026 6:51 AM</time></td></tr></tbody></table></header><div class="page-body"><h1 id="23c83cc9-c673-4a99-9728-285e76bf5075" class="" dir="auto">Table of Contents</h1><nav id="39d3e13f-f208-4707-8f8f-c93155849856" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#23c83cc9-c673-4a99-9728-285e76bf5075">Table of Contents</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#df2a0370-b533-41a7-974c-f27c41d4fd53">1. Overview</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a3f3757e-0fce-4c26-af0f-e635ccdc7a82">2. Admin / Manager View</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b68e1b93-4763-4dc9-92f2-7f644d7943a9">2.1 System Emails</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#28df0066-34e8-41b3-90ee-1dbc779cbb71">2.2 Campaign Delivery</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#37078b51-c16f-4e7e-bb90-282cf0c5a365">2.3 Recipient Management</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#855bed90-cbad-439d-973f-cda63d27aeb9">2.4 Segmentation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9bf9a21d-5d2f-4815-8efe-9d0e4f5db04a">2.5 Contact Database Hygiene</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#eb58418d-8e4b-46d0-af97-25b04c9c2479">2.6 Event Alerts and Digest Preference</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#947d7d1d-4588-4945-bccd-a1044b0789a4">2.7 Job Alert Delivery</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c31faf94-74cc-4580-9aa4-582d04ad6a10">2.8 AI-Assisted Email Authoring</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#35f52b0c-87e0-4728-aa0e-2bbf6ceb0c1b">2.9 Configurable Action Digest</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8f692587-543b-4b13-b2c3-e55dc7225711">2.10 Notification Trigger Governance</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d79872e0-abb9-493d-8bff-f2d6147d2420">2.11 Communication Preferences Framework</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#50f42fa1-bc1c-4f78-bef5-94be093570b9">2.12 Unsubscribe and Suppression Handling</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2a179144-6566-40e3-a2b9-f9ef4358f930">2.13 Interactive Polls in Email Campaigns</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e45ecc83-413c-4673-8d18-7a6bb693a615">2.14 Data Charts in Email Campaigns</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8b09f2e0-e712-46fd-a2e4-314ce12abdc3">2.15 Audience Labels</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0db0551d-3b20-49fb-8e51-4830a593b7aa">3. Reports</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#908a0e8b-3580-43d4-815f-6fd55d60c603">3.1 Email Report</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#aaa3717f-2ed6-4fa7-b7c8-1158dc1280ec">3.2 Student Segment Export</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#dde1cc65-bbf5-44f0-89a5-66b9d3149157">3.3 Per-Campaign Performance Dashboard</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9696100e-3073-4690-9d5e-7ce4649c6fdb">4. Conflicts Flagged</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fef111d3-906d-44d7-b5d9-063188cf54e9">5. Open Items</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7e9acd20-31ee-4461-a77b-32befc1e098a">6. Backend Implementation Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#73cc448b-01d1-4775-8f2b-0175b8f6f244">7. Requirements Traceability</a></div></nav><hr id="8a408ddf-122a-4304-b6a0-7c86c0c7b883" dir="auto"/><h1 id="df2a0370-b533-41a7-974c-f27c41d4fd53" class="" dir="auto">1. Overview</h1><p id="b7827956-bb51-4f08-a9b0-d15d2e37e270" class="" dir="auto">The Communications module covers all outbound emailing from the CSM platform: automated system emails triggered by platform events, admin-built campaigns delivered to selected audiences, and the reporting that follows. Audience-management infrastructure (Recipient Management and Segmentation) sits alongside delivery so admins can compose and target campaigns in one place. All current Communications features are Admin- and Manager-facing; Staff (L2) has no access to any Communications surface unless explicitly noted.</p><hr id="3308d0c1-6bb1-4d0b-a9de-ce3ea6e0c598" dir="auto"/><h1 id="a3f3757e-0fce-4c26-af0f-e635ccdc7a82" class="" dir="auto">2. Admin / Manager View</h1><h2 id="b68e1b93-4763-4dc9-92f2-7f644d7943a9" class="" dir="auto">2.1 System Emails</h2><p id="c1e9d462-69da-46a5-b6c5-86220cc8b8d0" class="" dir="auto">System emails are automated emails triggered by platform events. Scope is currently limited to the <strong>Users module only</strong>: new user added, staff added, staff removed.</p><p id="ac23aa6b-d41b-42dc-9d66-df991f4c1cdb" class="" dir="auto">Each system email has a trigger displayed in the admin UI showing:</p><ul id="24425156-eb67-4df5-96b2-f55af49468cf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Timing</strong> — when the email fires (e.g. &quot;Before session&quot;, &quot;On user creation&quot;)</li></ul><ul id="518d0332-8f58-4a4c-98d7-87999d33326f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Receiver</strong> — who receives the email (e.g. &quot;Student&quot;, &quot;Staff&quot;, &quot;Admin&quot;)</li></ul><p id="fc868f1d-e1df-4eaa-a388-0b2bf662d516" class="" dir="auto">The trigger display is rendered as a human-readable label translated from the backend trigger value. Active/inactive status is shown as a badge on each system email in the list. Linear: <a href="https://linear.app/su-platform/issue/SU-4414">SU-4414</a></p><h2 id="28df0066-34e8-41b3-90ee-1dbc779cbb71" class="" dir="auto">2.2 Campaign Delivery</h2><p id="eca4d24c-04b4-4c4b-91e7-273af57b3aff" class="" dir="auto">For CP3, admins build and deliver email campaigns from existing templates. The campaign lifecycle covers template selection, recipient configuration, scheduling, recurrence, send confirmation, and history.</p><p id="0d7fb72b-a573-4b93-91ac-a5c0f14c9331" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="f0cedec9-af48-4b86-87c6-292d00e5694f" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="1830cd98-25eb-4849-b1e5-bed3b72e89ec" dir="ltr"><th id="edbC" class="simple-table-header-color simple-table-header">Capability</th><th id="JvPP" class="simple-table-header-color simple-table-header">Admin L4</th><th id="LcVh" class="simple-table-header-color simple-table-header">Manager L3</th><th id="oK^J" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="2a83d632-9f95-4817-8a95-cfe80dce5868" dir="ltr"><td id="edbC" class="">Create a new campaign from a template</td><td id="JvPP" class="">✓</td><td id="LcVh" class="">✓ (immediate sends only)</td><td id="oK^J" class="">✗</td></tr><tr id="6bbc933a-fe00-4d4a-8040-15322c3002e2" dir="ltr"><td id="edbC" class="">Schedule a campaign for a future date/time</td><td id="JvPP" class="">✓</td><td id="LcVh" class="">✗</td><td id="oK^J" class="">✗</td></tr><tr id="68a47a37-4b44-4f5d-9491-66c5a1a74551" dir="ltr"><td id="edbC" class="">Configure recurrence rules (daily / weekly / monthly / custom)</td><td id="JvPP" class="">✓</td><td id="LcVh" class="">✗</td><td id="oK^J" class="">✗</td></tr><tr id="12d4473a-9571-4d12-bd48-37bb2241689a" dir="ltr"><td id="edbC" class="">Edit, pause, resume, or cancel scheduled and recurring campaigns</td><td id="JvPP" class="">✓</td><td id="LcVh" class="">✗</td><td id="oK^J" class="">✗</td></tr><tr id="84b79a4c-cd31-4863-8626-9ea3d6a91cc6" dir="ltr"><td id="edbC" class="">View campaign history and per-campaign delivery report</td><td id="JvPP" class="">✓</td><td id="LcVh" class="">✓</td><td id="oK^J" class="">✗</td></tr></tbody></table><p id="80a3d628-9d78-4215-a28a-36d990daf30e" class="" dir="auto"><strong>Recipient configuration</strong> — three methods, combinable:</p><ul id="4d00cf97-67c7-4f6e-9b6a-03f347d04f1e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Segment</strong> — predefined audience built from filter rules over user attributes (programme, school, year of study, graduation year, role, registration date, etc.); saved and reusable; managed in a separate Segments area. For recurring campaigns, segment membership is re-evaluated at each send.</li></ul><ul id="fb10623a-be04-487e-a0a9-5f824ef29660" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>List</strong> — saved curated collection of specific users; managed in a separate Lists area; created via CSV upload or by selecting users in CSM.</li></ul><ul id="70690e22-c331-4236-9fd5-a6d59e26f08c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ad-hoc selection</strong> — individual users searched and picked at campaign creation time; not saved.</li></ul><p id="53812d7a-b614-4bc0-8efa-7fb8310b11e8" class="" dir="auto"><strong>Scheduling</strong> — Send now (immediate on confirmation), Schedule for later (SGT date/time, queued for delivery), or Recurring per a rule. Scheduled campaigns sit in a Scheduled list and remain editable/cancellable until send time. All times display in SGT (UTC+8).</p><p id="0a728c09-a6df-4e55-9561-6aa80c871591" class="" dir="auto"><strong>Recurrence rules</strong> — frequency (daily / weekly / monthly / custom every N), day-of-week (weekly), day-of-month (monthly), start and end date (or no end date), time of day per send. For segment-based recurring campaigns, audience refreshes automatically at each send. Admin can pause, resume, or edit (template / recipients / future schedule) without affecting past sends.</p><p id="69df81af-e744-4d20-851a-20b5d70a4eda" class="" dir="auto"><strong>Confirmation</strong> — before any send or schedule, the admin sees a summary (template, recipient method and count, send time / recurrence rule, attachment count, embedded polls/forms count) followed by an explicit &quot;Send to X recipients? This cannot be undone.&quot; confirmation.</p><p id="aac48026-19bb-403e-b1eb-7e854895c117" class="" dir="auto"><strong>Campaign history</strong> — all past campaigns listed with name, template, send time, recipient count, delivery status, and click-through to a per-campaign performance dashboard (see 3.3). Scheduled campaigns appear separately. Recurring campaigns appear as a parent entry with each individual send beneath.</p><p id="397cf860-6f30-488d-b81f-b701a3a1cd4a" class="" dir="auto"><em>Source: Linear SU-3683 · Original Requirements 6.1.1.22.1 (Email Management module / templates), 6.1.1.26.1 (templates + recipient criteria + scheduling), 6.1.1.29.1 (template-driven, batch, scheduling), 6.1.1.28.1 (pre/post reminder count), 6.1.1.31.2 (notification frequency) · Phase 2 Workshop Findings — Communications</em></p><h2 id="37078b51-c16f-4e7e-bb90-282cf0c5a365" class="" dir="auto">2.3 Recipient Management</h2><p id="6bafaa93-25d4-42bf-bd3e-b7e857c0ae60" class="" dir="auto">For CP3, admins build and manage recipient lists for email campaigns. The lifecycle covers Excel/CSV import (with column mapping and validation), in-place review and editing, attribute filtering, and saving as reusable named lists.</p><p id="639948de-222f-457d-8b97-a75af20b4549" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="b0f24bf5-5967-4ca0-87ba-e734fd6f1eb3" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="25d2964a-c85b-46c4-a7f5-a85aed7effa6" dir="ltr"><th id="`VAB" class="simple-table-header-color simple-table-header">Capability</th><th id=";b^]" class="simple-table-header-color simple-table-header">Admin L4</th><th id=";CDD" class="simple-table-header-color simple-table-header">Manager L3</th><th id="Co]?" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="9350af15-3adc-4513-8da0-ca8974d71c25" dir="ltr"><td id="`VAB" class="">Import recipient files (<code>.xlsx</code> / <code>.csv</code>) with column mapping</td><td id=";b^]" class="">✓</td><td id=";CDD" class="">✓</td><td id="Co]?" class="">✗</td></tr><tr id="a5b777fb-7032-4d89-b354-47554d942b5d" dir="ltr"><td id="`VAB" class="">Save and reuse column-mapping configurations</td><td id=";b^]" class="">✓</td><td id=";CDD" class="">✓</td><td id="Co]?" class="">✗</td></tr><tr id="f0beb43f-d6aa-41ba-976a-2579b3a4b664" dir="ltr"><td id="`VAB" class="">Review / edit / filter the recipient list</td><td id=";b^]" class="">✓</td><td id=";CDD" class="">✓</td><td id="Co]?" class="">✗</td></tr><tr id="5e1899bc-2693-4615-ad37-6c95f659fd2b" dir="ltr"><td id="`VAB" class="">Save filtered or edited sets as named custom lists</td><td id=";b^]" class="">✓</td><td id=";CDD" class="">✓</td><td id="Co]?" class="">✗</td></tr><tr id="92a5162c-8f1e-4538-a38b-6c0cf80e7bdb" dir="ltr"><td id="`VAB" class="">Edit / clone / delete saved lists</td><td id=";b^]" class="">✓</td><td id=";CDD" class="">✓ (own lists only)</td><td id="Co]?" class="">✗</td></tr></tbody></table><p id="ea4af93f-eaff-4c4a-b97e-589d75eeb191" class="" dir="auto"><strong>Import flow</strong> — admin uploads <code>.xlsx</code> or <code>.csv</code>; system presents a column-mapping step (file columns left, system fields right — email, first name, last name, matric number, programme, sector, industry, graduation year, etc.; each column mapped or set to &quot;Do not import&quot;); auto-suggestions from header keywords; mapping configurations can be saved for reuse.</p><p id="b567aba8-d221-4ead-9e88-95cf7e7def93" class="" dir="auto"><strong>Validation</strong> — runs after mapping: required field check (email), email format, in-file duplicates, data type on date/numeric/enum fields, match against existing CSM users (linked rows pull merge fields from CSM profile; unmatched rows kept as external). Validation summary: total rows, ready rows, error rows (per-error-type with row numbers), duplicates. Admin can proceed and skip errors, download a corrections file to fix offline and re-upload, or cancel.</p><p id="67dc5527-499e-45d6-9db3-9055dc30927d" class="" dir="auto"><strong>Review and edit</strong> — list displayed in a table; live recipient count; per-row remove; search by name / email / matric number; manual add via CSM user search or direct email entry; bulk-remove by filter. Edits to saved lists persist; edits in a single-campaign context don&#x27;t affect any saved source.</p><p id="8b941344-25fc-492f-baac-acb7045c41bd" class="" dir="auto"><strong>Filter attributes</strong> — Sector (employer), Industry (employer), Graduation year (student), Programme, School, Campus, Year of study, Activity status (active / inactive / engaged in last 30 days), Booking status, Attendance status (SGCC-related), Custom tags. Filters combine with AND/OR logic.</p><p id="7d44c133-54cb-45fa-bbce-85a011ad802e" class="" dir="auto"><strong>Saved custom lists</strong> — named (with optional description); display name, count, source (imported / filtered / manually curated), last updated date, author. Available as a recipient source in campaign creation (alongside Segments and Ad-hoc — see Campaign Delivery section). Editable, cloneable, deletable (with confirmation; deletion blocked if list is in use by an active scheduled campaign).</p><p id="9f5d7f94-b775-4838-b7cf-8c470516ef33" class="" dir="auto"><strong>Lists vs Segments</strong> — Lists (this section) are <strong>static</strong>: membership fixed at save time, except manual edits. Segments (separate spec) are <strong>rule-based</strong>: membership re-evaluates against live data. Both are selectable as recipient sources in campaigns.</p><p id="b71e17c8-c1a3-4698-b481-9d8e9375c0cf" class="" dir="auto"><em>Source: Linear SU-3684 · Original Requirements 6.1.1.25.1 (selected group of students), 6.1.1.26.1 (recipient criteria), 6.1.1.29.1 (individual / batch recipient settings), 6.1.1.41.2 (upload recipient list) · Phase 2 Workshop Findings — Communications</em></p><h2 id="855bed90-cbad-439d-973f-cda63d27aeb9" class="" dir="auto">2.4 Segmentation</h2><p id="c347eade-1de0-464a-b2ab-5a848742249c" class="" dir="auto">For CP3, admins build dynamic student segments using filter rules over student profile, engagement, and institution-defined attributes. Segments are saved as reusable named entities and are selectable as recipient lists for campaigns, filters for analytics, and triggers for bulk actions.</p><p id="7db0e12a-d257-468d-b47f-22841ecc4c5d" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="2b79aa81-612b-4f8d-ad7c-1b076fced3ae" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="03aaae15-906c-4a01-a6d9-ef031500dbea" dir="ltr"><th id="`QHX" class="simple-table-header-color simple-table-header">Capability</th><th id="CFt|" class="simple-table-header-color simple-table-header">Admin L4</th><th id="r[&gt;f" class="simple-table-header-color simple-table-header">Manager L3</th><th id="BWj[" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="75e94e11-283d-45ab-87d8-7de0795056c2" dir="ltr"><td id="`QHX" class="">Create / edit / delete custom segments</td><td id="CFt|" class="">✓</td><td id="r[&gt;f" class="">✓ (own segments only)</td><td id="BWj[" class="">✗</td></tr><tr id="c26b6232-b485-45d8-beca-dd2b93faa0ea" dir="ltr"><td id="`QHX" class="">Apply institution-defined preset segments</td><td id="CFt|" class="">✓</td><td id="r[&gt;f" class="">✓</td><td id="BWj[" class="">✗</td></tr><tr id="6ef724fb-59b5-48c1-9cb1-b3a7bba7c70f" dir="ltr"><td id="`QHX" class="">Manage (create / edit / delete) preset segments</td><td id="CFt|" class="">✓</td><td id="r[&gt;f" class="">✗ (confirm with Penny — see Open Items)</td><td id="BWj[" class="">✗</td></tr><tr id="0784b144-f59d-4dc7-bd7e-945edbbe6c19" dir="ltr"><td id="`QHX" class="">Export segment as CSV</td><td id="CFt|" class="">✓</td><td id="r[&gt;f" class="">✓</td><td id="BWj[" class="">✗</td></tr></tbody></table><p id="65774300-fd79-4859-8a01-a7909d18a2bb" class="" dir="auto"><strong>Filterable attributes</strong> — three categories:</p><ul id="5d37b9ee-4814-4971-9e11-7d35f856b48c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Demographics and profile</strong>: Programme, Programme Code, School, School Code, Campus, Year of Study, Expected Graduation Year, Nationality, Gender, Enrolment Status (current / LOA / graduated — confirm with Penny)</li></ul><ul id="3bf33a97-d154-468e-9596-1abf1bc62b8b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Engagement and activity status</strong>: SGCC Booking Status, SGCC Attendance Status, Resume Submission Status, Internship Status, # Events Attended (last N months), # Jobs Applied</li></ul><ul id="26e97196-76fc-44af-ad0c-ad32ff8c1de2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Institution-defined labels</strong>: At-risk Flag, High Performer Flag (both definitions TBC), Feedback Form Completion Status, Custom Tags (when introduced)</li></ul><p id="43e9aba5-cb21-4ef3-8722-a7d12996b48a" class="" dir="auto"><strong>Filter operators</strong> — Equals / Not equals (enums, IDs), Contains / Does not contain (text), Greater than / Less than (numeric, dates), In / Not in (multi-value), Is empty / Is not empty (optional fields).</p><p id="6f6c06d0-cb8b-433c-9f72-fd5e95e777e0" class="" dir="auto"><strong>Combining filters</strong> — multiple filters combined with AND (all match) or OR (any match); filters can be grouped/nested for complex rules (e.g., <code>(Year = 4) AND (Programme in [FIN, ACC]) AND (Internship Status = no internship)</code>).</p><p id="fa9bfb7c-ecfb-4622-8bbc-71f3bcc130c0" class="" dir="auto"><strong>Segment save and reuse</strong> — each saved segment displays name, optional description, filter rules summary, current member count (live, re-evaluated on open), last updated, author. Admins can edit (changes apply on next use), clone, or delete with confirmation; deletion blocked if the segment is used in an active campaign.</p><p id="cf692802-8a74-4f87-81b3-7224e9feb707" class="" dir="auto"><strong>Institution-defined presets</strong> — managed centrally; applied with one click. Examples: &quot;All SGCC-eligible students (enrolled in ML0004)&quot;, &quot;Students without any SGCC booking&quot;, &quot;Final-year students&quot;, &quot;Students who missed their last session&quot;, &quot;High performers&quot;, &quot;At-risk students&quot;. Regular admins can apply or clone presets into custom segments, but cannot edit or delete the preset definitions.</p><p id="0cf1adda-ddbb-43ab-94f5-711a140ad7dd" class="" dir="auto"><strong>Preview and export</strong> — on creating/viewing a segment, admin sees the total count and a preview list of the first 25 students; counts update live as filters change. Segment data is exportable as a CSV — see <strong>3.2 Student Segment Export</strong> for the full export spec (filename, structure, column order, sample).</p><p id="60d19e6d-6d0f-497c-b970-2a5af6a3f06a" class="" dir="auto"><strong>Integration</strong> — segments are selectable as recipients in email campaigns (see Campaign Delivery), as filters in the analytics dashboard, and as triggers for bulk actions.</p><p id="9bd160f3-e70b-4b18-8390-a34865dad28f" class="" dir="auto"><em>Source: Linear SU-3685 · Original Requirements 6.1.1.25.1 (selected group filters: year / internship status), 6.1.1.29.1 (selection criteria for batch sends), 6.1.1.31.3 (filter by company / industry), 6.1.1.20.1 (interests / preferences targeting), 6.1.1.31.1 (subscription preferences) · Phase 2 Workshop Findings — Communications</em></p><h2 id="9bf9a21d-5d2f-4815-8efe-9d0e4f5db04a" class="" dir="auto">2.5 Contact Database Hygiene</h2><p id="80f2aad6-b25a-4864-8622-00595c5a3729" class="" dir="auto">For CP3, admins maintain a clean contact database via five connected capabilities: automatic suppression on hard bounce, periodic expunge of chronically invalid addresses, blacklist for specific employers / contacts, tagging recipients into reusable lists from campaign review, and an explicit policy that user accounts are never deactivated by inactivity alone.</p><p id="57980735-54ed-4fe2-983e-d0cb52a7aa06" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="e393c18d-12b8-4be4-9f05-8818658fee74" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="efbc9940-5a74-426b-ad60-406512fa4932" dir="ltr"><th id="s@N}" class="simple-table-header-color simple-table-header">Capability</th><th id="JgLK" class="simple-table-header-color simple-table-header">Admin L4</th><th id="baZ;" class="simple-table-header-color simple-table-header">Manager L3</th><th id="lHah" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="89013cbf-c5f4-4a92-a58b-aa89cd0fc3b9" dir="ltr"><td id="s@N}" class="">View and manage the suppression list</td><td id="JgLK" class="">✓</td><td id="baZ;" class="">✓ (view + remove only)</td><td id="lHah" class="">✗</td></tr><tr id="43db0cab-538b-4520-8182-27ef118bf7be" dir="ltr"><td id="s@N}" class="">Manually remove an address from suppression</td><td id="JgLK" class="">✓</td><td id="baZ;" class="">✓</td><td id="lHah" class="">✗</td></tr><tr id="5bb63431-5182-4e64-93b8-72b777b6a78e" dir="ltr"><td id="s@N}" class="">Run expunge (on-demand)</td><td id="JgLK" class="">✓</td><td id="baZ;" class="">✗</td><td id="lHah" class="">✗</td></tr><tr id="df489bf0-e2e5-476c-8bfb-7128ac8fa549" dir="ltr"><td id="s@N}" class="">Configure expunge criteria + scheduled runs</td><td id="JgLK" class="">✓</td><td id="baZ;" class="">✗</td><td id="lHah" class="">✗</td></tr><tr id="80bc9ade-fcf2-4323-b585-04738816f1b4" dir="ltr"><td id="s@N}" class="">Add / lift blacklist entries (person or organisation)</td><td id="JgLK" class="">✓</td><td id="baZ;" class="">✗</td><td id="lHah" class="">✗</td></tr><tr id="ac74a84b-0eb4-4865-997f-46fcd6201a23" dir="ltr"><td id="s@N}" class="">Tag selected recipients into existing / new lists from campaign review</td><td id="JgLK" class="">✓</td><td id="baZ;" class="">✓</td><td id="lHah" class="">✗</td></tr></tbody></table><p id="cd173b33-7d05-44a0-b3cb-b95b3ceb46fd" class="" dir="auto"><strong>Suppression on hard bounce</strong> — hard-bouncing emails (permanent delivery failure) are added automatically to a suppression list and excluded from future emails until manually removed. Each entry records: email, suppression reason (e.g., &quot;Hard bounce — mailbox does not exist&quot;), date/time, originating campaign. Soft bounces don&#x27;t trigger suppression on first occurrence (threshold for repeated soft bounces TBC — see Open Items). Admin can view, search, filter by reason / date, and manually remove (with confirmation).</p><p id="48f3d9e9-738d-4b2e-842d-37bdc2f9b6c6" class="" dir="auto"><strong>Periodic expunge</strong> — admin permanently removes chronically bounced or invalid addresses. Configurable criteria: address on suppression list more than X days (default 90), hard-bounced N or more times (default 3), matches known invalid patterns (e.g., <code>test@test.com</code>). Runs on-demand (with preview) or on schedule (monthly automated run with email report). Each run requires confirmation and is logged. Expunge is permanent; historical campaign data for expunged addresses is retained (policy confirm — see Open Items).</p><p id="6c02640d-c972-42ea-8a04-85d9f50b0eab" class="" dir="auto"><strong>Blacklist</strong> — admin blocks future communications to specific persons (by user ID or email) or entire employer organisations (all contacts under that employer). Each entry has target, required reason, added-by + date, optional end date (e.g., &quot;blacklist for 6 months&quot;). At campaign send time, the system blocks sending if any recipient is blacklisted and shows a warning with the list of blocked recipients; admin can proceed without them. Lift at any time (with confirmation). Record retained for audit and reporting.</p><p id="ced1f4b8-9b1b-4171-92db-1fcb60f1402f" class="" dir="auto"><strong>Tag contacts into lists from campaign recipient selection</strong> — during campaign recipient review (see 2.3 Recipient Management), admin selects one or more recipients and adds them to a list directly. Add to an existing list (search + select) or a new list (create inline). Tagging doesn&#x27;t modify the current campaign&#x27;s recipient set — it updates the target list for future reuse. Example: reviewing a campaign to all employers, select 20 priority rows, add to a &quot;Priority employers&quot; list with one click.</p><p id="df713c86-b93c-4e56-b6c9-0d92c8bf129a" class="" dir="auto"><strong>Retain inactive users (no deactivation on inactivity alone)</strong> — user accounts must not be deactivated or removed solely due to inactivity. Accounts remain active as long as the user is a valid member of the institution (current students per SIS sync, registered employers), regardless of email engagement, login activity, or session bookings. Only the following can change active status: SIS sync marks a student as withdrawn or graduated; admin manually deactivates; blacklist entry (blocks communication, retains record); expunge (removes address after criteria are met). No background job should deactivate users for inactivity reasons. <em>(See Conflicts Flagged for the explicit reversal of Original Requirements 6.1.1.46.1.)</em></p><p id="f3b0a590-f505-4678-b1f5-5e4c2c717c72" class="" dir="auto"><em>Source: Linear SU-3686 · Original Requirements 6.1.1.30.1, 6.1.1.46.1, 6.1.1.127.1 · Phase 2 Workshop Findings — Communications</em></p><h2 id="eb58418d-8e4b-46d0-af97-25b04c9c2479" class="" dir="auto">2.6 Event Alerts and Digest Preference</h2><p id="bf105866-ca49-4c45-bd52-e981f3104b00" class="" dir="auto">For CP3, students choose how they receive event alerts from their Communication Preferences page. The event-matching engine and per-event alert delivery are documented on the Events module page §3 — this section covers the comms-side controls: notification preference, digest cadence, channel routing, and suppression/blacklist integration.</p><p id="3ebc4d4a-13ec-45a6-9384-78074b47102f" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="7babf4ca-5299-48da-b605-d6f696e4b001" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="cde66f2d-999e-4cf1-91bb-ffce7a5cac9a" dir="ltr"><th id="LiYT" class="simple-table-header-color simple-table-header">Capability</th><th id="|nj^" class="simple-table-header-color simple-table-header">Student</th><th id="&gt;y`?" class="simple-table-header-color simple-table-header">Admin L4</th><th id="vxKR" class="simple-table-header-color simple-table-header">Manager L3</th><th id="[vXM" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="1d50f92f-e8c7-42f6-a0c6-65968bdf6f70" dir="ltr"><td id="LiYT" class="">Toggle <code>Event alerts</code> notification preference (on / off)</td><td id="|nj^" class="">✓</td><td id="&gt;y`?" class="">—</td><td id="vxKR" class="">—</td><td id="[vXM" class="">—</td></tr><tr id="c788019d-567b-4464-aeb3-7213f97fd87a" dir="ltr"><td id="LiYT" class="">Choose between per-event alerts OR digest mode</td><td id="|nj^" class="">✓</td><td id="&gt;y`?" class="">—</td><td id="vxKR" class="">—</td><td id="[vXM" class="">—</td></tr><tr id="d4e4b404-fab7-410f-ab44-85a62ce6b0f5" dir="ltr"><td id="LiYT" class="">Choose digest cadence (daily / weekly) — admin-configured default applies if no choice</td><td id="|nj^" class="">✓</td><td id="&gt;y`?" class="">—</td><td id="vxKR" class="">—</td><td id="[vXM" class="">—</td></tr><tr id="4d631229-0c53-4304-87c1-f585e4e44051" dir="ltr"><td id="LiYT" class="">Select preferred channel (Email / WhatsApp / Telegram, when verified)</td><td id="|nj^" class="">✓</td><td id="&gt;y`?" class="">—</td><td id="vxKR" class="">—</td><td id="[vXM" class="">—</td></tr><tr id="c50e78d7-0416-4173-b6bd-bc98a8cf6587" dir="ltr"><td id="LiYT" class="">Configure default digest cadence and send time (institution-wide)</td><td id="|nj^" class="">—</td><td id="&gt;y`?" class="">✓</td><td id="vxKR" class="">✗</td><td id="[vXM" class="">✗</td></tr><tr id="38c725f8-ae80-41a9-9f09-41ef88da0a8d" dir="ltr"><td id="LiYT" class="">Configure per-day rate limit cap (over-cap matches roll into digest)</td><td id="|nj^" class="">—</td><td id="&gt;y`?" class="">✓</td><td id="vxKR" class="">✗</td><td id="[vXM" class="">✗</td></tr></tbody></table><p id="dd8aca78-7cfd-409c-84d8-e46130261160" class="" dir="auto"><strong>Notification preference</strong> — <code>Event alerts</code> is an optional notification type listed alongside other student-facing Communication Preferences. Students who opt out receive no event alerts; matched events are simply not sent. Mandatory system notifications (e.g., booking confirmations) are unaffected.</p><p id="65499cf2-2895-455a-978d-23da516b50c4" class="" dir="auto"><strong>Per-event vs digest mode</strong> — students choose one of two modes:</p><ul id="2d3987c2-5afb-4132-83c5-2a8e7e386ee2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Per-event alerts</strong> — receive an alert each time a matching event opens for registration (subject to the per-day rate-limit cap).</li></ul><ul id="975da38c-dbdb-48a8-af17-fe94e07a766c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Digest</strong> — receive a single rolled-up email at a configured cadence. The digest bundles all matching events open for registration since the last cycle, one row per event with details, CTA, and matched interests.</li></ul><p id="0bc36a4d-1356-4ba6-943a-b896892bb757" class="" dir="auto"><strong>Digest cadence</strong> — admin-configured institutional defaults: <strong>daily</strong> (8am SGT) or <strong>weekly</strong> (Monday 8am SGT). Students can override the cadence in their preferences. Empty cycles (no matching events) do not send a digest. Mode and cadence changes apply forward only; past alerts are not re-sent.</p><p id="62d636fa-da68-4f3f-8df2-58157f81bdee" class="" dir="auto"><strong>Channel routing</strong> — alerts default to email. Students with verified non-email channels (WhatsApp, Telegram — channel verification scoped in the related Communications Preferences ticket) can route alerts to their chosen channel. Channel routing applies to both per-event alerts and digests.</p><p id="e9788d10-3b24-437a-ae1e-0198a0023895" class="" dir="auto"><strong>Suppression and blacklist integration</strong> — all alerts (per-event and digest) pass through the suppression list and blacklist before send (see <strong>§2.5 Contact Database Hygiene</strong>). Suppressed addresses are skipped; blacklisted recipients are blocked with an admin warning at scheduling time.</p><p id="15888941-d167-43b9-9fce-a5374bafe836" class="" dir="auto"><strong>Rate limit</strong> — admin-configurable per-student per-day cap on direct alerts. Over-cap matches automatically roll into the next digest cycle rather than being dropped. The cap default is TBC.</p><p id="fa0f2364-b22c-4b3b-818d-053187859f81" class="" dir="auto"><em>Source: Linear SU-3693 · Original Requirements 6.1.1.20.1 (Core: &quot;The system shall trigger an email notification to inform students when events open for registration based on their interests/preferences and email notification/mailing preferences.&quot;), 6.1.1.20.2 (student mailing preferences config), 6.1.1.24.1 (notifications when events open, based on preferences), 6.1.1.31.1 (subscribe to notifications), 6.1.1.31.2 (notification frequency), 6.1.1.127.1 (opt-out for non-essential email types) · Phase 2 Workshop Findings — Communications (System must auto-generate daily/weekly digests for events and opportunities)</em></p><h2 id="947d7d1d-4588-4945-bccd-a1044b0789a4" class="" dir="auto">2.7 Job Alert Delivery</h2><p id="a3b42e09-7640-4754-afcd-2caf91c36353" class="" dir="auto"><code>Job alerts</code> is an optional notification type in student Communication Preferences; students who opt out receive no job alert emails, with no effect on mandatory or other optional notifications. Pausing or deleting a subscription has the same scoped effect.</p><p id="f6ea208a-b9ed-4021-b8c7-c250cb1bc0ee" class="" dir="auto">Delivery cadence is set per subscription: <strong>Immediate</strong> (on posting), <strong>Daily digest</strong> (8am SGT), or <strong>Weekly digest</strong> (Monday 8am SGT). Empty cycles produce no send; cadence changes apply forward only. Each matching job is delivered at most once across all active subscriptions; immediate alerts are rate-limited to a configurable daily cap (default: 5) with overflow rolling to the next digest. All sends pass through the suppression list and blacklist (§2.5) before dispatch.</p><p id="b176f026-2748-4fd5-9a76-ac17795fc3b5" class="" dir="auto"><em>Source: Linear SU-3694 · Original Requirements 6.1.1.31.1, 6.1.1.31.3</em></p><h2 id="c31faf94-74cc-4580-9aa4-582d04ad6a10" class="" dir="auto">2.8 AI-Assisted Email Authoring</h2><p id="0eca7e83-d5c6-4c48-8220-47d0d9def9fb" class="" dir="auto">Admins and Managers can generate AI-assisted body copy and subject line suggestions from within the template editor. The AI is an authoring assistant only — suggestions never auto-apply; admins must explicitly accept, insert, or edit any output before saving or sending.</p><p id="4b50aa77-13c4-4bb5-8716-e739d5e4ddcc" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="2fe9d846-c4d1-4864-822d-6a29c70327e4" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="9a3ac69e-95fa-4dd3-a072-36b2ce796913" dir="ltr"><th id="?zE`" class="simple-table-header-color simple-table-header">Capability</th><th id="rHcx" class="simple-table-header-color simple-table-header">Admin L4</th><th id=";rac" class="simple-table-header-color simple-table-header">Manager L3</th><th id="]udO" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="2b8413cc-ee1c-4e05-b568-d2cb1e82954e" dir="ltr"><td id="?zE`" class="">Open AI Draft panel and generate body copy from a brief</td><td id="rHcx" class="">✓</td><td id=";rac" class="">✓</td><td id="]udO" class="">✗</td></tr><tr id="34c552b5-d893-4d20-89a4-1b494658ceb7" dir="ltr"><td id="?zE`" class="">Request subject line suggestions</td><td id="rHcx" class="">✓</td><td id=";rac" class="">✓</td><td id="]udO" class="">✗</td></tr><tr id="79c45298-2083-40cb-8309-d26102b52e94" dir="ltr"><td id="?zE`" class="">Set tone, length, and reading level parameters</td><td id="rHcx" class="">✓</td><td id=";rac" class="">✓</td><td id="]udO" class="">✗</td></tr><tr id="21020d7f-2db1-4206-8b84-da6ec0eb8723" dir="ltr"><td id="?zE`" class="">Refine content with preset quick actions or custom prompts</td><td id="rHcx" class="">✓</td><td id=";rac" class="">✓</td><td id="]udO" class="">✗</td></tr><tr id="52ac5a3c-fae7-4dd1-9bf2-c99da81d9012" dir="ltr"><td id="?zE`" class="">Apply refinement to a selected portion of the body</td><td id="rHcx" class="">✓</td><td id=";rac" class="">✓</td><td id="]udO" class="">✗</td></tr></tbody></table><p id="b5281b46-5812-42a0-8caa-c2d5e15a7b27" class="" dir="auto"><strong>AI Draft panel</strong> — admin fills in a brief (Goal, Audience, Key points, optional references) and clicks <strong>Generate</strong>. The draft can be Inserted, Regenerated for a new variation, or Discarded. <strong>Subject line suggestions</strong> — clicking <strong>Suggest subject lines</strong> from the subject line field returns 3–5 options; each can be Picked or Regenerated.</p><p id="4e47ad87-0e13-4483-ac0a-8431cbbcecda" class="" dir="auto"><strong>Tone and style</strong> — configurable before or after generation: <strong>Tone</strong> (Formal / Friendly / Concise / Persuasive / Empathetic / Neutral), <strong>Length</strong> (Short / Medium / Long), <strong>Reading level</strong> (Standard / Simple). <strong>Refinement</strong> — preset quick actions (&quot;Make shorter&quot;, &quot;Make more formal&quot;, &quot;Make friendlier&quot;, &quot;Add a clear call-to-action&quot;, &quot;Simplify the language&quot;, &quot;Fix grammar and typos&quot;) or a free-text custom prompt; applies to the full body or a highlighted selection only.</p><p id="4ada27e1-55b8-4cac-881e-432a1930008e" class="" dir="auto"><strong>Safeguards</strong> — AI output must not fabricate data or generate content about specific individuals outside provided inputs. All generations are logged (brief, output, admin action taken) for audit; logs must not retain sensitive student or employer data unnecessarily.</p><p id="74be196a-1183-45c6-a132-e9dfef99e494" class="" dir="auto"><em>Source: Linear SU-3698 · Phase 2 Workshop Findings — Communications / AI</em></p><h2 id="35f52b0c-87e0-4728-aa0e-2bbf6ceb0c1b" class="" dir="auto">2.9 Configurable Action Digest</h2><p id="26868193-5117-4107-9d6f-07d726c36c90" class="" dir="auto">For CP3, admins can configure a digest email that bundles a user’s pending tasks into a single scheduled send. Users receive the digest only when they have pending tasks at send time; the digest respects the communication preferences framework, suppression list, and blacklist throughout.</p><p id="59631e33-0132-4f65-897f-e539839c670d" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="0855e394-ebde-4ab5-8b97-b3390c7746e7" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="98299fd7-cbb7-4aae-8e00-7561f5d4723a" dir="ltr"><th id="&lt;yAW" class="simple-table-header-color simple-table-header">Capability</th><th id="rKWY" class="simple-table-header-color simple-table-header">Admin L4</th><th id="jHEa" class="simple-table-header-color simple-table-header">Manager L3</th><th id="DCO]" class="simple-table-header-color simple-table-header">Staff L2</th><th id="NWhh" class="simple-table-header-color simple-table-header">User</th></tr></thead><tbody><tr id="27c88fbc-e370-41f1-93fb-f3892174c868" dir="ltr"><td id="&lt;yAW" class="">Configure digest frequency, send time, template, and task types</td><td id="rKWY" class="">✓</td><td id="jHEa" class="">View only (confirm with Penny)</td><td id="DCO]" class="">✗</td><td id="NWhh" class="">—</td></tr><tr id="5bbf2107-68b6-4ec1-af97-5042c121d80d" dir="ltr"><td id="&lt;yAW" class="">Enable / disable digest</td><td id="rKWY" class="">✓</td><td id="jHEa" class="">✗</td><td id="DCO]" class="">✗</td><td id="NWhh" class="">—</td></tr><tr id="455466b3-f5af-4ded-a0c1-fd0e44d980e0" dir="ltr"><td id="&lt;yAW" class="">Configure per-task-type direct reminder overlap</td><td id="rKWY" class="">✓</td><td id="jHEa" class="">✗</td><td id="DCO]" class="">✗</td><td id="NWhh" class="">—</td></tr><tr id="c3cd8585-6e67-4aa6-9b49-28fb648fdd7d" dir="ltr"><td id="&lt;yAW" class="">Control receipt via communication preferences</td><td id="rKWY" class="">—</td><td id="jHEa" class="">—</td><td id="DCO]" class="">—</td><td id="NWhh" class="">✓</td></tr></tbody></table><p id="4dc6d824-44d2-42d0-9d2a-3d0f70085413" class="" dir="auto"><strong>Digest configuration</strong> — admin sets: <strong>Frequency</strong> (Daily at configured SGT time / Weekly on a chosen day and time / Every N days), <strong>Send time</strong> (SGT), <strong>Digest template</strong>, <strong>Task types to include</strong>, and a <strong>Minimum task threshold</strong> (default: 1; raising this routes low-count scenarios to direct single-task reminders instead). <strong>Pending task types (v1):</strong> Incomplete profile, Unbooked SGCC bundle, Resume upload pending, Reschedule deadline approaching, Absentee form pending, Feedback form pending, Event RSVP pending. Each carries a title, description, deep link, and optional urgency indicator.</p><p id="6ad1c715-5e77-4f64-828a-c35a655bce1f" class="" dir="auto"><strong>Digest email structure</strong> — greeting + intro (&quot;You have X pending tasks in CSM.&quot;) + ordered task list each with CTA + institutional footer with preferences link. No digest sends for empty cycles. Per task type, admin configures whether direct single-task reminders still fire alongside the digest or whether that type appears in the digest only.</p><p id="1963f70f-781d-4aa4-bd30-07a0055a9099" class="" dir="auto"><strong>Delivery rules</strong> — respects communication preferences (users opted out do not receive the digest unless classified as mandatory), suppression list, blacklist, and an admin option to skip weekends and public holidays.</p><p id="a0c86aae-9790-4a45-97ae-31452bfaffb6" class="" dir="auto"><em>Source: Linear SU-3701 · Original Requirements 6.1.1.26.1, 6.1.1.28.1, 6.1.1.29.1, 6.1.1.31.2 · Phase 2 Workshop Findings — Communications / Automation Flows</em></p><h2 id="8f692587-543b-4b13-b2c3-e55dc7225711" class="" dir="auto">2.10 Notification Trigger Governance</h2><p id="b4057566-01c3-461d-a255-011d1bfb4525" class="" dir="auto">Admins configure automated notification triggers via a central <strong>Triggers</strong> view. Only events on an <strong>allowed system events list</strong> can be used as trigger sources; admins cannot create arbitrary triggers without dev support. Trigger configuration from other tickets (SGCC booking notifications, automation flows, action digest) must use this framework.</p><p id="f8651aa6-501a-4207-84c0-d305c6f24d96" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="71c3733d-cf03-4b57-8f49-1c541db14043" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="d01165d3-5423-463c-8508-e67280e1ae76" dir="ltr"><th id="_fu;" class="simple-table-header-color simple-table-header">Capability</th><th id="W}C&lt;" class="simple-table-header-color simple-table-header">Admin L4</th><th id="GrKc" class="simple-table-header-color simple-table-header">Manager L3</th><th id="Td&lt;x" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="90394486-a6aa-409f-a3b7-696e37b860c7" dir="ltr"><td id="_fu;" class="">Create, edit, and delete triggers</td><td id="W}C&lt;" class="">✓</td><td id="GrKc" class="">✗</td><td id="Td&lt;x" class="">✗</td></tr><tr id="3b576a6c-2c70-4df3-ac97-b20ff2a88a40" dir="ltr"><td id="_fu;" class="">Activate trigger (Draft → Active)</td><td id="W}C&lt;" class="">✓</td><td id="GrKc" class="">✗</td><td id="Td&lt;x" class="">✗</td></tr><tr id="2f567b06-d399-4824-8206-f4d54d4191db" dir="ltr"><td id="_fu;" class="">Pause / disable trigger</td><td id="W}C&lt;" class="">✓</td><td id="GrKc" class="">✓ (confirm with Penny — see Open Items)</td><td id="Td&lt;x" class="">✗</td></tr><tr id="b65786d4-b4e7-4b77-834b-1a096bf6c4bd" dir="ltr"><td id="_fu;" class="">View Triggers view and trigger detail</td><td id="W}C&lt;" class="">✓</td><td id="GrKc" class="">✓</td><td id="Td&lt;x" class="">✗</td></tr></tbody></table><p id="f786a360-4841-4fa9-9343-63d623b00614" class="" dir="auto"><strong>Trigger configuration</strong> — each trigger links a named <strong>system event</strong> to a notification rule (template, audience filter, delay/timing, merge fields, optional conditions). The Triggers view shows: source event, linked template, audience, status (Active / Paused / Disabled / Draft), last fired timestamp, and owner. <strong>Allowed system events (v1):</strong> Student events (profile completed, SGCC booking confirmed/cancelled/rescheduled, resume uploaded, feedback submitted, mentee signs up); Employer events (account created, job posting published/approved, application received); Event/appointment events (registration submitted/cancelled, appointment booked, attendance marked); System events (SIS sync added/removed user, policy update published).</p><p id="ea3f89f9-04cd-4d76-b039-7c9b9d189ef9" class="" dir="auto"><strong>Trigger states</strong> — four non-destructive states: <strong>Active</strong>, <strong>Paused</strong> (config preserved), <strong>Disabled</strong> (config preserved), <strong>Draft</strong>. Activation from Draft is a distinct permissioned action (Admin L4 only). All state changes and edits are logged with actor, timestamp, and before/after values. Delete requires explicit confirmation. Abnormal firing rates raise an admin alert. Communication preferences, suppression list, and blacklist apply at send time.</p><p id="b0c6116f-6827-40b0-851a-3774f9fbef00" class="" dir="auto"><em>Source: Linear SU-3702 · Original Requirements 6.1.1.17.1, 6.1.1.23.1, 6.1.1.49.2, 6.1.1.75.1 · Phase 2 Workshop Findings — Communications / Automation Flows</em></p><h2 id="d79872e0-abb9-493d-8bff-f2d6147d2420" class="" dir="auto">2.11 Communication Preferences Framework</h2><p id="d57c752b-7d35-4d58-9e35-660fceb627ce" class="" dir="auto">Admins classify each system notification type as <strong>Mandatory</strong> or <strong>Optional</strong>. Users can toggle Optional types on or off from the Communication Preferences page (accessible from account/profile settings); Mandatory types remain locked and cannot be toggled. All changes are recorded in a read-only audit log. This framework governs send-time enforcement across Campaign Delivery (§2.2), Event Alerts (§2.6), Job Alert Delivery (§2.7), Configurable Action Digest (§2.9), and Notification Trigger Governance (§2.10).</p><p id="43ac0e54-e9cb-4778-baf0-d5e8d8e0fadc" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="65b1e620-8255-498c-b579-a93f788c8395" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="1035091c-c096-4b94-8788-f41b0bc24611" dir="ltr"><th id="P&gt;Rw" class="simple-table-header-color simple-table-header">Capability</th><th id="cVcT" class="simple-table-header-color simple-table-header">Admin L4</th><th id="N&gt;un" class="simple-table-header-color simple-table-header">Manager L3</th><th id="U;O]" class="simple-table-header-color simple-table-header">Staff L2 / Student</th></tr></thead><tbody><tr id="0dfe14d2-99d2-4d30-af8d-c43a3e87703b" dir="ltr"><td id="P&gt;Rw" class="">Classify notification types as Mandatory or Optional</td><td id="cVcT" class="">✓</td><td id="N&gt;un" class="">TBC — confirm with Penny</td><td id="U;O]" class="">✗</td></tr><tr id="ef65685b-e50d-4979-ab08-a01e1dcddd52" dir="ltr"><td id="P&gt;Rw" class="">Configure default preference state per role segment</td><td id="cVcT" class="">✓</td><td id="N&gt;un" class="">TBC — confirm with Penny</td><td id="U;O]" class="">✗</td></tr><tr id="2df7bc86-533a-4607-9221-76bb7ef73e37" dir="ltr"><td id="P&gt;Rw" class="">View audit log</td><td id="cVcT" class="">✓</td><td id="N&gt;un" class="">✗</td><td id="U;O]" class="">✗</td></tr><tr id="92368922-85fc-4f2b-a5b6-91120606215e" dir="ltr"><td id="P&gt;Rw" class="">View and toggle Optional notification types (Communication Preferences page)</td><td id="cVcT" class="">—</td><td id="N&gt;un" class="">—</td><td id="U;O]" class="">✓</td></tr></tbody></table><p id="76829727-5ae7-4059-a045-c7004e24244d" class="" dir="auto">Classification changes take effect immediately across all user sessions. The dispatch engine checks each recipient&#x27;s preference before send — Optional types are suppressed for opted-out users; Mandatory types send regardless. Admin (L4) can configure default preference states per role segment (Student, Staff, Manager, Admin); defaults apply to new users or users with no saved preference and do not override existing preferences. The audit log is Admin (L4)-only, read-only, no delete.</p><p id="f4647837-73b2-48e1-80ca-c5158382049d" class="" dir="auto"><em>Source: Linear SU-3706 · Phase 2 Workshop Findings — Communications / Communication Preferences</em></p><h2 id="50f42fa1-bc1c-4f78-bef5-94be093570b9" class="" dir="auto">2.12 Unsubscribe and Suppression Handling</h2><p id="ce1efd83-e186-4732-a2bf-2164ebd5b51e" class="" dir="auto">Every optional email includes a visible, accessible unsubscribe link in the footer (clearly labelled, e.g. &quot;Unsubscribe from this list&quot; or &quot;Manage communication preferences&quot;; accessible font size and contrast). The link resolves to the Communication Preferences page (§2.11) where the user completes opt-out in one click. Mandatory communications do not include an unsubscribe link. Branding footer content (institution address, contact info) is included per compliance best practice.</p><p id="33590dfa-6656-4a48-a7c7-ae1139b1a66a" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="b6632970-4ebb-4a1c-86d4-f4421a15fde5" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="13cad877-547b-4fd8-b060-b81e72471b6b" dir="ltr"><th id="mTSd" class="simple-table-header-color simple-table-header">Capability</th><th id="GSLD" class="simple-table-header-color simple-table-header">Admin L4</th><th id="y&lt;OY" class="simple-table-header-color simple-table-header">Manager L3</th><th id="_&lt;::" class="simple-table-header-color simple-table-header">Staff L2 / Student</th></tr></thead><tbody><tr id="6c9bf3fa-0882-4399-8578-07f60765e98d" dir="ltr"><td id="mTSd" class="">Unsubscribe link enforcement on all optional emails</td><td id="GSLD" class="">✓ (system-enforced)</td><td id="y&lt;OY" class="">—</td><td id="_&lt;::" class="">—</td></tr><tr id="16d3f1f6-ca29-4bab-886e-01e12f46ac5c" dir="ltr"><td id="mTSd" class="">Choose list/topic-level or global opt-out</td><td id="GSLD" class="">—</td><td id="y&lt;OY" class="">—</td><td id="_&lt;::" class="">✓</td></tr><tr id="28135c0b-f274-4222-b874-dc60b09df6c0" dir="ltr"><td id="mTSd" class="">Re-subscribe to specific types</td><td id="GSLD" class="">—</td><td id="y&lt;OY" class="">—</td><td id="_&lt;::" class="">✓</td></tr><tr id="3abffa8a-9e9c-47ab-9644-ebf80f928f57" dir="ltr"><td id="mTSd" class="">Manually resubscribe a contact (on written request only)</td><td id="GSLD" class="">✓</td><td id="y&lt;OY" class="">✗</td><td id="_&lt;::" class="">✗</td></tr><tr id="7e85d06a-0f7b-4004-a79b-6bc50b35e3e1" dir="ltr"><td id="mTSd" class="">View per-campaign and cross-campaign unsubscribe reports</td><td id="GSLD" class="">✓</td><td id="y&lt;OY" class="">✓</td><td id="_&lt;::" class="">✗</td></tr><tr id="4e9e306b-90c6-42b6-a224-5534f2281a10" dir="ltr"><td id="mTSd" class="">CSV export (cross-campaign report)</td><td id="GSLD" class="">✓</td><td id="y&lt;OY" class="">✓</td><td id="_&lt;::" class="">✗</td></tr></tbody></table><p id="c21ec24c-725b-4609-a54c-021101a9409e" class="" dir="auto"><strong>Opt-out scope</strong> — two levels: <strong>List/topic-level</strong> (one notification type or category only; other optional communications continue) or <strong>Global</strong> (all optional communications; mandatory notifications continue). Clicking an unsubscribe link in a specific email defaults to list/topic-level; the preferences page also shows the option to escalate to global. Users can re-subscribe to specific types from the same page.</p><p id="816b373e-ab9f-4b73-8442-a805b294da1d" class="" dir="auto"><strong>Automatic suppression</strong> — on unsubscribe, the user&#x27;s preference is updated immediately and their email added to the suppression list with reason &quot;User unsubscribed&quot; and scope recorded. Suppressed recipients are excluded from future sends matching the unsubscribed scope automatically; no admin action needed. User receives an on-screen confirmation explaining what they unsubscribed from, what they still receive, and how to change preferences.</p><p id="b7242a1b-eadd-4354-b475-62f226fedb12" class="" dir="auto"><strong>Admin resubscription</strong> — admin can manually resubscribe a contact only on written request (confirmation modal + required reason/note + audit log entry with admin name, reason, timestamp). No bulk overrides.</p><p id="456e2b59-a9ea-4747-9382-0e2b4c9cfa69" class="" dir="auto"><strong>Enforcement</strong> — at send time, every recipient is checked against: suppression list (scope-matched), user preferences, and blacklist. Campaign summary shows exclusion counts and reasons. Optional communications cannot bypass opt-out checks; mandatory communications bypass opt-out filtering only (hard bounce / blacklist suppressions still apply to mandatory sends).</p><p id="61611d7d-53d2-42ab-bb53-1201e10eda54" class="" dir="auto"><strong>Reporting</strong> — per-campaign: total unsubscribes, scope breakdown (list-level / global), timeline chart, unsubscribed recipients list. Cross-campaign: aggregate suppressions by reason, unsubscribe rate per notification type/campaign, trend (daily/weekly/monthly), filters by date range/notification type/campaign/segment, CSV export. Full CSV export spec to be added as §3.4 when scoped. Pulls from suppression list (§2.5) and audit log (§2.11).</p><p id="922cd0b8-1907-4532-9f4c-102f60e437ea" class="" dir="auto"><em>Source: Linear SU-3707 · Phase 2 Workshop Findings — Communications / Communication Preferences</em></p><h2 id="2a179144-6566-40e3-a2b9-f9ef4358f930" class="" dir="auto">2.13 Interactive Polls in Email Campaigns</h2><p id="eaf194e0-6957-426a-a550-964add3c7590" class="" dir="auto">For CP3, admins and managers can embed an interactive poll into an email campaign. Recipient responses are tracked per campaign and visible in the campaign analytics tab.</p><p id="83dc57da-1f59-429b-abfb-a88ca73da782" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="58220cb9-8099-41ca-ba8e-f0c047dc5116" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="af7ca97c-4fcf-4505-b001-6bc4ad00b458" dir="ltr"><th id="yDO=" class="simple-table-header-color simple-table-header">Capability</th><th id="=YgG" class="simple-table-header-color simple-table-header">Admin L4</th><th id="YiAk" class="simple-table-header-color simple-table-header">Manager L3</th><th id="Aoga" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="c2e27cb5-8c7f-45f9-b0bc-bffb91e3ed98" dir="ltr"><td id="yDO=" class="">Embed a poll block in the email editor</td><td id="=YgG" class="">✓</td><td id="YiAk" class="">✓</td><td id="Aoga" class="">✗</td></tr><tr id="23e42362-3581-4f72-a556-3fcc3e56f55b" dir="ltr"><td id="yDO=" class="">Configure poll question, answer options, and response type</td><td id="=YgG" class="">✓</td><td id="YiAk" class="">✓</td><td id="Aoga" class="">✗</td></tr><tr id="ba8753b3-0665-4b6c-bdd3-f659364e8265" dir="ltr"><td id="yDO=" class="">View poll results in the campaign analytics tab</td><td id="=YgG" class="">✓</td><td id="YiAk" class="">✓</td><td id="Aoga" class="">✗</td></tr></tbody></table><p id="b8400bd8-9a34-4366-b574-91d55e6ac046" class="" dir="auto"><strong>Poll configuration</strong> — admin inserts a poll block into the email editor body (drag or palette selection), defines a question (free text) and 2–10 answer options, and sets the poll as single-choice or multiple-choice.</p><p id="5c5febce-0703-4f1c-bdf0-c89f3eb0cd6c" class="" dir="auto"><strong>Email rendering and compatibility</strong> — the poll renders in Gmail and Outlook (desktop and web); clients without native interactivity fall back to a linked landing page preserving the question and options. Test-send preview matches the rendered output.</p><p id="c4a886e5-2a83-41c3-95a8-412018f213c4" class="" dir="auto"><strong>Response tracking</strong> — each response is recorded with: campaign ID, recipient identifier, selected option(s), and timestamp. Duplicate submissions from the same recipient are rejected.</p><p id="603c9da9-a86c-404a-9343-b0aec099f206" class="" dir="auto"><strong>Analytics and access</strong> — poll results (count and % per option) are visible in the campaign analytics tab, accessible to admin only — not shown to respondents.</p><p id="9f11f907-c8a6-4d79-953d-59935c13e074" class="" dir="auto"><em>Source: Linear SU-4350 · Phase 2 Workshop Findings — Communications / Email Field</em></p><h2 id="e45ecc83-413c-4673-8d18-7a6bb693a615" class="" dir="auto">2.14 Data Charts in Email Campaigns</h2><p id="aadf1307-1d7f-42d0-b466-205f2af5144f" class="" dir="auto">For CP3, admins and managers can embed a data chart into an email campaign body. Chart type and data source are configurable within the editor; recipients receive the chart rendered inline.</p><p id="7f4739fe-4007-4737-9149-047d9757c0b0" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="23965504-3560-4b69-af8d-7d53e4f80842" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="99955d64-b975-4178-9fb0-819eed88f89b" dir="ltr"><th id="[MgM" class="simple-table-header-color simple-table-header">Capability</th><th id="XU;|" class="simple-table-header-color simple-table-header">Admin L4</th><th id="&gt;MQa" class="simple-table-header-color simple-table-header">Manager L3</th><th id="wtw@" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="7e1640c0-bdab-4123-a8e2-7236b5df27a7" dir="ltr"><td id="[MgM" class="">Embed a chart block in the email editor</td><td id="XU;|" class="">✓</td><td id="&gt;MQa" class="">✓</td><td id="wtw@" class="">✗</td></tr><tr id="5be34eef-8a84-4bd8-9ba1-281fe7aaf9a3" dir="ltr"><td id="[MgM" class="">Configure chart type, data source, and labels</td><td id="XU;|" class="">✓</td><td id="&gt;MQa" class="">✓</td><td id="wtw@" class="">✗</td></tr></tbody></table><p id="6f9638dc-4c45-4a02-a5ac-74e0d0a53e12" class="" dir="auto"><strong>Chart configuration</strong> — admin inserts a chart block into the email editor body (drag or palette selection). Chart type is selectable at insertion: bar, line, and pie at minimum. Data source is configurable: manual input (admin enters values inline) or linked dataset. Admin can edit chart data, type, and labels after initial insertion without re-inserting the block.</p><p id="ad2a10ab-578d-4f13-8e18-eaa8cd2c1102" class="" dir="auto"><strong>Email rendering and compatibility</strong> — the chart renders in Gmail and Outlook (desktop and web); clients without embedded chart support fall back to a static image. Admin can preview the rendered chart before send; preview matches the delivered output.</p><p id="5c79c08b-9dcd-4b0a-b71b-c5d887dfabb8" class="" dir="auto"><em>Source: Linear SU-4351 · Phase 2 Workshop Findings — Communications / Rich Text Formatting</em></p><h2 id="8b09f2e0-e712-46fd-a2e4-314ce12abdc3" class="" dir="auto">2.15 Audience Labels</h2><p id="b4b2d831-604a-4081-81e3-9062fdaaed89" class="" dir="auto">For CP3, admins can save a filtered campaign audience as a named Label in Workspace Settings. Saved labels are reusable as recipient groups across future campaigns and manageable from a dedicated Labels tab.</p><p id="ac06c3da-676f-44b4-ab34-23fd3824a9d6" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="b5cda920-c0b9-4506-be9c-78ed1668bd81" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="eb0b6b62-ae87-4c2c-92d5-b027cf9e6f1b" dir="ltr"><th id="^tTU" class="simple-table-header-color simple-table-header">Capability</th><th id="IBAz" class="simple-table-header-color simple-table-header">Admin L4</th><th id="ZsaL" class="simple-table-header-color simple-table-header">Manager L3</th><th id="[Y~d" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="3276744c-722d-49d9-a6a7-41ed8ab34bb4" dir="ltr"><td id="^tTU" class="">Save a filtered audience as a named Label</td><td id="IBAz" class="">✓</td><td id="ZsaL" class="">✓</td><td id="[Y~d" class="">✗</td></tr><tr id="f7d26ec9-d2ba-4232-ad97-840bd31ce157" dir="ltr"><td id="^tTU" class="">Manage Labels in Workspace Settings (rename, edit membership, delete)</td><td id="IBAz" class="">✓</td><td id="ZsaL" class="">✓</td><td id="[Y~d" class="">✗</td></tr><tr id="2efea0cc-9408-4aaa-a49e-f0c7412d6b18" dir="ltr"><td id="^tTU" class="">Select a saved Label as a campaign recipient group</td><td id="IBAz" class="">✓</td><td id="ZsaL" class="">✓</td><td id="[Y~d" class="">✗</td></tr></tbody></table><p id="cce620d9-49d9-4f86-9fc5-2d8121e32d32" class="" dir="auto"><strong>Saving a label</strong> — a “Save as Label” action is available on any filtered campaign audience view. Admin enters a required name (must be unique) at save time. Labels can include any user type: students, employers, mentors, and other registered users.</p><p id="9f8c8ba8-aeba-485c-9579-7444d4ffea6c" class="" dir="auto"><strong>Labels tab in Workspace Settings</strong> — saved labels are listed with name, member count, creation date, and author. Label membership is editable (add/remove members, rename, delete with confirmation). Existing Workspace Settings Labels design applies; the save-to-label flow from campaign audience views is a new addition (no dedicated design yet — see SU-4352).</p><p id="89e7a027-d65d-4f41-97e3-b838c865d85c" class="" dir="auto"><strong>Campaign use</strong> — saved labels are selectable as a recipient group when creating a new campaign, alongside Segments (§2.4) and Lists (§2.3).</p><p id="78e6066f-7aa3-4a2c-ba28-d1be4a122e78" class="" dir="auto"><em>Source: Linear SU-4352 · Original Requirements 6.1.1.29.1 · Phase 2 Workshop Findings — Communications</em></p><hr id="5f0ccc94-08b1-4f9d-b7a5-04885bae8108" dir="auto"/><h1 id="0db0551d-3b20-49fb-8e51-4830a593b7aa" class="" dir="auto">3. Reports</h1><p id="a1a2e916-fc01-4410-b047-6d2fd5d54943" class="" dir="auto">This section is the home for all Communications-module reports and CSV exports. Each report/export has its own sub-section with metric definitions and (where applicable) CSV structure, suggested filename, column order, and a sample file. Future Communications reports (per-campaign delivery report, etc.) should be added here as additional sub-sections.</p><h2 id="908a0e8b-3580-43d4-815f-6fd55d60c603" class="" dir="auto">3.1 Email Report</h2><p id="ce3461d4-99b3-4d27-ab5b-54dacd06b6fc" class="" dir="auto">The following metrics are available from the backend for email campaign reporting:</p><table id="737393eb-7312-4fcd-be83-7efee4a94c8a" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="82a612e1-bbf3-4a3e-83f9-db4454e52a51" dir="ltr"><th id="JyVs" class="simple-table-header-color simple-table-header">Metric</th><th id="zK=u" class="simple-table-header-color simple-table-header">Description</th></tr></thead><tbody><tr id="a1b4a416-1c28-46c1-a972-712704e9b2bb" dir="ltr"><td id="JyVs" class=""><strong>Unique Opens</strong></td><td id="zK=u" class="">Number of distinct recipients who opened the email</td></tr><tr id="0f8291a9-0123-4d06-816c-e8343ae6a924" dir="ltr"><td id="JyVs" class=""><strong>Total Opens</strong></td><td id="zK=u" class="">Total number of times the email was opened (includes repeat opens)</td></tr><tr id="e6da4490-147c-4178-b540-fb79ffc1c1df" dir="ltr"><td id="JyVs" class=""><strong>Unique Clicks</strong></td><td id="zK=u" class="">Number of distinct recipients who clicked a link</td></tr><tr id="23bd349c-eeae-420e-892f-c1ec974c5bc0" dir="ltr"><td id="JyVs" class=""><strong>Total Clicks</strong></td><td id="zK=u" class="">Total number of link clicks (includes repeat clicks)</td></tr><tr id="f76f3c21-5da8-4ccf-b9b9-c3321be62592" dir="ltr"><td id="JyVs" class=""><strong>Open Rate</strong></td><td id="zK=u" class="">Unique opens ÷ total delivered</td></tr><tr id="cbbdaacc-493f-4785-9801-6b03c0e19481" dir="ltr"><td id="JyVs" class=""><strong>CTR</strong> (Click-Through Rate)</td><td id="zK=u" class="">Unique clicks ÷ total delivered</td></tr><tr id="864aa81c-0ee3-4862-8427-edb3c5423223" dir="ltr"><td id="JyVs" class=""><strong>CTOR</strong> (Click-To-Open Rate)</td><td id="zK=u" class="">Unique clicks ÷ unique opens</td></tr></tbody></table><h2 id="aaa3717f-2ed6-4fa7-b7c8-1158dc1280ec" class="" dir="auto">3.2 Student Segment Export</h2><p id="a208596f-2a43-4dc9-89fb-1db2d5c762d4" class="" dir="auto">The Student Segment Export is the CSV download for any segment built via <strong>2.4 Segmentation</strong>. See 2.4 for the feature spec; this section covers the CSV structure only.</p><p id="60537f45-5cc2-4510-93d1-edad31428884" class="" dir="auto"><strong>Table view (in-app)</strong> — segments are reviewed in-app via the segment preview (first 25 rows; see 2.4 Segmentation → Preview and export). The CSV export below is the full downloadable representation of that data.</p><p id="460cb3a8-9475-496a-b208-350aba342d16" class="" dir="auto"><strong>CSV export — Student Segment:</strong></p><p id="da226279-739f-413d-b9d5-9d6c0aa9c2e4" class="" dir="auto"><strong>CSV structure:</strong> UTF-8, comma-delimited. Free-text fields (Segment Name, Filter Criteria Matched, Full Name) are always double-quoted. Empty optional cells export as blank, not <code>null</code> or <code>N/A</code>. Segment IDs are 16-character alphanumeric strings. Dates in MM/DD/YYYY format.</p><p id="9f60bc58-7354-469f-bb1b-5a442043b92c" class="" dir="auto"><strong>Suggested filename:</strong> <code>Communications_StudentSegment_[SegmentName]_[YYYY-MM-DD].csv</code></p><p id="d297c89a-ee8a-43e3-9f71-e9b3eca2fcc7" class="" dir="auto"><strong>Full column order:</strong></p><table id="4fba4cbb-126d-4058-b129-fe69c62b78d1" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="ea8fb629-78b6-4558-92c4-a7fdcbb4f11a" dir="ltr"><th id="NWux" class="simple-table-header-color simple-table-header">#</th><th id="iknH" class="simple-table-header-color simple-table-header" style="width:181px">Column Name</th><th id="~WhN" class="simple-table-header-color simple-table-header" style="width:183px">Value Example</th><th id="Ff=y" class="simple-table-header-color simple-table-header" style="width:207px">Source</th></tr></thead><tbody><tr id="28a6e74e-9eaa-4f44-b830-f5e2b0e08658" dir="ltr"><td id="NWux" class="">1</td><td id="iknH" class="" style="width:181px">Segment ID</td><td id="~WhN" class="" style="width:183px">B7K3M9X2P5F1QRTQ</td><td id="Ff=y" class="" style="width:207px">System-generated (16-char alphanumeric)</td></tr><tr id="7b085f34-8e8f-4f1a-b4ac-9f6893523e8b" dir="ltr"><td id="NWux" class="">2</td><td id="iknH" class="" style="width:181px">Segment Name</td><td id="~WhN" class="" style="width:183px">Final-year Finance students without internship</td><td id="Ff=y" class="" style="width:207px">System (admin-named segment)</td></tr><tr id="f293d289-6616-43d9-bb55-9d049338eaa9" dir="ltr"><td id="NWux" class="">3</td><td id="iknH" class="" style="width:181px">Filter Criteria Matched</td><td id="~WhN" class="" style="width:183px">Year of Study = 4; Programme = FIN; Internship Status = no internship</td><td id="Ff=y" class="" style="width:207px">System (lists the segment&#x27;s filter criteria this student matched)</td></tr><tr id="f13152f1-fed2-4d13-a95b-755fe371b29b" dir="ltr"><td id="NWux" class="">4</td><td id="iknH" class="" style="width:181px">Email</td><td id="~WhN" class="" style="width:183px"><a href="mailto:alex.tan@e.ntu.edu.sg">alex.tan@e.ntu.edu.sg</a></td><td id="Ff=y" class="" style="width:207px">Student login profile</td></tr><tr id="9c24644e-64a7-4954-bfaf-338404893536" dir="ltr"><td id="NWux" class="">5</td><td id="iknH" class="" style="width:181px">Full Name</td><td id="~WhN" class="" style="width:183px">Alex Tan Wei Jie</td><td id="Ff=y" class="" style="width:207px">Student login profile</td></tr><tr id="10cc5d37-7c33-4553-a2de-ba8f06a43f63" dir="ltr"><td id="NWux" class="">6</td><td id="iknH" class="" style="width:181px">Matric Number</td><td id="~WhN" class="" style="width:183px">U2112345A</td><td id="Ff=y" class="" style="width:207px">Student login profile</td></tr><tr id="2ae4d3ed-0438-4dda-8002-35358c53b5e1" dir="ltr"><td id="NWux" class="">7</td><td id="iknH" class="" style="width:181px">Programme</td><td id="~WhN" class="" style="width:183px">Finance</td><td id="Ff=y" class="" style="width:207px">Student login profile</td></tr><tr id="506574e7-2c5d-4b15-bcb5-9a61c01be279" dir="ltr"><td id="NWux" class="">8</td><td id="iknH" class="" style="width:181px">Programme Code</td><td id="~WhN" class="" style="width:183px">FIN</td><td id="Ff=y" class="" style="width:207px">Student login profile</td></tr><tr id="a438393e-173b-40e9-9432-f3921a954828" dir="ltr"><td id="NWux" class="">9</td><td id="iknH" class="" style="width:181px">School</td><td id="~WhN" class="" style="width:183px">Nanyang Business School</td><td id="Ff=y" class="" style="width:207px">Student login profile</td></tr><tr id="4997da19-0e78-49ca-b576-9e2f2b922c35" dir="ltr"><td id="NWux" class="">10</td><td id="iknH" class="" style="width:181px">School Code</td><td id="~WhN" class="" style="width:183px">NBS</td><td id="Ff=y" class="" style="width:207px">Student login profile</td></tr><tr id="936a971a-8e29-425c-8caf-66ef0c36ae4a" dir="ltr"><td id="NWux" class="">11</td><td id="iknH" class="" style="width:181px">Campus</td><td id="~WhN" class="" style="width:183px">NTU Main Campus</td><td id="Ff=y" class="" style="width:207px">Student login profile</td></tr><tr id="1cab807f-6722-4fed-8ff8-a9b67fa45be1" dir="ltr"><td id="NWux" class="">12</td><td id="iknH" class="" style="width:181px">Year of Study</td><td id="~WhN" class="" style="width:183px">4</td><td id="Ff=y" class="" style="width:207px">Student login profile</td></tr><tr id="c6007fd3-72fa-4376-a4e5-d8caf21ab9ce" dir="ltr"><td id="NWux" class="">13</td><td id="iknH" class="" style="width:181px">Expected Graduation Year</td><td id="~WhN" class="" style="width:183px">2025</td><td id="Ff=y" class="" style="width:207px">Student login profile</td></tr><tr id="3b55fc12-4c64-4826-856d-38ca8736abb0" dir="ltr"><td id="NWux" class="">14</td><td id="iknH" class="" style="width:181px">Nationality</td><td id="~WhN" class="" style="width:183px">Singapore</td><td id="Ff=y" class="" style="width:207px">Student login profile</td></tr><tr id="cb5839db-6e49-4f0d-9170-e40cff3129be" dir="ltr"><td id="NWux" class="">15</td><td id="iknH" class="" style="width:181px">Gender</td><td id="~WhN" class="" style="width:183px">M</td><td id="Ff=y" class="" style="width:207px">Student login profile</td></tr><tr id="c5550c7a-60a7-4cb7-aa66-d451bec858ab" dir="ltr"><td id="NWux" class="">16</td><td id="iknH" class="" style="width:181px">Enrolment Status</td><td id="~WhN" class="" style="width:183px">Current</td><td id="Ff=y" class="" style="width:207px">Student login profile (confirm with Penny — see Open Items)</td></tr><tr id="e3bd8d44-9b00-4b47-8a3d-ecd7390fe2a1" dir="ltr"><td id="NWux" class="">17</td><td id="iknH" class="" style="width:181px">SGCC Booking Status</td><td id="~WhN" class="" style="width:183px">Resume Critique booked</td><td id="Ff=y" class="" style="width:207px">SGCC attendance DB</td></tr><tr id="f75f7cdf-ae19-4e23-91c3-a66b2fa7b180" dir="ltr"><td id="NWux" class="">18</td><td id="iknH" class="" style="width:181px">SGCC Attendance Status</td><td id="~WhN" class="" style="width:183px">Attended</td><td id="Ff=y" class="" style="width:207px">SGCC attendance DB</td></tr><tr id="fc686786-9a2f-4bc1-b085-ed1540a44986" dir="ltr"><td id="NWux" class="">19</td><td id="iknH" class="" style="width:181px">Resume Submission Status</td><td id="~WhN" class="" style="width:183px">Submitted</td><td id="Ff=y" class="" style="width:207px">Resume module</td></tr><tr id="51fa2468-1e62-4dfb-8df9-e09f3b72de48" dir="ltr"><td id="NWux" class="">20</td><td id="iknH" class="" style="width:181px">Internship Status</td><td id="~WhN" class="" style="width:183px">No internship</td><td id="Ff=y" class="" style="width:207px">Internships module</td></tr><tr id="c9a82bf5-fe52-4587-99b9-22b71b45f918" dir="ltr"><td id="NWux" class="">21</td><td id="iknH" class="" style="width:181px"># Events Attended</td><td id="~WhN" class="" style="width:183px">7</td><td id="Ff=y" class="" style="width:207px">System (computed from Events attendance, last N months)</td></tr><tr id="d0845578-ec68-4957-a02f-34fc5c2e1ced" dir="ltr"><td id="NWux" class="">22</td><td id="iknH" class="" style="width:181px"># Jobs Applied</td><td id="~WhN" class="" style="width:183px">12</td><td id="Ff=y" class="" style="width:207px">System (computed from Jobs module application history)</td></tr><tr id="b60f1292-9f2e-4d3d-9c5a-5235a2626e49" dir="ltr"><td id="NWux" class="">23</td><td id="iknH" class="" style="width:181px">At-risk Flag</td><td id="~WhN" class="" style="width:183px">No</td><td id="Ff=y" class="" style="width:207px">System (institution-defined; flag definition TBC — see Open Items)</td></tr><tr id="c06898e5-666a-4ffe-ad42-b24f3b8a7f99" dir="ltr"><td id="NWux" class="">24</td><td id="iknH" class="" style="width:181px">High Performer Flag</td><td id="~WhN" class="" style="width:183px">Yes</td><td id="Ff=y" class="" style="width:207px">System (institution-defined; flag definition TBC — see Open Items)</td></tr></tbody></table><p id="c87e7d2a-1511-4eee-ae25-1f42e57430a8" class="" dir="auto"><strong>Sample csv file:</strong> </p><figure id="36794e81-8539-8050-99a3-f3be089d403e" dir="ltr"><div class="source"><a href="Communications/Communications_StudentSegment_Sample.csv" data-notion-file="Communications/Communications_StudentSegment_Sample.csv" data-notion-file-alias="Communications_StudentSegment_Sample.csv">Communications_StudentSegment_Sample.csv</a></div></figure><p id="6dcf94a2-58fa-4313-982e-3e1bd7c2f395" class="" dir="auto"><em>Source: Linear SU-3685 · Original Requirements 6.1.1.25.1, 6.1.1.29.1, 6.1.1.31.3, 6.1.1.20.1, 6.1.1.31.1 · Phase 2 Workshop Findings — Communications</em></p><h2 id="dde1cc65-bbf5-44f0-89a5-66b9d3149157" class="" dir="auto">3.3 Per-Campaign Performance Dashboard</h2><p id="8659158a-a554-4c1a-b5cc-b59f15deb18a" class="" dir="auto">For CP3, every campaign has a per-campaign performance dashboard showing delivery, open, and click metrics, plus per-recipient analytics with status, programme, and role-based tabs. The dashboard supports both one-off campaigns (default view) and recurring campaigns (with a date scrubber to step through individual recurrences).</p><p id="518a6a2d-c1a4-43ff-ad83-c0574e60e4bd" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="038806fd-490c-4b25-8838-d548c305efd5" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="a34ce1c0-f951-4ad5-a8b0-42160bf2b309" dir="ltr"><th id="?JWr" class="simple-table-header-color simple-table-header">Capability</th><th id="ZPGS" class="simple-table-header-color simple-table-header">Admin L4</th><th id="wfFt" class="simple-table-header-color simple-table-header">Manager L3</th><th id="AnOU" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="fa7df121-2762-4cc9-84f5-f335d234d5f2" dir="ltr"><td id="?JWr" class="">View per-campaign metric cards (delivery, open, click rates)</td><td id="ZPGS" class="">✓</td><td id="wfFt" class="">✓</td><td id="AnOU" class="">✗</td></tr><tr id="bac818a6-57c3-4863-901d-d33a1425d115" dir="ltr"><td id="?JWr" class="">View per-recipient analytics with PII (name, email, programme)</td><td id="ZPGS" class="">✓</td><td id="wfFt" class="">✓ (own workgroup; confirm with Penny — see Open Items)</td><td id="AnOU" class="">✗</td></tr><tr id="7e2be0b6-7e5f-4ecd-99d7-e4a24384342a" dir="ltr"><td id="?JWr" class="">Step through individual sends of a recurring campaign</td><td id="ZPGS" class="">✓</td><td id="wfFt" class="">✓</td><td id="AnOU" class="">✗</td></tr></tbody></table><p id="b69d4d76-6cd8-4e67-adb2-1daa1d1e25d7" class="" dir="auto"><strong>Table view (in-app)</strong> — the dashboard combines metric cards with a per-recipient table. Both render in the in-app analytics view; this section captures the spec only (no CSV export in scope for SU-3688).</p><p id="f13a7041-0bf9-4b73-a45e-817a5a356226" class="" dir="auto"><strong>Metric cards (no charts)</strong> — 8 cards arranged as 2 rows of 4. Row 1: <strong>Delivery Rate</strong> (%), <strong>Unique Opens</strong> (count), <strong>Total Opens</strong> (count), <strong>Unique Clicks Received</strong> (count). Row 2: <strong>Total Clicks</strong> (count), <strong>Open Rate</strong> (%), <strong>Click Rate (CTR)</strong> (%), <strong>Click-to-Open Rate (CTOR)</strong> (%). Metric definitions match Communications 3.1 Email Report. Each card has a plain-language hover tooltip. <strong>Out of scope</strong> (deliberately excluded): unsubscribe rate, bounce rate, spam complaint rate; no time-based engagement charts.</p><p id="cc5c6946-24d1-4a81-9f68-6295152bfe6d" class="" dir="auto"><strong>Recipient Analytics table</strong> — per-recipient status below the metric cards. Role tabs at the top (Students / Staff / External, each with a count). Stats row: Total Sent + counts per role. Table columns: Name, Email, Last Opened, Programme, Status (badges: Delivered, Sent, Opened, etc.). Keyword search filter on Name / Email. Pagination at bottom.</p><p id="47552327-65de-4231-bc26-63852167a628" class="" dir="auto"><strong>Recurring campaigns</strong> — report header shows recurrence cadence (e.g., &quot;Recurring every Monday at 09:00am&quot;) and an end-date indicator. Recurrences sub-list: each send shows Send Date, Delivery Rate, Recipients (count), Status. Date scrubber at the top of the report scrubs through individual recurrences; selecting one updates the metric cards and Recipient Analytics to that send&#x27;s data.</p><p id="8fced405-4f02-44e6-9055-4dd91de0cc40" class="" dir="auto"><em>Source: Linear SU-3688 · Original Requirements 6.1.1.27.1 (Core: &quot;The system shall be able to provide statistics on email open rates, click through rates, student profile/demographic etc. and generate the essential reports.&quot;) · Phase 2 Workshop Findings — Communications</em></p><hr id="18824cd6-684f-4645-9fce-37a81048dd9c" dir="auto"/><h1 id="9696100e-3073-4690-9d5e-7ce4649c6fdb" class="" dir="auto">4. Conflicts Flagged</h1><table id="63c72cdf-fdfd-4253-86ef-6dea403723ca" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="67dd0afb-612e-499f-8b16-31b94a3e75dd" dir="ltr"><th id="QAHu" class="simple-table-header-color simple-table-header">#</th><th id="Z?OH" class="simple-table-header-color simple-table-header">Conflict</th><th id="Es^p" class="simple-table-header-color simple-table-header">Resolution</th></tr></thead><tbody><tr id="59ddb0e8-a935-49c2-8780-2585a737875b" dir="ltr"><td id="QAHu" class="">1</td><td id="Z?OH" class=""><strong>Hard bounce handling scope</strong>: Original Requirements 6.1.1.30.1 specifies hard-bounce emails should set the employer contact to <strong>Deactivated</strong> (full contact deactivation). SU-3686 narrows this to <strong>email-address suppression only</strong> (contact record retained for audit).</td><td id="Es^p" class=""><strong>Resolved per SU-3686</strong>: suppress the email address; retain the contact record. Deactivation requires explicit admin action or a blacklist entry.</td></tr><tr id="83eccf8c-1fe9-47aa-a17a-c2cbf92fcacd" dir="ltr"><td id="QAHu" class="">2</td><td id="Z?OH" class=""><strong>Inactivity → deactivation</strong>: Original Requirements 6.1.1.46.1 specifies <strong>auto-deactivation after X period of inactivity</strong> (with pre-warning email). SU-3686 explicitly states user accounts must <strong>NOT</strong> be deactivated solely due to inactivity.</td><td id="Es^p" class=""><strong>Resolved per SU-3686</strong>: inactivity does not trigger deactivation. Only SIS sync (withdrawal / graduation), manual admin action, blacklist, or expunge can change a user&#x27;s active status.</td></tr></tbody></table><hr id="07440a1f-71e3-42d9-bf14-71c33bcecb6e" dir="auto"/><h1 id="fef111d3-906d-44d7-b5d9-063188cf54e9" class="" dir="auto">5. Open Items</h1><table id="562802ae-3ecd-4f94-8b00-c07aa2c67fdb" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="ce278a9f-f382-4ddd-a328-f7b7fe7f45af" dir="ltr"><th id="ERWU" class="simple-table-header-color simple-table-header">#</th><th id="Am?Q" class="simple-table-header-color simple-table-header">Item</th><th id="NGYi" class="simple-table-header-color simple-table-header">Owner</th><th id="n:Ky" class="simple-table-header-color simple-table-header">Status</th></tr></thead><tbody><tr id="34eba964-cdca-4dd1-980e-a3ec214b7120" dir="ltr"><td id="ERWU" class="">1</td><td id="Am?Q" class="">Confirm with Penny whether Manager (L3) can edit recurrence rules — current AC says no (immediate sends only); Linear SU-3683 flag.</td><td id="NGYi" class="">Myles</td><td id="n:Ky" class="">🔲 Pending</td></tr><tr id="92ea61cb-cde6-4691-bbac-3e2b94a3e104" dir="ltr"><td id="ERWU" class="">2</td><td id="Am?Q" class="">Confirm with Penny whether Manager (L3) can delete saved recipient lists created by others — current AC says no (own lists only); Linear SU-3684 flag.</td><td id="NGYi" class="">Myles</td><td id="n:Ky" class="">🔲 Pending</td></tr><tr id="80bc9a71-96a9-42a0-bd15-8445e3f9fb80" dir="ltr"><td id="ERWU" class="">3</td><td id="Am?Q" class="">Penny clarifications for SU-3685 Segmentation: (a) Enrolment Status filter values — confirm &#x27;Current / LOA / Graduated&#x27; mapping (spec Section 3.4); (b) Presets managed by Admin L4 only — confirm; (c) Manager (L3) cannot manage presets — confirm.</td><td id="NGYi" class="">Myles</td><td id="n:Ky" class="">🔲 Pending</td></tr><tr id="80a95bcd-34d1-466b-a158-45ec2bb767fe" dir="ltr"><td id="ERWU" class="">4</td><td id="Am?Q" class="">Institution-defined flag definitions TBC for SU-3685: At-risk Flag and High Performer Flag — confirm the criteria and configuration mechanism with stakeholders.</td><td id="NGYi" class="">Myles</td><td id="n:Ky" class="">🔲 Pending</td></tr><tr id="28ee57e8-d9b6-40fa-86d2-e678a1225f40" dir="ltr"><td id="ERWU" class="">5</td><td id="Am?Q" class="">Soft-bounce suppression threshold for SU-3686 — confirm the number of repeated soft-bounce failures that should trigger suppression.</td><td id="NGYi" class="">Myles</td><td id="n:Ky" class="">🔲 Pending</td></tr><tr id="5d635112-234c-4977-adf4-e7ee7a65fa2c" dir="ltr"><td id="ERWU" class="">6</td><td id="Am?Q" class="">Historical campaign data retention policy for SU-3686 expunged addresses — confirm what is retained vs deleted when an address is permanently expunged.</td><td id="NGYi" class="">Myles</td><td id="n:Ky" class="">🔲 Pending</td></tr><tr id="b8b6084b-5cd9-44c3-8908-d13e497e2c2b" dir="ltr"><td id="ERWU" class="">7</td><td id="Am?Q" class="">Confirm with Penny whether Manager (L3) can view the per-campaign Recipient Analytics table (with PII — name, email, programme) for campaigns in their workgroup, per SU-3688.</td><td id="NGYi" class="">Myles</td><td id="n:Ky" class="">🔲 Pending</td></tr><tr id="312b1fef-f390-4a5c-892a-e7003c83a70c" dir="ltr"><td id="ERWU" class="">8</td><td id="Am?Q" class="">Per-student per-day rate limit cap default for SU-3693 event alerts — confirm value with Penny before dev start (controls when matches roll into digest vs send direct).</td><td id="NGYi" class="">Myles</td><td id="n:Ky" class="">🔲 Pending</td></tr><tr id="193ea064-be9e-4699-95b6-c59bcdd8deae" dir="ltr"><td id="ERWU" class="">9</td><td id="Am?Q" class="">Manager (L3) permissions for communication preferences framework — confirm with Penny whether L3 can classify notification types and configure default preference states per role segment; per SU-3706.</td><td id="NGYi" class="">Myles</td><td id="n:Ky" class="">🔲 Pending</td></tr><tr id="fe19d0eb-e4b4-40d1-85a2-217966251521" dir="ltr"><td id="ERWU" class="">10</td><td id="Am?Q" class="">Unsubscribe reporting CSV export spec (SU-3707) — add full column order, filename convention, and sample file as §3.4 in the Reports section when the report structure is scoped for dev.</td><td id="NGYi" class="">Myles</td><td id="n:Ky" class="">🔲 Pending</td></tr></tbody></table><hr id="90f566f4-50ae-4fea-bb43-dbd429d173ef" dir="auto"/><h1 id="7e9acd20-31ee-4461-a77b-32befc1e098a" class="" dir="auto">6. Backend Implementation Notes</h1><blockquote id="c18bed92-0909-4d75-b6ff-a19f9f0372fc" class="" dir="auto">This section documents the backend schema and API endpoints implemented by the dev team. It is intended as a reference for frontend engineers and reviewers.</blockquote><hr id="44e5093b-93f1-4c3d-b757-89e8a022b8b5" dir="auto"/><h1 id="73cc448b-01d1-4775-8f2b-0175b8f6f244" class="" dir="auto">7. Requirements Traceability</h1><table id="f8f6431f-d743-4b88-a663-5ab6256353fa" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="a12d5e34-4153-4ea6-a58a-0958a9b51e85" dir="ltr"><th id="GPMW" class="simple-table-header-color simple-table-header">Req Ref</th><th id="Bk[t" class="simple-table-header-color simple-table-header">Description</th><th id="ehWO" class="simple-table-header-color simple-table-header">Linear Ticket(s)</th><th id="nQj_" class="simple-table-header-color simple-table-header">Section in This Doc</th></tr></thead><tbody></tbody></table></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

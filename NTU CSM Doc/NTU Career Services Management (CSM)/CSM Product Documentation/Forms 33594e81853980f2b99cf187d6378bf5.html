@@ -1,0 +1,768 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Forms</title><meta name="data-notion-page-icon" content="🖊️"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%96%8A%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="33594e81-8539-80f2-b99c-f187d6378bf5" class="page sans" data-notion-page-icon="🖊️"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="🖊️"></span></div><h1 class="page-title" dir="auto">Forms</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-last_edited_by"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/user-circle_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited by</th><td><span class="user"><span class="icon text-icon user-icon"><span class="user-icon-inner">A</span></span>Anatolii Ilnytskyi</span></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/clock_gray.svg" style="width:14px;height:14px;display:block"/></span>Last edited time</th><td><time datetime="2026-07-06T17:31">July 6, 2026 5:31 PM</time></td></tr></tbody></table></header><div class="page-body"><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="🖊️" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="33c94e81-8539-80c7-943a-e9ec143a4fe3" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🖊️"></span></div><div style="width:100%"><p id="91765b73-4362-4b86-8f34-a2c78c629daf" class="" dir="auto">The Forms module enables administrators, managers, and staff to build, publish, and manage forms for collecting structured data from respondents. This spec covers two scopes: <strong>SGCC (CP2 — June UAT)</strong> and <strong>Career Portal (CP3 — September UAT)</strong>. The Career Portal section documents deltas only — features not present in SGCC scope that must be added for CP3. The SGCC feedback form model (Section 1) also establishes the baseline pattern for how forms behave when attached to other platform modules — including the Events module (see §2.1.14).</p></div></aside><nav id="33c94e81-8539-806c-9f61-dd63bc0b606a" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#58fdc900-093f-4fd3-9109-b7fc88c5a0c5">Section 1: SGCC Scope (CP2)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#376b435c-23c3-4cb1-8d2c-795a09cfc8be">1.1 Admin / Manager / Staff</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#10ec4943-3130-449f-9935-0155cbfc6113">1.1.1 Form Management</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#77ff995e-9152-438f-b2d5-897d03ceb310">1.1.2 Form Builder</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#919cbf53-b33d-4703-adec-a56a8345269c">1.1.3 Publish and Share</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#068fe530-58cd-4794-bd10-b16fd3060033">1.1.4 Access and Workgroup Control</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#0465a350-7246-47b0-8069-5a0ae54615ea">1.1.5 Response Management and Audit Trail</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#dcc2148a-63ed-4763-bab3-0e8c60055a5f">1.1.6 Reports</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2b5c075e-33d4-4488-b2a6-ab85712262bb">1.2 Student</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7cebb0fc-d3b0-4637-a805-5371edf0acb0">1.2.1 Form Access</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8dc579e6-a164-412d-9026-a28d99c581bd">1.2.2 Session Information Display</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#f09d7229-1f0c-4bd0-9e94-7b0cb59c4265">1.2.3 Feedback Submission</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#7493f9ab-ad4a-4dc8-a1ec-b71fc594a3e9">1.2.4 Submission Constraints</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4c87aee5-2c27-4ff4-93f1-465e0ab811b3">1.2.5 Submission Confirmation</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#8734cdf6-94e8-4520-8051-fbee08ab6f2d">Section 2: Career Portal Scope (CP3) — Deltas Only</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2737a159-d46e-4523-84c7-37d4edcb1b25">2.1 Admin / Manager / Staff</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#95c8cc62-f8c4-4e6b-9da2-62b2af5964ce">2.1.1 Form Builder — Additional Question Types</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1cef58cb-a4ee-4ffe-9aeb-c20a212ca279">2.1.2 Access and Workgroup Control — Respondent Type Configuration</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a65bda71-ab9e-4d09-8f18-76106504f603">2.1.3 Analytics — Additional Capabilities</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a47c0fa7-6d19-4ab5-9698-ac27d54e39c9">2.1.4 Response Status Logic — Extended</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e33d14b3-8df2-43bb-a795-1a63c8bbe4a3">2.1.5 Notifications and Communications</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#11ba91c4-5db1-4ba6-8770-79eb51fb263c">2.1.6 Response Audit Log and Admin Override — Deltas</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#6f9479a1-b95a-451d-90be-70c7fc6dbb3c">2.1.7 Data Integration with Institutional Systems</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#8f80721b-64f7-4156-b99e-905810c67bbb">2.1.8 Reports — CP3 Additional Exports</a></div><div class="table_of_contents-item table_of_contents-indent-3"><a class="table_of_contents-link" href="#63da74fb-0393-4025-841c-d4a8fde0d676">Funnel Drop-off Report</a></div><div class="table_of_contents-item table_of_contents-indent-3"><a class="table_of_contents-link" href="#c3a560a4-bb71-4929-a659-cb7f779ae975">Time-based Response Insights Report</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#970f86d3-3772-414d-8d65-5e1ab8eef24e">2.1.9 Sentiment Analysis</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4cb0513c-9c5a-4525-8af5-6f81cc64986f">2.1.10 Shareable View-Only Analytics Link</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4803eb5d-5726-47aa-8d44-0d3873bb2a74">2.1.11 Internal Notes on Analytics View</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#807ef686-1871-4f65-8638-27dd20eeeb23">2.1.12 Table View for Form Responses</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c9442054-5f6d-4a4f-befd-55b6cdc36154">2.2 Respondents</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4a3be8e0-a949-4c59-8ca8-70aefeec60a1">2.2.1 Respondent Types and Authentication</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b62d1fdb-e607-48d5-b051-cd8327dddd53">2.2.2 Form Access</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#97518b69-bbf9-4848-a8b7-e19b625479b5">2.2.3 Form Guidance and Validation</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e8b8484c-5460-431d-ac19-4e03a40bb832">2.2.4 Multiple Submissions</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4bdf136f-5682-4da6-acf6-1dc0d83e3413">2.2.5 Programme and Application Forms</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#fda07976-d578-4433-b90b-1000bd8e0ec7">2.1.13 Group Submission (Team Leader Collect-and-Submit Flow)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#b5e4c05b-8691-4672-9b88-d03b52fb0fce">2.1.14 Attaching Forms to Events (CP3)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4399e1d2-c60f-4ed8-bce4-84c8fd702403">2.1.15 Extend Action — Editing a Form&#x27;s Expiry Date</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bd42768c-725a-46bf-a7f0-3341f716f6ab">Section 3: Conflicts Flagged</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#04b39101-93fa-4eaa-a900-a1c39c77d191">Section 4: Open Items</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e9fc00bc-7d96-452b-8eae-60183a5e21ed">Section 5: Backend Implementation Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c057d393-2b4f-49d3-bd88-f98a986fc4ba">Section 6: Requirements Traceability</a></div></nav><h1 id="58fdc900-093f-4fd3-9109-b7fc88c5a0c5" class="" dir="auto">Section 1: SGCC Scope (CP2)</h1><p id="8be8f374-d824-407e-b577-32c669f80bce" class="" dir="auto">The SGCC scope is limited to two feedback forms:</p><ul id="224417d9-2d29-49da-ac45-49e6387a374b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">SGCC Feedback Form (Resume Critique)</li></ul><ul id="32f20efa-2ed2-4cd6-837b-658cb24cf205" class="bulleted-list" dir="auto"><li style="list-style-type:disc">SGCC Feedback Form (Mock Interview)</li></ul><p id="8466d606-6e56-4298-8c08-f5d9f1fdef86" class="" dir="auto">These forms collect post-session feedback from students. All submissions are authenticated. There is one form per session type; all student responses across all SGCC sessions feed into the same form for that type.</p><h2 id="376b435c-23c3-4cb1-8d2c-795a09cfc8be" class="" dir="auto">1.1 Admin / Manager / Staff</h2><h3 id="10ec4943-3130-449f-9935-0155cbfc6113" class="" dir="auto">1.1.1 Form Management</h3><p id="8db881de-a1e5-45e8-865c-d76c1412dbd5" class="" dir="auto">Form management covers the full lifecycle of a form from creation through to deletion.</p><p id="56ad9386-c561-41ec-9e2b-456185bbcf99" class="" dir="auto"><strong>Form lifecycle statuses:</strong></p><ul id="3d2e8a2e-b30b-4509-b037-7324ce1f6474" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Draft</strong> — form has been created; not visible to respondents</li></ul><ul id="5625904e-a203-421c-8bf1-8cc2d95e7704" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Published</strong> — form is live; visible to targeted respondents</li></ul><ul id="05cb671a-0a90-4b2c-8e14-67deeb4f2727" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Withdrawn</strong> — form has been taken offline; respondents can no longer view or submit; can be re-published directly by a Manager or Admin</li></ul><ul id="2a0b7c1b-6808-4d37-9eb2-ff0e86d38063" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Deleted</strong> — form has been soft-deleted and moved to the bin; recoverable within 60 days; permanently removed after 60 days</li></ul><p id="7c9c3682-1325-4209-911e-355a04ba63c0" class="" dir="auto"><strong>Transitions:</strong></p><p id="76912674-6d31-427d-ae9e-fa6b6c1eee35" class="" dir="auto">Draft → Published → Withdrawn → (re-published directly, or Deleted)</p><p id="8e43d14f-2322-4485-9a12-23183f8007b6" class="" dir="auto">Draft → Deleted (at any point)</p><table id="0a981ea3-dc30-48f3-a69f-3ea9c2375b6e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="14c5bf52-423a-43c6-8399-7a54237f6450" dir="ltr"><th id="u{IE" class="simple-table-header-color simple-table-header">Capability</th><th id="olqK" class="simple-table-header-color simple-table-header">Admin L4</th><th id="&gt;dNT" class="simple-table-header-color simple-table-header">Manager L3</th><th id="]OGQ" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="37e6786a-fc37-404a-86e4-49daf487d38a" dir="ltr"><td id="u{IE" class="">Create a new form</td><td id="olqK" class="">✓</td><td id="&gt;dNT" class="">✓</td><td id="]OGQ" class="">✓</td></tr><tr id="3473cdc1-45a9-4137-8da1-0a235849d228" dir="ltr"><td id="u{IE" class="">Edit a draft form</td><td id="olqK" class="">✓</td><td id="&gt;dNT" class="">✓</td><td id="]OGQ" class="">✓</td></tr><tr id="f76632d2-d130-49a2-a946-86607a4d5417" dir="ltr"><td id="u{IE" class="">Save a draft</td><td id="olqK" class="">✓</td><td id="&gt;dNT" class="">✓</td><td id="]OGQ" class="">✓</td></tr><tr id="5cc48c57-a177-475e-b316-8f7245f648b3" dir="ltr"><td id="u{IE" class="">Publish a form</td><td id="olqK" class="">✓</td><td id="&gt;dNT" class="">✓</td><td id="]OGQ" class="">✗</td></tr><tr id="a0fe1145-e5e7-482e-9afc-ffcb95b08b49" dir="ltr"><td id="u{IE" class="">Withdraw a published form</td><td id="olqK" class="">✓</td><td id="&gt;dNT" class="">✓</td><td id="]OGQ" class="">✗</td></tr><tr id="5aa7a5dc-27f3-44d3-adc1-0b8699768809" dir="ltr"><td id="u{IE" class="">Soft-delete a form (move to bin)</td><td id="olqK" class="">✓</td><td id="&gt;dNT" class="">✓</td><td id="]OGQ" class="">✗</td></tr><tr id="99642397-2b8e-409f-afbd-00863b2ed95d" dir="ltr"><td id="u{IE" class="">Restore a form from bin</td><td id="olqK" class="">✓</td><td id="&gt;dNT" class="">✓</td><td id="]OGQ" class="">✗</td></tr><tr id="0523aeda-59a5-4da8-a239-53c7cb7c6b85" dir="ltr"><td id="u{IE" class="">View forms in their workgroup</td><td id="olqK" class="">✓</td><td id="&gt;dNT" class="">✓</td><td id="]OGQ" class="">✓</td></tr><tr id="4ff3a041-d8e7-49c1-aeed-8bf0d91cc38b" dir="ltr"><td id="u{IE" class="">View forms outside their workgroup</td><td id="olqK" class="">✓</td><td id="&gt;dNT" class="">✗</td><td id="]OGQ" class="">✗</td></tr></tbody></table><p id="851ec6c9-2f97-4f58-8dca-d8cf80bda307" class="" dir="auto"><strong>Bulk Actions (Forms Table)</strong></p><p id="84e5f319-91d0-424f-a3a5-4f9924ff7c55" class="" dir="auto">Administrators and Managers can apply the following bulk status updates to multiple forms simultaneously from the forms listing table. Bulk actions are not available to Staff.</p><table id="4076baa6-9b17-484f-8903-28fd29c91c81" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="e8627061-9550-407d-b063-922e5b6562da" dir="ltr"><th id="kDyr" class="simple-table-header-color simple-table-header">Action</th><th id="TloS" class="simple-table-header-color simple-table-header">Applies To</th><th id="bg|W" class="simple-table-header-color simple-table-header">Resulting Status</th></tr></thead><tbody><tr id="54113ce2-cfc4-4755-9641-e869ff0ebd1f" dir="ltr"><td id="kDyr" class="">Publish</td><td id="TloS" class="">Draft, Withdrawn</td><td id="bg|W" class="">Published</td></tr><tr id="3ec2fa3f-02d3-4bf2-8121-705732f9c67a" dir="ltr"><td id="kDyr" class="">Withdraw</td><td id="TloS" class="">Published</td><td id="bg|W" class="">Withdrawn</td></tr><tr id="aacde092-ec93-41b4-9dc8-571fa7037b18" dir="ltr"><td id="kDyr" class="">Re-Open</td><td id="TloS" class="">Expired</td><td id="bg|W" class="">Published</td></tr></tbody></table><p id="7c1bcb44-52c2-492b-b0e2-4a3ad19f5bdd" class="" dir="auto"><strong>Notes:</strong></p><ul id="f3ae6e9d-e1cc-4b16-8266-540675c1aa55" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Bulk actions are available when one or more forms are selected in the forms table.</li></ul><ul id="d865701f-0c8b-48ae-81f5-c9829271ad52" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Only forms in an eligible status for a given action are affected. If a selection contains forms in mixed statuses, the system applies the action only to eligible forms and skips the rest.</li></ul><ul id="081bd938-1af3-4512-8bab-01a5d63f2857" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A confirmation prompt is shown before any bulk action is applied.</li></ul><ul id="a0ab7add-571c-4939-bc8e-b8c619706633" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Staff cannot directly publish or withdraw a form. Those actions are restricted to Managers and Admins.</li></ul><ul id="1cac811e-d917-493e-aebd-b89e038d5b70" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Staff can propose edits to a published form. Edits can be saved as a draft but cannot be published without Manager or Admin action.</li></ul><ul id="5c64364b-3cfb-454c-8cd3-333fd0d00ca4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Forms are scoped to workgroups. Users can only see and manage forms within their own workgroup. The SGCC forms sit within the SGCC workgroup. Admins can see across workgroups.</li></ul><ul id="eca14ba8-cf72-492a-a498-b421798bc83e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A workgroup is a user-configured team comprising staff, managers, and/or admins. Content created within a workgroup is only visible to members of that workgroup.</li></ul><h3 id="77ff995e-9152-438f-b2d5-897d03ceb310" class="" dir="auto">1.1.2 Form Builder</h3><p id="c883df90-5605-4692-a6b7-78029a9e9501" class="" dir="auto">The form builder is used to configure the questions and structure of a form.</p><p id="9e4295a8-6046-4c0e-a1e0-5b13e7396ecc" class="" dir="auto"><strong>Question types available in SGCC scope:</strong></p><table id="1c45a19b-a62f-45bf-8f81-288dd90ad460" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="f658aba7-d4e3-44ce-8817-599f3f69aa12" dir="ltr"><th id="pluw" class="simple-table-header-color simple-table-header">Question Type</th><th id="ELg\" class="simple-table-header-color simple-table-header">Description</th><th id="rVg;" class="simple-table-header-color simple-table-header">SGCC Usage</th></tr></thead><tbody><tr id="31196380-50ca-4859-9e01-88bc995fb200" dir="ltr"><td id="pluw" class="">Date field</td><td id="ELg\" class="">Captures a date value</td><td id="rVg;" class="">Included in builder; auto-populated from SGCC DB in live form</td></tr><tr id="2bf0bc64-a59e-4bc0-9ffc-d36aa1a6a33c" dir="ltr"><td id="pluw" class="">Single-select (multiple choice)</td><td id="ELg\" class="">Respondent selects one option from a list</td><td id="rVg;" class="">Time of Session, marketing consent</td></tr><tr id="c14e39be-aa90-43cf-9711-1316ddac16f6" dir="ltr"><td id="pluw" class="">Table scale</td><td id="ELg\" class="">Likert-style rating table with rows and a shared scale</td><td id="rVg;" class="">5-point agreement scale for feedback statements</td></tr><tr id="50ac6558-ce2d-45ce-85b0-c8dacad5c200" dir="ltr"><td id="pluw" class="">Free-form text</td><td id="ELg\" class="">Open text entry</td><td id="rVg;" class="">Comments field</td></tr></tbody></table><p id="f339bb48-a92c-4f55-8952-e4cd4c06b4d8" class="" dir="auto"><strong>Note on the date field:</strong> Although the date of session is auto-populated from the SGCC attendance database in the live form and displayed as a read-only field to the student, the date field type is still available in the form builder for configuration purposes.</p><table id="46c9cc6e-b145-4327-85fb-810ee8a43694" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="ce34e53f-5cfb-4d88-8b0f-9f821b53dd5f" dir="ltr"><th id="bVzJ" class="simple-table-header-color simple-table-header">Capability</th><th id="[ACA" class="simple-table-header-color simple-table-header">Admin L4</th><th id="uNT?" class="simple-table-header-color simple-table-header">Manager L3</th><th id="qH}B" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="2ad2c294-e861-4120-a6a3-b05b009463e2" dir="ltr"><td id="bVzJ" class="">Add questions to a form</td><td id="[ACA" class="">✓</td><td id="uNT?" class="">✓</td><td id="qH}B" class="">✓</td></tr><tr id="bf37d546-b419-4758-8067-e464d10e53cf" dir="ltr"><td id="bVzJ" class="">Reorder questions</td><td id="[ACA" class="">✓</td><td id="uNT?" class="">✓</td><td id="qH}B" class="">✓</td></tr><tr id="536d3da1-d663-4e4d-8076-fbe93bef6314" dir="ltr"><td id="bVzJ" class="">Configure question settings (required/optional, labels)</td><td id="[ACA" class="">✓</td><td id="uNT?" class="">✓</td><td id="qH}B" class="">✓</td></tr><tr id="478d4f41-09e6-4a34-8873-06b9d03fce8b" dir="ltr"><td id="bVzJ" class="">Configure table scale options and labels</td><td id="[ACA" class="">✓</td><td id="uNT?" class="">✓</td><td id="qH}B" class="">✓</td></tr><tr id="0dbbde73-37fc-4cbd-8feb-c0faf778f77b" dir="ltr"><td id="bVzJ" class="">Edit form title</td><td id="[ACA" class="">✓</td><td id="uNT?" class="">✓</td><td id="qH}B" class="">✓</td></tr><tr id="5a1eb4ba-9fc4-4b32-aefd-6eb8ae55826f" dir="ltr"><td id="bVzJ" class="">Propose edits to a published form</td><td id="[ACA" class="">✓</td><td id="uNT?" class="">✓</td><td id="qH}B" class="">✓</td></tr></tbody></table><h3 id="919cbf53-b33d-4703-adec-a56a8345269c" class="" dir="auto">1.1.3 Publish and Share</h3><table id="9ea6c507-2b22-4ef7-8083-f120162c4a99" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="5b2eada0-f53b-4e99-ad66-50bf5cec9384" dir="ltr"><th id="^BiH" class="simple-table-header-color simple-table-header">Capability</th><th id="CbNm" class="simple-table-header-color simple-table-header">Admin L4</th><th id="`npj" class="simple-table-header-color simple-table-header">Manager L3</th><th id="BVKQ" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="e9ee5374-b5aa-423e-b937-87715e316d87" dir="ltr"><td id="^BiH" class="">Publish a form / Withdraw a published form</td><td id="CbNm" class="">✓</td><td id="`npj" class="">✓</td><td id="BVKQ" class="">✗</td></tr><tr id="f6c5f3e3-37e6-4055-8ea4-2187050bfd04" dir="ltr"><td id="^BiH" class="">Configure custom URL slug for a published form</td><td id="CbNm" class="">✓</td><td id="`npj" class="">✓</td><td id="BVKQ" class="">✗</td></tr><tr id="7db07e88-7958-4d6b-a1df-1400f6df80c9" dir="ltr"><td id="^BiH" class="">Generate QR code for a published form</td><td id="CbNm" class="">✓</td><td id="`npj" class="">✓</td><td id="BVKQ" class="">✓</td></tr><tr id="08bcd806-6d5c-4b5e-82cf-bd9955a95a47" dir="ltr"><td id="^BiH" class="">Download QR code</td><td id="CbNm" class="">✓</td><td id="`npj" class="">✓</td><td id="BVKQ" class="">✓</td></tr><tr id="a545b406-1aec-46fe-8b5f-1136f2af13ae" dir="ltr"><td id="^BiH" class="">Retrieve sharing link for a published form</td><td id="CbNm" class="">✓</td><td id="`npj" class="">✓</td><td id="BVKQ" class="">✓</td></tr></tbody></table><p id="e9be6af4-82ae-41f5-af8c-07228d8cec41" class="" dir="auto"><strong>Notes:</strong></p><ul id="a4268c6d-9d99-4331-a8e7-e8914bc89e31" class="bulleted-list" dir="auto"><li style="list-style-type:disc">QR codes and sharing links point to the form URL. For SGCC, there are exactly two: one for Resume Critique and one for Mock Interview.</li></ul><ul id="e144b882-a479-4406-b122-a2290771ec2a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">SGCC forms are authenticated only. Respondents must be logged in to access the form via QR code or link.</li></ul><ul id="53a8916d-ea6f-4fa7-84aa-6b9412be9290" class="bulleted-list" dir="auto"><li style="list-style-type:disc">When a form is Withdrawn, the link and QR code become inactive and respondents cannot submit.</li></ul><h3 id="068fe530-58cd-4794-bd10-b16fd3060033" class="" dir="auto">1.1.4 Access and Workgroup Control</h3><table id="2b210240-e4c6-4b9b-948e-97ee9584053e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="134e8642-c9ff-4c60-8276-1539529f6037" dir="ltr"><th id="gJ~_" class="simple-table-header-color simple-table-header">Capability</th><th id="A|xV" class="simple-table-header-color simple-table-header">Admin L4</th><th id="?_pY" class="simple-table-header-color simple-table-header">Manager L3</th><th id="bVZN" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="74f11c1a-0127-49b5-8344-8bd81c6dd000" dir="ltr"><td id="gJ~_" class="">Configure which workgroups can access a form</td><td id="A|xV" class="">✓</td><td id="?_pY" class="">✓</td><td id="bVZN" class="">✗</td></tr><tr id="5497d57d-8d18-44fc-ad80-1ad4e1213995" dir="ltr"><td id="gJ~_" class="">Configure which roles can respond to a form</td><td id="A|xV" class="">✓</td><td id="?_pY" class="">✓</td><td id="bVZN" class="">✓ (Manager or Admin must publish)</td></tr><tr id="4125590d-3fc2-4e3a-be79-d6972fa4de49" dir="ltr"><td id="gJ~_" class="">View and manage forms across all workgroups</td><td id="A|xV" class="">✓</td><td id="?_pY" class="">✗</td><td id="bVZN" class="">✗</td></tr></tbody></table><p id="ebd32e43-0cbf-4d96-a7ed-9742bb26f4c7" class="" dir="auto"><strong>Access restriction for SGCC:</strong></p><p id="f0605a8f-5871-428d-8784-bd6f230efaaf" class="" dir="auto">SGCC forms are restricted to authenticated students who are enrolled in and have attended an SGCC session. The form does not accept unauthenticated submissions.</p><p id="b86e3cd8-1bbc-4389-9044-a931e774009a" class="" dir="auto"><strong>Error state — authenticated student not enrolled in SGCC:</strong></p><p id="5f775c74-180e-4a56-a2b7-2645a23a6e35" class="" dir="auto">If an authenticated student follows the QR code or sharing link but has no SGCC attendance record, the system displays a default error state indicating the form cannot be accessed. The form is not shown.</p><p id="a719a816-6ce0-48e6-9583-5c082677d4ba" class="" dir="auto">Suggested default error message: <em>&quot;You don&#x27;t have access to this form. If you believe this is a mistake, please contact your session coordinator.&quot;</em></p><h3 id="0465a350-7246-47b0-8069-5a0ae54615ea" class="" dir="auto">1.1.5 Response Management and Audit Trail</h3><table id="398d0888-fc61-4851-9561-ab3ef5c7ae7f" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="fc638f74-899e-4c6e-8ac6-2839d7a469e7" dir="ltr"><th id="JJVn" class="simple-table-header-color simple-table-header">Capability</th><th id="davW" class="simple-table-header-color simple-table-header">Admin L4</th><th id="&gt;A{i" class="simple-table-header-color simple-table-header">Manager L3</th><th id="}ehY" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="0910539b-fdf2-4119-81ec-34d054caa67a" dir="ltr"><td id="JJVn" class="">View all submitted responses within their workgroup</td><td id="davW" class="">✓</td><td id="&gt;A{i" class="">✓</td><td id="}ehY" class="">✓</td></tr><tr id="a2b200d8-cab6-459d-abea-2e0c079e0b02" dir="ltr"><td id="JJVn" class="">Override (edit) a submitted student response</td><td id="davW" class="">✓</td><td id="&gt;A{i" class="">✗</td><td id="}ehY" class="">✗</td></tr><tr id="b2526e16-07ea-45de-9f77-20211374fcc3" dir="ltr"><td id="JJVn" class="">View audit trail for each response</td><td id="davW" class="">✓</td><td id="&gt;A{i" class="">✓</td><td id="}ehY" class="">✓</td></tr></tbody></table><p id="394cace9-06de-4dc4-9aaf-e5ac75d24339" class="" dir="auto"><strong>Audit trail requirements:</strong></p><ul id="7af8e4c9-8ab3-48ac-a3d0-72ee6cdbfdd0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Every response has an audit log recording: who submitted, who last updated, timestamp of each change, and which fields were changed.</li></ul><ul id="30790b55-c6d7-4c45-884a-b5dbdc02161f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">When an Admin overrides a response, the change is recorded in the audit log with the editor&#x27;s identity and timestamp.</li></ul><ul id="2053203e-3924-440d-b3d7-df271cc1f239" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Both the original submitted value and the overridden value are retained in the log.</li></ul><p id="57aa8a91-ec29-4d0f-99d2-5c1c4171b798" class="" dir="auto"><strong>Submission status model (SGCC):</strong></p><ul id="9a0527bb-3c39-49e5-80a6-d42a7d465942" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Submitted</strong> — response has been received by the system</li></ul><h3 id="dcc2148a-63ed-4763-bab3-0e8c60055a5f" class="" dir="auto">1.1.6 Reports</h3><table id="9231d4ad-df29-46dc-b913-f3f04311f90a" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="c55cbf30-d13e-4724-8228-cf05cf7655ea" dir="ltr"><th id="Yrkd" class="simple-table-header-color simple-table-header">Capability</th><th id="vf;:" class="simple-table-header-color simple-table-header">Admin L4</th><th id="K`lC" class="simple-table-header-color simple-table-header">Manager L3</th><th id="V&lt;s@" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="6a17d4ee-a49e-4c83-ae20-829ebfe2b2ed" dir="ltr"><td id="Yrkd" class="">View aggregated response analytics for forms in their workgroup</td><td id="vf;:" class="">✓</td><td id="K`lC" class="">✓</td><td id="V&lt;s@" class="">✓</td></tr><tr id="ccf62402-0bb3-47a9-b820-7815bd7958eb" dir="ltr"><td id="Yrkd" class="">View charts</td><td id="vf;:" class="">✓</td><td id="K`lC" class="">✓</td><td id="V&lt;s@" class="">✓</td></tr><tr id="be616654-6128-4ad5-91d2-fb06b126880b" dir="ltr"><td id="Yrkd" class="">Download full response dataset as CSV</td><td id="vf;:" class="">✓</td><td id="K`lC" class="">✓</td><td id="V&lt;s@" class="">✓</td></tr><tr id="77eac153-4df5-4df3-84ba-46b699fe3228" dir="ltr"><td id="Yrkd" class="">View reports for forms outside their workgroup</td><td id="vf;:" class="">✓</td><td id="K`lC" class="">✗</td><td id="V&lt;s@" class="">✗</td></tr></tbody></table><p id="034a130a-9e0b-461b-af45-f074a6a570be" class="" dir="auto"><strong>Charts (SGCC):</strong></p><p id="08819f8e-2a4d-4737-8a47-f2661c17a86f" class="" dir="auto">Charts follow the design. All users with access to the form can view the respondents section and download the full response dataset. There is no programme breakdown by coach and no per-question response distribution in CP2 scope.</p><p id="864f47b4-fca8-4d45-b943-36653714f47e" class="" dir="auto"><strong>Report data schema — SGCC Feedback Forms</strong></p><p id="8f1082da-b576-400d-bb0c-1548898d375b" class="" dir="auto">The following columns appear in the exported CSV. Fields are categorised by source.</p><p id="f5ca178d-8139-4a59-9dc8-90548df7ae8a" class="" dir="auto">See also: <a href="https://linear.app/su-platform/issue/SU-3657">SU-3657</a> — sample CSV file attached to that issue.</p><p id="99fde783-6e31-44e9-beb1-ec2158f6dea5" class="" dir="auto"><strong>CSV structure:</strong> One row per submission. UTF-8 encoding, comma-delimited. Free-text fields are always double-quoted. Empty optional fields export as blank (not <code>null</code> or <code>N/A</code>). Likert values export as human-readable labels. Submission IDs are 16-character alphanumeric strings. Dates in MM/DD/YYYY format; datetimes in MM/DD/YY, HH:MM (24h).</p><p id="3cf7e85a-a71c-4e5a-9571-223b5b2779cf" class="" dir="auto"><strong>Suggested filename:</strong> <code>SGCC_Feedback_[FormType]_Responses_[YYYY-MM-DD].csv</code></p><p id="ab9ea44a-6584-4d20-9cac-21d6dd3c5d68" class="" dir="auto"><strong>Full column order:</strong></p><table id="e33166ac-a12a-488c-9e69-a645394bdac0" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="8408e7b3-0723-4d63-82ca-9931025d6d0c" dir="ltr"><th id="jFLW" class="simple-table-header-color simple-table-header">#</th><th id="pL}s" class="simple-table-header-color simple-table-header">Column Name</th><th id="=mpi" class="simple-table-header-color simple-table-header">Value Example</th><th id="bQZA" class="simple-table-header-color simple-table-header">Source</th></tr></thead><tbody><tr id="d042a964-3339-4754-8191-348530f02362" dir="ltr"><td id="jFLW" class="">1</td><td id="pL}s" class="">Submission ID</td><td id="=mpi" class="">A3F8K2M9P5T1W7XQ</td><td id="bQZA" class="">System-generated (16-char alphanumeric)</td></tr><tr id="4197289c-3364-4dd4-835e-da0d2e488408" dir="ltr"><td id="jFLW" class="">2</td><td id="pL}s" class="">Status</td><td id="=mpi" class="">Complete</td><td id="bQZA" class="">System</td></tr><tr id="99b6cd6e-e452-4374-853f-3c4b20d1e1a7" dir="ltr"><td id="jFLW" class="">3</td><td id="pL}s" class="">Submitted At</td><td id="=mpi" class="">09/08/24, 09:45</td><td id="bQZA" class="">System</td></tr><tr id="180433aa-a179-4e4c-af68-d788c8d959bf" dir="ltr"><td id="jFLW" class="">4</td><td id="pL}s" class="">Submitted By</td><td id="=mpi" class=""><a href="mailto:priya.sharma@e.ntu.edu.sg">priya.sharma@e.ntu.edu.sg</a></td><td id="bQZA" class="">System (logged-in user)</td></tr><tr id="04eaa3ff-c876-481b-acbe-ab54558e66e5" dir="ltr"><td id="jFLW" class="">5</td><td id="pL}s" class="">Updated By</td><td id="=mpi" class=""><a href="mailto:priya.sharma@e.ntu.edu.sg">priya.sharma@e.ntu.edu.sg</a></td><td id="bQZA" class="">System (original submitter if never overridden, otherwise last editor)</td></tr><tr id="e0a7ecee-ce59-47b1-b4f1-8265e9461610" dir="ltr"><td id="jFLW" class="">6</td><td id="pL}s" class="">Full Name</td><td id="=mpi" class="">Priya Sharma</td><td id="bQZA" class="">Student login profile</td></tr><tr id="f9bcf3ef-80a8-4ae6-8fd7-41e1ad30ae88" dir="ltr"><td id="jFLW" class="">7</td><td id="pL}s" class="">Email</td><td id="=mpi" class=""><a href="mailto:priya.sharma@e.ntu.edu.sg">priya.sharma@e.ntu.edu.sg</a></td><td id="bQZA" class="">Student login profile</td></tr><tr id="eb3e6686-2db3-4036-85d8-460d04abcd2d" dir="ltr"><td id="jFLW" class="">8</td><td id="pL}s" class="">Matriculation Number</td><td id="=mpi" class="">U2212346B</td><td id="bQZA" class="">Student login profile</td></tr><tr id="71a6cf22-977a-4ebd-b3d4-e803277438df" dir="ltr"><td id="jFLW" class="">9</td><td id="pL}s" class="">Programme of Study Code</td><td id="=mpi" class="">CE</td><td id="bQZA" class="">Student login profile</td></tr><tr id="9abd2f5c-17db-4f37-937e-aa59944dc4b7" dir="ltr"><td id="jFLW" class="">10</td><td id="pL}s" class="">School Code</td><td id="=mpi" class="">MAE</td><td id="bQZA" class="">Student login profile</td></tr><tr id="54fadf0a-3920-4ee2-a15b-89d5d0401c03" dir="ltr"><td id="jFLW" class="">11</td><td id="pL}s" class="">College Code</td><td id="=mpi" class="">COE</td><td id="bQZA" class="">Student login profile</td></tr><tr id="4f21f046-1868-4972-bf4d-a6fd3ed1351a" dir="ltr"><td id="jFLW" class="">12</td><td id="pL}s" class="">Session Type</td><td id="=mpi" class="">Resume Critique</td><td id="bQZA" class="">Student login profile</td></tr><tr id="797a64a7-d277-4ec6-a4cd-2b4486f15694" dir="ltr"><td id="jFLW" class="">13</td><td id="pL}s" class="">Date of Session</td><td id="=mpi" class="">09/08/2024</td><td id="bQZA" class="">SGCC attendance DB</td></tr><tr id="f5fa676c-03de-4ea7-8fad-cb7217836988" dir="ltr"><td id="jFLW" class="">14</td><td id="pL}s" class="">Time of Session</td><td id="=mpi" class="">09:30am - 11:00am</td><td id="bQZA" class="">SGCC attendance DB</td></tr><tr id="116eaebd-4958-4fd9-9e38-11917bc7899e" dir="ltr"><td id="jFLW" class="">15</td><td id="pL}s" class="">Name of Coach</td><td id="=mpi" class="">Jia Li Tan</td><td id="bQZA" class="">SGCC attendance DB</td></tr><tr id="acef94b7-1dc2-48e9-8e1a-4f47a9ad3751" dir="ltr"><td id="jFLW" class="">16</td><td id="pL}s" class="">I understood the expectations and outcomes of this session.</td><td id="=mpi" class="">Strongly Agree</td><td id="bQZA" class="">Student response (Likert label)</td></tr><tr id="93146efc-8411-43e8-ab75-7584ef070913" dir="ltr"><td id="jFLW" class="">17</td><td id="pL}s" class="">The objectives were clearly communicated to me.</td><td id="=mpi" class="">Agree</td><td id="bQZA" class="">Student response (Likert label)</td></tr><tr id="f1e91aa7-5e8d-4cd3-9804-86ad431064ed" dir="ltr"><td id="jFLW" class="">18</td><td id="pL}s" class="">Overall, the session was helpful.</td><td id="=mpi" class="">Strongly Agree</td><td id="bQZA" class="">Student response (Likert label)</td></tr><tr id="ab658ef3-ddde-4440-a130-b3f7d66e8e47" dir="ltr"><td id="jFLW" class="">19</td><td id="pL}s" class="">I am more informed of the next steps to increase my employability.</td><td id="=mpi" class="">Neutral</td><td id="bQZA" class="">Student response (Likert label)</td></tr><tr id="29614377-493a-448f-82f5-596c127d9a9a" dir="ltr"><td id="jFLW" class="">20</td><td id="pL}s" class="">I am more confident to secure internships/job.</td><td id="=mpi" class="">Agree</td><td id="bQZA" class="">Student response (Likert label)</td></tr><tr id="85935135-9be7-4ea6-b79d-5acb57d09fd8" dir="ltr"><td id="jFLW" class="">21</td><td id="pL}s" class="">I would recommend this session to my peers.</td><td id="=mpi" class="">Strongly Agree</td><td id="bQZA" class="">Student response (Likert label)</td></tr><tr id="93d84539-0506-4281-830f-3aa9f237ed0a" dir="ltr"><td id="jFLW" class="">22</td><td id="pL}s" class="">Please share any other comments</td><td id="=mpi" class="">The coach was very helpful...</td><td id="bQZA" class="">Student response (free text; double-quoted in export)</td></tr><tr id="993f2f58-1704-4b1b-815f-db91e6f15701" dir="ltr"><td id="jFLW" class="">23</td><td id="pL}s" class="">Can we cite your comments when marketing our services?</td><td id="=mpi" class="">Yes</td><td id="bQZA" class="">Student response (single-select)</td></tr></tbody></table><p id="77b1f3e5-6627-47df-b436-9c213872d2b4" class="" dir="auto">Sample csv file:</p><figure id="36494e81-8539-808e-a423-e516959e3bb8" dir="ltr"><div class="source"><a href="Forms/SGCC_Feedback_Sample_Response_Export.csv" data-notion-file="Forms/SGCC_Feedback_Sample_Response_Export.csv" data-notion-file-alias="SGCC_Feedback_Sample_Response_Export.csv">SGCC_Feedback_Sample_Response_Export.csv</a></div></figure><h2 id="2b5c075e-33d4-4488-b2a6-ab85712262bb" class="" dir="auto">1.2 Student</h2><h3 id="7cebb0fc-d3b0-4637-a805-5371edf0acb0" class="" dir="auto">1.2.1 Form Access</h3><ul id="f16e4932-8260-4146-8ed7-9a85ba92da55" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Students access the SGCC feedback form by scanning a QR code or following a sharing link distributed by the coach during the session.</li></ul><ul id="596e966a-315f-48f1-b504-b77decae95e3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">There are exactly two entry points: one QR code / link for Resume Critique and one for Mock Interview.</li></ul><ul id="7305ba60-9a2d-4551-bf78-3b8877a97999" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Students must be logged in to access the form. Unauthenticated users who follow the link are redirected to log in before the form loads.</li></ul><ul id="7392e705-ce0b-4769-b17d-4c7539fbffdb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If an authenticated student has no SGCC attendance record, they are shown an error message and the form is not displayed (see 1.1.4).</li></ul><h3 id="8dc579e6-a164-412d-9026-a28d99c581bd" class="" dir="auto">1.2.2 Session Information Display</h3><p id="aacb1066-f432-4c3a-b787-f4ca63f09f36" class="" dir="auto">Upon loading the form, the system looks up the student&#x27;s SGCC attendance record and auto-populates the following fields. These are displayed as read-only (disabled) so the student can confirm the details before submitting:</p><table id="408852dc-1fe2-4de4-85cf-c24005010352" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="b0e2954c-2c2a-413c-a87d-a3514b15649e" dir="ltr"><th id="&lt;U[t" class="simple-table-header-color simple-table-header">Field</th><th id="Jlb^" class="simple-table-header-color simple-table-header">Source</th><th id="u[AX" class="simple-table-header-color simple-table-header">Editable by Student</th></tr></thead><tbody><tr id="5b31be01-0d2a-4103-bbcf-43a05a3ee415" dir="ltr"><td id="&lt;U[t" class="">Date of Session</td><td id="Jlb^" class="">SGCC attendance database</td><td id="u[AX" class="">No</td></tr><tr id="f5b61beb-ff75-40ef-9aec-1bfd2400539d" dir="ltr"><td id="&lt;U[t" class="">Time of Session</td><td id="Jlb^" class="">SGCC attendance database</td><td id="u[AX" class="">No</td></tr><tr id="9ea687ca-9964-4f8e-a28b-42b48789404e" dir="ltr"><td id="&lt;U[t" class="">Name of Coach</td><td id="Jlb^" class="">SGCC attendance database</td><td id="u[AX" class="">No</td></tr></tbody></table><p id="96b69c22-f9cf-465f-8f2c-3de2ef89facd" class="" dir="auto"><strong>Note:</strong> The student&#x27;s profile information (Full Name, Email, Matric Number, Programme) is captured from their login session and does not appear as visible form fields. It is recorded in the submission automatically.</p><h3 id="f09d7229-1f0c-4bd0-9e94-7b0cb59c4265" class="" dir="auto">1.2.3 Feedback Submission</h3><p id="3bb33dde-7943-4c4f-b2c2-b8fe2d9776aa" class="" dir="auto">The student-answered portion of the form consists of:</p><ol type="1" id="9854363a-cc1a-4e4b-a344-a11a9a28c75c" class="numbered-list" start="1" dir="auto"><li><strong>Table scale (required)</strong> — 5-point Likert scale (Strongly Agree / Agree / Neutral / Disagree / Strongly Disagree) applied to the following statements:<ul id="a9af2910-5a41-4305-ab9f-aad0905befbe" class="bulleted-list" dir="auto"><li style="list-style-type:disc">I understood the expectations and outcomes of this session.</li></ul><ul id="d743d423-966e-4b7f-9654-ee401bff4046" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The objectives were clearly communicated to me.</li></ul><ul id="91727125-4062-4419-b4d6-21abd4073882" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Overall, the session was helpful.</li></ul><ul id="9621a24e-17e5-4026-8daa-73ba90a20676" class="bulleted-list" dir="auto"><li style="list-style-type:disc">I am more informed of the next steps to increase my employability.</li></ul><ul id="16d1feb5-4b5e-476e-92e9-fc43d7427a49" class="bulleted-list" dir="auto"><li style="list-style-type:disc">I am more confident to secure internships/job.</li></ul><ul id="bdc4b48a-4cf6-4eaa-924f-c13c30d5e621" class="bulleted-list" dir="auto"><li style="list-style-type:disc">I would recommend this session to my peers.</li></ul></li></ol><ol type="1" id="71ba2c56-517e-4ef6-a932-ffa4b1aaf3c1" class="numbered-list" start="2" dir="auto"><li><strong>Free-form text (optional)</strong> — &quot;Please share any other comments (e.g., what you liked most/least, suggestions for improvement)&quot;</li></ol><ol type="1" id="94603af5-c587-4aa1-9b36-1148ade3c374" class="numbered-list" start="3" dir="auto"><li><strong>Single-select (required)</strong> — &quot;Can we cite your comments when marketing our services?&quot; (Yes / No)</li></ol><h3 id="7493f9ab-ad4a-4dc8-a1ec-b71fc594a3e9" class="" dir="auto">1.2.4 Submission Constraints</h3><ul id="d853377b-b4b0-4891-967e-4f703d169f87" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each student may submit only one response per form type (one for Resume Critique, one for Mock Interview).</li></ul><ul id="18afad7e-2370-41db-b8e7-11658d5f91d6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The system enforces this constraint. If a student attempts to access a form they have already submitted, they are shown a message indicating they have already submitted feedback for this session type.</li></ul><h3 id="4c87aee5-2c27-4ff4-93f1-465e0ab811b3" class="" dir="auto">1.2.5 Submission Confirmation</h3><ul id="7015dff6-8283-4181-ae4f-e3952cd33d9b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Upon successful submission, the student sees a confirmation / thank-you message.</li></ul><ul id="f25e3964-09bc-4de7-85c1-180f1169eec9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The submission status is set to <strong>Complete</strong> immediately upon submission.</li></ul><h1 id="8734cdf6-94e8-4520-8051-fbee08ab6f2d" class="" dir="auto">Section 2: Career Portal Scope (CP3) — Deltas Only</h1><p id="3c07c2f7-ad6d-422a-adce-0ca519263c13" class="" dir="auto">This section documents features not included in SGCC scope that are required for the Career Portal in CP3. All SGCC behaviours carry forward unless explicitly noted as changed here.</p><h2 id="2737a159-d46e-4523-84c7-37d4edcb1b25" class="" dir="auto">2.1 Admin / Manager / Staff</h2><blockquote id="b11ec751-86f6-43f0-9aef-6361ec189b17" class="" dir="auto">⚠️ <strong>Open item (CP3):</strong> Confirm with client whether an Admin or Manager who creates a form can self-approve (i.e. approve their own submission without a second approver). To be confirmed before CP3 UAT.</blockquote><h3 id="95c8cc62-f8c4-4e6b-9da2-62b2af5964ce" class="" dir="auto">2.1.1 Form Builder — Additional Question Types</h3><p id="c91a6e75-41be-4507-a6a4-877814cb84c4" class="" dir="auto">The following question types are not required for SGCC but must be supported for Career Portal forms:</p><table id="47b6ef0a-c963-452a-ac01-1d87258ebe9f" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="8e10a920-efdb-4172-983d-4454cabdc3ae" dir="ltr"><th id="\WXi" class="simple-table-header-color simple-table-header">Question Type</th><th id="FbXK" class="simple-table-header-color simple-table-header">Description</th><th id="\wC}" class="simple-table-header-color simple-table-header"></th><th id=";[[&gt;" class="simple-table-header-color simple-table-header"></th></tr></thead><tbody><tr id="1495dc5b-4b45-4888-aed3-e8d4b14a25c8" dir="ltr"><td id="\WXi" class="">Conditional logic</td><td id="FbXK" class="">Questions or sections are shown or hidden based on a respondent&#x27;s previous answers</td><td id="\wC}" class=""></td><td id=";[[&gt;" class=""></td></tr><tr id="a8f3fb0a-0624-4d7d-8ae0-3049ba9c8db1" dir="ltr"><td id="\WXi" class="">Contact information field</td><td id="FbXK" class="">A composite field with default email and phone sub-fields; creator configures which sub-fields are visible</td><td id="\wC}" class=""></td><td id=";[[&gt;" class=""></td></tr><tr id="e86fe957-587b-4d6b-9e1f-9a90fde1e7ae" dir="ltr"><td id="\WXi" class="">Bulk dropdown</td><td id="FbXK" class="">Creator pastes a list of values (one per line) to populate a dropdown question</td><td id="\wC}" class=""></td><td id=";[[&gt;" class=""></td></tr><tr id="006bcb68-85d5-47e6-a7f0-3bc2c964782e" dir="ltr"><td id="\WXi" class="">Response validation rules</td><td id="FbXK" class="">Fields enforce format requirements (e.g. must be a number, must meet a minimum value) before the respondent can proceed</td><td id="\wC}" class=""></td><td id=";[[&gt;" class=""></td></tr><tr id="7a60877f-1ed2-458b-a73e-b0e37b0067a0" dir="ltr"><td id="\WXi" class="">Page breaks</td><td id="FbXK" class="">Creator inserts page breaks between questions to control multi-page form flow</td><td id="\wC}" class=""></td><td id=";[[&gt;" class=""></td></tr><tr id="f883fd9a-0b9f-4ca6-b2d8-4dfab1876acf" dir="ltr"><td id="\WXi" class="">Capability</td><td id="FbXK" class="">Admin L4</td><td id="\wC}" class="">Manager L3</td><td id=";[[&gt;" class="">Staff L2</td></tr><tr id="62c5f83b-daad-4f3a-b89f-1d3aeaa5d8a9" dir="ltr"><td id="\WXi" class="">---</td><td id="FbXK" class="">---</td><td id="\wC}" class="">---</td><td id=";[[&gt;" class="">---</td></tr><tr id="840923ba-420e-4c42-8306-e4314cdeab5b" dir="ltr"><td id="\WXi" class="">Configure conditional logic</td><td id="FbXK" class="">✓</td><td id="\wC}" class="">✓</td><td id=";[[&gt;" class="">✓</td></tr><tr id="3ee08ee6-89e6-42bc-af0b-46ffe235f3e8" dir="ltr"><td id="\WXi" class="">Configure contact information fields</td><td id="FbXK" class="">✓</td><td id="\wC}" class="">✓</td><td id=";[[&gt;" class="">✓</td></tr><tr id="ed9034a8-e6ed-4308-8a26-63b81c7cfafc" dir="ltr"><td id="\WXi" class="">Bulk add dropdown options</td><td id="FbXK" class="">✓</td><td id="\wC}" class="">✓</td><td id=";[[&gt;" class="">✓</td></tr><tr id="15c5396a-7c36-4717-bbb5-5ba29304ca0e" dir="ltr"><td id="\WXi" class="">Configure response validation rules</td><td id="FbXK" class="">✓</td><td id="\wC}" class="">✓</td><td id=";[[&gt;" class="">✓</td></tr><tr id="bf7bbfa7-e6eb-46c7-963a-c07a0cb30e75" dir="ltr"><td id="\WXi" class="">Insert page breaks</td><td id="FbXK" class="">✓</td><td id="\wC}" class="">✓</td><td id=";[[&gt;" class="">✓</td></tr></tbody></table><h3 id="1cef58cb-a4ee-4ffe-9aeb-c20a212ca279" class="" dir="auto">2.1.2 Access and Workgroup Control — Respondent Type Configuration</h3><p id="b8bd90d1-e6ef-4ab2-870d-2f4ae060c8b4" class="" dir="auto">In SGCC, respondents are always authenticated students and multiple submissions are system-enforced as disallowed. For Career Portal, these become per-form settings.</p><table id="9b4c9ea5-3ffd-40b3-924c-112c964a0f6e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="8242ab1d-c293-44bc-b27d-96919e29ec35" dir="ltr"><th id="h==f" class="simple-table-header-color simple-table-header">Capability</th><th id="rmf_" class="simple-table-header-color simple-table-header">Admin L4</th><th id="=_E@" class="simple-table-header-color simple-table-header">Manager L3</th><th id="^hXX" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="53b26beb-2a5e-404c-b560-0d0b20659ef9" dir="ltr"><td id="h==f" class="">Configure allowed respondent types per form</td><td id="rmf_" class="">✓</td><td id="=_E@" class="">✓</td><td id="^hXX" class="">✓ (requires approval to publish)</td></tr><tr id="1098d1b9-661f-44e1-92db-a93c5e57bc16" dir="ltr"><td id="h==f" class="">Allow or disallow multiple submissions per respondent</td><td id="rmf_" class="">✓</td><td id="=_E@" class="">✓</td><td id="^hXX" class="">✓ (requires approval to publish)</td></tr></tbody></table><p id="e9ec391a-2792-4602-9ac1-dfa6008438fb" class="" dir="auto"><strong>Allowed respondent types (configurable per form):</strong></p><ul id="030cefab-6ece-46fc-adc1-efe959b1ef74" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Students (authenticated)</li></ul><ul id="bc7c2621-77bf-4426-becd-74732037b89f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Employers (authenticated)</li></ul><ul id="4745275b-c0f1-430a-b585-530c84930a33" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Mentors (authenticated)</li></ul><ul id="40555108-b10a-4747-8011-c28e08668ca7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Staff (authenticated)</li></ul><ul id="5b5064fd-a17d-41e4-b75a-00f4edb80639" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Members of the public (unauthenticated)</li></ul><ul id="693e509b-f940-4a0f-b72c-5b76a901b328" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Any combination of the above</li></ul><h3 id="a65bda71-ab9e-4d09-8f18-76106504f603" class="" dir="auto">2.1.3 Analytics — Additional Capabilities</h3><table id="035c7c2b-9557-4bd5-9f3b-afd2274a6bab" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="207e4bc5-d0b2-46c4-a0fc-d55f142c1097" dir="ltr"><th id="jZNa" class="simple-table-header-color simple-table-header">Capability</th><th id="=xjj" class="simple-table-header-color simple-table-header">Admin L4</th><th id="]R&gt;t" class="simple-table-header-color simple-table-header">Manager L3</th><th id="EgE^" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="7fa34365-29cc-4fa8-af6a-341e57fbf086" dir="ltr"><td id="jZNa" class="">Define a target respondent count and track progress</td><td id="=xjj" class="">✓</td><td id="]R&gt;t" class="">✓</td><td id="EgE^" class="">✓</td></tr><tr id="5a7d690a-82e7-4355-84e7-4f3830829179" dir="ltr"><td id="jZNa" class="">Benchmark results across time periods (e.g. this week vs last week)</td><td id="=xjj" class="">✓</td><td id="]R&gt;t" class="">✓</td><td id="EgE^" class="">✓</td></tr><tr id="54772312-20f4-4b69-a2fd-315ae6632218" dir="ltr"><td id="jZNa" class="">Filter analytics by cohort or segment (e.g. programme, year of study)</td><td id="=xjj" class="">✓</td><td id="]R&gt;t" class="">✓</td><td id="EgE^" class="">✓</td></tr><tr id="58299990-42bc-48de-90c0-dea622ff0019" dir="ltr"><td id="jZNa" class="">View proportion of completed, partial, and non-respondents</td><td id="=xjj" class="">✓</td><td id="]R&gt;t" class="">✓</td><td id="EgE^" class="">✓</td></tr><tr id="26e5ccd1-18c7-492a-9b9e-1e39a1e847e3" dir="ltr"><td id="jZNa" class="">Export analytics summary to PDF</td><td id="=xjj" class="">✓</td><td id="]R&gt;t" class="">✓</td><td id="EgE^" class="">✓</td></tr><tr id="dd9bfd9e-8b87-424e-9bf1-aba50e8e114c" dir="ltr"><td id="jZNa" class="">Track QR scan counts and compare against submission counts</td><td id="=xjj" class="">✓</td><td id="]R&gt;t" class="">✓</td><td id="EgE^" class="">✓</td></tr></tbody></table><p id="b09d079e-d3ba-4f67-8e81-16f1215fc2aa" class="" dir="auto"><strong>Additional charts (Career Portal, beyond SGCC):</strong></p><ul id="daef7958-5800-4603-b17e-3c95c675eb46" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Per-student response view</strong> — for each individual respondent, a breakdown of their answers across all questions in the form</li></ul><ul id="af0a785d-e1eb-43bc-b746-d29937ec50e5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Funnel drop-off view</strong> — visualises where respondents stop progressing through a form; see 2.1.8 for the report spec and CSV export</li></ul><h3 id="a47c0fa7-6d19-4ab5-9698-ac27d54e39c9" class="" dir="auto">2.1.4 Response Status Logic — Extended</h3><p id="aa613b90-c8c8-457d-bba4-ae98dba7f1ee" class="" dir="auto">In SGCC, the only statuses are Submitted and Complete and all submissions move to Complete automatically. For Career Portal, additional statuses and configurable transitions are required.</p><table id="98f132d5-6bc5-4041-83f1-126cf3809298" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="4f3ebd14-be39-4899-b90e-4975373ff177" dir="ltr"><th id="GtHj" class="simple-table-header-color simple-table-header">Status</th><th id="JptK" class="simple-table-header-color simple-table-header">Description</th><th id="uX=Z" class="simple-table-header-color simple-table-header"></th><th id="LMWF" class="simple-table-header-color simple-table-header"></th></tr></thead><tbody><tr id="6fe30ded-c60f-4b9e-97b0-070a20c319a8" dir="ltr"><td id="GtHj" class="">Approved</td><td id="JptK" class="">Submission has been reviewed and approved</td><td id="uX=Z" class=""></td><td id="LMWF" class=""></td></tr><tr id="a8abaa4a-82f9-42af-8dd3-8c166c29913e" dir="ltr"><td id="GtHj" class="">Rejected</td><td id="JptK" class="">Submission has been reviewed and rejected</td><td id="uX=Z" class=""></td><td id="LMWF" class=""></td></tr><tr id="ef803985-a4b6-4150-8146-6c1df8168198" dir="ltr"><td id="GtHj" class="">Cancelled</td><td id="JptK" class="">Submission has been cancelled</td><td id="uX=Z" class=""></td><td id="LMWF" class=""></td></tr><tr id="0e2b4edb-0257-46ce-a853-4340aee104e4" dir="ltr"><td id="GtHj" class="">Capability</td><td id="JptK" class="">Admin L4</td><td id="uX=Z" class="">Manager L3</td><td id="LMWF" class="">Staff L2</td></tr><tr id="19bc5c64-3f25-4f23-8234-fa5f97181f65" dir="ltr"><td id="GtHj" class="">---</td><td id="JptK" class="">---</td><td id="uX=Z" class="">---</td><td id="LMWF" class="">---</td></tr><tr id="fcabcff6-9481-4bb0-8b0c-f8ee507d28a3" dir="ltr"><td id="GtHj" class="">Configure default submission statuses per form</td><td id="JptK" class="">✓</td><td id="uX=Z" class="">✓</td><td id="LMWF" class="">✓ (requires approval to publish)</td></tr><tr id="58a9a2c3-f271-4f10-ae2d-5e73ccf78f4d" dir="ltr"><td id="GtHj" class="">Configure status transition rules</td><td id="JptK" class="">✓</td><td id="uX=Z" class="">✓</td><td id="LMWF" class="">✓ (requires approval to publish)</td></tr><tr id="914c6b8f-ba8f-4312-970c-6c6dd7740e55" dir="ltr"><td id="GtHj" class="">Manually update a submission status</td><td id="JptK" class="">✓</td><td id="uX=Z" class="">✓</td><td id="LMWF" class="">✗</td></tr></tbody></table><h3 id="e33d14b3-8df2-43bb-a795-1a63c8bbe4a3" class="" dir="auto">2.1.5 Notifications and Communications</h3><p id="10a1cd8b-5012-45cd-94eb-09ffb8dcdb6d" class="" dir="auto">Not in SGCC scope. Required for CP3.</p><table id="756aa094-cad7-41aa-8a68-49d2c78d46ff" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="11bbf3e7-ff52-4312-863a-8e803662734b" dir="ltr"><th id=":|XD" class="simple-table-header-color simple-table-header">Capability</th><th id="Zeks" class="simple-table-header-color simple-table-header">Admin L4</th><th id="RC[@" class="simple-table-header-color simple-table-header">Manager L3</th><th id="_fqR" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="5bcd77a3-d58d-4d5f-ae94-fb14cdfa3eeb" dir="ltr"><td id=":|XD" class="">Define notification rules per form (on submission, on approval, on status change)</td><td id="Zeks" class="">✓</td><td id="RC[@" class="">✓</td><td id="_fqR" class="">✓ (requires approval to publish)</td></tr><tr id="6d6ac8e0-64d2-4a5b-9db8-98109203072e" dir="ltr"><td id=":|XD" class="">Configure role-based sender email addresses</td><td id="Zeks" class="">✓</td><td id="RC[@" class="">✓</td><td id="_fqR" class="">✓ (requires approval to publish)</td></tr><tr id="55c005c3-ca55-4b44-9ccd-dfd5c2775a5f" dir="ltr"><td id=":|XD" class="">Design email templates with placeholders for form and user attributes</td><td id="Zeks" class="">✓</td><td id="RC[@" class="">✓</td><td id="_fqR" class="">✓ (requires approval to publish)</td></tr><tr id="ba6ec07d-9793-4a5a-9e6c-9c61c83806fc" dir="ltr"><td id=":|XD" class="">Set up auto-response emails to admin users summarising submission details</td><td id="Zeks" class="">✓</td><td id="RC[@" class="">✓</td><td id="_fqR" class="">✓ (requires approval to publish)</td></tr><tr id="28b0f3ee-518a-472e-8cdc-08a582056a0b" dir="ltr"><td id=":|XD" class="">Set up auto-response emails to configurable role-based addresses</td><td id="Zeks" class="">✓</td><td id="RC[@" class="">✓</td><td id="_fqR" class="">✓ (requires approval to publish)</td></tr><tr id="0c5fbbfb-1610-4df7-85ae-faeeb10e2b3b" dir="ltr"><td id=":|XD" class="">Schedule or trigger follow-up invitations for post-session feedback</td><td id="Zeks" class="">✓</td><td id="RC[@" class="">✓</td><td id="_fqR" class="">✓ (requires approval to publish)</td></tr></tbody></table><h3 id="11ba91c4-5db1-4ba6-8770-79eb51fb263c" class="" dir="auto">2.1.6 Response Audit Log and Admin Override — Deltas</h3><p id="6325c56a-c1e1-413d-b2be-d34d92c8786d" class="" dir="auto">In SGCC, the audit log records who submitted, who last updated, and retains original + overridden values (see 1.1.5). For Career Portal, the audit log surfaces field-level diffs in the UI and is exportable.</p><table id="87824cb4-199e-4291-bce6-aeef001c0fa4" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="e67e5e19-d42e-44a2-b119-7822b8f643e4" dir="ltr"><th id="@QvF" class="simple-table-header-color simple-table-header">Capability</th><th id="|KkP" class="simple-table-header-color simple-table-header">Admin L4</th><th id="j=fp" class="simple-table-header-color simple-table-header">Manager L3</th><th id="f|[c" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="4ece3f87-530e-444e-be77-ba0ed30c742a" dir="ltr"><td id="@QvF" class="">Override (edit) a submitted response</td><td id="|KkP" class="">✓</td><td id="j=fp" class="">✗</td><td id="f|[c" class="">✗</td></tr><tr id="b1eec87e-d09c-47da-9d48-58c096186cc3" dir="ltr"><td id="@QvF" class="">View per-response audit log with field-level diffs (old value → new value)</td><td id="|KkP" class="">✓</td><td id="j=fp" class="">✓</td><td id="f|[c" class="">✓</td></tr><tr id="9f8af9f7-4626-48a1-8131-99f9e34d8d84" dir="ltr"><td id="@QvF" class="">Filter audit log by editor and date range; sort by timestamp</td><td id="|KkP" class="">✓</td><td id="j=fp" class="">✓</td><td id="f|[c" class="">✓</td></tr><tr id="cc357799-197a-4a11-83c9-cae8c00a1ebb" dir="ltr"><td id="@QvF" class="">Download per-response audit log as CSV</td><td id="|KkP" class="">✓</td><td id="j=fp" class="">✓</td><td id="f|[c" class="">✓</td></tr></tbody></table><p id="7c24923d-b81e-44ae-8140-075a89cd95ca" class="" dir="auto"><strong>Audit log behaviour:</strong></p><ul id="e246b3e8-be64-49e0-9385-0dc28ae5cda2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each entry captures: timestamp (MM/DD/YY, HH:MM), actor, action type (submit / edit / status change), field name, old value, and new value.</li></ul><ul id="3e6cd92e-37a1-4353-a5e4-751025c666a4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The &quot;Edit Response&quot; entry point is hidden for Manager and Staff. Backend rejects edit requests originating from non-admin roles.</li></ul><ul id="842d56f3-f194-407d-9842-68127314f24d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">CSV export columns: timestamp, actor, action, field, old value, new value.</li></ul><p id="b901b23d-53b6-49b2-a883-96f6ed7b7035" class="" dir="auto"><em>Source: Linear SU-3668 · Phase 2 Workshop Findings — Forms › Admin Controls (audit logs + admin-override edit; new scope adjacent to 6.1.1.88.1)</em></p><h3 id="6f9479a1-b95a-451d-90be-70c7fc6dbb3c" class="" dir="auto">2.1.7 Data Integration with Institutional Systems</h3><p id="7c7b5877-f800-4e1d-8d1b-b7bfb20faebe" class="" dir="auto">In SGCC, form responses pull session metadata and student profile fields from the SGCC attendance database and the student login profile (see 1.1.6 and 1.2.2). For Career Portal, this expands into a broader data-integration layer: form responses are synchronised to NTU&#x27;s centralised data lake (Denodo), made queryable from Qlik Sense for analytics, and can carry contextual fields from sibling modules (Events, Appointments) when a form is linked to a specific Event or Appointment.</p><p id="62492bb7-8675-4425-ab7f-4b1a99e3d2ff" class="" dir="auto"><strong>Integration capabilities (CP3):</strong></p><table id="871fe958-037c-49a1-8315-0c3fb7c33297" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="0f26da3e-e282-44a0-b125-0351bec3c5b2" dir="ltr"><th id="yLIv" class="simple-table-header-color simple-table-header">Capability</th><th id="~@\L" class="simple-table-header-color simple-table-header">Admin L4</th><th id="fAjD" class="simple-table-header-color simple-table-header">Manager L3</th><th id="JR]^" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="6a27e379-aae0-4391-b067-61e3dee75373" dir="ltr"><td id="yLIv" class="">Configure which institutional data source feeds a form&#x27;s auto-populated fields</td><td id="~@\L" class="">✓</td><td id="fAjD" class="">✗</td><td id="JR]^" class="">✗</td></tr><tr id="c0188bb2-8e21-4f64-a804-b7574cccb1b6" dir="ltr"><td id="yLIv" class="">Form responses sync to NTU Denodo data lake via the data-sync API</td><td id="~@\L" class="">(system)</td><td id="fAjD" class="">(system)</td><td id="JR]^" class="">(system)</td></tr><tr id="f695d9dc-f74b-471f-abf0-261e57ee116e" dir="ltr"><td id="yLIv" class="">Form responses queryable in Qlik Sense for analytics dashboards</td><td id="~@\L" class="">(system)</td><td id="fAjD" class="">(system)</td><td id="JR]^" class="">(system)</td></tr><tr id="56ee2ca5-44c5-45e9-9d87-3bee9197ba5d" dir="ltr"><td id="yLIv" class="">Configure per-form field joins from a linked Event or Appointment (e.g. event ID + attendance record for Events; appointment ID + metadata for Appointments)</td><td id="~@\L" class="">✓</td><td id="fAjD" class="">✓</td><td id="JR]^" class="">✗</td></tr><tr id="a2673e7d-6776-4286-b269-17308b687937" dir="ltr"><td id="yLIv" class="">Configure per-form Qlik connection (field mapping + refresh cadence)</td><td id="~@\L" class="">✓</td><td id="fAjD" class="">✗</td><td id="JR]^" class="">✗</td></tr></tbody></table><p id="6b237524-3774-4010-9d52-22d66eff5ae3" class="" dir="auto"><strong>Data flow notes:</strong></p><ul id="0d779f3e-74df-4a5e-9c2c-2aed81302e2c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Form responses sync to NTU Denodo via API at a defined cadence. Cadence value to be confirmed with the data team (see Open Items).</li></ul><ul id="d897a1a7-5fdb-4ffb-a7d4-add360d77942" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Qlik Sense queries the central data warehouse; it does not connect directly to the CSM database.</li></ul><ul id="114aabbc-d123-4227-b565-daac99bc1126" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Multi-module joins occur server-side at submission time. The form schema declares the joined fields; admins configure the join in the form&#x27;s settings.</li></ul><ul id="fa0b0d26-4182-4d75-ab5b-67283cf90e81" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Coach (Staff L2) role does not configure any of this — integrations are admin-defined per form and run automatically once the form is published.</li></ul><ul id="6de4bb43-d604-4bbd-9aa7-2448141d2f97" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Governance (audit logs, edit permissions, status logic) is inherited from existing module specs and not duplicated here. See 1.1.5 / 2.1.6 (audit), 1.1.4 (RBAC), 2.1.4 (status logic).</li></ul><p id="e0d1f4c2-97b0-44cd-ae12-f9def98636f5" class="" dir="auto"><em>Source: Linear SU-3665 · Original Requirements 6.1.1.137.1 (Denodo data-sync API), 6.1.1.107.1, 6.1.1.131.1, 6.1.1.132.1 (Forms reports &amp; analytics; Qlik integration) · Phase 2 Workshop Findings — Forms › Analytics + Forms › Integration</em></p><h3 id="8f80721b-64f7-4156-b99e-905810c67bbb" class="" dir="auto">2.1.8 Reports — CP3 Additional Exports</h3><p id="ea49c782-a2eb-434c-ac1e-9f24c2426b95" class="" dir="auto">This section is the CP3 parallel of 1.1.6 (SGCC Feedback CSV). It documents form report exports introduced in Career Portal scope. Future CP3 report types should be added here as additional sub-sections.</p><h4 id="63da74fb-0393-4025-841c-d4a8fde0d676" class="" dir="auto">Funnel Drop-off Report</h4><p id="ab0b726d-589a-47c7-8aec-a84971c0cacb" class="" dir="auto">For CP3, Forms analytics include a funnel drop-off visualisation showing where respondents stop progressing through a form. The funnel exists both as an on-screen chart in the analytics view and as a downloadable CSV report. (See 2.1.3 for the analytics capabilities matrix that gates access.)</p><p id="84b03c57-0845-414a-ba31-5a0083866f62" class="" dir="auto"><strong>Chart (CP3):</strong></p><p id="9f4a080e-4030-4fe2-88af-ef194b7de21a" class="" dir="auto">The funnel chart shows the cumulative % of respondents who reached each question, with the question carrying the highest full-abandonment rate visually highlighted. Hover/click states on each question reveal absolute counts and the partial-vs-full abandonment split. Available to Admin / Manager / Staff per 2.1.3 RBAC.</p><p id="fb40e671-4947-4ae8-8873-49f709ea9cf9" class="" dir="auto"><strong>CSV export — Funnel Drop-off:</strong></p><p id="193b51fe-2080-4302-a629-d5f4aad2ea60" class="" dir="auto">Downloadable from the funnel chart&#x27;s export action. One row per form analysis (wide format, one cluster of seven columns per question).</p><p id="67acc631-c26c-4d41-8a73-22bc2051eb53" class="" dir="auto"><strong>CSV structure:</strong> UTF-8, comma-delimited. Question Label cells are always double-quoted (they typically contain commas/punctuation). Empty optional cells export as blank, not <code>null</code> or <code>N/A</code>. Form IDs are 16-character alphanumeric strings. Dates in MM/DD/YYYY format. Percentages are numeric to one decimal place, no <code>%</code> symbol.</p><p id="ebd1cf33-c728-4807-bee4-8221c9ca48b2" class="" dir="auto"><strong>Suggested filename:</strong> <code>Forms_Funnel_DropOff_[FormName]_[YYYY-MM-DD].csv</code></p><p id="eb72a492-48c2-4424-a6ab-2b312f56247b" class="" dir="auto"><strong>Full column order (cluster pattern, repeats per question):</strong></p><table id="fc0452eb-b0de-46fa-a47e-9a993c54eafc" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="0f6fa34b-d686-4eff-8496-4008f75d2e98" dir="ltr"><th id="mCpC" class="simple-table-header-color simple-table-header">#</th><th id="oef]" class="simple-table-header-color simple-table-header" style="width:135px">Column Name</th><th id="JP~X" class="simple-table-header-color simple-table-header" style="width:168px">Value Example</th><th id="B`bA" class="simple-table-header-color simple-table-header" style="width:185px">Source</th></tr></thead><tbody><tr id="57afaa42-7314-4219-9fd8-f2ebfa28383a" dir="ltr"><td id="mCpC" class="">1</td><td id="oef]" class="" style="width:135px">Form ID</td><td id="JP~X" class="" style="width:168px">A8X3F2K9M7P5T1RQ</td><td id="B`bA" class="" style="width:185px">System (form schema)</td></tr><tr id="0ef3f3ab-088f-4fdb-8a02-13a695a98e8c" dir="ltr"><td id="mCpC" class="">2</td><td id="oef]" class="" style="width:135px">Form Name</td><td id="JP~X" class="" style="width:168px">Internship Application Feedback Survey</td><td id="B`bA" class="" style="width:185px">System (form schema; admin-authored)</td></tr><tr id="f86ab483-d453-4543-a444-4d0b6316d008" dir="ltr"><td id="mCpC" class="">3</td><td id="oef]" class="" style="width:135px">Analytics Window Start</td><td id="JP~X" class="" style="width:168px">09/01/2024</td><td id="B`bA" class="" style="width:185px">System (analytics filter selected by user)</td></tr><tr id="46b612df-79b5-40a0-acb8-8b0021de7ef9" dir="ltr"><td id="mCpC" class="">4</td><td id="oef]" class="" style="width:135px">Analytics Window End</td><td id="JP~X" class="" style="width:168px">09/30/2024</td><td id="B`bA" class="" style="width:185px">System (analytics filter selected by user)</td></tr><tr id="4392334e-f3d0-4c32-9782-1c1d87712b56" dir="ltr"><td id="mCpC" class="">5</td><td id="oef]" class="" style="width:135px">Total Form Attempts</td><td id="JP~X" class="" style="width:168px">1000</td><td id="B`bA" class="" style="width:185px">System (analytics aggregation; distinct respondents for whom the form rendered)</td></tr><tr id="1c0e7069-447b-4ccb-827b-43e9ce9eacb6" dir="ltr"><td id="mCpC" class=""><strong>6–12</strong></td><td id="oef]" class="" style="width:135px"><strong>Q1 cluster</strong> (pattern repeats for each question Q1 through Qn)</td><td id="JP~X" class="" style="width:168px"></td><td id="B`bA" class="" style="width:185px"></td></tr><tr id="7ed5f43c-5b5d-4587-9824-ec2a333677f6" dir="ltr"><td id="mCpC" class="">6</td><td id="oef]" class="" style="width:135px">Q1 Question</td><td id="JP~X" class="" style="width:168px">Which programme are you enrolled in?</td><td id="B`bA" class="" style="width:185px">System (form schema; admin-authored)</td></tr><tr id="1d28e2d8-265c-4565-b237-242267011290" dir="ltr"><td id="mCpC" class="">7</td><td id="oef]" class="" style="width:135px">Q1 # reached</td><td id="JP~X" class="" style="width:168px">1000</td><td id="B`bA" class="" style="width:185px">System (analytics aggregation; &quot;reached&quot; = the question was loaded for the respondent)</td></tr><tr id="8789cfc7-3a83-41d7-ac46-35814beed12b" dir="ltr"><td id="mCpC" class="">8</td><td id="oef]" class="" style="width:135px">Q1 % reached</td><td id="JP~X" class="" style="width:168px">100.0</td><td id="B`bA" class="" style="width:185px">System (computed = Q1 # reached / Total Form Attempts × 100, 1 dp)</td></tr><tr id="72a7361b-8da4-4d7e-8899-69831412eba7" dir="ltr"><td id="mCpC" class="">9</td><td id="oef]" class="" style="width:135px">Q1 # completed</td><td id="JP~X" class="" style="width:168px">985</td><td id="B`bA" class="" style="width:185px">System (analytics aggregation; respondent provided a value for this question)</td></tr><tr id="4961f271-95c4-4eb6-bc02-34384163fc7d" dir="ltr"><td id="mCpC" class="">10</td><td id="oef]" class="" style="width:135px">Q1 # partially dropped off</td><td id="JP~X" class="" style="width:168px">0</td><td id="B`bA" class="" style="width:185px">System (analytics aggregation; respondent saved a partial response while on this question and has not returned)</td></tr><tr id="bc49ca8d-e741-4d44-9d73-66065b9c4fec" dir="ltr"><td id="mCpC" class="">11</td><td id="oef]" class="" style="width:135px">Q1 # fully dropped off</td><td id="JP~X" class="" style="width:168px">15</td><td id="B`bA" class="" style="width:185px">System (analytics aggregation; respondent closed without saving while on this question)</td></tr><tr id="4f397999-71f4-4291-ae97-e85145d62e61" dir="ltr"><td id="mCpC" class="">12</td><td id="oef]" class="" style="width:135px">Q1 % fully dropped off</td><td id="JP~X" class="" style="width:168px">1.5</td><td id="B`bA" class="" style="width:185px">System (computed = Q1 # fully dropped off / Q1 # reached × 100, 1 dp)</td></tr><tr id="d4e23c07-c036-4fc7-accc-7e7f975396ac" dir="ltr"><td id="mCpC" class=""><strong>13–N</strong></td><td id="oef]" class="" style="width:135px"><strong>Q2 cluster, Q3 cluster, …, Qn cluster</strong></td><td id="JP~X" class="" style="width:168px">(same 7-column pattern as Q1)</td><td id="B`bA" class="" style="width:185px"></td></tr><tr id="bf91e8c4-282c-42ae-8e29-4547bb217bef" dir="ltr"><td id="mCpC" class="">Last</td><td id="oef]" class="" style="width:135px">Highest Drop-off Question</td><td id="JP~X" class="" style="width:168px">Q6</td><td id="B`bA" class="" style="width:185px">System (computed; question position with the maximum % fully dropped off value across the form)</td></tr></tbody></table><p id="ec0e41f4-865b-4d8c-8602-51f57b9a844f" class="" dir="auto"><strong>Sample csv file: </strong></p><figure id="36594e81-8539-8096-98da-c675da7eef7d" dir="ltr"><div class="source"><a href="Forms/Forms_Funnel_DropOff_Sample.csv" data-notion-file="Forms/Forms_Funnel_DropOff_Sample.csv" data-notion-file-alias="Forms_Funnel_DropOff_Sample.csv">Forms_Funnel_DropOff_Sample.csv</a></div></figure><p id="25c48ba3-9545-43a1-90eb-a20bab9cf812" class="" dir="auto"><em>Source: Linear SU-4343 · Phase 2 Workshop Findings — Forms, Checkpoint 5 (Reports)</em></p><h4 id="c3a560a4-bb71-4929-a659-cb7f779ae975" class="" dir="auto">Time-based Response Insights Report</h4><p id="b37d8d01-9feb-4403-be81-a922317d604c" class="" dir="auto">For CP3, Forms analytics include a time-based view of response volume, showing how submissions are distributed over time at Daily, Weekly, or Monthly granularity (toggled as a <strong>View</strong> selector). The view renders as both a chart and a table, and the underlying data is downloadable as a CSV. (See 2.1.3 for the analytics capabilities matrix that gates access.)</p><p id="8a20de40-87f6-4b07-8862-072dc08def13" class="" dir="auto"><strong>Chart and table (CP3):</strong></p><p id="c2f8cc76-4146-41c2-b452-e665dcfe4046" class="" dir="auto">Daily / Weekly / Monthly view toggle. Custom date range filter. The chart and table show the same data — bucketed response counts within the selected window. Available to Admin / Manager / Staff per 2.1.3 RBAC.</p><p id="6d7861ae-8af9-4f40-a7b1-65dcaa8b94d5" class="" dir="auto"><strong>CSV export — Time-based Response Insights:</strong></p><p id="d4fd988d-630d-4709-bb73-ab71f03a1e11" class="" dir="auto">Downloadable from the time-series view&#x27;s export action. One row per time bucket (tall format).</p><p id="278730df-5324-4973-9eab-4cda5188ca43" class="" dir="auto"><strong>CSV structure:</strong> UTF-8, comma-delimited. Form Name cells are always double-quoted. Empty optional cells export as blank, not <code>null</code> or <code>N/A</code>. Form IDs are 16-character alphanumeric strings. Dates in MM/DD/YYYY format.</p><p id="6525fcb7-05b3-439c-826b-6dc5bc2621bd" class="" dir="auto"><strong>Suggested filename:</strong> <code>Forms_TimeBasedInsights_[FormName]_[YYYY-MM-DD].csv</code></p><p id="f5e65c79-16bf-4cde-938e-42a53dc99738" class="" dir="auto"><strong>Full column order:</strong></p><table id="0e9b2a95-f724-4ce5-8b3f-3031791b71cf" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="0ed0dcd3-e049-4772-bec0-b6602e09e10a" dir="ltr"><th id="\gdY" class="simple-table-header-color simple-table-header">Column</th><th id="P\KW" class="simple-table-header-color simple-table-header">Source</th></tr></thead><tbody><tr id="95d15ae6-ee67-4854-8670-1f3312022c9c" dir="ltr"><td id="\gdY" class="">Form ID</td><td id="P\KW" class="">System (form schema)</td></tr><tr id="63745ac2-ec5c-4aeb-b0d5-c86df7abcd60" dir="ltr"><td id="\gdY" class="">Form Name</td><td id="P\KW" class="">System (form schema; admin-authored)</td></tr><tr id="5dac60c3-73ac-4bae-9fa1-860caecc3f07" dir="ltr"><td id="\gdY" class="">Analytics Window Start</td><td id="P\KW" class="">System (analytics filter selected by user)</td></tr><tr id="a95b7944-891a-4fe0-ace7-d64834e86548" dir="ltr"><td id="\gdY" class="">Analytics Window End</td><td id="P\KW" class="">System (analytics filter selected by user)</td></tr><tr id="8a793d8b-4554-4402-8ad7-3e32ae860a37" dir="ltr"><td id="\gdY" class="">View</td><td id="P\KW" class="">System (user-selected; Daily / Weekly / Monthly)</td></tr><tr id="f16bec8e-ded2-4044-ad05-6c3ec3a00837" dir="ltr"><td id="\gdY" class="">Period</td><td id="P\KW" class="">System (bucket label; MM/DD/YYYY for Daily, MM/YYYY W# for Weekly, MM/YYYY for Monthly)</td></tr><tr id="ac4c3df1-a31c-43ec-8f44-05809e5ea2b5" dir="ltr"><td id="\gdY" class=""># Responses</td><td id="P\KW" class="">System (analytics aggregation; count of responses received in this bucket)</td></tr></tbody></table><p id="20cd2262-186e-4529-8a0b-7480a6acc106" class="" dir="auto"><strong>Sample csv file:</strong> </p><figure id="36594e81-8539-80d8-86e7-d06cd20330c4" dir="ltr"><div class="source"><a href="Forms/Forms_TimeBasedInsights_Sample.csv" data-notion-file="Forms/Forms_TimeBasedInsights_Sample.csv" data-notion-file-alias="Forms_TimeBasedInsights_Sample.csv">Forms_TimeBasedInsights_Sample.csv</a></div></figure><p id="2ac5a21c-613c-4e9d-92b8-2eab0d9eb504" class="" dir="auto"><em>Source: Linear SU-4344 · Phase 2 Workshop Findings — Forms, Checkpoint 5 (Reports)</em></p><h3 id="970f86d3-3772-414d-8d65-5e1ab8eef24e" class="" dir="auto">2.1.9 Sentiment Analysis</h3><p id="8ee1aaff-44ca-40a2-9404-a63814767559" class="" dir="auto">For CP3, Forms analytics include AI sentiment classification on free-text responses. Each response is classified Positive / Negative / Neutral and persisted on the response record. The analytics view shows the form-wide sentiment distribution and a sentiment-coloured tag list of the most frequent terms across responses. (See 2.1.3 for the analytics capabilities matrix that gates access.)</p><p id="7ba06ea9-8fee-472e-950f-84d294a1d35f" class="" dir="auto"><strong>Sentiment capabilities (CP3):</strong></p><table id="ac235334-c489-43b9-9f69-c1f17af8ee7b" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="8e702ae7-070c-41f3-bed8-d7e903abef9c" dir="ltr"><th id="FqRl" class="simple-table-header-color simple-table-header">Capability</th><th id="r|Au" class="simple-table-header-color simple-table-header">Admin L4</th><th id="Xqmz" class="simple-table-header-color simple-table-header">Manager L3</th><th id="&lt;k]^" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="3d451dd7-f40c-4780-852f-48ddfc8e199e" dir="ltr"><td id="FqRl" class="">Run sentiment classification on a form on demand</td><td id="r|Au" class="">✓</td><td id="Xqmz" class="">✗</td><td id="&lt;k]^" class="">✗</td></tr><tr id="c416846f-495d-4385-8e14-840e129f7c67" dir="ltr"><td id="FqRl" class="">View per-form sentiment distribution and top-term tag list</td><td id="r|Au" class="">✓</td><td id="Xqmz" class="">✓</td><td id="&lt;k]^" class="">✓</td></tr></tbody></table><p id="3d9f96c2-b6a7-45b0-82ec-da15a7cc5d7e" class="" dir="auto"><strong>Behaviour notes:</strong></p><ul id="dfc31e57-95b6-42d5-a4ad-f8a117800724" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Sentiment classes: <strong>Positive</strong>, <strong>Negative</strong>, <strong>Neutral</strong>. Three-class only; no scoring.</li></ul><ul id="3cec237f-dc95-499e-9f2e-7f5c9dff4caf" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Language scope: English only. Non-English responses are flagged Unclassified and excluded from the summary.</li></ul><ul id="eeb4e6e9-658e-44e9-bab8-a57528d2310e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Re-run: admin-triggered per form. Re-run reclassifies all responses (covers updated responses and provider model changes). No automatic re-runs.</li></ul><ul id="fab730e7-4885-4fc2-bdc5-a5e0bc5568c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Tag list: top-N most frequent terms across responses (stopwords excluded). Each term is coloured by the dominant sentiment of responses containing it.</li></ul><p id="ea4601c2-fa22-42ec-8d3e-0883d6a6d384" class="" dir="auto"><em>Source: Linear SU-4346 · Phase 2 Workshop Findings — Forms, Checkpoint 5 (Reports)</em></p><h3 id="4cb0513c-9c5a-4525-8af5-6f81cc64986f" class="" dir="auto">2.1.10 Shareable View-Only Analytics Link</h3><p id="556ab26e-13d1-48e3-a343-f9f5a762d79e" class="" dir="auto">For CP3, admins can generate a public share link to a form&#x27;s analytics view. The link exposes a read-only subset of the analytics — aggregated charts only — and is accessible without login. It is intended for sharing summary results with stakeholders outside the platform.</p><p id="69c398ee-7121-47a3-9ca0-fa4a88c186be" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="067f28e1-2e9d-44fb-898e-51d27711bc71" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="434254cd-df40-4df1-8b6c-c5668b97ce06" dir="ltr"><th id="m\tr" class="simple-table-header-color simple-table-header">Capability</th><th id="}&gt;db" class="simple-table-header-color simple-table-header">Admin L4</th><th id="lX`}" class="simple-table-header-color simple-table-header">Manager L3</th><th id="KAOl" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="0dc156ae-742b-4a8b-9d49-e9ed79fa71c9" dir="ltr"><td id="m\tr" class="">Generate a read-only share link for a form</td><td id="}&gt;db" class="">✓</td><td id="lX`}" class="">✗</td><td id="KAOl" class="">✗</td></tr><tr id="addf50e5-f515-4842-bd08-4f202090e498" dir="ltr"><td id="m\tr" class="">Set an optional expiry date on the link</td><td id="}&gt;db" class="">✓</td><td id="lX`}" class="">✗</td><td id="KAOl" class="">✗</td></tr><tr id="1592d18f-f1d6-49b0-8775-29db19915b5f" dir="ltr"><td id="m\tr" class="">Revoke a share link</td><td id="}&gt;db" class="">✓</td><td id="lX`}" class="">✗</td><td id="KAOl" class="">✗</td></tr></tbody></table><p id="51fbc291-2101-4f0a-8c04-49827dc965cb" class="" dir="auto"><strong>What the shared view exposes:</strong></p><ul id="336f0961-3065-47a0-9e9b-d08499d34f0d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Aggregated charts only: bar, pie, line, funnel drop-off</li></ul><p id="a151b7ca-1900-429b-958c-abfe6e464ddb" class="" dir="auto"><strong>What the shared view does NOT expose:</strong></p><ul id="44e3a223-8614-4e9a-84fb-fc2e4006686a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Per-student response view</li></ul><ul id="0a42a36f-847a-47e0-8dc0-1492b9e26ea4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Free-text response content</li></ul><ul id="f704d5bd-5e16-4c46-b7b4-562598fab16e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Sentiment classifications (per 2.1.9)</li></ul><ul id="722b01dd-b02f-474e-8b65-320c9e7c97fc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Response CSV downloads (per 1.1.6 and 2.1.8)</li></ul><ul id="b5da9ce0-354f-4c02-b122-5a219cf382cc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Admin controls (publish, withdraw, edit, delete, etc.)</li></ul><p id="61e03679-a4b0-4dfd-aeb0-0d8261d2e0cb" class="" dir="auto"><strong>Behaviour notes:</strong></p><ul id="1c785cfa-0f52-4c7f-87aa-2d2c259e3e53" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Viewer access: no login required. URL is the access mechanism.</li></ul><ul id="a264afd1-9423-4624-a397-34e2e8b4699c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Expiry: optional. If set, the link returns a &quot;link expired&quot; page after the expiry timestamp.</li></ul><ul id="ca6d8478-8d5d-47bf-9acb-bdf5f2950eb8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Revocation: admin can revoke at any time. Revocation is immediate — viewers holding the URL get an &quot;access denied&quot; page on next request.</li></ul><p id="a36b82b5-9a7d-4f27-859a-b2b41aa67b40" class="" dir="auto"><em>Source: Linear SU-4347 · Phase 2 Workshop Findings — Forms, Checkpoint 5 (Reports)</em></p><h3 id="4803eb5d-5726-47aa-8d44-0d3873bb2a74" class="" dir="auto">2.1.11 Internal Notes on Analytics View</h3><p id="0d171339-8f28-4299-bc08-d579ced0ec8a" class="" dir="auto">For CP3, admins can attach plain-text internal notes to a form&#x27;s analytics view to annotate trends or flag items for follow-up. Notes are visible to Admins only — not to Manager, Staff, students, employers, or anyone viewing the form via the public share link (see 2.1.10).</p><p id="a6b307dd-a602-4487-aeee-cb3b8deb1e51" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="7a03374b-c701-4825-a4e7-63bef7099f77" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="ecc7b745-74ce-4406-a74c-1a6e2e57db71" dir="ltr"><th id=";;iW" class="simple-table-header-color simple-table-header">Capability</th><th id="AU&lt;&gt;" class="simple-table-header-color simple-table-header">Admin L4</th><th id="PJNZ" class="simple-table-header-color simple-table-header">Manager L3</th><th id="=iRm" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="907f2bf5-15e4-4fd9-af20-ef02d849b9b6" dir="ltr"><td id=";;iW" class="">Add an internal note on a form&#x27;s analytics</td><td id="AU&lt;&gt;" class="">✓</td><td id="PJNZ" class="">✗</td><td id="=iRm" class="">✗</td></tr><tr id="ea1afea3-aaa6-41a3-a243-e53975623e4e" dir="ltr"><td id=";;iW" class="">View internal notes on a form&#x27;s analytics</td><td id="AU&lt;&gt;" class="">✓</td><td id="PJNZ" class="">✗</td><td id="=iRm" class="">✗</td></tr><tr id="f85fc37f-e38c-4784-863e-f74e37b1981e" dir="ltr"><td id=";;iW" class="">Edit or delete any internal note (including others&#x27;)</td><td id="AU&lt;&gt;" class="">✓</td><td id="PJNZ" class="">✗</td><td id="=iRm" class="">✗</td></tr></tbody></table><p id="67767bf8-631c-4a30-8d41-82b6ab9f2b90" class="" dir="auto"><strong>Behaviour notes:</strong></p><ul id="499e0345-3686-4e2b-a3ff-ccebbf6d990e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each note is timestamped and attributed to its author at creation.</li></ul><ul id="7b903b62-0fac-4d53-943c-03cfd98d721f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Edit / delete: the note&#x27;s author can edit or delete their own note; any other Admin can also edit or delete any note.</li></ul><ul id="08d3ceaa-d8ff-4570-bae6-5c40796b75df" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Visibility: notes are scoped to the analytics view only and do not appear in any export, share link, or response-level view.</li></ul><p id="20622bcb-7d30-4062-92c8-6227a420108a" class="" dir="auto"><em>Source: Linear SU-4348 · Phase 2 Workshop Findings — Forms, Checkpoint 5 (Reports)</em></p><h3 id="807ef686-1871-4f65-8638-27dd20eeeb23" class="" dir="auto">2.1.12 Table View for Form Responses</h3><p id="0b27eb16-c77c-4ebb-9ae7-2c53061aec80" class="" dir="auto">The Responses tab has four sub-views — Summary, Question, Individual, and <strong>Table</strong> (this section). The Table view is a sortable, searchable, paginated grid of all submissions, used by Admin / Manager / Staff to scan status and metadata across responses.</p><p id="905fa69c-2c31-4dd1-96e2-dce3ce6390c4" class="" dir="auto"><strong>Capabilities (CP3):</strong></p><table id="cafc56e3-6e27-4481-9db4-c964b59b80f0" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="56eae77f-e1e7-4985-bf90-b0b7480ec58e" dir="ltr"><th id="qbZn" class="simple-table-header-color simple-table-header">Capability</th><th id="Ofky" class="simple-table-header-color simple-table-header">Admin L4</th><th id=":pLA" class="simple-table-header-color simple-table-header">Manager L3</th><th id="f|Em" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="5ef8dc4e-c5c0-4ed2-ab38-7b4348dce3a9" dir="ltr"><td id="qbZn" class="">View the Table sub-view of a form&#x27;s responses</td><td id="Ofky" class="">✓</td><td id=":pLA" class="">✓</td><td id="f|Em" class="">✓</td></tr><tr id="fe36bfbc-8844-4f28-94ad-8775706dbac8" dir="ltr"><td id="qbZn" class="">Sort, keyword-search, column-filter, and paginate within the Table</td><td id="Ofky" class="">✓</td><td id=":pLA" class="">✓</td><td id="f|Em" class="">✓</td></tr></tbody></table><p id="0e53f38a-341f-4172-b2d6-8ea1c37804c1" class="" dir="auto"><strong>Column structure (left to right):</strong></p><table id="d555d63c-f1c7-44d4-8bcd-31384e73cecc" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="c0da4260-7126-4145-b189-560c1abc78c8" dir="ltr"><th id="&lt;BFW" class="simple-table-header-color simple-table-header">Column</th><th id="i}&gt;B" class="simple-table-header-color simple-table-header">Source</th></tr></thead><tbody><tr id="69be38b9-22e0-4f87-accd-dc6d45badaa6" dir="ltr"><td id="&lt;BFW" class="">Status (badge)</td><td id="i}&gt;B" class="">System (per 2.1.4 status model)</td></tr><tr id="ef4c66e3-b559-475b-aaee-04c0a992af98" dir="ltr"><td id="&lt;BFW" class="">Student Name</td><td id="i}&gt;B" class="">Student login profile</td></tr><tr id="6fb912c9-a97b-445d-ab7e-9eb07f42024c" dir="ltr"><td id="&lt;BFW" class="">Matric No</td><td id="i}&gt;B" class="">Student login profile</td></tr><tr id="893f0009-a08c-4608-ae7f-eec3dd9e04f6" dir="ltr"><td id="&lt;BFW" class="">Programme</td><td id="i}&gt;B" class="">Student login profile</td></tr><tr id="e7bc9156-e434-4b54-bf66-61715355eb2d" dir="ltr"><td id="&lt;BFW" class="">Submitted (timestamp)</td><td id="i}&gt;B" class="">System</td></tr><tr id="09b30019-adc1-42f8-909b-add91bcd48f8" dir="ltr"><td id="&lt;BFW" class="">Email</td><td id="i}&gt;B" class="">Student login profile</td></tr><tr id="ec2de946-762f-4192-8bb5-b50518ad10db" dir="ltr"><td id="&lt;BFW" class="">Date of Session</td><td id="i}&gt;B" class="">SGCC attendance DB</td></tr><tr id="025fbbfd-41c6-49fb-9a27-c5c2d4c258d7" dir="ltr"><td id="&lt;BFW" class="">Time of Session</td><td id="i}&gt;B" class="">SGCC attendance DB</td></tr><tr id="df6d27e7-8143-4c95-ae48-e42a7bbc3c51" dir="ltr"><td id="&lt;BFW" class="">Name of Coach</td><td id="i}&gt;B" class="">SGCC attendance DB</td></tr><tr id="3f9fd2e9-45eb-4e8c-bafa-b6e997e7c8c5" dir="ltr"><td id="&lt;BFW" class="">Form-question response columns (one per question)</td><td id="i}&gt;B" class="">Student response</td></tr><tr id="30690d69-a352-40fb-8198-32746ef92996" dir="ltr"><td id="&lt;BFW" class="">Row actions</td><td id="i}&gt;B" class="">UI</td></tr></tbody></table><p id="f393413d-94ec-4ebc-a2aa-cc274b4aa9f8" class="" dir="auto">Column structure mirrors the SGCC Feedback CSV (1.1.6); form-question columns adapt to the form&#x27;s actual question set. Status badges follow the 2.1.4 palette: Submitted (blue), Approved (green), Rejected (red), Cancelled (grey).</p><p id="f51b3095-dc28-43c2-994a-9772ecd6ad33" class="" dir="auto"><em>Source: Linear SU-4320 · Figma — NTU CSM Final Designs / Forms: Details - Responses / Table</em></p><h2 id="c9442054-5f6d-4a4f-befd-55b6cdc36154" class="" dir="auto">2.2 Respondents</h2><p id="c592b04f-124d-40fa-be51-05808eb7ab80" class="" dir="auto">This section covers the submission experience for all respondent types in the Career Portal. SGCC only has authenticated students; the Career Portal supports a broader set of respondents.</p><h3 id="4a3be8e0-a949-4c59-8ca8-70aefeec60a1" class="" dir="auto">2.2.1 Respondent Types and Authentication</h3><table id="136ea4cb-c81e-40a0-8165-f61c2e72c86f" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="d778da0b-e3ca-4e8a-a137-6a08a5d378a6" dir="ltr"><th id="`YtJ" class="simple-table-header-color simple-table-header">Respondent Type</th><th id="D;M?" class="simple-table-header-color simple-table-header">Authentication</th></tr></thead><tbody><tr id="69658d34-341c-4601-adb5-1a515828f582" dir="ltr"><td id="`YtJ" class="">Student</td><td id="D;M?" class="">Authenticated (logged in)</td></tr><tr id="063d6f33-e833-461b-90ea-4a34cbc96ea5" dir="ltr"><td id="`YtJ" class="">Employer</td><td id="D;M?" class="">Authenticated (logged in)</td></tr><tr id="4259cd48-5777-46e2-885f-93c502f248ce" dir="ltr"><td id="`YtJ" class="">Mentor</td><td id="D;M?" class="">Authenticated (logged in)</td></tr><tr id="a401f19b-cbe1-4e7a-a195-aaf730fb4483" dir="ltr"><td id="`YtJ" class="">Staff</td><td id="D;M?" class="">Authenticated (logged in)</td></tr><tr id="1a070910-4737-4ab2-96a9-0ef7f947ac97" dir="ltr"><td id="`YtJ" class="">Member of the public</td><td id="D;M?" class="">Unauthenticated</td></tr></tbody></table><p id="40d354cd-06d0-491c-86fc-81d71d9bc032" class="" dir="auto"><strong>Behaviour differences by authentication status:</strong></p><p id="2d4bc6e3-fc57-465b-958c-e757c7bb2fbb" class="" dir="auto"><em>Authenticated respondents:</em></p><ul id="9eed34fe-d2de-46a1-92c7-6d33377eb153" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Profile fields (name, email, and role-specific attributes) are auto-filled from their account.</li></ul><ul id="7cbce60c-45ef-4dcd-b0a8-276a785d1612" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Submission is linked to their account record.</li></ul><p id="e8c7f0b5-fb06-4f1a-a4fd-f8e42c0bff6a" class="" dir="auto"><em>Unauthenticated respondents (members of the public):</em></p><ul id="669db8fd-8db5-4f9d-8b92-41aac95562ed" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Profile fields are not auto-filled; the respondent enters their details manually where required by the form.</li></ul><ul id="e77d0530-d8a6-4dd2-8c99-e655216f6d04" class="bulleted-list" dir="auto"><li style="list-style-type:disc">At the end of the form, after submission, the respondent is presented with a call to action to create an account or save their details for future use.</li></ul><ul id="85175c53-4a44-44b6-8dca-81a921fb3b69" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Submission is recorded without an account link.</li></ul><h3 id="b62d1fdb-e607-48d5-b051-cd8327dddd53" class="" dir="auto">2.2.2 Form Access</h3><ul id="b5dda16f-20c5-451d-b33c-f46fe3105f99" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Authenticated respondents access forms via a sharing link or QR code. Unauthenticated users following a link for an authenticated-only form are redirected to log in.</li></ul><ul id="a9601061-9511-4d57-871d-e1f10a3867b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">For forms configured to allow public (unauthenticated) access, respondents can open and submit the form without logging in.</li></ul><ul id="f9b18979-1fbc-44de-a757-355a4cc6692f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">For eligible forms, respondents can save a partially completed response and return later to finish.</li></ul><h3 id="97518b69-bbf9-4848-a8b7-e19b625479b5" class="" dir="auto">2.2.3 Form Guidance and Validation</h3><p id="2f4b2010-2101-4eeb-b279-0ed9a450c4df" class="" dir="auto">Not in SGCC scope. Required for CP3.</p><ul id="8b873830-9b43-4a77-b3fa-ec335a7b3df6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Respondents can see sample answers and hints that illustrate how to respond to a question.</li></ul><ul id="bfb94817-e350-479d-876c-53a336aea302" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Respondents can view links to declarations, terms and conditions, and additional information directly from the form.</li></ul><ul id="db72264b-7d38-4449-ae17-0816d7e85c06" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Respondents receive clear error messages for invalid inputs (e.g. wrong email format, character limit exceeded).</li></ul><ul id="9c9c8be7-6e40-4e8b-b7fd-a0d984019ce8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Respondents see a countdown of remaining selections when a question has a selection limit.</li></ul><h3 id="e8b8484c-5460-431d-ac19-4e03a40bb832" class="" dir="auto">2.2.4 Multiple Submissions</h3><ul id="576c95f0-2d0e-4ba8-875c-d4c23e2e5b00" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Whether a respondent can submit more than once is controlled by the per-form setting configured by Admins, Managers, or Staff (see 2.1.2).</li></ul><ul id="e7d95078-f85f-43e7-ba9a-f45306caebfd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If multiple submissions are disallowed and a respondent attempts to submit again, they are shown a message indicating they have already submitted.</li></ul><h3 id="4bdf136f-5682-4da6-acf6-1dc0d83e3413" class="" dir="auto">2.2.5 Programme and Application Forms</h3><p id="34fe2f7b-db0a-4b13-a558-bce71ef908fc" class="" dir="auto">Not in SGCC scope. Required for CP3.</p><ul id="fa671303-3f5c-4253-93e9-068b742e6187" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Respondents can fill in structured application forms (e.g. internship applications) that guide them through required fields and document uploads.</li></ul><ul id="84dfc048-32c9-41fa-8093-a30f5aecbfee" class="bulleted-list" dir="auto"><li style="list-style-type:disc">When logged in, profile details (full name, matric number, programme, school/college, year of study) are auto-filled.</li></ul><ul id="1a9eded2-8cf5-4d97-ab38-94bf3a91d2d1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Respondents can upload multiple documents separately (e.g. passport, air ticket, declarations) without combining them into a single file.</li></ul><ul id="5dba2a0c-dccb-4832-a331-8d90d0172870" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Respondents see a clear confirmation and next steps upon submitting an application.</li></ul><h3 id="fda07976-d578-4433-b90b-1000bd8e0ec7" class="" dir="auto">2.1.13 Group Submission (Team Leader Collect-and-Submit Flow)</h3><p id="1903c618-b4ff-4c41-8bb1-f723065499bf" class="" dir="auto">For CP3, admins/managers/staff can enable group submission mode on a form. When enabled, one respondent acts as team leader — they initiate the team session, complete team-level sections, generate a share link for their team members to complete member-level sections individually, and submit the consolidated team response to admins once all members have contributed.</p><p id="d57c3c1c-2bdc-4c86-a01c-37054d9c6ddf" class="" dir="auto">This flow is modelled after a group-order pattern: the team leader orchestrates the session; member submissions are staged (not submitted to admins) until the team leader performs the final submit.</p><p id="14f0a519-cc7e-4523-ae6c-1ffb57bb818c" class="" dir="auto"><strong>Form configuration (admin/manager/staff)</strong></p><table id="87e450b1-e145-4837-b2aa-1db1a66d791c" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="7f7f8c53-0a0a-4dc3-ab78-a36e3f32c196" dir="ltr"><th id="P^}G" class="simple-table-header-color simple-table-header">Capability</th><th id="XS:p" class="simple-table-header-color simple-table-header">Admin L4</th><th id="RZ^z" class="simple-table-header-color simple-table-header">Manager L3</th><th id="cF{C" class="simple-table-header-color simple-table-header">Staff L2</th></tr></thead><tbody><tr id="01c06da6-96bd-449d-944b-58a3797f1d14" dir="ltr"><td id="P^}G" class="">Enable &quot;Allow team submission&quot; toggle on a form</td><td id="XS:p" class="">✓</td><td id="RZ^z" class="">✓</td><td id="cF{C" class="">✓ (requires approval to publish)</td></tr><tr id="f6fe9934-d042-4406-87a4-750b03a42cf2" dir="ltr"><td id="P^}G" class="">Mark each form section as &quot;team-level&quot; or &quot;member-level&quot;</td><td id="XS:p" class="">✓</td><td id="RZ^z" class="">✓</td><td id="cF{C" class="">✓ (requires approval to publish)</td></tr></tbody></table><ul id="54ca0231-a35c-4ccb-bd1f-0f3b082a4730" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Team-level sections are completed by the team leader and apply to the whole team (e.g. team name, preferred date, session slot).</li></ul><ul id="90db4598-e2ba-4223-95d3-8e449486d4c2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Member-level sections are completed individually by each team member via the share link (e.g. matric number, email, dietary preference).</li></ul><p id="2850bf5d-e383-4220-bfdb-0b7b08282881" class="" dir="auto"><strong>Team leader — initiating a team submission</strong></p><ul id="bb247293-1360-4c9b-9226-897076c1aaa4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">On opening a group-submission-enabled form, the respondent is prompted to choose: &quot;Submit individually&quot; or &quot;Submit for a team.&quot;</li></ul><ul id="ed4f2276-0253-4cca-9261-6c6768e01c2e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Selecting &quot;Submit for a team&quot; designates the respondent as team leader and creates a unique team session. The team leader completes all team-level sections first.</li></ul><ul id="b0609b1c-2a44-4d07-8f01-8d4ca5d96391" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A unique shareable link is generated for that team session. The link is persistent and accessible to the team leader at any time (e.g. via a &quot;Copy link&quot; button on their submission view). The team leader cannot regenerate the link but can always retrieve it.</li></ul><ul id="c2bdaafb-5453-4f24-9ce8-e743fa7f43fc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The share link does not expire unless the form has an expiry date, in which case the link expires when the form does.</li></ul><ul id="a9e48480-4b15-4eb6-959f-90aca53bbcc8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">There is no cap on the number of team members who can submit via the link.</li></ul><p id="88523237-c1a2-4e77-885c-27775f5f75b1" class="" dir="auto"><strong>Team members — individual submission via link</strong></p><ul id="7fe0a38f-caa4-4c0b-8212-d1ce4aab1db2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Access to the share link is gated by the form&#x27;s visibility settings. If the form is restricted to a specific respondent type (e.g. students only), a member opening the link must log in and be verified as that type before proceeding.</li></ul><ul id="3c2d127b-0a02-41fb-aadb-98e4d8fe77b3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Team members complete only member-level sections. Team-level section content is visible to members as read-only context.</li></ul><ul id="996016ce-52db-49b3-8270-d1a3a6091ad1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each member&#x27;s submission is saved to the team session but does not trigger a final form submission to admins.</li></ul><ul id="fae62b8d-e8aa-45e0-a7f8-c5e8c243d130" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Team members can edit their own individual submission at any time before the team leader performs the final submit.</li></ul><ul id="50721e2b-2198-4a8f-b0e2-313946a7a5c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Team members can view (read-only) the submissions of other members within the same team session.</li></ul><p id="859c2f6c-9082-4c94-a2ae-27c1b7a53593" class="" dir="auto"><strong>Team leader — review and final submission</strong></p><ul id="d2517fb4-33f5-4dc0-bb55-4971a2240f1b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The team leader&#x27;s view shows a real-time tally of how many members have submitted, with a read-only summary of each member&#x27;s responses.</li></ul><ul id="d38c22be-e5c3-4e6e-858b-05de601d14ed" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The team leader can submit the full team response at their discretion — there is no system-enforced minimum member count.</li></ul><ul id="0162b1fe-02bf-4aa2-9bf1-b90377f0f353" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Final submission (by team leader only) sends the consolidated team response to admins. Individual member edits are locked after this point.</li></ul><p id="58548ce6-fe3f-49c8-8109-d5cc45f49f35" class="" dir="auto"><strong>Admin/manager/staff — responses view for group-submission forms</strong></p><p id="1d5cf578-8783-47d2-bdc8-48731a911b81" class="" dir="auto">The responses view for a group-submission-enabled form differs from the standard individual-submission view across all sub-views:</p><ul id="90987817-08c2-45ef-ba18-c83ccc4f540a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Table view:</strong> An auto-generated <strong>Team ID</strong> column appears as the first column, grouping member responses under their respective team. The Team ID is system-generated at the point the team leader initiates the team session.</li></ul><ul id="39a20379-9be8-4fbe-b6be-326bfed6c47e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Individual submissions tab:</strong> Organised on a per-team basis rather than per individual respondent. Each row represents a team submission, expandable to show each contributing member&#x27;s member-level section responses. The team leader and each contributing member are identifiable within the expanded row.</li></ul><ul id="f1cc43f1-4f9f-46df-9192-8c6021d8b8c1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Summary chart:</strong> Includes a pie chart distinguishing between the total number of team submissions and the total number of individual submissions received for the form.</li></ul><p id="29f9d8b8-d90d-443b-8d1c-2391677d70ef" class="" dir="auto"><strong>Notifications</strong></p><ul id="d613120d-54b6-4f2b-b3bd-da30ea6fb36e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A confirmation notification is sent to the team leader and all team members upon final submission by the team leader.</li></ul><p id="e1ed48d9-c510-4bf3-8990-45f7ec9a6ce5" class="" dir="auto"><em>Source: Linear SU-4340 · Workshop Findings — Forms, Checkpoint 3 (Career)</em></p><h3 id="b5e4c05b-8691-4672-9b88-d03b52fb0fce" class="" dir="auto">2.1.14 Attaching Forms to Events (CP3)</h3><p id="6ec9486a-9ef6-46cc-b19a-a693ed52fa64" class="" dir="auto">For CP3, a feedback form created in the Forms module can be attached to one or more events. A single form template can be reused across multiple events. This extends the feedback collection model already in place for SGCC (see Section 1 — SGCC Scope) to the Events module.</p><p id="f37bcf79-01af-4662-b18b-74c58a1d2634" class="" dir="auto"><strong>How it works:</strong></p><p id="18a34b24-6b15-4d09-bfb1-ac3930e646e3" class="" dir="auto">When a form is attached to an event, the system automatically collects respondent metadata and event metadata alongside the form responses. For logged-in respondents (SSO), this data is captured silently — respondents do not need to key anything in. Metadata collected includes:</p><ul id="e3e75028-0c52-4b44-a138-10a1b518062f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Name</li></ul><ul id="3b71b204-e5fc-4392-992d-17e6b3efa3de" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Student ID / Matric Number</li></ul><ul id="11fa149b-fbe2-4fae-877d-aaa13a7bf302" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Programme, School, Year of Study</li></ul><ul id="0ff44335-2617-40c0-b13b-9412c41665a4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Event date</li></ul><ul id="58e49d8d-e565-4e3b-80ed-3be8d52e27cb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Session time</li></ul><p id="f9d2ea55-6d6e-41c2-a0a2-b432f87bfbf9" class="" dir="auto"><strong>Public events:</strong> For public events where participants may not be logged in, metadata fields should be surfaced as optional inputs. Unauthenticated participants may need to self-declare some details. This is a design and dev flag — behaviour to be confirmed before CP3 dev start.</p><p id="4a9cd0ed-3c58-4ee4-9731-4f962a853f18" class="" dir="auto"><strong>Responses Summary — display rules:</strong></p><p id="bae9d9b0-6961-4e4c-905a-30c4d0eab6a2" class="" dir="auto">The Responses Summary for event-attached forms follows the same display rules as SGCC feedback forms: only responses to questions authored by the form creator are shown in the summary. Auto-populated respondent and event metadata fields are excluded from the aggregated summary view. This applies consistently across all contexts where a form is attached to a platform module.</p><p id="4c28b3fe-7278-4681-9d0f-f65e8c5ccc53" class="" dir="auto">Feedback responses are viewable in the Forms module under the relevant form&#x27;s Responses tab.</p><p id="88b0f8d3-f89d-47ca-957f-b00937ba07d8" class="" dir="auto"><em>Source: Linear </em><em><a href="https://linear.app/su-platform/issue/SU-4672/events-attach-feedback-form-and-collect-responses">SU-4672</a></em><em> · See also: </em><em><a href="Events%2035f94e81853980188db9c8a786a090eb.html">📆 Events</a></em><em> §4, </em><em><a href="SGCC%2033494e81853980b48b3bd371e1f7935b.html">📋 SGCC</a></em><em> §7</em></p><h3 id="4399e1d2-c60f-4ed8-bce4-84c8fd702403" class="" dir="auto">2.1.15 Extend Action — Editing a Form&#x27;s Expiry Date</h3><p id="2758a9cc-f890-4ccd-a1cc-ee10e796641d" class="" dir="auto">For CP3, Admin/Manager/Staff can use an <strong>Extend</strong> action to move a form&#x27;s expiry date to a later date, for a single form or in bulk. Extend only changes the expiry date — it does not change the form&#x27;s status. (Bringing an Expired form back to Published is the separate <strong>Re-open</strong> bulk action — see 1.1.1.)</p><p id="f044cd93-0abe-47a7-9f5a-83b671d0e94b" class="" dir="auto"><strong>Decision — which forms are eligible for Extend:</strong></p><p id="f2e34699-601b-4e55-b386-94c1b0e07373" class="" dir="auto">Any form that has an expiry date is eligible, except forms that are already Expired (Expired forms use Re-open instead).</p><p id="79250b64-7583-4128-8787-3ebe143cfbb4" class="" dir="auto"><strong>Decision — can the expiry date be cleared (removed) via Extend:</strong></p><p id="97437fac-9d76-4549-8bb2-d051547c4158" class="" dir="auto">Yes. Leaving the date field empty removes the expiry entirely, so the form stays open with no end date — this mirrors the existing behaviour in form settings.</p><p id="b076f64c-d36d-4a24-8a88-9638e13e5263" class="" dir="auto"><strong>Risk flagged and accepted:</strong> once a published form with responses has its expiry removed, there is no direct way to set a new expiry again — Extend only shows for forms that already have an expiry, and published forms with responses can&#x27;t be edited via Settings. The only recovery path is to withdraw the form and republish it, which briefly takes it off the student portal. This risk was reviewed and accepted as-is: the withdraw → republish flow is simple, and it&#x27;s already the established pattern for editing objects that are already published.</p><p id="e0e84f16-d707-4f0e-8984-78e9e0ec3566" class="" dir="auto"><em>Source: Linear </em><em><a href="https://linear.app/su-platform/issue/SU-4759/implement-extend-edit-the-forms-expiry-date">SU-4759</a></em><em> · Discussion between Anatolii Ilnytskyi and Joji, 2 July 2026.</em></p><h1 id="bd42768c-725a-46bf-a7f0-3341f716f6ab" class="" dir="auto">Section 3: Conflicts Flagged</h1><table id="be933401-646c-484a-9fca-34fc50226a83" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="3f1b69a4-604f-45e9-92f7-71de0ca92edc" dir="ltr"><th id="XFFa" class="simple-table-header-color simple-table-header">#</th><th id="L}a[" class="simple-table-header-color simple-table-header">Conflict</th><th id="=&lt;et" class="simple-table-header-color simple-table-header">Resolution</th></tr></thead><tbody></tbody></table><h1 id="04b39101-93fa-4eaa-a900-a1c39c77d191" class="" dir="auto">Section 4: Open Items</h1><table id="5c1d89c6-f401-4aaa-879b-0cedc34599a0" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="ab8e9aa1-0a7a-4173-bc8b-30739c6046f2" dir="ltr"><th id="gMur" class="simple-table-header-color simple-table-header">#</th><th id="LDZV" class="simple-table-header-color simple-table-header" style="width:229px">Item</th><th id="gsIJ" class="simple-table-header-color simple-table-header">Owner</th><th id="fem&lt;" class="simple-table-header-color simple-table-header">Status</th></tr></thead><tbody><tr id="71f1769a-3a5f-4cf7-a68b-8d7b9c06bdba" dir="ltr"><td id="gMur" class="">1</td><td id="LDZV" class="" style="width:229px">Existing BE activity log captures editor identity but not the reason/comment per edit. Extension needed to persist a reason field for admin response overrides.</td><td id="gsIJ" class="">Bohdan / Del</td><td id="fem&lt;" class="">🔲 Pending</td></tr><tr id="f17a9b64-183e-4e9d-9a74-ef0be84ec73e" dir="ltr"><td id="gMur" class="">2</td><td id="LDZV" class="" style="width:229px">PDPA / NTU data-governance sign-off for sending student free-text responses to a third-party AI provider (per 2.1.9 Sentiment Analysis). Anonymisation requirement TBC.</td><td id="gsIJ" class="">Joji / Del</td><td id="fem&lt;" class="">🔲 Pending</td></tr><tr id="3fce3348-01c8-413c-a965-4ca334a93044" dir="ltr"><td id="gMur" class="">3</td><td id="LDZV" class="" style="width:229px">PDPA / NTU data-governance sign-off for unauthenticated public sharing of form analytics (per 2.1.10 Shareable View-Only Analytics Link). Aligns with the AI-vendor sign-off in row 2 — same approval pathway.</td><td id="gsIJ" class="">Joji / Del</td><td id="fem&lt;" class="">🔲 Pending</td></tr></tbody></table><h1 id="e9fc00bc-7d96-452b-8eae-60183a5e21ed" class="" dir="auto">Section 5: Backend Implementation Notes</h1><blockquote id="d1b640d4-1c83-473f-9d31-3b2620db58e8" class="" dir="auto">This section documents the backend schema and API endpoints implemented by the dev team. It is intended as a reference for frontend engineers and reviewers.</blockquote><h1 id="c057d393-2b4f-49d3-bd88-f98a986fc4ba" class="" dir="auto">Section 6: Requirements Traceability</h1><table id="ecd8bcc8-9493-4c62-b13f-f60d9bc1a494" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="e0805ad8-7622-4222-9af8-d56efd748bc8" dir="ltr"><th id="s}?e" class="simple-table-header-color simple-table-header">Req Ref</th><th id="hVMr" class="simple-table-header-color simple-table-header">Description</th><th id="^Sw&lt;" class="simple-table-header-color simple-table-header">Linear Ticket(s)</th><th id="cfYk" class="simple-table-header-color simple-table-header">Section in This Doc</th></tr></thead><tbody></tbody></table><p id="39594e81-8539-80d7-89ec-e4590d042707" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

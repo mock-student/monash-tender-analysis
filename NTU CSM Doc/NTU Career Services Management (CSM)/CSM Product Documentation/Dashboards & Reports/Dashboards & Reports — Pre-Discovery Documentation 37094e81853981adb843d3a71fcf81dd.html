@@ -1,0 +1,767 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Dashboards &amp; Reports — Pre-Discovery Documentation</title><meta name="data-notion-page-icon" content="📊"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%93%8A%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="37094e81-8539-81ad-b843-d3a71fcf81dd" class="page sans" data-notion-page-icon="📊"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="📊"></span></div><h1 class="page-title" dir="auto">Dashboards &amp; Reports — Pre-Discovery Documentation</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="7d956243-b499-438d-bbe3-424bbf893542" class="" dir="auto">1. Overview</h1><p id="07c7c8bc-9bb6-4243-976d-af3893742d23" class="" dir="auto">The Dashboards &amp; Reports module spans two distinct but related capabilities. <strong>Dashboards</strong> provide role-personalised, real-time operational views of student activity, placement outcomes, coaching data, and employer interactions — designed for moment-to-moment monitoring and in-platform navigation. <strong>Report Writer</strong> provides a flexible, exportable reporting engine enabling CAO staff and administrators to customise filter criteria, select fields dynamically, and generate structured data extracts from any module — designed for ad-hoc analysis, compliance reporting, and data exports. Several requirements, particularly the internship report suite (15 named reports), represent the dedicated reporting layer for the Internship Boards (WIE/GE) module and are documented here by milestone assignment.</p><p id="5f5a2c23-d385-40a9-9439-2d4d937d587e" class="" dir="auto"><strong>Users:</strong> Students · Employers · Career Coaches · IR Consultants · Faculty Supervisors · MSO/School Administrators · WIE Administrators · CAO Staff · Managers (L3) · Admins (L4)</p><hr id="2ea3802d-405c-4092-b963-acc9528ee6bb" dir="auto"/><h1 id="84013683-4d5e-44f1-a7e2-11f0833eaa81" class="" dir="auto">2. Key Open Questions for Discovery</h1><table id="bd5f82e3-f173-48c9-ad24-7ca488f11428" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="d38451ca-3125-42d2-88d1-d24e80dcf760" dir="ltr"><th id="CAK@" class="simple-table-header-color simple-table-header">#</th><th id="FQCa" class="simple-table-header-color simple-table-header">Question</th><th id="MpE}" class="simple-table-header-color simple-table-header">Refs</th></tr></thead><tbody><tr id="c6eff1f9-5348-41fb-b006-2e5b0786acd5" dir="ltr"><td id="CAK@" class="">1</td><td id="FQCa" class="">Is Report Writer a bespoke NTU-built tool or an integration with a third-party platform (e.g., Qlik Sense / InPlace per 6.1.1.132.1)?</td><td id="MpE}" class="">6.1.1.132.1, 6.1.1.133.1</td></tr><tr id="78daec56-c721-4351-bb0c-cc0a38c90c95" dir="ltr"><td id="CAK@" class="">2</td><td id="FQCa" class="">Are role-based landing pages (6.1.1.111.1) the same construct as the module-specific dashboards (6.1.2.1.8.x), or distinct pages with different data and layout?</td><td id="MpE}" class="">6.1.1.111.1, 6.1.2.1.8.a–c</td></tr><tr id="140a5055-b558-4fe6-b20c-1ecb61e15ede" dir="ltr"><td id="CAK@" class="">3</td><td id="FQCa" class="">Does the Student Landing Page in 6.1.1.122.1 (student views own activities) differ from the internship Student Dashboard in 6.2.2.1.2.e, or is it a single page with module-conditional sections?</td><td id="MpE}" class="">6.1.1.122.1, 6.2.2.1.2.e</td></tr><tr id="1a32d880-63ba-4772-b61a-fc8d577d558e" dir="ltr"><td id="CAK@" class="">4</td><td id="FQCa" class="">What is the relationship between the Manager&#x27;s student data snapshot (6.1.1.121.1) and the Student&#x27;s own landing page (6.1.1.122.1) — same page with role-gated data, or genuinely separate views?</td><td id="MpE}" class="">6.1.1.121.1, 6.1.1.122.1</td></tr><tr id="4cdae9a4-5906-44fe-aafb-1953b951ba1c" dir="ltr"><td id="CAK@" class="">5</td><td id="FQCa" class="">For the 15 internship-specific reports (6.2.2.1.3.a–o): are these pre-built templates generated within the Internship module, or do they all feed through the central Report Writer engine?</td><td id="MpE}" class="">6.2.2.1.3.a–o, 6.1.1.133.1</td></tr><tr id="1c7a4d88-0561-4328-b830-863f898b0814" dir="ltr"><td id="CAK@" class="">6</td><td id="FQCa" class="">What distinguishes dashboard “drill-down” — is it achieved by linking out to Report Writer, or is it native in-dashboard navigation?</td><td id="MpE}" class="">6.2.2.1.2.a, 6.1.1.139.2</td></tr><tr id="5037aa40-4edd-44a2-9e00-691d39922449" dir="ltr"><td id="CAK@" class="">7</td><td id="FQCa" class="">Is the Blacklisting Module (6.1.1.128.1) owned and managed from within Dashboards/Reports, or is it a Student Management feature that surfaces in reports?</td><td id="MpE}" class="">6.1.1.128.1</td></tr><tr id="431fd11e-4aa5-4cd9-83e0-849856e55bd7" dir="ltr"><td id="CAK@" class="">8</td><td id="FQCa" class="">What is the AI Chatbot scope — platform-wide user support, or specific to the Dashboards home screen?</td><td id="MpE}" class="">6.1.1.34.1</td></tr><tr id="accedd44-ffae-4308-add6-ad77890ee94e" dir="ltr"><td id="CAK@" class="">9</td><td id="FQCa" class="">Are the two mentorship process map refs (6.3.1.1.1–6.3.1.1.2) tagged under Report Writer because mentorship reporting feeds into this module? Confirm milestone assignment is intentional.</td><td id="MpE}" class="">6.3.1.1.1, 6.3.1.1.2</td></tr></tbody></table><hr id="e0bf6996-68b5-4373-bc8c-d8391bd96953" dir="auto"/><h1 id="43fbd43d-9b94-4743-b440-b6e6279ac24f" class="" dir="auto">3. Known Requirements</h1><p id="e1baa60c-69eb-41f7-830f-acea3d90dbb5" class="" dir="auto">Requirements are from <strong>Section 6.1 Career Platform (Milestone: Dashboards and Milestone: Report Writer)</strong> and <strong>Section 6.2 Internship Management (Milestone: Dashboards and Milestone: Report Writer)</strong> of the tender Original Requirements. C = Core; E = Enhancement.</p><h2 id="1a94665c-62da-4399-ae0c-9e0cfd2b6bc7" class="" dir="auto">Milestone: Dashboards</h2><h3 id="78152f1a-a753-48fb-9a9d-1e13940bd2b1" class="" dir="auto">Role-Based Landing Pages &amp; Home Dashboards</h3><table id="a3a171cf-ef20-408c-9320-a6fe908e2a69" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="4a783d08-2e5e-46ef-a5f2-a855cf13aba9" dir="ltr"><th id="E]WW" class="simple-table-header-color simple-table-header">Ref</th><th id="diFI" class="simple-table-header-color simple-table-header">C/E</th><th id="{vq?" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="715c28b2-140f-41fb-9319-fe31789db39d" dir="ltr"><td id="E]WW" class="">6.1.1.111.1</td><td id="diFI" class="">C</td><td id="{vq?" class="">System provides distinct landing pages for Managers, Students, and Employers.</td></tr><tr id="2833097e-af0e-433e-a6e4-83cb00373e7e" dir="ltr"><td id="E]WW" class="">6.1.1.110.1</td><td id="diFI" class="">E</td><td id="{vq?" class="">System provides a configurable/customisable user home page.</td></tr><tr id="ef814e82-3cfd-4f85-be32-ce3848ab3012" dir="ltr"><td id="E]WW" class="">6.1.1.103.1</td><td id="diFI" class="">E</td><td id="{vq?" class="">System provides a feature to bookmark and automatically save incomplete event pages or forms; saved drafts accessible on the user&#x27;s dashboard upon login.</td></tr><tr id="ace44995-fbb8-4e56-a103-38383235a492" dir="ltr"><td id="E]WW" class="">6.1.1.103.2</td><td id="diFI" class="">E</td><td id="{vq?" class="">Users can customise the content displayed on their dashboard according to their preferences.</td></tr><tr id="27b46d0b-e0d7-4def-a83b-dd0e39671b1a" dir="ltr"><td id="E]WW" class="">6.1.1.122.1</td><td id="diFI" class="">C</td><td id="{vq?" class="">Student Landing Page: students can view their past and current activities on the portal, equivalent to the Manager&#x27;s interface.</td></tr><tr id="012e4d89-2806-4577-9aa1-8fd7458504e2" dir="ltr"><td id="E]WW" class="">6.1.1.122.2</td><td id="diFI" class="">C</td><td id="{vq?" class="">System integrates with NTU&#x27;s Student Information System (SIS) to retrieve students&#x27; data.</td></tr></tbody></table><h3 id="7b972d8c-b9d0-4052-8406-34a5860218d7" class="" dir="auto">Module-Specific Dashboards — Career Services (CAO)</h3><table id="d0a32b94-4903-4e2a-a989-5c99f3fb563e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="7826ce7f-c219-4766-861f-ac509ccd5d46" dir="ltr"><th id="];&gt;}" class="simple-table-header-color simple-table-header">Ref</th><th id="CH&gt;h" class="simple-table-header-color simple-table-header">C/E</th><th id="Wll}" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="ff77f3ba-3b25-4e8c-b217-9b4e180dc3c9" dir="ltr"><td id="];&gt;}" class="">6.1.2.1.8.a</td><td id="CH&gt;h" class="">C</td><td id="Wll}" class="">Dashboard for Coaches (refer to section 6.1.2.2, screenshot pg. 54).</td></tr><tr id="7e6e9734-e3a8-4e59-a1b3-686b3eeae18d" dir="ltr"><td id="];&gt;}" class="">6.1.2.1.8.b</td><td id="CH&gt;h" class="">C</td><td id="Wll}" class="">Dashboard for Consultants (refer to section 6.1.2.2, screenshot pg. 55).</td></tr><tr id="0232bb57-6068-4b9b-a468-cb6b31305c52" dir="ltr"><td id="];&gt;}" class="">6.1.2.1.8.c</td><td id="CH&gt;h" class="">C</td><td id="Wll}" class="">Dashboard for Students (refer to section 6.1.2.2, screenshot pg. 56).</td></tr></tbody></table><h3 id="8c389235-37b5-48b6-8e46-e4922f83c562" class="" dir="auto">Module-Specific Dashboards — Internship (WIE)</h3><table id="2f73e3ff-0556-4ce4-9d19-21605d0dd87f" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="00abf5bb-d1f6-4bb6-852a-968e0c2c42bb" dir="ltr"><th id="C&gt;DW" class="simple-table-header-color simple-table-header">Ref</th><th id="W`BF" class="simple-table-header-color simple-table-header">C/E</th><th id="p^~:" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="6793f99c-2156-4fc4-8dac-21a8d3a9e002" dir="ltr"><td id="C&gt;DW" class="">6.2.2.1.2.a</td><td id="W`BF" class="">C</td><td id="p^~:" class=""><strong>Employer Dashboard:</strong> Employer view — open campaigns (CB and NCB), current interns, past interns, placement letters, pending AWO assessments, previous postings, new applications, graduating students (3/6-month interest to hire). CAO Staff view — placement outcome drill-downs (eligible, registered, opportunities, placed, applied, opportunity ratio, placement ratio, at-risk), employer performance (company rating, no. of opportunities, placement ratio, AWO rating, average allowance), with filters by college, school, programme, academic year, requirement group, industry type, period, tier, WSDEG organisation.</td></tr><tr id="caa4eb2f-b521-403f-99d9-1da4fccbf688" dir="ltr"><td id="C&gt;DW" class="">6.2.2.1.2.b</td><td id="W`BF" class="">C</td><td id="p^~:" class=""><strong>Faculty Dashboard:</strong> Faculty view — placement outcomes limited to their discipline (students placed, faculty allocation, pulse survey at risk, AWO at risk, placement details including location, organisation supervisor, faculty supervisor, opportunity description). During-internship assessment stage tracker (OSD → DTP → Journal 1 → Journal 2 → Student Satisfaction Survey → Final Journal). Completed stages grey out. Filters by college, school, programme, academic year, requirement group.</td></tr><tr id="a604ba8f-0655-44ad-a4df-b30a4c6e707d" dir="ltr"><td id="C&gt;DW" class="">6.2.2.1.2.c</td><td id="W`BF" class="">C</td><td id="p^~:" class=""><strong>Management Admin Dashboard</strong> (refer to screenshot pg. 93).</td></tr><tr id="32b27240-1705-4f99-9da6-0c055ab0bef0" dir="ltr"><td id="C&gt;DW" class="">6.2.2.1.2.d</td><td id="W`BF" class="">C</td><td id="p^~:" class=""><strong>MSO Dashboard (School Admin):</strong> Placement outcomes limited to their discipline — eligible, registered, opportunities, students placed/applied, opportunity ratio, placement ratio, applications to approve/reject, history of approved/rejected applications, faculty allocation, placement at risk. Filters by college, school, programme, academic year, requirement group, CB and NCB internship.</td></tr><tr id="38aed49d-004b-4b8d-bbf9-9fa5166e76a2" dir="ltr"><td id="C&gt;DW" class="">6.2.2.1.2.e</td><td id="W`BF" class="">C</td><td id="p^~:" class=""><strong>Student Dashboard:</strong> Pre-registration checklist (eligibility status, safety quiz, register for internship period, request to change period). Stages of Application overview. During-internship assessment stage tracker (OSD → DTP → Journal 1 → Journal 2 → Student Satisfaction Survey → Final Journal; completed stages greyed out). After-internship: Performance Report. (Refer to screenshots pg. 95–96.)</td></tr></tbody></table><h3 id="fb70e140-0ddb-458a-9735-01501671b250" class="" dir="auto">AI &amp; Platform Features</h3><table id="11100bce-7643-4e79-ada6-7f8ceb1d11e9" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="3f24291b-26b8-4efb-b29a-ed6d35ab2264" dir="ltr"><th id="MQL[" class="simple-table-header-color simple-table-header">Ref</th><th id="Adaa" class="simple-table-header-color simple-table-header">C/E</th><th id="NaGb" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="ba0929bb-a08d-46b8-8f2a-1b84649fd303" dir="ltr"><td id="MQL[" class="">6.1.1.34.1</td><td id="Adaa" class="">C</td><td id="NaGb" class="">System integrates with NTU AI Chatbot for enhanced user support.</td></tr></tbody></table><h2 id="8e2db3e2-a649-4629-96eb-693db4aa84b6" class="" dir="auto">Milestone: Report Writer</h2><h3 id="5ea8558a-f638-4d5f-b5a7-f915a25e26de" class="" dir="auto">Report Writer Platform Capabilities</h3><table id="ea428b71-052d-4df2-a704-9f90bd60361a" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="4312abb4-9a9f-4ab9-b5de-10832ffc1ed5" dir="ltr"><th id="O_w`" class="simple-table-header-color simple-table-header">Ref</th><th id="VmXZ" class="simple-table-header-color simple-table-header">C/E</th><th id="f&lt;rn" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="6d2f49ae-0d65-4e8b-85ba-691735e23b16" dir="ltr"><td id="O_w`" class="">6.1.1.133.1</td><td id="VmXZ" class="">C</td><td id="f&lt;rn" class="">System includes a Report Writer allowing users to customise report content and define dynamic multiple filter criteria.</td></tr><tr id="67f5f1cf-714d-4b6f-8d85-d4b0d9cbe3a3" dir="ltr"><td id="O_w`" class="">6.1.1.134.1</td><td id="VmXZ" class="">C</td><td id="f&lt;rn" class="">Each report offers a dynamic filtering option; users select desired filter parameters and selection criteria.</td></tr><tr id="c5993a54-8c1e-4be9-9b0f-c989c45d2cea" dir="ltr"><td id="O_w`" class="">6.1.1.135.1</td><td id="VmXZ" class="">C</td><td id="f&lt;rn" class="">System provides a dynamic filtering option to select employers or students as the targeted group for events, workshops, clinics, and modules.</td></tr><tr id="2f493b6e-25ab-42ca-bc50-3bc0b2694d0b" dir="ltr"><td id="O_w`" class="">6.1.1.136.1</td><td id="VmXZ" class="">C</td><td id="f&lt;rn" class="">All reports are exportable in CSV and/or XLS format.</td></tr><tr id="35b1147e-4abd-4405-8e4c-028d57619f67" dir="ltr"><td id="O_w`" class="">6.1.1.102.1</td><td id="VmXZ" class="">C</td><td id="f&lt;rn" class="">Users can dynamically select specific fields from dropdown lists based on defined criteria to customise reports.</td></tr><tr id="4b552dfd-20ee-44dc-bba2-177a51343a82" dir="ltr"><td id="O_w`" class="">6.1.1.108.1</td><td id="VmXZ" class="">C</td><td id="f&lt;rn" class="">All reports shall include the &#x27;Industry&#x27; field.</td></tr><tr id="95ec2dc9-3cf9-48bc-a851-f283d197511f" dir="ltr"><td id="O_w`" class="">6.1.1.109.1</td><td id="VmXZ" class="">C</td><td id="f&lt;rn" class="">System has configurable filters: Schools, Resource Type, Topics, Subject Matter — based on access role.</td></tr><tr id="c51dcbcd-db93-4b40-bde2-5a08733135c1" dir="ltr"><td id="O_w`" class="">6.1.1.132.1</td><td id="VmXZ" class="">C</td><td id="f&lt;rn" class="">Central database for the data team: field management (add/remove fields), granular access control (per-field view/edit permissions), API integration with tools such as Qlik Sense/InPlace, robust filtering and sorting for data analysis.</td></tr><tr id="df7b8503-56d3-4488-960c-99ab0c44e2d7" dir="ltr"><td id="O_w`" class="">6.1.1.139.1</td><td id="VmXZ" class="">E</td><td id="f&lt;rn" class="">System conducts sentiment analysis based on open-text verbatim.</td></tr><tr id="f2aa09ba-eaca-419f-be60-11cab2dc8fe4" dir="ltr"><td id="O_w`" class="">6.1.1.139.2</td><td id="VmXZ" class="">E</td><td id="f&lt;rn" class="">Report can draw individual student data to analyse activity across modules (e.g., number of workshops attended, open houses attended).</td></tr></tbody></table><h3 id="0958d499-b8d0-4141-b624-ec12d73fd51b" class="" dir="auto">Student &amp; User Data Reports</h3><table id="c3e2d4b3-04f6-4552-9909-98e195e62e0c" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="e6933cd8-d80a-4352-80dc-8c86e4886145" dir="ltr"><th id="Z?nR" class="simple-table-header-color simple-table-header">Ref</th><th id="NZnx" class="simple-table-header-color simple-table-header">C/E</th><th id="ley:" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="bf0aa112-c7f2-4213-a948-9b7f0be0250d" dir="ltr"><td id="Z?nR" class="">6.1.1.121.1</td><td id="NZnx" class="">C</td><td id="ley:" class="">Student Data Snapshot (Manager view): summary of student activities including student particulars (name, school, email, matric, mobile, nationality, gender, degree, year of study, graduation month/year), default resume, blacklist status and reason, 1:1 coaching sessions, SGCC sessions, briefings, workshops, internships applied, jobs applied, CAO workshops and events attended. Data snapshot view differs by user type (Manager, Student, Employer).</td></tr><tr id="80e514bc-7d42-47c8-98e6-ad1130702640" dir="ltr"><td id="Z?nR" class="">6.1.1.128.1</td><td id="NZnx" class="">C</td><td id="ley:" class="">System includes a Blacklisting Module with both Auto and Manual uplifting of blacklist status.</td></tr><tr id="e64a8a94-60bb-4fe3-84d1-4a5eb46e696a" dir="ltr"><td id="Z?nR" class="">6.1.1.105.1</td><td id="NZnx" class="">E</td><td id="ley:" class="">Administrators can view a list of CAO events attended by an employer or student on their profile page (career fairs, recruitment talks, workshops, consultations), with filter by Employer or Student.</td></tr><tr id="d0393c70-7809-4bfc-bda7-60b43c201cf8" dir="ltr"><td id="Z?nR" class="">6.1.2.1.3.a</td><td id="NZnx" class="">C</td><td id="ley:" class="">Student Details Report (student status, school/programme, student details).</td></tr></tbody></table><h3 id="33c38e18-5aad-4a09-a618-a800e0f4df63" class="" dir="auto">Events, Resources &amp; Engagement Reports</h3><table id="21f1d5a3-c03d-41df-8fa6-2462886289f4" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="eb914c5d-d0ec-4618-bbc8-a482e294dd6a" dir="ltr"><th id="Ihus" class="simple-table-header-color simple-table-header">Ref</th><th id="P[km" class="simple-table-header-color simple-table-header">C/E</th><th id="Pkxm" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="5137c88c-2681-4491-adcc-42f7d60e419d" dir="ltr"><td id="Ihus" class="">6.1.2.1.4.a</td><td id="P[km" class="">C</td><td id="Pkxm" class="">List of Employers (event type, industry, event details, employer details).</td></tr><tr id="2b87d2e5-d3e7-4ee9-98ef-d419becdc495" dir="ltr"><td id="Ihus" class="">6.1.2.1.4.b</td><td id="P[km" class="">C</td><td id="Pkxm" class="">List of Student Registrations (event type, event details, student details).</td></tr><tr id="10bd9a9d-e3c8-439b-83dc-b1f8c5035099" dir="ltr"><td id="Ihus" class="">6.1.2.1.4.c</td><td id="P[km" class="">C</td><td id="Pkxm" class="">Attendance List (event type, event details, company/employer name, student details including email, course, school, college, year of study, attendance yes/no).</td></tr><tr id="7cfc076c-64aa-4d7f-a74b-fd956538464f" dir="ltr"><td id="Ihus" class="">6.1.2.1.4.d</td><td id="P[km" class="">C</td><td id="Pkxm" class="">Employer Feedback (event type, industry, event details, feedback questions and ratings).</td></tr><tr id="da57db26-fbb2-44ae-92df-4b0af7d1efb0" dir="ltr"><td id="Ihus" class="">6.1.2.1.4.e</td><td id="P[km" class="">C</td><td id="Pkxm" class="">Student/Attendee Feedback (event type, industry, event details, feedback questions and ratings).</td></tr><tr id="c1f89bec-ae4a-47de-ab0f-2c34960f86cf" dir="ltr"><td id="Ihus" class="">6.1.2.1.4.f</td><td id="P[km" class="">C</td><td id="Pkxm" class="">List of Events (event type, industry, event status, event details).</td></tr><tr id="5592e843-d28b-4960-a50c-120fa56cd267" dir="ltr"><td id="Ihus" class="">6.1.2.1.4.g</td><td id="P[km" class="">C</td><td id="Pkxm" class="">Calendar of Events: total events per month, registration conversion rates (views → registrations), popular event categories, popular event timings.</td></tr><tr id="b94cfa70-6e4e-415d-a48e-ece0679b0cf8" dir="ltr"><td id="Ihus" class="">6.1.2.1.5.a</td><td id="P[km" class="">C</td><td id="Pkxm" class="">List of Resources (resource type, resource details) with user attributes: by school/college, year of study, duration spent, time logged on, device used, external link conversion.</td></tr><tr id="3ffde7cb-51db-4d18-b3cd-7966a200a570" dir="ltr"><td id="Ihus" class="">6.1.2.1.6.c</td><td id="P[km" class="">C</td><td id="Pkxm" class="">Engagement report: top accessed content (filterable by duration), content students spent most time on, number of views/downloads by resource type and topic.</td></tr></tbody></table><h3 id="7e921c1a-ccef-4997-8ba0-fd1722eab1fa" class="" dir="auto">Internship Reports (WIE)</h3><table id="caa0eb25-7cd6-4345-8db7-bc1e16ab3504" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="6dfb7f1e-8d10-4b6c-b961-5b5eadc7e68a" dir="ltr"><th id="`hve" class="simple-table-header-color simple-table-header">Ref</th><th id="PgRQ" class="simple-table-header-color simple-table-header">C/E</th><th id="SW=M" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="3973ee35-a3a9-4f01-b75b-ccb4955a7d67" dir="ltr"><td id="`hve" class="">6.2.2.1.3.a</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">Internship Performance Report (refer to section 6.2.2.2, screenshot pg. 97–98).</td></tr><tr id="5720fc6d-e53f-4cc1-b3dc-c5d8f7b67c66" dir="ltr"><td id="`hve" class="">6.2.2.1.3.b</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">Allocation Group Report (refer to section 6.2.2.2, table pg. 99–102).</td></tr><tr id="43d92969-4650-494c-a8f7-bdb2b41e5634" dir="ltr"><td id="`hve" class="">6.2.2.1.3.c</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">Assessment Report (refer to section 6.2.2.2).</td></tr><tr id="56677894-72b7-4bf5-92dc-9c59005aab21" dir="ltr"><td id="`hve" class="">6.2.2.1.3.d</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">Assessment Tracking Report (refer to section 6.2.2.2).</td></tr><tr id="369776ed-f1a5-45a6-9142-752a0f121ab9" dir="ltr"><td id="`hve" class="">6.2.2.1.3.e</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">Eligibility Report (refer to section 6.2.2.2).</td></tr><tr id="f25270f6-4cee-408d-92e9-c1a09e807e79" dir="ltr"><td id="`hve" class="">6.2.2.1.3.f</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">Faculty Allocation Report (refer to section 6.2.2.2).</td></tr><tr id="cea64233-21d2-4481-b580-ee4e057bc56d" dir="ltr"><td id="`hve" class="">6.2.2.1.3.g</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">Opportunity Report (refer to section 6.2.2.2).</td></tr><tr id="815fb52e-e191-4108-8248-056fac8e41d3" dir="ltr"><td id="`hve" class="">6.2.2.1.3.h</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">Placement Tracking Report (refer to section 6.2.2.2).</td></tr><tr id="1ad5b17e-5e1e-41eb-8328-2eba375a5e47" dir="ltr"><td id="`hve" class="">6.2.2.1.3.i</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">Self-sourced Application Report (refer to section 6.2.2.2).</td></tr><tr id="fe9d41da-9105-4cda-94d4-ea8c3dd924a9" dir="ltr"><td id="`hve" class="">6.2.2.1.3.j</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">Student Satisfaction Survey Report (refer to section 6.2.2.2).</td></tr><tr id="7d7acf99-39fe-4863-9611-2c7851459645" dir="ltr"><td id="`hve" class="">6.2.2.1.3.k</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">WSDeg Placement List to School/OAS (refer to section 6.2.2.2).</td></tr><tr id="ab86ac59-df38-4d06-ade0-213953ca3134" dir="ltr"><td id="`hve" class="">6.2.2.1.3.l</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">WSDeg Employer List (refer to section 6.2.2.2).</td></tr><tr id="756a83f1-c5a7-43ad-943f-5213d18e1d52" dir="ltr"><td id="`hve" class="">6.2.2.1.3.m</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">WSDeg Student List (refer to section 6.2.2.2).</td></tr><tr id="f2a7094b-6018-4053-bb28-21766b6d2b42" dir="ltr"><td id="`hve" class="">6.2.2.1.3.n</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">Placement At Risk Report (refer to section 6.2.2.2).</td></tr><tr id="af230f52-5771-41aa-b1f9-b7ec091ca76c" dir="ltr"><td id="`hve" class="">6.2.2.1.3.o</td><td id="PgRQ" class="">C</td><td id="SW=M" class="">AWO At Risk Report (refer to section 6.2.2.2).</td></tr></tbody></table><h3 id="8c3c6c81-78b1-4687-8c2b-c31862102730" class="" dir="auto">External &amp; Intra-NTU Reports</h3><table id="1892c99d-9ef4-4a01-85de-e24ab7516c56" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="d7ede02f-fda5-4ae0-8abe-15f3b2ed8aff" dir="ltr"><th id="`@Jn" class="simple-table-header-color simple-table-header">Ref</th><th id="PEIF" class="simple-table-header-color simple-table-header">C/E</th><th id="coAx" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="0ab12a2b-7183-4c50-99bf-832aa05fe722" dir="ltr"><td id="`@Jn" class="">6.2.2.1.4.a</td><td id="PEIF" class="">C</td><td id="coAx" class="">MOE Life Skills Report (refer to section 6.2.2.2, table pg. 102–103).</td></tr><tr id="5e6e9a8b-b56e-4f38-a2e5-528b76408f71" dir="ltr"><td id="`@Jn" class="">6.2.2.1.4.b</td><td id="PEIF" class="">C</td><td id="coAx" class="">QS Employer Listing Report (refer to section 6.2.2.2).</td></tr></tbody></table><h3 id="6299da73-cd5e-4ee0-9d49-9b828ced1b35" class="" dir="auto">Process References</h3><blockquote id="69620a75-d4d8-456b-8df1-5090fd899908" class="" dir="auto"><em>Note: These process map refs are assigned Milestone: Report Writer in the Original Requirements. Milestone assignment should be confirmed in discovery — they may have been included here because mentorship reporting feeds into this module.</em></blockquote><table id="34dd1c11-9b05-4c14-a54c-8e4e0035756d" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="ba7355aa-805c-441a-a16f-305d7e16012d" dir="ltr"><th id="~=jc" class="simple-table-header-color simple-table-header">Ref</th><th id="qSpX" class="simple-table-header-color simple-table-header">C/E</th><th id="zYTu" class="simple-table-header-color simple-table-header">Requirement</th></tr></thead><tbody><tr id="e0d5840f-641d-4c87-b10b-b50cb9313ecb" dir="ltr"><td id="~=jc" class="">6.3.1.1.1</td><td id="qSpX" class="">C</td><td id="zYTu" class="">Mentorship – Mentor Account Sign-up Workflow (refer to Part 2 Annex A Appendix 1).</td></tr><tr id="f68b44cf-612f-404f-a719-819037026471" dir="ltr"><td id="~=jc" class="">6.3.1.1.2</td><td id="qSpX" class="">C</td><td id="zYTu" class="">Mentorship – Mentorship Workflow (refer to Part 2 Annex A Appendix 1).</td></tr></tbody></table><hr id="a4f6c59c-e1a8-4267-bed1-53e4aadd67f1" dir="auto"/><h1 id="cb9d22ce-ee67-4ef3-8ed1-703c9f01e344" class="" dir="auto">4. Prototype Scope for Vetrick</h1><ol type="1" id="3596a115-01da-4836-98b4-7987e961bbdc" class="numbered-list" start="1" dir="auto"><li><strong>Role-based landing pages</strong> — distinct home views per role: Manager (student data snapshot, pinned modules, draft saves); Student (past/current activity summary); Employer (open postings, current/past interns, placement letters); Coach (upcoming sessions, coaching notes, attendance stats)</li></ol><ol type="1" id="c2e6e062-ddb2-44d5-ac92-f3ef8e40e947" class="numbered-list" start="2" dir="auto"><li><strong>Customisable dashboard home</strong> — user pins/bookmarks module shortcuts, re-orders widgets, resumes saved form drafts from the home screen</li></ol><ol type="1" id="4a877a40-0592-400f-bc6f-354ee8c9ada1" class="numbered-list" start="3" dir="auto"><li><strong>Coach and Consultant dashboards</strong> — session history, upcoming appointments, attendance tracking, coaching notes summary; confirm with SGCC designs whether these are extensions of the same component (6.1.2.1.8.a–b)</li></ol><ol type="1" id="41336344-8041-4aae-8a1a-45d8f40d10ba" class="numbered-list" start="4" dir="auto"><li><strong>Internship dashboards — Employer and CAO Staff views</strong> — Employer: campaign status, current intern list, AWO pending tasks, graduation interest-to-hire list; CAO Staff: placement outcome metrics with drill-down, employer performance ratings, at-risk alerts filterable by college/school/programme (6.2.2.1.2.a)</li></ol><ol type="1" id="c19442af-e67a-47d6-ac3d-98582e57921a" class="numbered-list" start="5" dir="auto"><li><strong>Internship dashboards — Faculty and MSO/School Admin views</strong> — Faculty: placement outcomes scoped to their discipline, during-internship assessment stage tracker with completed stages greyed out; MSO: approval queue for applications, allocation status, placement at risk view (6.2.2.1.2.b, 6.2.2.1.2.d)</li></ol><ol type="1" id="e5cc29a4-dbcf-46a0-86a8-0841b48b595a" class="numbered-list" start="6" dir="auto"><li><strong>Internship dashboard — Student view</strong> — pre-registration checklist (eligibility, safety quiz, period registration), visual stages-of-application tracker, during-internship assessment to-do list with greyed completed stages, post-internship performance report access (6.2.2.1.2.e)</li></ol><ol type="1" id="292dc429-fcc4-4345-9e6f-6e67f1856016" class="numbered-list" start="7" dir="auto"><li><strong>Management Admin Dashboard</strong> — high-level overview screen; confirm scope and contents in discovery (6.2.2.1.2.c)</li></ol><ol type="1" id="83863d64-0746-4024-9411-ab64e3b56803" class="numbered-list" start="8" dir="auto"><li><strong>Report Writer engine</strong> — field selector UI with dynamic dropdowns, multi-criteria filter panel (school, industry, resource type, topic, date range, role), export to CSV/XLS, save and reuse filter combinations (6.1.1.133.1, 6.1.1.134.1, 6.1.1.136.1)</li></ol><ol type="1" id="f7265c81-e530-4b09-8897-bbf0abcc5730" class="numbered-list" start="9" dir="auto"><li><strong>Pre-built report templates (Career Services)</strong> — Student Details, Events suite (registrations, attendance, feedback, event list, calendar), Resources/Engagement; confirm whether these are Report Writer presets or standalone pages (6.1.2.1.3.a, 6.1.2.1.4.a–g, 6.1.2.1.5.a, 6.1.2.1.6.c)</li></ol><ol type="1" id="2150b4d1-59a4-496f-8e68-912bc2d6ac0b" class="numbered-list numbered-list-digits-2" start="10" dir="auto"><li><strong>Internship report suite (WIE)</strong> — 15 named reports: Internship Performance, Allocation Group, Assessment, Assessment Tracking, Eligibility, Faculty Allocation, Opportunity, Placement Tracking, Self-sourced Application, Student Satisfaction Survey, WSDeg lists ×3, Placement at Risk, AWO at Risk; confirm whether generated via Report Writer or module-native (6.2.2.1.3.a–o)</li></ol><ol type="1" id="41452e28-3a5e-4f1d-a0bb-be06352a035a" class="numbered-list numbered-list-digits-2" start="11" dir="auto"><li><strong>Student Data Snapshot (Manager view)</strong> — drill-down student profile showing full cross-module activity: coaching sessions, SGCC, internships, jobs, events, blacklist status (6.1.1.121.1)</li></ol><ol type="1" id="02e09145-c0fa-4c79-8afa-963f59e6a7a4" class="numbered-list numbered-list-digits-2" start="12" dir="auto"><li><strong>External report exports</strong> — MOE Life Skills and QS Employer Listing outputs; confirm field structure and delivery format (6.2.2.1.4.a–b)</li></ol><ol type="1" id="aeb87e0d-0483-4fbc-a425-face5dc8c981" class="numbered-list numbered-list-digits-2" start="13" dir="auto"><li><strong>AI Chatbot integration</strong> — in-platform chat widget for user support; confirm placement (global overlay vs. dashboard home only) and NTU AI Chatbot integration spec (6.1.1.34.1)</li></ol><ol type="1" id="65f7f4d5-c386-4edd-8557-c64438bca516" class="numbered-list numbered-list-digits-2" start="14" dir="auto"><li><strong>Sentiment analysis view</strong> <em>(Enhancement)</em> — verbatim feedback analysis surface; individual student activity drill-down across modules (6.1.1.139.1–139.2)</li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

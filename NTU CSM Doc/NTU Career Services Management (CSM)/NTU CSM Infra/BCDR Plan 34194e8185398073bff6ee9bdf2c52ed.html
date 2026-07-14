@@ -1,0 +1,767 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>BCDR Plan</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="34194e81-8539-8073-bff6-ee9bdf2c52ed" class="page sans"><header><h1 class="page-title" dir="auto">BCDR Plan</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><p id="34494e81-8539-8013-bd1c-c2ed7b525953" class="" dir="auto"><br/><br/>Template from <a href="http://scruit.io">scruit.io</a> team: We should not follow exactly, we can have our own template instead.</p><figure id="34494e81-8539-80c4-9681-e75e4523ed0e" class="link-to-page"><a href="BCDR%20Plan/Session%201%2016%2004%202026%2034494e81853980c49681e75e4523ed0e.html" data-notion-page-id="34494e81-8539-80c4-9681-e75e4523ed0e" data-notion-space-id="d2b8e27e-38bf-4cd9-ac4d-9b3d566d7f43">Session 1: 16.04.2026</a></figure><p id="34494e81-8539-8005-9294-fd9a491e154b" class="" dir="auto"><a href="https://docs.google.com/document/d/1CPVmB2Gs0wFzWfaqhzuAiMLkc-TB26y1/edit">https://docs.google.com/document/d/1CPVmB2Gs0wFzWfaqhzuAiMLkc-TB26y1/edit</a></p><nav id="34494e81-8539-80c2-b3bd-d0beb504f1e9" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#34494e81-8539-8001-b31d-c14f6bbdc1bf">NTU CSM Platform — Disaster Recovery (DR) Drill</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34494e81-8539-800f-86e2-c249c9a030d5">Step-by-Step Execution Runbook</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-8007-8344-ff71c6ab44c2"><em>Focus: ECS (Fargate) &amp; RDS PostgreSQL | Multi-AZ within ap-southeast-1 | Drill Environment: QA</em></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34494e81-8539-80d2-8336-d702b4c3d42a">Section 1: Infrastructure Inventory</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-80ab-9739-ffdcb5d4319e">1.1 ECS Fargate (Backend API)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-805a-bf9f-fda43d1580fd">1.2 RDS PostgreSQL (Database)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-80d6-8081-d4c20651da96">1.3 VPC &amp; Networking (QA)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-80f2-944f-f3cdf6d36c24">1.4 IaC &amp; CI/CD</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34494e81-8539-8057-b71a-e9b2d0eaf764">Section 2: DR Scenarios Overview</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34494e81-8539-808e-a58d-f0c0a7f7b01d">Section 3: Pre-Drill Preparation (Day Before)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34494e81-8539-8042-90c9-def4733e290a">Section 4: Scenario A — RDS Multi-AZ Failover</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-809c-a949-eb5520857d11">4.1 Record Pre-Failover State</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-8072-8ca1-f42a5202257b">4.2 Start Monitoring</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-8069-8d6d-ed0d5afa3973">4.3 Trigger Failover</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-808f-b8c0-cfb6e7e60f27">4.4 Monitor Failover Progress</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-80d9-b58e-dbe4aec1ee28">4.5 Verify Failover Completed</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-803c-bf15-e2ad7f8f5eba">4.6 Verify Application Recovery</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-8022-b924-c3c9549eb11a">4.7 Check ECS Task Logs for Reconnection</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-80b1-9190-cabe4cb05d9f">4.8 Scenario A — Results</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34494e81-8539-809c-9315-cbaf6cc04a9a">Section 5: Scenario B — ECS Service Recovery</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-807d-af75-ffe8af30de1d">5.1 Record Pre-Disruption State</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-8049-b27e-e57606fc59f6">5.2 Start Monitoring</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-80af-84ee-fd3a2a09b3b9">5.3 Simulate Task Failure</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-8010-9b7b-ee28263f845e">5.4 Monitor ECS Recovery</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-80bd-a430-da1556a6c9ac">5.5 Verify New Task is Healthy in ALB</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-80f0-a1d7-f54973e7feec">5.6 Verify Application Recovery</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-8050-b114-f6070daaa730">5.7 Verify New Task Details</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-80b9-8b17-fd82a7b71cad">5.8 Scenario B — Results</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34494e81-8539-802b-ab94-d37b7888d32e">Section 6: Post-Drill Validation</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-8001-9d45-fc8df840458d">6.1 Full Functional Smoke Test</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-8063-9c46-c58af30cd469">6.2 Verify Data Integrity</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-80f0-9dc9-ee10a9d71e1b">6.3 Verify RDS Multi-AZ Still Active</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#34494e81-8539-8030-9fad-f27de866a4fb">6.4 Review CloudWatch Metrics</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34494e81-8539-8006-bb0c-f70479770bfb">Section 7: CI/CD Redeployment (Extra Validation)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34494e81-8539-8096-b6f8-d1b4c25dbcbe">Section 8: Rollback Procedures (If Drill Causes Persistent Issues)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34494e81-8539-8037-905c-d78b4c6558dd">Section 9: Drill Results Summary</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34494e81-8539-80ae-8ea8-f030eebf7f75">Section 10: DR Drill Report Template</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#34494e81-8539-805a-9fe5-c40ea74adea3">Section 11: Key Risks and Limitations</a></div></nav><h1 id="34494e81-8539-8001-b31d-c14f6bbdc1bf" class="" dir="auto">NTU CSM Platform — Disaster Recovery (DR) Drill</h1><h2 id="34494e81-8539-800f-86e2-c249c9a030d5" class="" dir="auto">Step-by-Step Execution Runbook</h2><h3 id="34494e81-8539-8007-8344-ff71c6ab44c2" class="" dir="auto"><em>Focus: ECS (Fargate) &amp; RDS PostgreSQL | Multi-AZ within ap-southeast-1 | Drill Environment: QA</em></h3><hr id="34494e81-8539-80e0-abff-c31d580cfaf5" dir="auto"/><table id="34494e81-8539-80f2-bc33-c6ce5638d991" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80d7-96ec-e68ee35ab6ca" dir="ltr"><th id="O\v&gt;" class="simple-table-header-color simple-table-header">Field</th><th id="|YZz" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34494e81-8539-8007-88bf-ca151c028217" dir="ltr"><td id="O\v&gt;" class=""><strong>Application</strong></td><td id="|YZz" class="">NTU Platform (Backend API + Frontend)</td></tr><tr id="34494e81-8539-805a-a825-e6a44d1d1782" dir="ltr"><td id="O\v&gt;" class=""><strong>AWS Account</strong></td><td id="|YZz" class="">932372094708 (Skills Union NTU)</td></tr><tr id="34494e81-8539-8056-9d79-ff14e3d8ed96" dir="ltr"><td id="O\v&gt;" class=""><strong>Region</strong></td><td id="|YZz" class="">ap-southeast-1 (Singapore) — single region, multi-AZ only</td></tr><tr id="34494e81-8539-8028-afcf-debc31133111" dir="ltr"><td id="O\v&gt;" class=""><strong>Drill Environment</strong></td><td id="|YZz" class="">QA (not production)</td></tr><tr id="34494e81-8539-809f-9bb9-e3a38b8bf8ce" dir="ltr"><td id="O\v&gt;" class=""><strong>ISO Requirement</strong></td><td id="|YZz" class="">Business Continuity / Disaster Recovery validation</td></tr><tr id="34494e81-8539-80fe-8a76-f687acb4a09e" dir="ltr"><td id="O\v&gt;" class=""><strong>Date Prepared</strong></td><td id="|YZz" class=""></td></tr></tbody></table><hr id="34494e81-8539-8028-a477-cd6e00e6a174" dir="auto"/><h2 id="34494e81-8539-80d2-8336-d702b4c3d42a" class="" dir="auto">Section 1: Infrastructure Inventory</h2><h3 id="34494e81-8539-80ab-9739-ffdcb5d4319e" class="" dir="auto">1.1 ECS Fargate (Backend API)</h3><table id="34494e81-8539-809f-99ac-c30a600745a8" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80a7-bd0f-cf953de15172" dir="ltr"><th id="KkS_" class="simple-table-header-color simple-table-header">Attribute</th><th id="?Yn=" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34494e81-8539-80a0-9f71-db9b9894bb9e" dir="ltr"><td id="KkS_" class=""><strong>Cluster</strong></td><td id="?Yn=" class=""><code>ntu-qa</code></td></tr><tr id="34494e81-8539-80a5-b281-e9113e4f0987" dir="ltr"><td id="KkS_" class=""><strong>Service</strong></td><td id="?Yn=" class=""><code>ntu-qa-service</code></td></tr><tr id="34494e81-8539-8045-9d91-f0d63d325d54" dir="ltr"><td id="KkS_" class=""><strong>Launch Type</strong></td><td id="?Yn=" class="">Fargate</td></tr><tr id="34494e81-8539-80d4-9917-d1cd88a0a731" dir="ltr"><td id="KkS_" class=""><strong>Running Tasks</strong></td><td id="?Yn=" class="">1 (512 CPU / 1024 MiB)</td></tr><tr id="34494e81-8539-80d5-ae13-c3b66e855f76" dir="ltr"><td id="KkS_" class=""><strong>ECR Repository</strong></td><td id="?Yn=" class=""><code>932372094708.dkr.ecr.ap-southeast-1.amazonaws.com/ntu-qa</code></td></tr><tr id="34494e81-8539-8031-a435-f202a54232ff" dir="ltr"><td id="KkS_" class=""><strong>Load Balancer</strong></td><td id="?Yn=" class="">ALB with HTTPS (port 443) termination, HTTP-to-HTTPS redirect</td></tr><tr id="34494e81-8539-8044-852e-e29cdb821720" dir="ltr"><td id="KkS_" class=""><strong>Health Check</strong></td><td id="?Yn=" class=""><code>/health</code> on port 3000</td></tr><tr id="34494e81-8539-8018-99f1-cf6f6f6a2cdd" dir="ltr"><td id="KkS_" class=""><strong>Circuit Breaker</strong></td><td id="?Yn=" class="">Enabled with rollback</td></tr><tr id="34494e81-8539-8016-ad85-cf119a084fea" dir="ltr"><td id="KkS_" class=""><strong>Service Security Group</strong></td><td id="?Yn=" class="">Inbound port 3000 from ALB SG only</td></tr><tr id="34494e81-8539-809e-a4df-d596439e5c69" dir="ltr"><td id="KkS_" class=""><strong>ALB IP Restriction</strong></td><td id="?Yn=" class="">NTU IP range (155.69.0.0/16) and VPN static IP</td></tr><tr id="34494e81-8539-801a-995a-ec4529f219ea" dir="ltr"><td id="KkS_" class=""><strong>CI/CD</strong></td><td id="?Yn=" class="">GitHub Actions → ECR → ECS (<code>platform-backend-v2</code>, <code>qa</code> branch)</td></tr><tr id="34494e81-8539-80b4-ab2f-e9cf04945cf7" dir="ltr"><td id="KkS_" class=""><strong>App Framework</strong></td><td id="?Yn=" class="">NestJS monorepo with Drizzle ORM</td></tr></tbody></table><h3 id="34494e81-8539-805a-bf9f-fda43d1580fd" class="" dir="auto">1.2 RDS PostgreSQL (Database)</h3><table id="34494e81-8539-80c8-8e77-d8e7b883dc4e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80ed-be9f-ecd90188736b" dir="ltr"><th id="|cLs" class="simple-table-header-color simple-table-header">Attribute</th><th id="djyy" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34494e81-8539-80ad-a5dc-cc6a6d362956" dir="ltr"><td id="|cLs" class=""><strong>DB Instance Identifier</strong></td><td id="djyy" class=""><code>qa-ntu-rds</code></td></tr><tr id="34494e81-8539-80a2-85a0-eb26999950ea" dir="ltr"><td id="|cLs" class=""><strong>Engine</strong></td><td id="djyy" class="">PostgreSQL 14.19</td></tr><tr id="34494e81-8539-80cf-9b8d-dde31ad97b3c" dir="ltr"><td id="|cLs" class=""><strong>Instance Class</strong></td><td id="djyy" class="">db.t3.micro</td></tr><tr id="34494e81-8539-800c-b2d1-e743c80bd234" dir="ltr"><td id="|cLs" class=""><strong>Storage</strong></td><td id="djyy" class="">20 GiB GP2, encryption enabled (aws/rds KMS key)</td></tr><tr id="34494e81-8539-80d5-a595-dff72cbf6341" dir="ltr"><td id="|cLs" class=""><strong>Multi-AZ</strong></td><td id="djyy" class="">Yes — Primary: ap-southeast-1b, Standby: secondary AZ</td></tr><tr id="34494e81-8539-809a-88d4-fb30c66db97b" dir="ltr"><td id="|cLs" class=""><strong>Automated Backups</strong></td><td id="djyy" class="">Enabled, 30-day retention</td></tr><tr id="34494e81-8539-801f-8bcb-e15a90d4a336" dir="ltr"><td id="|cLs" class=""><strong>Backup Window</strong></td><td id="djyy" class="">18:05–18:35 UTC</td></tr><tr id="34494e81-8539-808f-90de-f9883fe9dae6" dir="ltr"><td id="|cLs" class=""><strong>Endpoint</strong></td><td id="djyy" class=""><code>qa-ntu-rds.cwy2qm9xdus9.ap-southeast-1.rds.amazonaws.com:5432</code></td></tr><tr id="34494e81-8539-8047-8c8a-e94c39eaad00" dir="ltr"><td id="|cLs" class=""><strong>Database Name</strong></td><td id="djyy" class=""><code>ntu</code></td></tr><tr id="34494e81-8539-80c6-8526-c71a76653777" dir="ltr"><td id="|cLs" class=""><strong>Master Username</strong></td><td id="djyy" class=""><code>ntu</code></td></tr><tr id="34494e81-8539-8041-853f-c58e7c9a4806" dir="ltr"><td id="|cLs" class=""><strong>Credentials Secret</strong></td><td id="djyy" class=""><code>qa-ntu-rds-db-creds</code> (Secrets Manager)</td></tr><tr id="34494e81-8539-80a8-8fd7-fa93f75d3a12" dir="ltr"><td id="|cLs" class=""><strong>Public Access</strong></td><td id="djyy" class="">No — restricted via SG to ECS SG and Bastion SG</td></tr></tbody></table><h3 id="34494e81-8539-80d6-8081-d4c20651da96" class="" dir="auto">1.3 VPC &amp; Networking (QA)</h3><table id="34494e81-8539-80d6-9f44-dc92150d1f2b" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8092-ae5f-cb20f8c55996" dir="ltr"><th id=";H?U" class="simple-table-header-color simple-table-header">Attribute</th><th id="sf{;" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34494e81-8539-80c8-ba6e-c523fd787881" dir="ltr"><td id=";H?U" class=""><strong>VPC</strong></td><td id="sf{;" class="">Default VPC (vpc-03a0497520da1f185)</td></tr><tr id="34494e81-8539-80c2-8ad0-dc60bfb90754" dir="ltr"><td id=";H?U" class=""><strong>Bastion Host</strong></td><td id="sf{;" class="">t3.nano EC2 in public subnet</td></tr><tr id="34494e81-8539-809f-b15d-cfd05ee3c714" dir="ltr"><td id=";H?U" class=""><strong>Bastion SSH Key</strong></td><td id="sf{;" class=""><code>ntu-qa-bastion-key</code> (SSM Parameter Store)</td></tr><tr id="34494e81-8539-8050-b9e5-de34a4b96ebe" dir="ltr"><td id=";H?U" class=""><strong>ECS Networking</strong></td><td id="sf{;" class="">Public subnets with public IPs assigned (no private subnets/NAT)</td></tr><tr id="34494e81-8539-807e-ac9c-dbc902a02c1b" dir="ltr"><td id=";H?U" class=""><strong>VPN</strong></td><td id="sf{;" class="">AWS Client VPN provisioned for QA</td></tr></tbody></table><h3 id="34494e81-8539-80f2-944f-f3cdf6d36c24" class="" dir="auto">1.4 IaC &amp; CI/CD</h3><table id="34494e81-8539-8076-8b4c-da3c38800888" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80ac-8cab-ea037be06198" dir="ltr"><th id="WAdr" class="simple-table-header-color simple-table-header">Attribute</th><th id="\Iu]" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34494e81-8539-801e-b0b3-d4c07c74aee0" dir="ltr"><td id="WAdr" class=""><strong>IaC</strong></td><td id="\Iu]" class="">SST (Serverless Stack) with CDK in <code>platform-backend-v2/apps/ntu/stacks/</code></td></tr><tr id="34494e81-8539-80bd-8e68-d1157a3c1e3a" dir="ltr"><td id="WAdr" class=""><strong>Stacks</strong></td><td id="\Iu]" class="">VPC, VPN, EC2/ECS (<code>ec2Stack.ts</code>), RDS, S3, Cognito</td></tr><tr id="34494e81-8539-8055-bb08-c96d5595ef8d" dir="ltr"><td id="WAdr" class=""><strong>Region</strong></td><td id="\Iu]" class="">Hardcoded as <code>ap-southeast-1</code> in SST config</td></tr><tr id="34494e81-8539-8043-918b-dc3981d654dc" dir="ltr"><td id="WAdr" class=""><strong>CI/CD Workflow</strong></td><td id="\Iu]" class=""><code>.github/workflows/deploy.yml</code> — push to <code>qa</code> branch triggers build, ECR push, migration, force-deploy</td></tr><tr id="34494e81-8539-80d5-9fed-df9478fd5829" dir="ltr"><td id="WAdr" class=""><strong>App Env Secrets</strong></td><td id="\Iu]" class=""><code>ntu-app-env-qa</code> (Secrets Manager)</td></tr></tbody></table><hr id="34494e81-8539-80c5-b719-e4e0a639388b" dir="auto"/><h2 id="34494e81-8539-8057-b71a-e9b2d0eaf764" class="" dir="auto">Section 2: DR Scenarios Overview</h2><p id="34494e81-8539-80ea-9fb8-cb827db0e61f" class="" dir="auto">Given the constraint of multi-AZ only (no multi-region), the drill focuses on two scenarios that validate resilience within the Singapore region.</p><table id="34494e81-8539-8030-9dbc-c18fe63b632c" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-805c-a2c4-c4c3b56616b9" dir="ltr"><th id="r]u_" class="simple-table-header-color simple-table-header">Scenario</th><th id="EG:C" class="simple-table-header-color simple-table-header">What It Tests</th><th id="zKCl" class="simple-table-header-color simple-table-header">Expected Downtime</th></tr></thead><tbody><tr id="34494e81-8539-80c3-82da-fe32c90d10ed" dir="ltr"><td id="r]u_" class=""><strong>A — RDS Failover</strong></td><td id="EG:C" class="">AZ failure simulation: RDS Multi-AZ failover, application auto-reconnection</td><td id="zKCl" class="">1–3 minutes</td></tr><tr id="34494e81-8539-803e-87a4-c09e44f46e25" dir="ltr"><td id="r]u_" class=""><strong>B — ECS Service Recovery</strong></td><td id="EG:C" class="">Compute failure simulation: ECS task force-stop, auto-replacement, ALB re-routing</td><td id="zKCl" class="">2–5 minutes</td></tr></tbody></table><hr id="34494e81-8539-809a-9882-e76ee16ef0ac" dir="auto"/><h2 id="34494e81-8539-808e-a58d-f0c0a7f7b01d" class="" dir="auto">Section 3: Pre-Drill Preparation (Day Before)</h2><table id="34494e81-8539-80bd-a080-f6f74a64b190" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-808f-a119-f99edd99703f" dir="ltr"><th id="B_hJ" class="simple-table-header-color simple-table-header">Step</th><th id="yMJI" class="simple-table-header-color simple-table-header">Action / Command</th><th id="Nn\K" class="simple-table-header-color simple-table-header">Evidence</th><th id="WImr" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-80e5-a6d6-d0b9f3d803be" dir="ltr"><td id="B_hJ" class=""><strong>3.1</strong></td><td id="yMJI" class=""><strong>Notify stakeholders</strong> — Send notification via Discord/email stating: date, time window, expected duration (~30–45 min), and that QA will experience downtime during the drill.</td><td id="Nn\K" class="">☐ Done</td><td id="WImr" class="">Coordinator</td></tr><tr id="34494e81-8539-8034-ab59-d97b844bc68e" dir="ltr"><td id="B_hJ" class=""><strong>3.2</strong></td><td id="yMJI" class=""><strong>Verify ECS health:</strong></td><td id="Nn\K" class="">ECS status: ______</td><td id="WImr" class="">Backend Lead</td></tr><tr id="34494e81-8539-80da-8344-fbb179b29bf0" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class=""><code>aws ecs describe-services --cluster ntu-qa --services ntu-qa-service --query &#x27;services[0].{status:status,desiredCount:desiredCount,runningCount:runningCount,deployments:deployments[0].rolloutState}&#x27;</code></td><td id="Nn\K" class="">Running count: ______</td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-8083-9641-d5e3d7099eaa" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class=""><strong>Verify RDS health:</strong></td><td id="Nn\K" class="">RDS status: ______</td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-8097-85f5-e1cad5244aef" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class=""><code>aws rds describe-db-instances --db-instance-identifier qa-ntu-rds --query &#x27;DBInstances[0].{Status:DBInstanceStatus,MultiAZ:MultiAZ,AZ:AvailabilityZone,SecondaryAZ:SecondaryAvailabilityZone,Engine:Engine,EngineVersion:EngineVersion}&#x27;</code></td><td id="Nn\K" class="">MultiAZ: ______</td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-80ef-8beb-ec2556f7ea20" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class=""><strong>Verify ALB targets:</strong></td><td id="Nn\K" class="">Healthy targets: ______</td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-8053-9cfb-ee16d3b3f017" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class=""><code>aws elbv2 describe-target-health --target-group-arn &lt;QA_TARGET_GROUP_ARN&gt;</code></td><td id="Nn\K" class=""></td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-8091-be26-ccc078f17763" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class="">Expected: ECS ACTIVE with 1 running task, RDS available with MultiAZ=true, ≥1 healthy ALB target.</td><td id="Nn\K" class=""></td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-805d-9619-f351fd45558d" dir="ltr"><td id="B_hJ" class=""><strong>3.3</strong></td><td id="yMJI" class=""><strong>Record baseline metrics.</strong> Take a snapshot for comparison:</td><td id="Nn\K" class="">Documented: ☐</td><td id="WImr" class="">Scribe</td></tr><tr id="34494e81-8539-803b-ac44-db0c3b4dd3d9" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class="">• RDS: Current AZ, endpoint, connections, CPU utilization</td><td id="Nn\K" class=""></td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-8044-9f0e-f96fc4c9fc4d" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class="">• ECS: Task ARN, task IP, running count, last deployment time</td><td id="Nn\K" class=""></td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-80e5-9b36-e58554245ee4" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class="">• ALB: Request count, 5xx errors, target response time</td><td id="Nn\K" class=""></td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-8098-b1f3-efa23afd3e4f" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class="">• Application: <code>curl https://api.qa.csm.ntu.edu.sg/health</code> — record response time and status</td><td id="Nn\K" class=""></td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-8032-a314-fc589015a75a" dir="ltr"><td id="B_hJ" class=""><strong>3.4</strong></td><td id="yMJI" class=""><strong>Create a manual RDS snapshot (safety net):</strong></td><td id="Nn\K" class="">Snapshot ID: ______</td><td id="WImr" class="">Backend Lead</td></tr><tr id="34494e81-8539-8071-b1d0-dc77c36143c5" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class=""><code>aws rds create-db-snapshot --db-instance-identifier qa-ntu-rds --db-snapshot-identifier qa-ntu-rds-pre-dr-drill-$(date +%Y%m%d)</code></td><td id="Nn\K" class="">Completed: ☐</td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-8065-aa7b-fd7652130f98" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class="">Wait for completion:</td><td id="Nn\K" class=""></td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-80ca-a48f-f26e69ea3180" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class=""><code>aws rds wait db-snapshot-available --db-snapshot-identifier qa-ntu-rds-pre-dr-drill-$(date +%Y%m%d)</code></td><td id="Nn\K" class=""></td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-8022-b8e1-d3aa2f15fb4b" dir="ltr"><td id="B_hJ" class=""><strong>3.5</strong></td><td id="yMJI" class=""><strong>Confirm access &amp; tooling:</strong></td><td id="Nn\K" class="">All confirmed: ☐</td><td id="WImr" class="">Backend Lead</td></tr><tr id="34494e81-8539-803e-a5e3-fd36adcf1c2b" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class="">• AWS CLI with appropriate IAM permissions</td><td id="Nn\K" class=""></td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-80e7-90ce-d495f53c3183" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class="">• SSH access to Bastion host (<code>ntu-qa-bastion-key</code> from SSM Parameter Store)</td><td id="Nn\K" class=""></td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-80de-ae47-d0448e0ddfbe" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class="">• Access to GitHub repository for CI/CD trigger</td><td id="Nn\K" class=""></td><td id="WImr" class=""></td></tr><tr id="34494e81-8539-8035-ae18-c1d884644961" dir="ltr"><td id="B_hJ" class=""></td><td id="yMJI" class="">• CloudWatch Logs access for <code>/ecs/ntu-qa</code></td><td id="Nn\K" class=""></td><td id="WImr" class=""></td></tr></tbody></table><hr id="34494e81-8539-8008-80c6-d36ee3a50bd2" dir="auto"/><h2 id="34494e81-8539-8042-90c9-def4733e290a" class="" dir="auto">Section 4: Scenario A — RDS Multi-AZ Failover</h2><p id="34494e81-8539-809e-b453-c4062f502fb6" class="" dir="auto"><strong>Objective:</strong> Validate that the database automatically fails over to the standby AZ and the application reconnects without manual intervention.</p><p id="34494e81-8539-8060-9131-e7c598d60939" class="" dir="auto"><strong>Expected Downtime:</strong> 1–3 minutes (AWS documented RDS failover time)</p><h3 id="34494e81-8539-809c-a949-eb5520857d11" class="" dir="auto">4.1 Record Pre-Failover State</h3><table id="34494e81-8539-8068-be76-c2be7dd5432a" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-809c-b87b-c3b0bcae3fb4" dir="ltr"><th id="u}UW" class="simple-table-header-color simple-table-header">Step</th><th id="AcMe" class="simple-table-header-color simple-table-header">Action / Command</th><th id="@GQJ" class="simple-table-header-color simple-table-header">Evidence</th><th id="PD~`" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-809e-be1a-d6bb5d665e28" dir="ltr"><td id="u}UW" class=""><strong>4.1</strong></td><td id="AcMe" class="">Note the current primary AZ:</td><td id="@GQJ" class="">Primary AZ: ______</td><td id="PD~`" class="">Backend Lead</td></tr><tr id="34494e81-8539-809a-b6c4-edc7d3e9e37a" dir="ltr"><td id="u}UW" class=""></td><td id="AcMe" class=""><code>aws rds describe-db-instances --db-instance-identifier qa-ntu-rds --query &#x27;DBInstances[0].{PrimaryAZ:AvailabilityZone,SecondaryAZ:SecondaryAvailabilityZone,Endpoint:Endpoint.Address}&#x27;</code></td><td id="@GQJ" class="">Secondary AZ: ______</td><td id="PD~`" class=""></td></tr><tr id="34494e81-8539-800c-a86a-c67a00e7050b" dir="ltr"><td id="u}UW" class=""></td><td id="AcMe" class="">Expected: Primary AZ = <code>ap-southeast-1b</code></td><td id="@GQJ" class="">Endpoint: ______</td><td id="PD~`" class=""></td></tr><tr id="34494e81-8539-80e3-9e29-fd111ca71577" dir="ltr"><td id="u}UW" class=""></td><td id="AcMe" class="">Record the current time as <code>T0_FAILOVER_START</code>.</td><td id="@GQJ" class="">T0: ______</td><td id="PD~`" class=""></td></tr></tbody></table><h3 id="34494e81-8539-8072-8ca1-f42a5202257b" class="" dir="auto">4.2 Start Monitoring</h3><table id="34494e81-8539-801f-b25d-e1af23737fd7" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80e3-949d-d9b76fda4b98" dir="ltr"><th id="t^d}" class="simple-table-header-color simple-table-header">Step</th><th id="~nN;" class="simple-table-header-color simple-table-header">Action / Command</th><th id="S]cx" class="simple-table-header-color simple-table-header">Evidence</th><th id="rqa}" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-8084-ab09-c0216a0f097a" dir="ltr"><td id="t^d}" class=""><strong>4.2</strong></td><td id="~nN;" class="">In a <strong>separate terminal</strong>, start continuous health monitoring:</td><td id="S]cx" class="">Monitoring active: ☐</td><td id="rqa}" class="">Backend Dev</td></tr><tr id="34494e81-8539-802c-8696-d247291a437e" dir="ltr"><td id="t^d}" class=""></td><td id="~nN;" class="">```while true; do TIMESTAMP=$(date &#x27;+%Y-%m-%d %H:%M:%S&#x27;); RESPONSE=$(curl -s -o /dev/null -w &quot;%{http_code} %{time_total}s&quot; --connect-timeout 5 --max-time 10 https://api.qa.csm.ntu.edu.sg/health 2&gt;&amp;1); echo &quot;$TIMESTAMP</td><td id="S]cx" class="">$RESPONSE&quot;; sleep 5; done```</td><td id="rqa}" class=""></td></tr><tr id="34494e81-8539-80ed-9c73-e2bcac3bce50" dir="ltr"><td id="t^d}" class=""></td><td id="~nN;" class="">Also open CloudWatch RDS dashboard for <code>qa-ntu-rds</code> — monitor <code>DatabaseConnections</code>, <code>CPUUtilization</code>, and <code>FreeableMemory</code>.</td><td id="S]cx" class="">CloudWatch open: ☐</td><td id="rqa}" class=""></td></tr></tbody></table><h3 id="34494e81-8539-8069-8d6d-ed0d5afa3973" class="" dir="auto">4.3 Trigger Failover</h3><table id="34494e81-8539-8098-add8-e1cb44b8e5dd" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8075-b096-d340b74db133" dir="ltr"><th id="PEnM" class="simple-table-header-color simple-table-header">Step</th><th id="slF`" class="simple-table-header-color simple-table-header">Action / Command</th><th id="OEtK" class="simple-table-header-color simple-table-header">Evidence</th><th id="|xa&gt;" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-80ce-a126-cbc67e24be87" dir="ltr"><td id="PEnM" class=""><strong>4.3</strong></td><td id="slF`" class="">Trigger RDS failover:</td><td id="OEtK" class="">T1 (failover triggered): ______</td><td id="|xa&gt;" class="">Backend Lead</td></tr><tr id="34494e81-8539-8070-b9d1-e530fd287eb9" dir="ltr"><td id="PEnM" class=""></td><td id="slF`" class=""><code>aws rds reboot-db-instance --db-instance-identifier qa-ntu-rds --force-failover</code></td><td id="OEtK" class=""></td><td id="|xa&gt;" class=""></td></tr><tr id="34494e81-8539-8034-bc6d-c377fe94aede" dir="ltr"><td id="PEnM" class=""></td><td id="slF`" class="">Record the exact timestamp as <code>T1_FAILOVER_TRIGGERED</code>.</td><td id="OEtK" class=""></td><td id="|xa&gt;" class=""></td></tr></tbody></table><h3 id="34494e81-8539-808f-b8c0-cfb6e7e60f27" class="" dir="auto">4.4 Monitor Failover Progress</h3><table id="34494e81-8539-8037-b1ad-e18a3b241ee4" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8093-8d5f-e1eecd9e2264" dir="ltr"><th id="LVMf" class="simple-table-header-color simple-table-header">Step</th><th id="vnvR" class="simple-table-header-color simple-table-header">Action / Command</th><th id="_Qsg" class="simple-table-header-color simple-table-header">Evidence</th><th id="\Tm]" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-801d-9936-dc2095b92756" dir="ltr"><td id="LVMf" class=""><strong>4.4</strong></td><td id="vnvR" class="">Poll RDS status every 15 seconds until available:</td><td id="_Qsg" class="">T2 (RDS available): ______</td><td id="\Tm]" class="">Backend Lead</td></tr><tr id="34494e81-8539-802e-b41e-cb63bbaa2cbc" dir="ltr"><td id="LVMf" class=""></td><td id="vnvR" class="">```while true; do STATUS=$(aws rds describe-db-instances --db-instance-identifier qa-ntu-rds --query &#x27;DBInstances[0].DBInstanceStatus&#x27; --output text); AZ=$(aws rds describe-db-instances --db-instance-identifier qa-ntu-rds --query &#x27;DBInstances[0].AvailabilityZone&#x27; --output text); echo &quot;$(date &#x27;+%H:%M:%S&#x27;) Status: $STATUS</td><td id="_Qsg" class="">AZ: $AZ&quot;; if [ &quot;$STATUS&quot; = &quot;available&quot; ]; then break; fi; sleep 15; done```</td><td id="\Tm]" class=""></td></tr><tr id="34494e81-8539-8075-8ace-e99c1ce57853" dir="ltr"><td id="LVMf" class=""></td><td id="vnvR" class="">Record when status returns to &quot;available&quot; as <code>T2_RDS_AVAILABLE</code>.</td><td id="_Qsg" class=""></td><td id="\Tm]" class=""></td></tr></tbody></table><h3 id="34494e81-8539-80d9-b58e-dbe4aec1ee28" class="" dir="auto">4.5 Verify Failover Completed</h3><table id="34494e81-8539-802a-8025-db6330cf16b0" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80b8-8deb-d78286efffcf" dir="ltr"><th id="tll@" class="simple-table-header-color simple-table-header">Step</th><th id="u&lt;St" class="simple-table-header-color simple-table-header">Action / Command</th><th id="T{}a" class="simple-table-header-color simple-table-header">Evidence</th><th id="?ZKa" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-808e-a408-c9c90fbc914e" dir="ltr"><td id="tll@" class=""><strong>4.5</strong></td><td id="u&lt;St" class="">Confirm the AZ has changed (should now be the former secondary AZ):</td><td id="T{}a" class="">New Primary AZ: ______</td><td id="?ZKa" class="">Backend Lead</td></tr><tr id="34494e81-8539-8067-ada6-c2a370b57ca8" dir="ltr"><td id="tll@" class=""></td><td id="u&lt;St" class=""><code>aws rds describe-db-instances --db-instance-identifier qa-ntu-rds --query &#x27;DBInstances[0].{NewPrimaryAZ:AvailabilityZone,SecondaryAZ:SecondaryAvailabilityZone}&#x27;</code></td><td id="T{}a" class="">New Secondary AZ: ______</td><td id="?ZKa" class=""></td></tr><tr id="34494e81-8539-8097-8304-ebe72fbc64d7" dir="ltr"><td id="tll@" class=""></td><td id="u&lt;St" class="">Primary AZ should differ from what was recorded in Step 4.1.</td><td id="T{}a" class="">AZ switched: ☐ Yes  ☐ No</td><td id="?ZKa" class=""></td></tr></tbody></table><h3 id="34494e81-8539-803c-bf15-e2ad7f8f5eba" class="" dir="auto">4.6 Verify Application Recovery</h3><table id="34494e81-8539-80c2-9420-c67a46c4c4ec" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80ef-8305-d3eee91dd879" dir="ltr"><th id="Qw}g" class="simple-table-header-color simple-table-header">Step</th><th id="uLR=" class="simple-table-header-color simple-table-header">Action / Command</th><th id="b@Er" class="simple-table-header-color simple-table-header">Evidence</th><th id="UIKL" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-802d-8a30-e7058f537ba0" dir="ltr"><td id="Qw}g" class=""><strong>4.6</strong></td><td id="uLR=" class="">Check the health endpoint monitoring output from Step 4.2. Record when the first successful health check returns after failover.</td><td id="b@Er" class="">T3 (first healthy response): ______</td><td id="UIKL" class="">Backend Dev</td></tr><tr id="34494e81-8539-800e-a975-eeee450e4989" dir="ltr"><td id="Qw}g" class=""></td><td id="uLR=" class="">App downtime = T3 − T1 = ______ seconds</td><td id="b@Er" class=""></td><td id="UIKL" class=""></td></tr><tr id="34494e81-8539-804d-8005-eed9584e0b46" dir="ltr"><td id="Qw}g" class=""></td><td id="uLR=" class="">Run a functional check:</td><td id="b@Er" class=""></td><td id="UIKL" class=""></td></tr><tr id="34494e81-8539-80a9-9690-f926b1e7418a" dir="ltr"><td id="Qw}g" class=""></td><td id="uLR=" class="">```curl -s https://api.qa.csm.ntu.edu.sg/health</td><td id="b@Er" class="">jq .```</td><td id="UIKL" class="">Response OK: ☐ Yes  ☐ No</td></tr></tbody></table><h3 id="34494e81-8539-8022-b924-c3c9549eb11a" class="" dir="auto">4.7 Check ECS Task Logs for Reconnection</h3><table id="34494e81-8539-80e1-ad07-f2750838b81e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8049-966b-d7a0858b943a" dir="ltr"><th id="Ih:V" class="simple-table-header-color simple-table-header">Step</th><th id="PkP&lt;" class="simple-table-header-color simple-table-header">Action / Command</th><th id="L`&lt;~" class="simple-table-header-color simple-table-header">Evidence</th><th id="|V|?" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-806f-869f-c1ba76e8585b" dir="ltr"><td id="Ih:V" class=""><strong>4.7</strong></td><td id="PkP&lt;" class="">Check application logs for DB reconnection behavior:</td><td id="L`&lt;~" class="">Temp errors visible: ☐</td><td id="|V|?" class="">Backend Dev</td></tr><tr id="34494e81-8539-8073-a717-d8afe3ee518d" dir="ltr"><td id="Ih:V" class=""></td><td id="PkP&lt;" class=""><code>aws logs tail /ecs/ntu-qa --since 15m --filter-pattern &quot;database&quot;</code></td><td id="L`&lt;~" class="">Reconnection successful: ☐</td><td id="|V|?" class=""></td></tr><tr id="34494e81-8539-80f9-b7f0-c4a248e47682" dir="ltr"><td id="Ih:V" class=""></td><td id="PkP&lt;" class=""><code>aws logs tail /ecs/ntu-qa --since 15m --filter-pattern &quot;error&quot;</code></td><td id="L`&lt;~" class=""></td><td id="|V|?" class=""></td></tr><tr id="34494e81-8539-8039-9050-ca5b184d697f" dir="ltr"><td id="Ih:V" class=""></td><td id="PkP&lt;" class=""><code>aws logs tail /ecs/ntu-qa --since 15m --filter-pattern &quot;reconnect&quot;</code></td><td id="L`&lt;~" class=""></td><td id="|V|?" class=""></td></tr><tr id="34494e81-8539-80fa-9aa8-c98e3d68f05e" dir="ltr"><td id="Ih:V" class=""></td><td id="PkP&lt;" class="">Verify logs show temporary connection errors followed by successful reconnection. NestJS + Drizzle ORM should handle reconnection automatically since the RDS DNS endpoint doesn&#x27;t change — it resolves to the new primary IP (DNS TTL ~5 seconds).</td><td id="L`&lt;~" class=""></td><td id="|V|?" class=""></td></tr></tbody></table><h3 id="34494e81-8539-80b1-9190-cabe4cb05d9f" class="" dir="auto">4.8 Scenario A — Results</h3><table id="34494e81-8539-8058-8264-e1d06a69a57a" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80f1-84f4-f245338c0d9f" dir="ltr"><th id="Fbtd" class="simple-table-header-color simple-table-header">Metric</th><th id="U?{c" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34494e81-8539-8079-9d7c-fffa5d0ad126" dir="ltr"><td id="Fbtd" class="">T1 — Failover triggered</td><td id="U?{c" class="">________</td></tr><tr id="34494e81-8539-8014-8b1b-f9c93bb430ae" dir="ltr"><td id="Fbtd" class="">T2 — RDS available again</td><td id="U?{c" class="">________</td></tr><tr id="34494e81-8539-804a-891f-ce94e476ceb7" dir="ltr"><td id="Fbtd" class="">T3 — First successful health check</td><td id="U?{c" class="">________</td></tr><tr id="34494e81-8539-80ab-bae6-fba1093d2f5f" dir="ltr"><td id="Fbtd" class="">RDS downtime (T2 − T1)</td><td id="U?{c" class="">______ seconds</td></tr><tr id="34494e81-8539-8048-8e99-ceabcc8b3a50" dir="ltr"><td id="Fbtd" class="">Application downtime (T3 − T1)</td><td id="U?{c" class="">______ seconds</td></tr><tr id="34494e81-8539-807b-80a5-e3f7c98beb5f" dir="ltr"><td id="Fbtd" class="">Previous Primary AZ</td><td id="U?{c" class="">ap-southeast-1__</td></tr><tr id="34494e81-8539-80ed-88e0-c99c6805632a" dir="ltr"><td id="Fbtd" class="">New Primary AZ</td><td id="U?{c" class="">ap-southeast-1__</td></tr><tr id="34494e81-8539-800e-b7e6-c32290e5779d" dir="ltr"><td id="Fbtd" class="">Data loss observed</td><td id="U?{c" class="">☐ No  ☐ Yes</td></tr><tr id="34494e81-8539-80a8-b0ab-f5b404339415" dir="ltr"><td id="Fbtd" class="">Manual intervention required</td><td id="U?{c" class="">☐ No  ☐ Yes</td></tr><tr id="34494e81-8539-804b-a503-fa662d467283" dir="ltr"><td id="Fbtd" class=""><strong>Overall Pass/Fail</strong></td><td id="U?{c" class=""><strong>☐ PASS  ☐ FAIL</strong></td></tr></tbody></table><p id="34494e81-8539-804d-bad7-f97726fb3de4" class="" dir="auto"><strong>Acceptance Criteria:</strong> Failover completes in under 3 minutes. Zero data loss. Application auto-reconnects without manual intervention.</p><hr id="34494e81-8539-806f-9e68-cb742476d9cd" dir="auto"/><h2 id="34494e81-8539-809c-9315-cbaf6cc04a9a" class="" dir="auto">Section 5: Scenario B — ECS Service Recovery</h2><p id="34494e81-8539-80ba-98fb-c68885b9c4b9" class="" dir="auto"><strong>Objective:</strong> Validate that ECS Fargate automatically replaces stopped tasks and the ALB resumes routing traffic to healthy targets.</p><p id="34494e81-8539-808b-9ae0-fe20e2d20404" class="" dir="auto"><strong>Expected Downtime:</strong> 2–5 minutes (time for new task provisioning + health check passing)</p><h3 id="34494e81-8539-807d-af75-ffe8af30de1d" class="" dir="auto">5.1 Record Pre-Disruption State</h3><table id="34494e81-8539-8016-9531-d0f0158a8593" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8015-8b90-cc226c1d65c2" dir="ltr"><th id="|O\;" class="simple-table-header-color simple-table-header">Step</th><th id="YbD}" class="simple-table-header-color simple-table-header">Action / Command</th><th id="V}D}" class="simple-table-header-color simple-table-header">Evidence</th><th id=";?wY" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-8018-abc7-f89020875d4e" dir="ltr"><td id="|O\;" class=""><strong>5.1</strong></td><td id="YbD}" class="">List running tasks and record the current task ARN:</td><td id="V}D}" class="">Task ARN: ______</td><td id=";?wY" class="">Backend Lead</td></tr><tr id="34494e81-8539-80e0-9644-c3769c4fafff" dir="ltr"><td id="|O\;" class=""></td><td id="YbD}" class=""><code>TASK_ARN=$(aws ecs list-tasks --cluster ntu-qa --service-name ntu-qa-service --desired-status RUNNING --query &#x27;taskArns[0]&#x27; --output text); echo &quot;Current task: $TASK_ARN&quot;</code></td><td id="V}D}" class="">Last status: ______</td><td id=";?wY" class=""></td></tr><tr id="34494e81-8539-809a-bcc7-e7577764aa91" dir="ltr"><td id="|O\;" class=""></td><td id="YbD}" class="">Record task details:</td><td id="V}D}" class="">Started at: ______</td><td id=";?wY" class=""></td></tr><tr id="34494e81-8539-80e5-85ac-f8e7c6841226" dir="ltr"><td id="|O\;" class=""></td><td id="YbD}" class=""><code>aws ecs describe-tasks --cluster ntu-qa --tasks $TASK_ARN --query &#x27;tasks[0].{TaskArn:taskArn,LastStatus:lastStatus,StartedAt:startedAt,AZ:availabilityZone}&#x27;</code></td><td id="V}D}" class="">AZ: ______</td><td id=";?wY" class=""></td></tr></tbody></table><h3 id="34494e81-8539-8049-b27e-e57606fc59f6" class="" dir="auto">5.2 Start Monitoring</h3><table id="34494e81-8539-8015-b68d-d4887c3c2966" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80c1-a4f0-deeb60c4a52c" dir="ltr"><th id="yvt&gt;" class="simple-table-header-color simple-table-header">Step</th><th id="T;ZP" class="simple-table-header-color simple-table-header">Action / Command</th><th id="Fxfq" class="simple-table-header-color simple-table-header">Evidence</th><th id="pMiA" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-8098-82e2-e63c5ffbc089" dir="ltr"><td id="yvt&gt;" class=""><strong>5.2</strong></td><td id="T;ZP" class="">Same continuous health monitoring as Scenario A, Step 4.2:</td><td id="Fxfq" class="">Monitoring active: ☐</td><td id="pMiA" class="">Backend Dev</td></tr><tr id="34494e81-8539-80f3-aca8-eecc704c6094" dir="ltr"><td id="yvt&gt;" class=""></td><td id="T;ZP" class="">```while true; do TIMESTAMP=$(date &#x27;+%Y-%m-%d %H:%M:%S&#x27;); RESPONSE=$(curl -s -o /dev/null -w &quot;%{http_code} %{time_total}s&quot; --connect-timeout 5 --max-time 10 https://api.qa.csm.ntu.edu.sg/health 2&gt;&amp;1); echo &quot;$TIMESTAMP</td><td id="Fxfq" class="">$RESPONSE&quot;; sleep 5; done```</td><td id="pMiA" class=""></td></tr></tbody></table><h3 id="34494e81-8539-80af-84ee-fd3a2a09b3b9" class="" dir="auto">5.3 Simulate Task Failure</h3><table id="34494e81-8539-80da-a32a-f59ba9807137" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80a5-a8d8-cb2e95d292de" dir="ltr"><th id="SBz&gt;" class="simple-table-header-color simple-table-header">Step</th><th id="[mWN" class="simple-table-header-color simple-table-header">Action / Command</th><th id="hO&lt;I" class="simple-table-header-color simple-table-header">Evidence</th><th id="g~}X" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-8029-9498-da0b61b83554" dir="ltr"><td id="SBz&gt;" class=""><strong>5.3</strong></td><td id="[mWN" class="">Force-stop the running task:</td><td id="hO&lt;I" class="">T1 (task stopped): ______</td><td id="g~}X" class="">Backend Lead</td></tr><tr id="34494e81-8539-809e-b128-f3656062fd40" dir="ltr"><td id="SBz&gt;" class=""></td><td id="[mWN" class=""><code>aws ecs stop-task --cluster ntu-qa --task $TASK_ARN --reason &quot;DR Drill - simulating task failure&quot;</code></td><td id="hO&lt;I" class=""></td><td id="g~}X" class=""></td></tr><tr id="34494e81-8539-80fb-86a2-dcf6dcd0397b" dir="ltr"><td id="SBz&gt;" class=""></td><td id="[mWN" class="">Record the timestamp as <code>T1_TASK_STOPPED</code>.</td><td id="hO&lt;I" class=""></td><td id="g~}X" class=""></td></tr></tbody></table><h3 id="34494e81-8539-8010-9b7b-ee28263f845e" class="" dir="auto">5.4 Monitor ECS Recovery</h3><table id="34494e81-8539-804c-a479-c612f38f153f" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8094-8f1f-eca4f470c524" dir="ltr"><th id="ZvEO" class="simple-table-header-color simple-table-header">Step</th><th id="rfFF" class="simple-table-header-color simple-table-header">Action / Command</th><th id="AHIr" class="simple-table-header-color simple-table-header">Evidence</th><th id="a?_g" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-80f6-a6db-e47bea6053f5" dir="ltr"><td id="ZvEO" class=""><strong>5.4</strong></td><td id="rfFF" class="">Monitor the service until a new task is running:</td><td id="AHIr" class="">T2 (new task running): ______</td><td id="a?_g" class="">Backend Lead</td></tr><tr id="34494e81-8539-80a2-b403-f5f24426bf81" dir="ltr"><td id="ZvEO" class=""></td><td id="rfFF" class="">```while true; do RUNNING=$(aws ecs describe-services --cluster ntu-qa --services ntu-qa-service --query &#x27;services[0].runningCount&#x27; --output text); DESIRED=$(aws ecs describe-services --cluster ntu-qa --services ntu-qa-service --query &#x27;services[0].desiredCount&#x27; --output text); PENDING=$(aws ecs describe-services --cluster ntu-qa --services ntu-qa-service --query &#x27;services[0].pendingCount&#x27; --output text); echo &quot;$(date &#x27;+%H:%M:%S&#x27;) Running: $RUNNING</td><td id="AHIr" class="">Desired: $DESIRED</td><td id="a?_g" class="">Pending: $PENDING&quot;; if [ &quot;$RUNNING&quot; = &quot;$DESIRED&quot; ] &amp;&amp; [ &quot;$RUNNING&quot; -ge 1 ]; then break; fi; sleep 10; done```</td></tr><tr id="34494e81-8539-80a2-b75f-c747ac1ef882" dir="ltr"><td id="ZvEO" class=""></td><td id="rfFF" class="">Record when runningCount matches desiredCount as <code>T2_NEW_TASK_RUNNING</code>.</td><td id="AHIr" class=""></td><td id="a?_g" class=""></td></tr></tbody></table><h3 id="34494e81-8539-80bd-a430-da1556a6c9ac" class="" dir="auto">5.5 Verify New Task is Healthy in ALB</h3><table id="34494e81-8539-802a-b4de-d6d5134258e1" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-807f-9dce-cd62779fe6e8" dir="ltr"><th id="~XVm" class="simple-table-header-color simple-table-header">Step</th><th id="UqNn" class="simple-table-header-color simple-table-header">Action / Command</th><th id="WS~&gt;" class="simple-table-header-color simple-table-header">Evidence</th><th id="NASk" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-801b-aba2-c685acd5ed1b" dir="ltr"><td id="~XVm" class=""><strong>5.5</strong></td><td id="UqNn" class="">Check target group health:</td><td id="WS~&gt;" class="">T3 (target healthy): ______</td><td id="NASk" class="">Backend Lead</td></tr><tr id="34494e81-8539-804e-9ec1-d72e2c22240f" dir="ltr"><td id="~XVm" class=""></td><td id="UqNn" class=""><code>aws elbv2 describe-target-health --target-group-arn &lt;QA_TARGET_GROUP_ARN&gt;</code></td><td id="WS~&gt;" class=""></td><td id="NASk" class=""></td></tr><tr id="34494e81-8539-803a-90c7-d46f6ce2282c" dir="ltr"><td id="~XVm" class=""></td><td id="UqNn" class="">Wait until the new task IP appears as &quot;healthy&quot; in the target group. Record as <code>T3_TARGET_HEALTHY</code>.</td><td id="WS~&gt;" class="">Target status: ______</td><td id="NASk" class=""></td></tr></tbody></table><h3 id="34494e81-8539-80f0-a1d7-f54973e7feec" class="" dir="auto">5.6 Verify Application Recovery</h3><table id="34494e81-8539-80e5-b6af-f78c3c3ef55f" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8010-9f91-e734e0f915a7" dir="ltr"><th id="Iasq" class="simple-table-header-color simple-table-header">Step</th><th id="ygRc" class="simple-table-header-color simple-table-header">Action / Command</th><th id="YLyW" class="simple-table-header-color simple-table-header">Evidence</th><th id="&lt;wBQ" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-8005-8bb6-d1e71db7583b" dir="ltr"><td id="Iasq" class=""><strong>5.6</strong></td><td id="ygRc" class="">Confirm health check monitoring from Step 5.2 shows successful responses. Run a functional check:</td><td id="YLyW" class="">T4 (app recovered): ______</td><td id="&lt;wBQ" class="">Backend Dev</td></tr><tr id="34494e81-8539-802a-9352-efa09c9c64d6" dir="ltr"><td id="Iasq" class=""></td><td id="ygRc" class="">```curl -s https://api.qa.csm.ntu.edu.sg/health</td><td id="YLyW" class="">jq .```</td><td id="&lt;wBQ" class="">Response OK: ☐ Yes  ☐ No</td></tr><tr id="34494e81-8539-8001-9b13-cbfd304d24cb" dir="ltr"><td id="Iasq" class=""></td><td id="ygRc" class="">Record when the first successful health check occurred as <code>T4_APP_RECOVERED</code>.</td><td id="YLyW" class=""></td><td id="&lt;wBQ" class=""></td></tr></tbody></table><h3 id="34494e81-8539-8050-b114-f6070daaa730" class="" dir="auto">5.7 Verify New Task Details</h3><table id="34494e81-8539-8030-8296-da8d2d540dad" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8060-aa70-ea2ec5e395a9" dir="ltr"><th id="Y@&lt;a" class="simple-table-header-color simple-table-header">Step</th><th id="ug;I" class="simple-table-header-color simple-table-header">Action / Command</th><th id="yCnf" class="simple-table-header-color simple-table-header">Evidence</th><th id="hqtq" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-8060-9bf1-da2818edea29" dir="ltr"><td id="Y@&lt;a" class=""><strong>5.7</strong></td><td id="ug;I" class="">Confirm the new task has a different Task ARN from the original stopped task:</td><td id="yCnf" class="">New Task ARN: ______</td><td id="hqtq" class="">Backend Lead</td></tr><tr id="34494e81-8539-806e-91c5-c85d540c78fb" dir="ltr"><td id="Y@&lt;a" class=""></td><td id="ug;I" class=""><code>NEW_TASK_ARN=$(aws ecs list-tasks --cluster ntu-qa --service-name ntu-qa-service --desired-status RUNNING --query &#x27;taskArns[0]&#x27; --output text); aws ecs describe-tasks --cluster ntu-qa --tasks $NEW_TASK_ARN --query &#x27;tasks[0].{TaskArn:taskArn,LastStatus:lastStatus,StartedAt:startedAt,AZ:availabilityZone}&#x27;</code></td><td id="yCnf" class="">Different from original: ☐ Yes  ☐ No</td><td id="hqtq" class=""></td></tr></tbody></table><h3 id="34494e81-8539-80b9-8b17-fd82a7b71cad" class="" dir="auto">5.8 Scenario B — Results</h3><table id="34494e81-8539-804d-91ba-dffb15545251" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80d0-8d85-e14a023a6cd3" dir="ltr"><th id="Rx&lt;N" class="simple-table-header-color simple-table-header">Metric</th><th id="\qgm" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34494e81-8539-8051-b00a-e96608a82003" dir="ltr"><td id="Rx&lt;N" class="">T1 — Task stopped</td><td id="\qgm" class="">________</td></tr><tr id="34494e81-8539-8091-a905-e7bb7a358640" dir="ltr"><td id="Rx&lt;N" class="">T2 — New task running</td><td id="\qgm" class="">________</td></tr><tr id="34494e81-8539-8039-aa6a-f76cba26ff8e" dir="ltr"><td id="Rx&lt;N" class="">T3 — Target healthy in ALB</td><td id="\qgm" class="">________</td></tr><tr id="34494e81-8539-800f-a938-ef1ddc72413f" dir="ltr"><td id="Rx&lt;N" class="">T4 — Application responding</td><td id="\qgm" class="">________</td></tr><tr id="34494e81-8539-8025-bc94-cbb0632a442c" dir="ltr"><td id="Rx&lt;N" class="">Task provisioning time (T2 − T1)</td><td id="\qgm" class="">______ seconds</td></tr><tr id="34494e81-8539-8030-9908-c15858da1039" dir="ltr"><td id="Rx&lt;N" class="">Total application downtime (T4 − T1)</td><td id="\qgm" class="">______ seconds</td></tr><tr id="34494e81-8539-80e8-967d-f4ae31c9ec33" dir="ltr"><td id="Rx&lt;N" class="">ECS auto-recovery worked</td><td id="\qgm" class="">☐ Yes  ☐ No</td></tr><tr id="34494e81-8539-80d4-8a46-ea61e6dea2ea" dir="ltr"><td id="Rx&lt;N" class="">Circuit breaker triggered</td><td id="\qgm" class="">☐ Yes  ☐ No</td></tr><tr id="34494e81-8539-8043-ad00-f99333352167" dir="ltr"><td id="Rx&lt;N" class="">Manual intervention required</td><td id="\qgm" class="">☐ No  ☐ Yes</td></tr><tr id="34494e81-8539-8003-88aa-c4d6719ad467" dir="ltr"><td id="Rx&lt;N" class=""><strong>Overall Pass/Fail</strong></td><td id="\qgm" class=""><strong>☐ PASS  ☐ FAIL</strong></td></tr></tbody></table><p id="34494e81-8539-80a3-83aa-d30e7f65c1c0" class="" dir="auto"><strong>Acceptance Criteria:</strong> ECS auto-replaces the stopped task. ALB routes traffic to the new healthy target. Total application downtime is under 5 minutes. No manual intervention required.</p><hr id="34494e81-8539-8051-b714-f00db2642cb1" dir="auto"/><h2 id="34494e81-8539-802b-ab94-d37b7888d32e" class="" dir="auto">Section 6: Post-Drill Validation</h2><p id="34494e81-8539-80a2-a5ef-f79fc20eb7c2" class="" dir="auto">After both scenarios, run through the following validation steps.</p><h3 id="34494e81-8539-8001-9d45-fc8df840458d" class="" dir="auto">6.1 Full Functional Smoke Test</h3><table id="34494e81-8539-8015-acde-e498a3bf9d75" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80ed-ba96-f080be552457" dir="ltr"><th id="X&lt;bw" class="simple-table-header-color simple-table-header">Step</th><th id="_T\c" class="simple-table-header-color simple-table-header">Action / Command</th><th id="iX&gt;F" class="simple-table-header-color simple-table-header">Evidence</th><th id="gCNl" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-80d7-be9c-ff589022602a" dir="ltr"><td id="X&lt;bw" class=""><strong>6.1</strong></td><td id="_T\c" class="">Health check:</td><td id="iX&gt;F" class="">Health OK: ☐</td><td id="gCNl" class="">Backend Dev</td></tr><tr id="34494e81-8539-806f-9eb7-eaef2ae5a118" dir="ltr"><td id="X&lt;bw" class=""></td><td id="_T\c" class="">```curl -s https://api.qa.csm.ntu.edu.sg/health</td><td id="iX&gt;F" class="">jq .```</td><td id="gCNl" class=""></td></tr><tr id="34494e81-8539-8050-8ab2-c3b11902b4d0" dir="ltr"><td id="X&lt;bw" class=""></td><td id="_T\c" class="">Functional test on QA frontend (<code>https://qa.csm.ntu.edu.sg</code>):</td><td id="iX&gt;F" class="">Login: ☐</td><td id="gCNl" class=""></td></tr><tr id="34494e81-8539-80ac-a96a-ddcd601382bd" dir="ltr"><td id="X&lt;bw" class=""></td><td id="_T\c" class="">• Login with test user</td><td id="iX&gt;F" class="">Profile: ☐</td><td id="gCNl" class=""></td></tr><tr id="34494e81-8539-80ff-8a84-e3525d06d4e9" dir="ltr"><td id="X&lt;bw" class=""></td><td id="_T\c" class="">• View user profile</td><td id="iX&gt;F" class="">Courses: ☐</td><td id="gCNl" class=""></td></tr><tr id="34494e81-8539-80c9-af24-f369e0101329" dir="ltr"><td id="X&lt;bw" class=""></td><td id="_T\c" class="">• View courses listing</td><td id="iX&gt;F" class=""></td><td id="gCNl" class=""></td></tr></tbody></table><h3 id="34494e81-8539-8063-9c46-c58af30cd469" class="" dir="auto">6.2 Verify Data Integrity</h3><table id="34494e81-8539-80af-a216-f7980008a53d" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80f5-ba9b-edaa31dcf55c" dir="ltr"><th id="amk{" class="simple-table-header-color simple-table-header">Step</th><th id="y@;L" class="simple-table-header-color simple-table-header">Action / Command</th><th id="~uWz" class="simple-table-header-color simple-table-header">Evidence</th><th id="hmLQ" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-8059-b62a-c96c20281959" dir="ltr"><td id="amk{" class=""><strong>6.2</strong></td><td id="y@;L" class="">SSH to Bastion, then connect to RDS with SSL:</td><td id="~uWz" class="">Table count: ______</td><td id="hmLQ" class="">Backend Dev</td></tr><tr id="34494e81-8539-8024-8cf5-f42d3a370067" dir="ltr"><td id="amk{" class=""></td><td id="y@;L" class=""><code>ssh -i bastion-key ec2-user@&lt;BASTION_PUBLIC_IP&gt;</code></td><td id="~uWz" class="">Matches baseline: ☐ Yes  ☐ No</td><td id="hmLQ" class=""></td></tr><tr id="34494e81-8539-8043-a880-ccf6bdd341f1" dir="ltr"><td id="amk{" class=""></td><td id="y@;L" class=""><code>psql &quot;host=qa-ntu-rds.cwy2qm9xdus9.ap-southeast-1.rds.amazonaws.com port=5432 dbname=ntu user=ntu sslmode=verify-full sslrootcert=./global-bundle.pem&quot;</code></td><td id="~uWz" class=""></td><td id="hmLQ" class=""></td></tr><tr id="34494e81-8539-800a-abad-f19b278e070e" dir="ltr"><td id="amk{" class=""></td><td id="y@;L" class="">Run integrity check:</td><td id="~uWz" class=""></td><td id="hmLQ" class=""></td></tr><tr id="34494e81-8539-8042-9f60-d1437c1c255d" dir="ltr"><td id="amk{" class=""></td><td id="y@;L" class=""><code>SELECT count(*) FROM information_schema.tables WHERE table_schema = &#x27;public&#x27;;</code></td><td id="~uWz" class=""></td><td id="hmLQ" class=""></td></tr><tr id="34494e81-8539-8045-85c5-f9ccac213807" dir="ltr"><td id="amk{" class=""></td><td id="y@;L" class="">Compare table count with known baseline.</td><td id="~uWz" class=""></td><td id="hmLQ" class=""></td></tr></tbody></table><h3 id="34494e81-8539-80f0-9dc9-ee10a9d71e1b" class="" dir="auto">6.3 Verify RDS Multi-AZ Still Active</h3><table id="34494e81-8539-80b4-b3d7-f111ba09b914" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8038-9ed6-f7f78042e08c" dir="ltr"><th id="s::=" class="simple-table-header-color simple-table-header">Step</th><th id="DLL^" class="simple-table-header-color simple-table-header">Action / Command</th><th id="mOg`" class="simple-table-header-color simple-table-header">Evidence</th><th id="KNjg" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-8050-bd30-e1786eea3e24" dir="ltr"><td id="s::=" class=""><strong>6.3</strong></td><td id="DLL^" class="">Confirm Multi-AZ is still enabled:</td><td id="mOg`" class="">MultiAZ: ☐ true</td><td id="KNjg" class="">Backend Lead</td></tr><tr id="34494e81-8539-8034-9d02-d13112991908" dir="ltr"><td id="s::=" class=""></td><td id="DLL^" class=""><code>aws rds describe-db-instances --db-instance-identifier qa-ntu-rds --query &#x27;DBInstances[0].{MultiAZ:MultiAZ,Status:DBInstanceStatus}&#x27;</code></td><td id="mOg`" class="">Status: ______</td><td id="KNjg" class=""></td></tr></tbody></table><h3 id="34494e81-8539-8030-9fad-f27de866a4fb" class="" dir="auto">6.4 Review CloudWatch Metrics</h3><table id="34494e81-8539-80c7-a4fc-d4fd545ea177" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80b3-ae74-c42df0bf5348" dir="ltr"><th id="&gt;Tsl" class="simple-table-header-color simple-table-header">Step</th><th id="X{Hp" class="simple-table-header-color simple-table-header">Action / Command</th><th id="]w|q" class="simple-table-header-color simple-table-header">Evidence</th><th id="d;:b" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-8056-83c5-cd5c65f6237d" dir="ltr"><td id="&gt;Tsl" class=""><strong>6.4</strong></td><td id="X{Hp" class="">Check CloudWatch dashboards for lingering anomalies:</td><td id="]w|q" class="">All normal: ☐ Yes  ☐ No</td><td id="d;:b" class="">Backend Lead</td></tr><tr id="34494e81-8539-801b-84d3-d0b0472384e7" dir="ltr"><td id="&gt;Tsl" class=""></td><td id="X{Hp" class="">• ECS: CPU/memory utilization</td><td id="]w|q" class=""></td><td id="d;:b" class=""></td></tr><tr id="34494e81-8539-8029-9dbf-cfa174aa5b0b" dir="ltr"><td id="&gt;Tsl" class=""></td><td id="X{Hp" class="">• RDS: connections, CPU, FreeableMemory</td><td id="]w|q" class="">Notes: ______</td><td id="d;:b" class=""></td></tr><tr id="34494e81-8539-8002-b117-df288e1535e2" dir="ltr"><td id="&gt;Tsl" class=""></td><td id="X{Hp" class="">• ALB: error rates, target response times</td><td id="]w|q" class=""></td><td id="d;:b" class=""></td></tr><tr id="34494e81-8539-8098-ade1-de47563bf7fe" dir="ltr"><td id="&gt;Tsl" class=""></td><td id="X{Hp" class="">Confirm all metrics have returned to baseline.</td><td id="]w|q" class=""></td><td id="d;:b" class=""></td></tr></tbody></table><hr id="34494e81-8539-80e4-9e32-c821baa8f110" dir="auto"/><h2 id="34494e81-8539-8006-bb0c-f70479770bfb" class="" dir="auto">Section 7: CI/CD Redeployment (Extra Validation)</h2><p id="34494e81-8539-80b0-8086-d4bf79d9825f" class="" dir="auto">Since deployment is fully automated via GitHub Actions, this additional validation confirms the CI/CD pipeline can redeploy the application after a disaster.</p><table id="34494e81-8539-806a-bc7d-e063d5858a4b" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-806b-bab0-e38db93694b7" dir="ltr"><th id="i}Zz" class="simple-table-header-color simple-table-header">Step</th><th id="Bc=E" class="simple-table-header-color simple-table-header">Action / Command</th><th id="vuTA" class="simple-table-header-color simple-table-header">Evidence</th><th id="T@d}" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-80d4-9e54-fb92bb89e7f0" dir="ltr"><td id="i}Zz" class=""><strong>7.1</strong></td><td id="Bc=E" class=""><strong>Trigger a redeployment:</strong> Push a trivial change to the <code>qa</code> branch (e.g., update a comment) to trigger the full CD pipeline. This will:</td><td id="vuTA" class="">Pipeline triggered at: ______</td><td id="T@d}" class="">Backend Dev</td></tr><tr id="34494e81-8539-8088-9415-c241cbb3870f" dir="ltr"><td id="i}Zz" class=""></td><td id="Bc=E" class="">1. Build the Docker image</td><td id="vuTA" class=""></td><td id="T@d}" class=""></td></tr><tr id="34494e81-8539-8098-aa50-da1b581ef7a9" dir="ltr"><td id="i}Zz" class=""></td><td id="Bc=E" class="">2. Push to ECR (<code>ntu-qa</code>)</td><td id="vuTA" class=""></td><td id="T@d}" class=""></td></tr><tr id="34494e81-8539-8081-a93c-d4a60a925cac" dir="ltr"><td id="i}Zz" class=""></td><td id="Bc=E" class="">3. Run database migrations via one-off ECS task</td><td id="vuTA" class=""></td><td id="T@d}" class=""></td></tr><tr id="34494e81-8539-808a-b2ef-f9f0e0b648ad" dir="ltr"><td id="i}Zz" class=""></td><td id="Bc=E" class="">4. Force-update the ECS service</td><td id="vuTA" class=""></td><td id="T@d}" class=""></td></tr><tr id="34494e81-8539-80d1-aeb7-e5b6e238d4f5" dir="ltr"><td id="i}Zz" class=""></td><td id="Bc=E" class="">5. Wait for service stability</td><td id="vuTA" class=""></td><td id="T@d}" class=""></td></tr><tr id="34494e81-8539-8072-971c-d17cd4b1fb6c" dir="ltr"><td id="i}Zz" class=""><strong>7.2</strong></td><td id="Bc=E" class=""><strong>Verify CI/CD recovery:</strong> Monitor the GitHub Actions workflow run. Confirm it completes successfully.</td><td id="vuTA" class="">Pipeline completed at: ______</td><td id="T@d}" class="">Backend Dev</td></tr><tr id="34494e81-8539-80f4-893b-cfecc494a201" dir="ltr"><td id="i}Zz" class=""></td><td id="Bc=E" class="">This validates that after any infrastructure DR event, the standard deployment pipeline can restore the application.</td><td id="vuTA" class="">Pipeline success: ☐ Yes  ☐ No</td><td id="T@d}" class=""></td></tr><tr id="34494e81-8539-80ba-a815-c1f4ade40023" dir="ltr"><td id="i}Zz" class=""></td><td id="Bc=E" class=""></td><td id="vuTA" class="">Deploy time: ______ min</td><td id="T@d}" class=""></td></tr></tbody></table><p id="34494e81-8539-8042-94ee-e1021b93460c" class="" dir="auto"><strong>Note on IaC for DR:</strong> The SST stacks can recreate the full infrastructure from scratch using <code>npx sst deploy --stage qa</code>. However, this creates new resources (new VPC subnets, new RDS, new ECS cluster) rather than restoring existing ones. The IaC serves as a documented blueprint for provisioning a fresh environment. RDS stack already has <code>multiAz: true</code> and <code>backupRetention: 30 days</code> baked in. Key limitation: SST/CDK cannot restore data — database restoration must be done separately from an RDS snapshot.</p><hr id="34494e81-8539-80b3-ba3e-d4ea19302f3b" dir="auto"/><h2 id="34494e81-8539-8096-b6f8-d1b4c25dbcbe" class="" dir="auto">Section 8: Rollback Procedures (If Drill Causes Persistent Issues)</h2><table id="34494e81-8539-8000-9656-d971fdf459c4" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8017-9d9a-fd43712c22a8" dir="ltr"><th id="&gt;RrO" class="simple-table-header-color simple-table-header">Step</th><th id=";l?O" class="simple-table-header-color simple-table-header">Action / Command</th><th id="NBo:" class="simple-table-header-color simple-table-header">Evidence</th><th id="Xfvy" class="simple-table-header-color simple-table-header">Owner</th></tr></thead><tbody><tr id="34494e81-8539-80a0-89dc-e84e9ca9ed12" dir="ltr"><td id="&gt;RrO" class=""><strong>RB-1</strong></td><td id=";l?O" class=""><strong>RDS Rollback:</strong> If the database is in a degraded state after failover, restore from the pre-drill snapshot:</td><td id="NBo:" class="">☐ Triggered  ☐ N/A</td><td id="Xfvy" class="">Backend Lead</td></tr><tr id="34494e81-8539-8053-bb4f-dc0d025a0df4" dir="ltr"><td id="&gt;RrO" class=""></td><td id=";l?O" class=""><code>aws rds restore-db-instance-from-db-snapshot --db-instance-identifier qa-ntu-rds-restored --db-snapshot-identifier qa-ntu-rds-pre-dr-drill-YYYYMMDD --db-instance-class db.t3.micro --multi-az</code></td><td id="NBo:" class=""></td><td id="Xfvy" class=""></td></tr><tr id="34494e81-8539-80fb-87fb-d534cb270b5c" dir="ltr"><td id="&gt;RrO" class=""></td><td id=";l?O" class="">Then update <code>DATABASE_URL</code> in Secrets Manager to point to the new instance and force-redeploy the ECS service.</td><td id="NBo:" class=""></td><td id="Xfvy" class=""></td></tr><tr id="34494e81-8539-806d-adaa-c6f79cf05ec2" dir="ltr"><td id="&gt;RrO" class=""><strong>RB-2</strong></td><td id=";l?O" class=""><strong>ECS Rollback — force new deployment:</strong></td><td id="NBo:" class="">☐ Triggered  ☐ N/A</td><td id="Xfvy" class="">Backend Lead</td></tr><tr id="34494e81-8539-80ad-818d-d96e20315b45" dir="ltr"><td id="&gt;RrO" class=""></td><td id=";l?O" class=""><code>aws ecs update-service --cluster ntu-qa --service ntu-qa-service --force-new-deployment</code></td><td id="NBo:" class=""></td><td id="Xfvy" class=""></td></tr><tr id="34494e81-8539-80d0-8366-e34812d812c2" dir="ltr"><td id="&gt;RrO" class=""></td><td id=";l?O" class=""><code>aws ecs wait services-stable --cluster ntu-qa --services ntu-qa-service</code></td><td id="NBo:" class=""></td><td id="Xfvy" class=""></td></tr><tr id="34494e81-8539-804b-9bf2-fff2f1ae9a72" dir="ltr"><td id="&gt;RrO" class=""><strong>RB-3</strong></td><td id=";l?O" class=""><strong>ECS Rollback — if service still fails:</strong> Check available ECR images and redeploy last known good:</td><td id="NBo:" class="">☐ Triggered  ☐ N/A</td><td id="Xfvy" class="">Backend Dev</td></tr><tr id="34494e81-8539-80f9-98fd-c3cda764f9e5" dir="ltr"><td id="&gt;RrO" class=""></td><td id=";l?O" class="">```aws ecr list-images --repository-name ntu-qa --query &#x27;imageIds[?imageTag!=<code>latest</code>]&#x27;</td><td id="NBo:" class="">head -20```</td><td id="Xfvy" class=""></td></tr><tr id="34494e81-8539-80b3-8941-d9621521b8b1" dir="ltr"><td id="&gt;RrO" class=""></td><td id=";l?O" class="">Or trigger a fresh deploy via CI/CD pipeline by pushing to the <code>qa</code> branch.</td><td id="NBo:" class=""></td><td id="Xfvy" class=""></td></tr></tbody></table><hr id="34494e81-8539-8009-b9f8-e7e20d45b42f" dir="auto"/><h2 id="34494e81-8539-8037-905c-d78b4c6558dd" class="" dir="auto">Section 9: Drill Results Summary</h2><table id="34494e81-8539-8065-9bea-fa3be7da5b3c" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80ef-8143-cd9d2ae0d332" dir="ltr"><th id="qifN" class="simple-table-header-color simple-table-header">Scenario</th><th id="A||g" class="simple-table-header-color simple-table-header">Criterion</th><th id="Dty\" class="simple-table-header-color simple-table-header">Target</th><th id="ib~I" class="simple-table-header-color simple-table-header">Actual</th></tr></thead><tbody><tr id="34494e81-8539-803e-92cb-dc5a239972a5" dir="ltr"><td id="qifN" class="">A — RDS Multi-AZ Failover</td><td id="A||g" class="">RDS failover duration</td><td id="Dty\" class="">&lt; 3 minutes</td><td id="ib~I" class="">______</td></tr><tr id="34494e81-8539-809e-8362-c7b5808d5de2" dir="ltr"><td id="qifN" class="">A — RDS Multi-AZ Failover</td><td id="A||g" class="">Application recovery time</td><td id="Dty\" class="">&lt; 3 minutes</td><td id="ib~I" class="">______</td></tr><tr id="34494e81-8539-80b4-aa81-d09c936a46a3" dir="ltr"><td id="qifN" class="">A — RDS Multi-AZ Failover</td><td id="A||g" class="">Data loss</td><td id="Dty\" class="">Zero</td><td id="ib~I" class="">______</td></tr><tr id="34494e81-8539-809f-8013-d8990e0786a7" dir="ltr"><td id="qifN" class="">A — RDS Multi-AZ Failover</td><td id="A||g" class="">Manual intervention</td><td id="Dty\" class="">None</td><td id="ib~I" class="">______</td></tr><tr id="34494e81-8539-80f1-a62f-cc2196ce7c46" dir="ltr"><td id="qifN" class="">B — ECS Service Recovery</td><td id="A||g" class="">Task provisioning time</td><td id="Dty\" class="">&lt; 2 minutes</td><td id="ib~I" class="">______</td></tr><tr id="34494e81-8539-805c-85c8-f108f5176918" dir="ltr"><td id="qifN" class="">B — ECS Service Recovery</td><td id="A||g" class="">Total app downtime</td><td id="Dty\" class="">&lt; 5 minutes</td><td id="ib~I" class="">______</td></tr><tr id="34494e81-8539-80ea-8417-fe405324c55a" dir="ltr"><td id="qifN" class="">B — ECS Service Recovery</td><td id="A||g" class="">ECS auto-recovery</td><td id="Dty\" class="">Yes</td><td id="ib~I" class="">______</td></tr><tr id="34494e81-8539-80a8-9b8d-d53e2c608543" dir="ltr"><td id="qifN" class="">B — ECS Service Recovery</td><td id="A||g" class="">Manual intervention</td><td id="Dty\" class="">None</td><td id="ib~I" class="">______</td></tr><tr id="34494e81-8539-8083-b765-e74b2e9f9cb0" dir="ltr"><td id="qifN" class="">CI/CD (Bonus)</td><td id="A||g" class="">Pipeline completed</td><td id="Dty\" class="">Yes</td><td id="ib~I" class="">______</td></tr><tr id="34494e81-8539-8001-be24-f9a0899d350f" dir="ltr"><td id="qifN" class="">CI/CD (Bonus)</td><td id="A||g" class="">Deployment time</td><td id="Dty\" class="">&lt; 15 minutes</td><td id="ib~I" class="">______</td></tr></tbody></table><table id="34494e81-8539-809e-b3b2-d9d5664296ca" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8091-a7c8-f50207f63404" dir="ltr"><th id="Gg&lt;w" class="simple-table-header-color simple-table-header"></th><th id="SfUc" class="simple-table-header-color simple-table-header"></th></tr></thead><tbody><tr id="34494e81-8539-8062-b810-ce8a5aebcbc6" dir="ltr"><td id="Gg&lt;w" class=""><strong>Overall Drill Result</strong></td><td id="SfUc" class="">☐ PASS  ☐ FAIL  ☐ PARTIAL</td></tr></tbody></table><hr id="34494e81-8539-80a3-be59-dc28ccff9857" dir="auto"/><h2 id="34494e81-8539-80ae-8ea8-f030eebf7f75" class="" dir="auto">Section 10: DR Drill Report Template</h2><p id="34494e81-8539-8002-8a8f-c561913cb03c" class="" dir="auto">Complete and distribute the following report after the drill.</p><table id="34494e81-8539-800c-893e-d4849aa0f6b2" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80b5-802b-c926d1d624e9" dir="ltr"><th id="p^ca" class="simple-table-header-color simple-table-header">Field</th><th id="wNIQ" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34494e81-8539-8000-a905-ccd7cf5c6305" dir="ltr"><td id="p^ca" class=""><strong>Date of drill</strong></td><td id="wNIQ" class="">______</td></tr><tr id="34494e81-8539-8003-bad6-c754733a4104" dir="ltr"><td id="p^ca" class=""><strong>Duration</strong></td><td id="wNIQ" class="">______</td></tr><tr id="34494e81-8539-8003-a5fa-e50a97226495" dir="ltr"><td id="p^ca" class=""><strong>Environment</strong></td><td id="wNIQ" class="">QA (ap-southeast-1)</td></tr><tr id="34494e81-8539-80a8-bc02-d08bcb4e81c4" dir="ltr"><td id="p^ca" class=""><strong>Participants</strong></td><td id="wNIQ" class="">______</td></tr></tbody></table><p id="34494e81-8539-8008-b19e-fda76ea48a29" class="" dir="auto"><strong>Scenario A — RDS Multi-AZ Failover:</strong></p><table id="34494e81-8539-8021-8bb5-fed5f03ef883" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8013-9787-f3703d7735e9" dir="ltr"><th id="xL:E" class="simple-table-header-color simple-table-header">Item</th><th id="J{lX" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34494e81-8539-8017-9d69-e4a183a1f84d" dir="ltr"><td id="xL:E" class="">Result</td><td id="J{lX" class="">☐ Pass  ☐ Fail</td></tr><tr id="34494e81-8539-802f-8e7f-c4e0bb2a23bd" dir="ltr"><td id="xL:E" class="">RDS failover duration</td><td id="J{lX" class="">______ seconds</td></tr><tr id="34494e81-8539-80f2-a076-db52a590e1d4" dir="ltr"><td id="xL:E" class="">Application recovery time</td><td id="J{lX" class="">______ seconds</td></tr><tr id="34494e81-8539-8000-ba63-fcccc19c9cff" dir="ltr"><td id="xL:E" class="">Data loss</td><td id="J{lX" class="">☐ None  ☐ Describe: ______</td></tr><tr id="34494e81-8539-80ff-9636-ccee34b936a2" dir="ltr"><td id="xL:E" class="">Issues encountered</td><td id="J{lX" class="">______</td></tr></tbody></table><p id="34494e81-8539-8073-893d-e9c9cf6df2cf" class="" dir="auto"><strong>Scenario B — ECS Task Recovery:</strong></p><table id="34494e81-8539-803d-8460-c0fe846e731e" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-804f-8bef-f8d24fe036a1" dir="ltr"><th id="JWID" class="simple-table-header-color simple-table-header">Item</th><th id="F}fK" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34494e81-8539-8084-9acf-d368b73958e8" dir="ltr"><td id="JWID" class="">Result</td><td id="F}fK" class="">☐ Pass  ☐ Fail</td></tr><tr id="34494e81-8539-806e-9c0d-e523cf2993e0" dir="ltr"><td id="JWID" class="">Task replacement time</td><td id="F}fK" class="">______ seconds</td></tr><tr id="34494e81-8539-80bb-afc7-d256dccbeefe" dir="ltr"><td id="JWID" class="">Application recovery time</td><td id="F}fK" class="">______ seconds</td></tr><tr id="34494e81-8539-8027-8a50-c1823f56f42c" dir="ltr"><td id="JWID" class="">Issues encountered</td><td id="F}fK" class="">______</td></tr></tbody></table><p id="34494e81-8539-800d-8d06-de9d046e905e" class="" dir="auto"><strong>CI/CD Redeployment (Bonus):</strong></p><table id="34494e81-8539-80d5-b815-fb9a6975e2f8" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-80ec-826a-ffd9e2680e0c" dir="ltr"><th id="KgM_" class="simple-table-header-color simple-table-header">Item</th><th id="p`dY" class="simple-table-header-color simple-table-header">Value</th></tr></thead><tbody><tr id="34494e81-8539-800a-b5c5-e47840200878" dir="ltr"><td id="KgM_" class="">Pipeline completed successfully</td><td id="p`dY" class="">☐ Yes  ☐ No</td></tr><tr id="34494e81-8539-80cb-bd59-e77326f2e0af" dir="ltr"><td id="KgM_" class="">Deployment time</td><td id="p`dY" class="">______ minutes</td></tr></tbody></table><p id="34494e81-8539-8039-852f-c09d490cf0b4" class="" dir="auto"><strong>Findings &amp; Recommendations:</strong></p><ol type="1" id="34494e81-8539-80e9-a1ae-cd2ef25953f9" class="numbered-list" start="1" dir="auto"><li></li></ol><ol type="1" id="34494e81-8539-8064-b634-d5e1f2ef1e27" class="numbered-list" start="2" dir="auto"><li></li></ol><ol type="1" id="34494e81-8539-808f-9b7f-ccd6e5472d20" class="numbered-list" start="3" dir="auto"><li></li></ol><p id="34494e81-8539-802d-b476-c14b6870470a" class="" dir="auto"><strong>Sign-off:</strong></p><table id="34494e81-8539-8014-89dd-d4dade634dfb" class="simple-table" dir="ltr"><thead class="simple-table-header"><tr id="34494e81-8539-8089-9c09-d62568e9d28a" dir="ltr"><th id="Ow}s" class="simple-table-header-color simple-table-header">Role</th><th id="Toiu" class="simple-table-header-color simple-table-header">Name</th><th id="&lt;H&lt;f" class="simple-table-header-color simple-table-header">Signature</th><th id="T&lt;jH" class="simple-table-header-color simple-table-header">Date</th></tr></thead><tbody><tr id="34494e81-8539-8015-8094-f7dfc27fb00f" dir="ltr"><td id="Ow}s" class=""><strong>DR Drill Lead</strong></td><td id="Toiu" class="">________________</td><td id="&lt;H&lt;f" class="">________________</td><td id="T&lt;jH" class="">______</td></tr><tr id="34494e81-8539-8015-ab09-f291fa69c8bc" dir="ltr"><td id="Ow}s" class=""><strong>DevOps</strong></td><td id="Toiu" class="">________________</td><td id="&lt;H&lt;f" class="">________________</td><td id="T&lt;jH" class="">______</td></tr><tr id="34494e81-8539-80b2-9d2c-e4600129a34d" dir="ltr"><td id="Ow}s" class=""><strong>Management</strong></td><td id="Toiu" class="">________________</td><td id="&lt;H&lt;f" class="">________________</td><td id="T&lt;jH" class="">______</td></tr></tbody></table><hr id="34494e81-8539-8025-afa0-d9f709356788" dir="auto"/><h2 id="34494e81-8539-805a-9fe5-c40ea74adea3" class="" dir="auto">Section 11: Key Risks and Limitations</h2><p id="34494e81-8539-80a0-ae54-fd76d194c4d7" class="" dir="auto"><strong>Risk 1 — Default VPC with public subnets only:</strong> QA and Dev environments use the default VPC, which only has public subnets. ECS Fargate tasks are assigned public IPs and RDS operates in a public subnet (though publicly accessible is set to false). In a real AZ outage, recovery depends on the default VPC having subnets in multiple AZs — which AWS default VPCs do.</p><p id="34494e81-8539-8081-85eb-d27806046e6d" class="" dir="auto"><strong>Risk 2 — Single ECS task (QA):</strong> The QA ECS service has <code>desiredCount: 1</code>, meaning complete outage during task replacement. Production is configured with <code>desiredCount: 2</code> and auto-scaling (2–4), which provides better resilience.</p><p id="34494e81-8539-8075-b44e-d45286a09c2b" class="" dir="auto"><strong>Risk 3 — RDS DNS TTL during failover:</strong> The application&#x27;s database connection (NestJS + Drizzle ORM) needs to gracefully handle transient connection failures during RDS failover. The RDS DNS endpoint doesn&#x27;t change during failover, but the underlying IP does — DNS TTL is typically 5 seconds for RDS, which determines reconnection speed.</p><p id="34494e81-8539-8077-a346-d3e5d1771b0d" class="" dir="auto"><strong>Risk 4 — RDS restore to same identifier:</strong> Database restoration from a snapshot to the same instance identifier requires deleting the existing instance first, introducing additional downtime. Alternative: restore to a new identifier and update the connection string.</p><p id="34494e81-8539-80f1-930f-e25a20499ab4" class="" dir="auto"><strong>Risk 5 — S3 and Cognito excluded:</strong> This plan does not test S3 or Cognito resilience, as those are regionally-managed AWS services with built-in multi-AZ durability and do not require DR drills for ISO compliance at the infrastructure layer.</p><hr id="34494e81-8539-80dd-8101-c6148b9e6833" dir="auto"/><p id="34494e81-8539-80aa-a849-f12e667d8573" class="" dir="auto"><em>This DR Drill plan covers 2 core scenarios (RDS failover + ECS task recovery) plus a bonus CI/CD validation, and can be completed within approximately 30–45 minutes on the QA environment.</em></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
